@@ -1,0 +1,447 @@
+{
+  "palette": {
+    "paper": "#F3E7CB",
+    "red": "#D84332",
+    "dark": "#8B2333",
+    "wine": "#562A34",
+    "ink": "#192027",
+    "gold": "#E7BA68",
+    "white": "#FFF7E8",
+    "jade": "#72B5A4"
+  },
+  "assets": [
+    {
+      "name": "cloud",
+      "description": "祥云三卷，层层剪口",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "leaf",
+      "description": "鎏金柳叶碎片",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "paper_shard",
+      "description": "剪纸碎屑",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "flame",
+      "description": "灵焰与生命符",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "slash",
+      "description": "弧面纸刃剑气；长轴水平",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "rune_z",
+      "description": "雷咒符印",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "sigil_ring",
+      "description": "十六瓣护身符阵，双圈与镂空叶片",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "sigil_center",
+      "description": "八方回旋阵心",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "ink_body",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "crow_body",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "crow_wing",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "oni_body",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_leaf",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_talisman",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_lantern",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_mist",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_feather",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "env_inkdrop",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_tail_high",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_tail_mid",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_tail_low",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_tail",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_torso",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_head",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_ear",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_eyes",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_pupils",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_leg",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_arm",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_collar",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_scarf",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_bell",
+      "description": "美术升级：原创分层剪纸素材，中心局部锚点",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_preview",
+      "description": "狐灵守护者：三种原创尾形、金瞳、朱砂足尖、独立颈带和飘带",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    }
+  ],
+  "landscape": {
+    "width": 720,
+    "height": 1280
+  }
+}

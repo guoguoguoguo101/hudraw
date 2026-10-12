@@ -1,0 +1,1 @@
+export const MOTION={idle:{breath:2.1,tail:0.14,ear:0.045},cast:{anticipation:.1,release:.24,recover:.64,armReach:1.15,headFollow:.14},hit:{duration:.42,tilt:-.24,flash:12},victory:{duration:2.4,jump:46},death:{duration:.9}};

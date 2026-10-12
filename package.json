@@ -1,0 +1,26 @@
+{
+  "name": "linghu-draw",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "art": "node scripts/build-art.mjs",
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "tsc --noEmit && vite build",
+    "test": "tsx tests/run.ts",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "check:platform": "tsx scripts/check-platform.ts",
+    "preview:lan": "vite preview --host 0.0.0.0 --port 4173 --strictPort"
+  },
+  "dependencies": {
+    "pixi.js": "^8.14.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "tsx": "^4.20.0",
+    "sharp": "^0.34.0",
+    "@types/node": "^24.0.0",
+    "@playwright/test": "^1.55.0"
+  }
+}
