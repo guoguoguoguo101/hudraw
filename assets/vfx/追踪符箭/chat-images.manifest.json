@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "topic": "追踪符箭",
+  "archivedOn": "2026-10-13",
+  "note": "保存本对话 Lv1–3 追踪符箭参考与预览，以及已经放弃的 Lv4 进攻式天狐方案。旧 Lv4 图片仅用于历史对照，不代表当前实现。",
+  "images": [
+    {
+      "file": "用户参考图/追踪符箭_Lv4_多箭追狐参考图_v01.png",
+      "label": "Lv4_多箭追狐参考图",
+      "type": "用户上传",
+      "version": 1,
+      "status": "旧方向已放弃",
+      "purpose": "最初进攻式 Lv4 的狐影、符箭与红白金黑配色参考；后续改为守护降临。",
+      "bytes": 2763873,
+      "sha256": "c7f4e8233a5915eba722aa9dbd9965ccc3896e01a50b0acf4c8b62cf7757e825",
+      "width": 1672,
+      "height": 941,
+      "sources": [
+        {
+          "fileName": "codex-clipboard-f96091b5-503a-4a97-832c-4fa0d7233fba.png",
+          "type": "用户上传",
+          "purpose": "最初进攻式 Lv4 的狐影、符箭与红白金黑配色参考；后续改为守护降临。",
+          "status": "旧方向已放弃"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/追踪符箭_Lv1至Lv3_灵箭参考图_v01.png",
+      "label": "Lv1至Lv3_灵箭参考图",
+      "type": "用户上传",
+      "version": 1,
+      "status": "参考原件",
+      "purpose": "前三等级的灵箭造型、红白能量、符纸与祥云参考。",
+      "bytes": 2136326,
+      "sha256": "1708b007ff500d16348249a068e654285742a4da0ea538fd0930b223a340a1bc",
+      "width": 1672,
+      "height": 941,
+      "sources": [
+        {
+          "fileName": "codex-clipboard-d5349380-4af5-405f-9fe3-d0dc3ec658b8.png",
+          "type": "用户上传",
+          "purpose": "前三等级的灵箭造型、红白能量、符纸与祥云参考。",
+          "status": "参考原件"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/追踪符箭_Lv4_九尾天狐绘卷参考图_v01.png",
+      "label": "Lv4_九尾天狐绘卷参考图",
+      "type": "用户上传",
+      "version": 1,
+      "status": "旧演出逻辑已放弃；参考原件保留",
+      "purpose": "用于旧版箭意化狐、绕身变大后冲出画布的绘卷气质与九尾参考。",
+      "bytes": 3716803,
+      "sha256": "7401497af59840fd5918e286a4d01021761e7f96a26e45433e96eb3739de949e",
+      "width": 941,
+      "height": 1672,
+      "sources": [
+        {
+          "fileName": "codex-clipboard-99a28a70-881a-4fff-a18a-c7c508af0542.png",
+          "type": "用户上传",
+          "purpose": "用于旧版箭意化狐、绕身变大后冲出画布的绘卷气质与九尾参考。",
+          "status": "旧演出逻辑已放弃；参考原件保留"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv1至Lv4_旧版全景对照图_v01.png",
+      "label": "Lv1至Lv4_旧版全景对照图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版四等级全景对照，包含已放弃的 Lv4。",
+      "bytes": 720186,
+      "sha256": "16b80ce0e976cab3d607946fea7a3e0b33b29f7c14223ab9f853dd2d22049198",
+      "width": 1440,
+      "height": 684,
+      "sources": [
+        {
+          "fileName": "comparison.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版四等级全景对照，包含已放弃的 Lv4。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/comparison.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv1至Lv4_旧版细节对照图_v01.png",
+      "label": "Lv1至Lv4_旧版细节对照图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版四等级局部对照，包含已放弃的 Lv4。",
+      "bytes": 491616,
+      "sha256": "6fad713c6f2ab417edcde804730d806b97734696757ae02ca6efad38733aa846",
+      "width": 1440,
+      "height": 390,
+      "sources": [
+        {
+          "fileName": "detail-comparison.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版四等级局部对照，包含已放弃的 Lv4。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/detail-comparison.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版巨狐细节图_v01.png",
+      "label": "Lv4_旧版巨狐细节图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "最后可访问的旧版巨狐截图。",
+      "bytes": 426488,
+      "sha256": "76e9a3ff2cd9ad48d2d7a7367402e80344447c28734cd61ae62d0e1e432edb28",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "giant-fox.png",
+          "type": "实机/工具截图",
+          "purpose": "最后可访问的旧版巨狐截图。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/giant-fox.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv1_实机预览图_v01.png",
+      "label": "Lv1_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "早期快照，保留对照",
+      "purpose": "早期追踪符箭实机快照。",
+      "bytes": 271994,
+      "sha256": "58bc16e1a5a6bc35866e3ec2d02e4c6f5cf63f912cc7488376e169632674e0ba",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv1.png",
+          "type": "实机/工具截图",
+          "purpose": "早期追踪符箭实机快照。",
+          "status": "早期快照，保留对照",
+          "repositorySource": "screenshots/arrow-upgrade/lv1.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv2_实机预览图_v01.png",
+      "label": "Lv2_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "早期快照，保留对照",
+      "purpose": "早期追踪符箭实机快照。",
+      "bytes": 275072,
+      "sha256": "618c38498f1ca6a127a6d177386b1f0bd71433fd06bdca97098396f166c9fb9b",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv2.png",
+          "type": "实机/工具截图",
+          "purpose": "早期追踪符箭实机快照。",
+          "status": "早期快照，保留对照",
+          "repositorySource": "screenshots/arrow-upgrade/lv2.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv3_实机预览图_v01.png",
+      "label": "Lv3_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "早期快照，保留对照",
+      "purpose": "早期追踪符箭实机快照。",
+      "bytes": 297004,
+      "sha256": "906614a76b4b686e66600b7ffe37d18169bc3085f94bf4465ee507dbe8c95422",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv3.png",
+          "type": "实机/工具截图",
+          "purpose": "早期追踪符箭实机快照。",
+          "status": "早期快照，保留对照",
+          "repositorySource": "screenshots/arrow-upgrade/lv3.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版进攻动画预览_v01.gif",
+      "label": "Lv4_旧版进攻动画预览",
+      "type": "实机动画录制",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版绕身长大与冲出画布动画；录制时间与最后静态截图可能不同。",
+      "bytes": 928115,
+      "sha256": "9d33bf7c41e12e766637b5b858c086c7c37a5938c8ccc7f8ed4b9e67f24a1e47",
+      "width": 300,
+      "height": 534,
+      "pages": 56,
+      "sources": [
+        {
+          "fileName": "lv4-motion.gif",
+          "type": "实机动画录制",
+          "purpose": "旧版绕身长大与冲出画布动画；录制时间与最后静态截图可能不同。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/lv4-motion.gif"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版进攻实机图_v01.png",
+      "label": "Lv4_旧版进攻实机图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "最后可访问的旧版进攻式 Lv4 实机截图。",
+      "bytes": 426750,
+      "sha256": "72af0f33fdc912c4aa5518fa0b7a5177432570096953798ca37e851d03f041bd",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv4.png",
+          "type": "实机/工具截图",
+          "purpose": "最后可访问的旧版进攻式 Lv4 实机截图。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/lv4.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版六阶段对照图_v01.png",
+      "label": "Lv4_旧版六阶段对照图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版 Lv4 六阶段工作快照。",
+      "bytes": 787590,
+      "sha256": "6545b794c873b533ec2622f2c25ca2a27d070677cc3e95bb7f4b556a775c2265",
+      "width": 1800,
+      "height": 567,
+      "sources": [
+        {
+          "fileName": "sequence.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版 Lv4 六阶段工作快照。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/sequence.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段1预览图_v01.png",
+      "label": "Lv4_旧版阶段1预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 1 帧；编号为截取顺序。",
+      "bytes": 271827,
+      "sha256": "985110b05b2157e4449ef018c84f4f157f7256166f7e88b71e59378251cfe4c6",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-0.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 1 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-0.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段2预览图_v01.png",
+      "label": "Lv4_旧版阶段2预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 2 帧；编号为截取顺序。",
+      "bytes": 291699,
+      "sha256": "6941db8ca56288cb674b9475de3ad24b020e1cd1cd23e0cb023c0ed2319e665d",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-1.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 2 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-1.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段3预览图_v01.png",
+      "label": "Lv4_旧版阶段3预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 3 帧；编号为截取顺序。",
+      "bytes": 357803,
+      "sha256": "60e31bfd0940cd680e874600ad795943e11e8df6817be7bde923e653a52493ed",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-2.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 3 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-2.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段4预览图_v01.png",
+      "label": "Lv4_旧版阶段4预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 4 帧；编号为截取顺序。",
+      "bytes": 426554,
+      "sha256": "a0f3d3ffc8d7182b786c67c11ea8b04b673924c75688baca499394ecab4cd5ff",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-3.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 4 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-3.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段5预览图_v01.png",
+      "label": "Lv4_旧版阶段5预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 5 帧；编号为截取顺序。",
+      "bytes": 360734,
+      "sha256": "630055564abc3c2e72ad1889b2511a06490d85ad6c7f80fa0eb364ed8027db96",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-4.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 5 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-4.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv4_旧版阶段6预览图_v01.png",
+      "label": "Lv4_旧版阶段6预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "旧 Lv4 已放弃",
+      "purpose": "旧版工作截图第 6 帧；编号为截取顺序。",
+      "bytes": 266629,
+      "sha256": "5ae8b1f7862b67a79b90df93a4d1e5df4a21685233b4c133fa86bf95b2498b2e",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-5.png",
+          "type": "实机/工具截图",
+          "purpose": "旧版工作截图第 6 帧；编号为截取顺序。",
+          "status": "旧 Lv4 已放弃",
+          "repositorySource": "screenshots/arrow-upgrade/stage-5.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv1_实机预览图_v02.png",
+      "label": "Lv1_实机预览图",
+      "type": "实机/工具截图",
+      "version": 2,
+      "status": "当前工作快照，待评审",
+      "purpose": "守护 Lv4 接入后的 Lv1 追踪符箭实机快照；与早期版本分别保留。",
+      "bytes": 272603,
+      "sha256": "bed8dafd5f26fcb37dfe7741b28bd28ef90e8159a4114d1949a43ea8ca5547ce",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv1.png",
+          "type": "实机/工具截图",
+          "purpose": "守护 Lv4 接入后的 Lv1 追踪符箭实机快照；与早期版本分别保留。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/lv1.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv2_实机预览图_v02.png",
+      "label": "Lv2_实机预览图",
+      "type": "实机/工具截图",
+      "version": 2,
+      "status": "当前工作快照，待评审",
+      "purpose": "守护 Lv4 接入后的 Lv2 追踪符箭实机快照；与早期版本分别保留。",
+      "bytes": 282341,
+      "sha256": "7da2bc1f46ae366c369c02f303acbbb4fe78729407fe9d1e18810a0c0a35f518",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv2.png",
+          "type": "实机/工具截图",
+          "purpose": "守护 Lv4 接入后的 Lv2 追踪符箭实机快照；与早期版本分别保留。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/lv2.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/追踪符箭_Lv3_实机预览图_v02.png",
+      "label": "Lv3_实机预览图",
+      "type": "实机/工具截图",
+      "version": 2,
+      "status": "当前工作快照，待评审",
+      "purpose": "守护 Lv4 接入后的 Lv3 追踪符箭实机快照；与早期版本分别保留。",
+      "bytes": 297806,
+      "sha256": "0c4c0313afd2ba19e0a84c22a068ada359d2c8ac05ed56a8249f81038598bc27",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv3.png",
+          "type": "实机/工具截图",
+          "purpose": "守护 Lv4 接入后的 Lv3 追踪符箭实机快照；与早期版本分别保留。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/lv3.png"
+        }
+      ]
+    }
+  ],
+  "missingSources": [],
+  "unrecoverableHistory": [
+    "早期多箭追狐、抽象狐形、跳跃侧身狐狸等迭代的同名工作预览已被后续截图或录制覆盖；未找到独立原件，无法逐版恢复。现存旧版快照不能替代这些历史图片。"
+  ]
+}

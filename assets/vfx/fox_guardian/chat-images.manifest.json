@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "topic": "灵狐降灵",
+  "archivedOn": "2026-10-13",
+  "note": "沿用现有 fox_guardian 资源目录。保存灵狐守护降临、尾卷化法衣方案的参考图、四张矢量关键帧、实机截图与动画预览。当前方案待用户评审，未标记为已认可。根目录 01-ritual 等文件是可重生成的工作输出，本清单中的文件是独立归档快照。",
+  "images": [
+    {
+      "file": "用户参考图/灵狐降灵_Lv4_守护法衣参考图_v01.png",
+      "label": "Lv4_守护法衣参考图",
+      "type": "用户上传",
+      "version": 1,
+      "status": "当前方向参考原件；实现待评审",
+      "purpose": "巨大灵狐、中心小角色、红白卷尾与护体法衣构图；最新方向的核心参考。",
+      "bytes": 3091341,
+      "sha256": "6ea7ab1972300aab5ae9ddda233c549e62c062f8210e1fe753ce29266ff49424",
+      "width": 941,
+      "height": 1672,
+      "sources": [
+        {
+          "fileName": "codex-clipboard-6cbbff7b-9d7c-4a78-a107-7c102185cbce.png",
+          "type": "用户上传",
+          "purpose": "巨大灵狐、中心小角色、红白卷尾与护体法衣构图；最新方向的核心参考。",
+          "status": "当前方向参考原件；实现待评审"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_法衣定格_Canvas预览图_v01.png",
+      "label": "Lv4_法衣定格_Canvas预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "独立 Canvas 2D 预览的法衣定格。",
+      "bytes": 185290,
+      "sha256": "727e2354c53c5e388fca1de6ba4e79855ea6a61e5beb7ecd481783a2b45029bb",
+      "width": 610,
+      "height": 850,
+      "sources": [
+        {
+          "fileName": "canvas-hold.png",
+          "type": "实机/工具截图",
+          "purpose": "独立 Canvas 2D 预览的法衣定格。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/canvas-hold.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_守护降临_动画预览_v01.gif",
+      "label": "Lv4_守护降临_动画预览",
+      "type": "实机动画录制",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "52 帧 GIF 实机动画展示；用于评审，游戏不读取此 GIF 播放技能。",
+      "bytes": 1310583,
+      "sha256": "10bcd5dad015594c3fc30ac26b196d4e617185c8c0c375d61249a13023c3677e",
+      "width": 300,
+      "height": 534,
+      "pages": 52,
+      "sources": [
+        {
+          "fileName": "guardian-motion.gif",
+          "type": "实机动画录制",
+          "purpose": "52 帧 GIF 实机动画展示；用于评审，游戏不读取此 GIF 播放技能。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/guardian-motion.gif"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_英雄定格_控件实机图_v01.png",
+      "label": "Lv4_英雄定格_控件实机图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "使用重播与时间控件定位的英雄定格。",
+      "bytes": 324371,
+      "sha256": "af7372a19a988f3eaa6fa3ff1b6330bbc6474eed2faea5598ff7a3ec7dd02e0d",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "hero-hold.png",
+          "type": "实机/工具截图",
+          "purpose": "使用重播与时间控件定位的英雄定格。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/hero-hold.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_法衣定格_实机图_v01.png",
+      "label": "Lv4_法衣定格_实机图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "当前守护方案的 Lv4 实机截图。",
+      "bytes": 324800,
+      "sha256": "e4a8148c9cc3371889443cca18a86556888b1b51c5b1793e1eb012cf1348b01e",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "lv4.png",
+          "type": "实机/工具截图",
+          "purpose": "当前守护方案的 Lv4 实机截图。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/lv4.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_守护降临_六阶段对照图_v01.png",
+      "label": "Lv4_守护降临_六阶段对照图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "起势、钻出、盘旋、法衣成形、定格与收招的六阶段实机对照。",
+      "bytes": 980140,
+      "sha256": "62fdee731cc529ec43fa931b7730748477e275fd19bd7d544aef30cf4dae20c8",
+      "width": 1800,
+      "height": 533,
+      "sources": [
+        {
+          "fileName": "sequence.png",
+          "type": "实机/工具截图",
+          "purpose": "起势、钻出、盘旋、法衣成形、定格与收招的六阶段实机对照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/sequence.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_起势_实机预览图_v01.png",
+      "label": "Lv4_起势_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.22 秒阶段快照。",
+      "bytes": 281481,
+      "sha256": "691ea924fb994b787c889e6e7d47055928afb2089382d1131d6bef9f039c6f16",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-0.png",
+          "type": "实机/工具截图",
+          "purpose": "0.22 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-0.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_灵狐钻出_实机预览图_v01.png",
+      "label": "Lv4_灵狐钻出_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.69 秒阶段快照。",
+      "bytes": 303798,
+      "sha256": "4ce1571df1c3f9e53221f553c459b5890ce7f92df390b56ea50cc7a8866ecb4a",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-1.png",
+          "type": "实机/工具截图",
+          "purpose": "0.69 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-1.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_绕身盘旋_实机预览图_v01.png",
+      "label": "Lv4_绕身盘旋_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "1.14 秒阶段快照。",
+      "bytes": 287994,
+      "sha256": "de0cbac15b59845dc13109b17cbf262b2d7eea1832d284d891d6de22a2260fac",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-2.png",
+          "type": "实机/工具截图",
+          "purpose": "1.14 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-2.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_法衣成形_实机预览图_v01.png",
+      "label": "Lv4_法衣成形_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "1.72 秒阶段快照。",
+      "bytes": 289644,
+      "sha256": "21ef58e3d2837b7f4e6be6cb682c2b59d75b933db30927e8c0f03e2b8ac2ae09",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-3.png",
+          "type": "实机/工具截图",
+          "purpose": "1.72 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-3.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_英雄定格_实机预览图_v01.png",
+      "label": "Lv4_英雄定格_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "2.16 秒阶段快照。",
+      "bytes": 323900,
+      "sha256": "fb35004b2b9a1d63f3c6551e03d4ae79874459db3d605d71543890442d5ef464",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-4.png",
+          "type": "实机/工具截图",
+          "purpose": "2.16 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-4.png"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/灵狐降灵_Lv4_收招消散_实机预览图_v01.png",
+      "label": "Lv4_收招消散_实机预览图",
+      "type": "实机/工具截图",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "2.76 秒阶段快照。",
+      "bytes": 375663,
+      "sha256": "c53782fd11b699072ac66c4a2ffc4848b4a29d889307d7632b7e926bdd179eb8",
+      "width": 564,
+      "height": 1000,
+      "sources": [
+        {
+          "fileName": "stage-5.png",
+          "type": "实机/工具截图",
+          "purpose": "2.76 秒阶段快照。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "screenshots/fox-guardian/stage-5.png"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_起势_概念预览图_v01.png",
+      "label": "Lv4_起势_概念预览图",
+      "type": "矢量渲染 PNG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.22 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 37942,
+      "sha256": "63f147a2c8c4535d4da467e50c4874acad8d1bd8d089d5103fee5979ce3cf289",
+      "width": 504,
+      "height": 704,
+      "sources": [
+        {
+          "fileName": "01-ritual.png",
+          "type": "矢量渲染 PNG",
+          "purpose": "0.22 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/01-ritual.png"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_起势_矢量关键帧_v01.svg",
+      "label": "Lv4_起势_矢量关键帧",
+      "type": "程序生成 SVG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.22 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 22036,
+      "sha256": "4d58d569b16f1edd54d2eb29d9e9b948c2063acfa831c21f79e2189b407eb809",
+      "width": 720,
+      "height": 1005,
+      "sources": [
+        {
+          "fileName": "01-ritual.svg",
+          "type": "程序生成 SVG",
+          "purpose": "0.22 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/01-ritual.svg"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_灵狐钻出_概念预览图_v01.png",
+      "label": "Lv4_灵狐钻出_概念预览图",
+      "type": "矢量渲染 PNG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.69 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 87167,
+      "sha256": "d1a6def1c0778c7cf34b3387bd0b390506d5356a210a0872c9883ae7b850691c",
+      "width": 504,
+      "height": 704,
+      "sources": [
+        {
+          "fileName": "02-emerge.png",
+          "type": "矢量渲染 PNG",
+          "purpose": "0.69 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/02-emerge.png"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_灵狐钻出_矢量关键帧_v01.svg",
+      "label": "Lv4_灵狐钻出_矢量关键帧",
+      "type": "程序生成 SVG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "0.69 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 101736,
+      "sha256": "aa0dc35f38ea38c3c31c89cca180580c68668ef534a9e31e7d84a7a03afd18a7",
+      "width": 720,
+      "height": 1005,
+      "sources": [
+        {
+          "fileName": "02-emerge.svg",
+          "type": "程序生成 SVG",
+          "purpose": "0.69 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/02-emerge.svg"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_绕身盘旋_概念预览图_v01.png",
+      "label": "Lv4_绕身盘旋_概念预览图",
+      "type": "矢量渲染 PNG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "1.14 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 77543,
+      "sha256": "da236cc9abee784471dfbca2e653fc136a520d196b49cd5c605cc2d0bb85785d",
+      "width": 504,
+      "height": 704,
+      "sources": [
+        {
+          "fileName": "03-orbit.png",
+          "type": "矢量渲染 PNG",
+          "purpose": "1.14 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/03-orbit.png"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_绕身盘旋_矢量关键帧_v01.svg",
+      "label": "Lv4_绕身盘旋_矢量关键帧",
+      "type": "程序生成 SVG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "1.14 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 103460,
+      "sha256": "ce1a93aea11d582e8788f552d0ade154be5877e0ad15b4595af15a08779c34c9",
+      "width": 720,
+      "height": 1005,
+      "sources": [
+        {
+          "fileName": "03-orbit.svg",
+          "type": "程序生成 SVG",
+          "purpose": "1.14 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/03-orbit.svg"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_法衣定格_概念预览图_v01.png",
+      "label": "Lv4_法衣定格_概念预览图",
+      "type": "矢量渲染 PNG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "2.16 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 111170,
+      "sha256": "46b5b318e5c438da8061f835245abce192b9795af15acad22a741af7cf797e76",
+      "width": 504,
+      "height": 704,
+      "sources": [
+        {
+          "fileName": "04-vestment.png",
+          "type": "矢量渲染 PNG",
+          "purpose": "2.16 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/04-vestment.png"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_法衣定格_矢量关键帧_v01.svg",
+      "label": "Lv4_法衣定格_矢量关键帧",
+      "type": "程序生成 SVG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "2.16 秒关键帧；同一组可落地的分层矢量路径。",
+      "bytes": 103920,
+      "sha256": "0b1e2e769f0be0faceb6938716e9e4b6c0e8d5f9e9cd48514ead6ecda5eacf96",
+      "width": 720,
+      "height": 1005,
+      "sources": [
+        {
+          "fileName": "04-vestment.svg",
+          "type": "程序生成 SVG",
+          "purpose": "2.16 秒关键帧；同一组可落地的分层矢量路径。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/04-vestment.svg"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_四关键帧_概念对照图_v01.png",
+      "label": "Lv4_四关键帧_概念对照图",
+      "type": "矢量渲染 PNG",
+      "version": 1,
+      "status": "当前工作快照，待评审",
+      "purpose": "四阶段概念对照：起势、钻出、盘旋、法衣定格。",
+      "bytes": 200843,
+      "sha256": "7402c1249e379f549fa0851843b27cde0d395dcfef6fff670f437ceba354ea02",
+      "width": 1440,
+      "height": 555,
+      "sources": [
+        {
+          "fileName": "keyframes.png",
+          "type": "矢量渲染 PNG",
+          "purpose": "四阶段概念对照：起势、钻出、盘旋、法衣定格。",
+          "status": "当前工作快照，待评审",
+          "repositorySource": "assets/vfx/fox_guardian/keyframes.png"
+        }
+      ]
+    }
+  ],
+  "missingSources": [],
+  "unrecoverableHistory": [
+    "关键帧及动画曾在补充躯干、前肢、法衣连接和姿态调整时使用同名文件重新导出；这里保留现存最终工作快照，已被覆盖的中间稿未找到独立原件。"
+  ]
+}

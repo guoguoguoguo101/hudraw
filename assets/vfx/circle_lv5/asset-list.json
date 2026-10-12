@@ -1,0 +1,50 @@
+{
+  "name": "天狐山海界 · Lv5",
+  "format": "SVG paths, fills and strokes; no raster images",
+  "anchor": [
+    360,
+    665
+  ],
+  "canvas": [
+    720,
+    1280
+  ],
+  "layers": {
+    "Core": "A_core",
+    "Inner Circle": "B_inner_circle",
+    "Outer Circle": "C_outer_circle",
+    "Scroll Ring": "D_scroll_ring",
+    "Ofuda": "E_ofuda",
+    "Fox Spirit": "F_fox_spirit",
+    "Shrine Props": "G_shrine_props",
+    "Light FX": "H_light_fx"
+  },
+  "assets": [
+    "magic_circle_core.svg",
+    "magic_circle_inner.svg",
+    "magic_circle_outer.svg",
+    "scroll_ring_A.svg",
+    "ofuda_01.svg",
+    "ofuda_02.svg",
+    "torii_small.svg",
+    "torii_lantern_small.svg",
+    "shrine_small.svg",
+    "lantern_small.svg",
+    "cloud_small.svg",
+    "crane_small.svg",
+    "sakura_particle.svg",
+    "halo_arc.svg",
+    "guardian_halo.svg",
+    "fox_spirit.svg",
+    "fox_tail_01.svg",
+    "fox_tail_02.svg",
+    "fox_tail_03.svg",
+    "fox_tail_04.svg",
+    "fox_tail_05.svg",
+    "fox_tail_06.svg",
+    "fox_tail_07.svg",
+    "fox_tail_08.svg",
+    "fox_tail_09.svg",
+    "fox_center.svg"
+  ]
+}

@@ -1,3 +1,4 @@
+import {enemyScale} from './appearance';
 import {Container,Sprite,Texture} from 'pixi.js';
 import {MOTION} from '../animation/motion';
 import type {Enemy} from '../core/types';
@@ -37,6 +38,6 @@ export class FoxRig{
 }
 export class EnemyRig{
  root=new Container();body:Sprite;wings:Sprite[]=[];
- constructor(public kind:Enemy['kind'],art:Art){if(kind==='crow'){this.wings.push(sprite(art,'crow_wing',this.root,-20,-14,.8),sprite(art,'crow_wing',this.root,20,-14,.8));this.wings[1].scale.x=-.8;}this.body=sprite(art,(kind==='boss'?'oni':kind)+'_body',this.root);this.root.scale.set(kind==='boss'?1.1:kind==='oni'?.72:kind==='crow'?.62:.72);}
+ constructor(public kind:Enemy['kind'],art:Art){if(kind==='crow'){this.wings.push(sprite(art,'crow_wing',this.root,-20,-14,.8),sprite(art,'crow_wing',this.root,20,-14,.8));this.wings[1].scale.x=-.8;}this.body=sprite(art,(kind==='boss'?'oni':kind)+'_body',this.root);this.root.scale.set(enemyScale(kind));}
  update(e:Enemy,time:number,alpha=1){this.root.position.set(e.prevX+(e.x-e.prevX)*alpha,e.prevY+(e.y-e.prevY)*alpha+Math.sin(e.age*(e.kind==='crow'?8:4)+e.id)*4);this.body.rotation=Math.sin(time*3+e.id)*.06;this.body.scale.set(1+Math.sin(time*3+e.id)*.025,1-Math.sin(time*3+e.id)*.025);this.body.tint=e.hit>0?0xffeed1:0xffffff;for(let i=0;i<this.wings.length;i++)this.wings[i].rotation=(i===0?1:-1)*(.1+Math.sin(time*15+e.id)*.52);this.root.rotation=e.hit>0?Math.sin(e.hit*50)*.10:0;}
 }

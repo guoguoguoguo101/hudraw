@@ -21,7 +21,7 @@ export class Interface{
  this.hud.addChild(this.progress);this.tip=text(this.hud,'落笔成符 · 妖影莫近',360,189,21,COLORS.wine);this.practice=text(this.hud,'',360,237,19,COLORS.wine);
  // Compact legend and the existing shared cooldown. These are not skill buttons.
  this.hud.addChild(new Graphics().roundRect(64,1190,592,62,15).fill({color:COLORS.ink,alpha:.65}).stroke({color:COLORS.gold,width:.8,alpha:.19}));
- text(this.hud,'一 斩    ○ 阵    △ 破    ☆ 星    Z 雷    ↻ 风',360,1221,18,COLORS.paper,{letterSpacing:1});
+ text(this.hud,'一 斩    ○ 阵    ∧ 箭（任意方向）    Z 雷',360,1221,18,COLORS.paper,{letterSpacing:1});
  this.runeStatus=text(this.hud,'符纸 2 / 3',354,163,16,COLORS.gold,{letterSpacing:1});this.hud.addChild(this.castMeter,this.drawMeter,this.bossMeter);
  this.relicStatus=text(this.hud,'',360,1090,15,COLORS.gold,{letterSpacing:0});this.drawStatus=text(this.hud,'',360,1137,19,COLORS.gold,{letterSpacing:1});this.bossLabel=text(this.hud,'',360,207,19,COLORS.paper,{letterSpacing:1});
  this.counter=text(this.root,'',360,1265,12,COLORS.gold,{fontFamily:'monospace',letterSpacing:0});
@@ -33,13 +33,13 @@ export class Interface{
  if(state==='menu'){
   text(this.overlay,'山 海 剪 纸 幻 想',360,174,18,COLORS.wine,{letterSpacing:7});
   text(this.overlay,'灵狐画符',360,286,78,COLORS.ink,{letterSpacing:8,fontWeight:'normal'});
-  text(this.overlay,'一笔镇妖  ·  三符守山海',360,366,24,COLORS.ink);
+  text(this.overlay,'一笔镇妖  ·  四符守山海',360,366,24,COLORS.ink);
   this.overlay.addChild(new Graphics().moveTo(184,405).lineTo(298,405).moveTo(422,405).lineTo(536,405).stroke({color:COLORS.wine,width:1}));
   text(this.overlay,'◆',360,405,18,COLORS.wine);
-  text(this.overlay,'六种自由符术 · 落笔进入慢动作符境',360,457,19,COLORS.wine,{letterSpacing:0});
+  text(this.overlay,'四种自由符术 · 落笔进入慢动作符境',360,457,19,COLORS.wine,{letterSpacing:0});
   this.button('进入三分钟试炼',360,942,410,76,'start',true);this.button('九十秒符术入门',360,1038,410,65,'teach');
   text(this.overlay,`最佳灵魄 ${this.best} · 灵玉 ${this.spirit}`,360,1104,18,COLORS.gold,{letterSpacing:1});this.button(`修行 ${this.cultivation} 阶 · 消耗100灵玉`,360,1150,410,43,'cultivate');
-  text(this.overlay,'一 / 圆 / 三角 / 五角星 / Z / 螺旋',360,1192,17,COLORS.paper);
+  text(this.overlay,'直线 / 圆 / 箭头 ∧ V < > / Z',360,1192,17,COLORS.paper);
   this.button(this.muted?'音效：关':'音效：开',181,1238,210,43,'sound');this.button(this.low?'画质：轻盈':'画质：精致',539,1238,210,43,'quality');return;
  }
  const isPause=state==='paused';
@@ -54,7 +54,7 @@ export class Interface{
  }
  hint(str:string){this.tip.text=str;this.hintAge=1.8;}
  update(game:Game,dt:number,fps:number,input?:InputController){
- this.hintAge=Math.max(0,this.hintAge-dt);if(!this.hintAge)this.tip.text=game.time>=game.duration&&!game.bossDead?'决胜 · 斩灭鬼王完成试炼':game.training?'按住绘符 · 两秒符境 · 松手释放':'按住绘符 · 观察方向 · 三分钟试炼';
+ this.hintAge=Math.max(0,this.hintAge-dt);if(!this.hintAge)this.tip.text=game.time>=game.duration&&!game.bossDead?'决胜 · 斩灭鬼王完成试炼':game.training?'按住绘符 · 四秒符境 · 松手释放':'按住绘符 · 观察方向 · 三分钟试炼';
  this.timer.text=String(Math.max(0,Math.ceil(game.duration-game.time)));this.score.text=String(game.score).padStart(4,'0');this.phase.text=`生命 ${Math.ceil(game.life)} / ${game.maxHp}${game.shield?' +'+Math.ceil(game.shield)+'盾':''}`;
  this.levelLabel.text=`LV ${game.level} · ${Math.floor(game.xp)}/${game.xpNeeded}灵气`;this.hearts.forEach((h,i)=>h.alpha=i<game.charges.papers?1:.15);
  this.runeStatus.text=`符纸 ${game.charges.papers}/3${game.charges.papers<3?' · '+(COMBAT.chargePeriod-game.charges.progress).toFixed(1)+'秒充能':''}`;

@@ -1,0 +1,4 @@
+interface:
+  display_name: "对话图片归档"
+  short_description: "把上传、生成和预览图片按技能名字归档到项目，随Git版本保留"
+  default_prompt: "使用 $archive-chat-images 保存这个对话中的全部交互图片，按技能名字和用途图名整理到项目里，保留各版本并更新图片说明。"

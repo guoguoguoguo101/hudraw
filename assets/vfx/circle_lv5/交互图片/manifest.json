@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "topic": "圆形画符护阵 / 天狐山海界",
+  "archived_on": "2026-10-13",
+  "scope": "本对话用户附件、矢量设计图、实机截图、对照图与动画",
+  "version_policy": "v01 等为归档版本序号，不是原实现迭代次数",
+  "unique_files": 22,
+  "source_occurrences": 27,
+  "user_upload_occurrences": 14,
+  "user_reference_unique_files": 10,
+  "items": [
+    {
+      "file": "用户参考图/圆形护阵_Lv1_朱红花纹法阵参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2563323,
+      "sha256": "5c301743d5a66756ab21f6f5292a907c828cb8408c9e2f2e2f3738d89e218ceb",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-7ab7ca9d-a70b-4743-8e76-bae223186295.png",
+          "source_type": "用户上传",
+          "purpose": "最初参考：朱红圆阵、花纹、符纸与神社氛围。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_基础_金色护罩参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2341730,
+      "sha256": "b95e5b83288efe1a5005b693e822b34b0b2ad5234a129511d21f36f716d7d8b6",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-4e228317-ec7b-4044-9dd9-3740b41503ab.png",
+          "source_type": "用户上传",
+          "purpose": "最初参考：中心小狐狸、金色光环、符纸与守护感。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv2_多层光圈参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2599779,
+      "sha256": "fb656028796aecf49daac1fdf3d8fda71af26b20b3894ffaa2d46e67fba17ee9",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-d64a2770-8dcd-450e-91c9-b0977c47b0e7.png",
+          "source_type": "用户上传",
+          "purpose": "最初参考：多层法阵、环绕符纸、敌人和光效。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv3_大范围封印参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 3032258,
+      "sha256": "ccbaf83f76e121f03e0c17cb38ed8110710ce8db0b2c22c34e24e3c8aa991cf1",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-d133a4a0-efc4-44cc-887b-d57a7947ade0.png",
+          "source_type": "用户上传",
+          "purpose": "强化 Lv3、Lv4：大范围光圈、朱红封印、鸟居、波纹与花瓣。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv1至Lv4_分层元素参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2784358,
+      "sha256": "3acd638336c7f3f96e6661ddf37777b2ac7a7fd9ea3c4502d51a554352b26b39",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-ce42109f-ae0d-4823-9c11-9ff877811b65.png",
+          "source_type": "用户上传",
+          "purpose": "四级递进和元素拆解：祥云、火焰、封印、符咒、花瓣、九尾虚影。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_狐灵_六种形态参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2557983,
+      "sha256": "1361d3e72a8a306cb941f291201ae17e3a1c2721bb0556b2423b1d4b0f483ec0",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-77c66192-620f-4c17-a164-51ca4ff9a9f4.png",
+          "source_type": "用户上传",
+          "purpose": "狐灵形态、锋利狐脸、扇形九尾、光背、尾焰、符纸与云纹设计。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv5_九尾山海守护参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 3280474,
+      "sha256": "5a59c9433d92bec760cf13e4cc5ce3167d90e57a7f2c083d62a558f743f6dc45",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-e67706f6-a41a-49be-9807-d88e09bd689f.png",
+          "source_type": "用户上传",
+          "purpose": "Lv5 初次方向参考；后续重复指定狐脸、毛发块面、尾巴虚实、山海环流。用户明确认可参考图中的狐狸造型。"
+        },
+        {
+          "source_name": "codex-clipboard-f6e1e3c3-637c-4cef-b315-0d11f4dadd09.png",
+          "source_type": "用户上传",
+          "purpose": "同轮补充参考；按内容哈希与九尾山海守护参考图合并。"
+        },
+        {
+          "source_name": "codex-clipboard-7e7a3dd9-65d9-47c5-bc9c-1ed2081c0cb7.png",
+          "source_type": "用户上传",
+          "purpose": "再次指定背后狐影：尾巴卷入山海和中央阵法，要求重新设计。"
+        },
+        {
+          "source_name": "codex-clipboard-5a69c6a6-90b7-471d-bace-5385361836b5.png",
+          "source_type": "用户上传",
+          "purpose": "再次指定狐脸与毛发感；要求卷轴旋转拖影、去掉绕圈小狐狸、九尾漫天飞舞。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv5_山海长卷展开参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2996596,
+      "sha256": "eb4ae0eab37ec0b6c40fe165be83449d5e3f1dafaec46644dcb9ba2392cfa483",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-652e17d2-1863-42c3-ac84-fde514d7455b.png",
+          "source_type": "用户上传",
+          "purpose": "展开的山海长卷、卷轴端头、悬挂画卷和尾巴融入山海的构图。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv5_独立扭曲绘卷参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2843173,
+      "sha256": "c7516ef99f61aed4adf7459947e97fab19672bae07f861774b1a4eac46f86bad",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-256257e8-cc56-45e0-aefe-ecbae1ac8ac1.png",
+          "source_type": "用户上传",
+          "purpose": "每张不同的独立绘卷，沿圆形轨迹慢慢扭曲展开；后续再次指定为卷轴参考。"
+        },
+        {
+          "source_name": "codex-clipboard-bcd17a3b-76af-47ad-a883-ce8eda9457e3.png",
+          "source_type": "用户上传",
+          "purpose": "再次指定卷轴：逐张展开、每张不同、慢慢扭曲，按内容合并。"
+        }
+      ]
+    },
+    {
+      "file": "用户参考图/圆形护阵_Lv5_卷边山水绘卷参考图_v01.png",
+      "source_type": "用户上传",
+      "version": "v01",
+      "status": "用户指定参考，非实现验收图",
+      "bytes": 2664991,
+      "sha256": "18c549f09ca101a2cf724474c9c2cb338b393123b9bc9fa2f847547f773e6cca",
+      "sources": [
+        {
+          "source_name": "codex-clipboard-f5a377cb-2334-43e4-bdcf-c406b3dbc39f.png",
+          "source_type": "用户上传",
+          "purpose": "不同山水画面、卷边、错位扭曲与九尾穿插，作为重设计参考。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_最新实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "归档时当前实现，未标记最终认可",
+      "bytes": 270968,
+      "sha256": "6f24d7a2a14832c9f60ecb038375ac5e681bb0371e0d46374bb826a469e7568c",
+      "sources": [
+        {
+          "source_name": "lv1.png",
+          "source_type": "实机截图",
+          "purpose": "归档时保留的最新实机截图；原工作文件曾用于多轮迭代，不能代表所有历史版本。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_最新实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "归档时当前实现，未标记最终认可",
+      "bytes": 296232,
+      "sha256": "74f7a832a2050c0354aac4bcf676dda2242346ec98d0bb8f89644cff4447da68",
+      "sources": [
+        {
+          "source_name": "lv2.png",
+          "source_type": "实机截图",
+          "purpose": "归档时保留的最新实机截图；原工作文件曾用于多轮迭代，不能代表所有历史版本。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_最新实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "归档时当前实现，未标记最终认可",
+      "bytes": 389662,
+      "sha256": "a1bbf696c1d6f8d517f15573a38c68306fd51e4ac1401fba8a6511bca789e557",
+      "sources": [
+        {
+          "source_name": "lv3.png",
+          "source_type": "实机截图",
+          "purpose": "归档时保留的最新实机截图；原工作文件曾用于多轮迭代，不能代表所有历史版本。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_最新实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "归档时当前实现，未标记最终认可",
+      "bytes": 447192,
+      "sha256": "c96e6b8303e8e29c7fc1cab494f221e8d71a2f9d1956269d53fc0e70bb10cd1a",
+      "sources": [
+        {
+          "source_name": "lv4.png",
+          "source_type": "实机截图",
+          "purpose": "归档时保留的最新实机截图；原工作文件曾用于多轮迭代，不能代表所有历史版本。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv5_最新实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "归档时当前实现，未标记最终认可",
+      "bytes": 382438,
+      "sha256": "a7cfbadabf98bbda64a7dfcff0213af719a9c1498d02b22f54afe0ab78457d04",
+      "sources": [
+        {
+          "source_name": "lv5.png",
+          "source_type": "实机截图",
+          "purpose": "当前全屏分层重设计的实机截图，待用户评审。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv5_最新对照图_v01.png",
+      "source_type": "实机对照",
+      "version": "v01",
+      "status": "当前对照，待用户评审",
+      "bytes": 1274643,
+      "sha256": "c3c9cc5a89e317062704d90c59d24ef543dcb21ff489f73c311bf6f6995514a7",
+      "sources": [
+        {
+          "source_name": "comparison.png",
+          "source_type": "实机对照",
+          "purpose": "归档时最新的五级并列对照；早期四级对照已经被同名输出覆盖。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_狐灵_早期矢量形态设计图_v01.png",
+      "source_type": "程序矢量预览",
+      "version": "v01",
+      "status": "历史设计过程，非最终验收",
+      "bytes": 196811,
+      "sha256": "f12d50a3ddcf690f8b27c214f7d5ed82cf04e652222dceee5ed9d604f62071d4",
+      "sources": [
+        {
+          "source_name": "fox-spirit-design.png",
+          "source_type": "程序矢量预览",
+          "purpose": "早期狐灵独立设计预览，作为过程资料；并非当前 Lv5 最终狐灵。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv5_六阶段动画预览_v01.gif",
+      "source_type": "实机动画",
+      "version": "v01",
+      "status": "当前实现，待用户评审",
+      "bytes": 3448375,
+      "sha256": "feeb9f173abc4d8d68a9c036047f22ecea50d6389c6cdcaed14b57aeaa6466bc",
+      "sources": [
+        {
+          "source_name": "lv5-motion.gif",
+          "source_type": "实机动画",
+          "purpose": "当前全屏版本：启动、成阵、符纸、展卷、狐灵显现与持续守护。"
+        },
+        {
+          "source_name": "animation-preview.gif",
+          "source_type": "实机动画",
+          "purpose": "资源包中的同一动画；与工作预览按内容哈希合并，保留两处来源。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv5_主设计图_v01.png",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "当前设计，待用户评审",
+      "bytes": 569999,
+      "sha256": "afaed0a5cdcf0e9be322b700a200d8c5267ea2c0edf9d072575adc01b5965202",
+      "sources": [
+        {
+          "source_name": "main-concept.png",
+          "source_type": "运行时矢量导出",
+          "purpose": "当前全屏分层版本主设计图；PNG 供预览，SVG 供编辑。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv5_八层拆解图_v01.png",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "当前分层设计，待用户评审",
+      "bytes": 281005,
+      "sha256": "2338bfdcea38fdcf2425ea10f38929120ba8af6deb295f0ff7bab4b1d5b2844f",
+      "sources": [
+        {
+          "source_name": "layer-breakdown.png",
+          "source_type": "运行时矢量导出",
+          "purpose": "Core、Inner、Outer、Scroll、Ofuda、Fox Spirit、Shrine Props、Light FX 八层说明。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv5_主设计图_v01.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "当前设计，待用户评审",
+      "bytes": 355343,
+      "sha256": "4fe97c75ecd5288703962e809f6a604dd8c0bd6967c6abeda660598025495703",
+      "sources": [
+        {
+          "source_name": "main-concept.svg",
+          "source_type": "运行时矢量导出",
+          "purpose": "当前全屏分层版本主设计图；PNG 供预览，SVG 供编辑。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv5_八层拆解图_v01.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "当前分层设计，待用户评审",
+      "bytes": 358310,
+      "sha256": "a904cea7956c75272b4f9df7fdea44cfa57b5c79afbbfbc1a13d95637d89ec17",
+      "sources": [
+        {
+          "source_name": "layer-breakdown.svg",
+          "source_type": "运行时矢量导出",
+          "purpose": "Core、Inner、Outer、Scroll、Ofuda、Fox Spirit、Shrine Props、Light FX 八层说明。"
+        }
+      ]
+    }
+  ],
+  "missing_sources": [],
+  "unavailable_historical_versions": [
+    {
+      "source_name": "comparison.png",
+      "scope": "早期 Lv1至Lv4 视角修正及 Lv3/Lv4 升级对照",
+      "reason": "同名工作截图多次覆盖，现存文件为最新 Lv1至Lv5 对照，无法恢复各轮原图"
+    },
+    {
+      "source_name": "lv1.png / lv2.png / lv3.png / lv4.png",
+      "scope": "早期逐级实机预览",
+      "reason": "同名截图多次更新；只保留归档时可访问版本，不冒充早期版本"
+    },
+    {
+      "source_name": "lv5.png",
+      "scope": "放大狐灵、分散画卷、尾巴包裹、毛发与摇摆等多轮重设计",
+      "reason": "同名截图多次覆盖；用户否定过整体设计，最后认可尾巴晃动和毛发感觉，但仍要求气势与环形绘卷重设计"
+    },
+    {
+      "source_name": "lv5-motion.gif",
+      "scope": "全屏六阶段改版之前的动画",
+      "reason": "同名 GIF 被当前全屏分层版覆盖，旧动画原文件无法恢复"
+    }
+  ]
+}

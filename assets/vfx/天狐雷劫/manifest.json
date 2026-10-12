@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-13",
+  "scope": "本对话雷技能相关图片",
+  "items": [
+    {
+      "file": "references/中央狐狸_四级战场参考图.png",
+      "role": "用户上传：中央狐狸、四列战场与剪纸风格参考",
+      "source_name": "codex-clipboard-9d64da6e-8d0f-4143-8cc0-47620fc05715.png",
+      "bytes": 510574,
+      "sha256": "b889730d15ab07d0dab4b86dd9cc9f1fd7aa36d4b8784618712f92ecab29227d"
+    },
+    {
+      "file": "references/九尾天狐_山海绘卷参考图.png",
+      "role": "用户上传：完整九尾天狐、云卷、符纸、山海纹及流动感参考；图中文字为天狐诛邪",
+      "source_name": "codex-clipboard-dc87fbb3-a11f-4d46-87e7-df598353b403.png",
+      "bytes": 3716803,
+      "sha256": "7401497af59840fd5918e286a4d01021761e7f96a26e45433e96eb3739de949e"
+    },
+    {
+      "file": "concepts/四级技能_初版示意图_已否定.png",
+      "role": "初版：2×2布局，狐狸位置不符合中央战场要求，已否定",
+      "source_name": "exec-4917ae94-f260-40b8-a882-3188f8e43ca9.png",
+      "bytes": 3318382,
+      "sha256": "f6117d8ade2086b0d17d35064a9271e9f14b5ff0854ebe37b44e72a3d4354b27"
+    },
+    {
+      "file": "concepts/四级技能_中央狐狸示意图_待改进.png",
+      "role": "中央狐狸版：布局修正，但Lv1–3过于相似，Lv4气势不足",
+      "source_name": "exec-a68fa7d6-de6b-4a91-8c6f-3490cb687a47.png",
+      "bytes": 1956851,
+      "sha256": "5b1be2046e9e5ad89f94dfc1da6d8e9743c4090f05b1ea744c85f41e2783d914"
+    },
+    {
+      "file": "concepts/四级技能_形态升级设计图_认可方向.png",
+      "role": "用户认可的四级演变概念：引雷、奔雷、雷诏、天狐雷劫",
+      "source_name": "exec-094f20cd-0905-4527-9180-b608cfb42bc1.png",
+      "bytes": 2475999,
+      "sha256": "6db930114f6e506dba338373420ae72b7e0e60d383d488a8247bc4f0f83f5d3b"
+    },
+    {
+      "file": "concepts/天狐雷劫_三层构图概念图.png",
+      "role": "Lv4补充概念：上层天狐、中层垂直雷枪、下层中央狐狸与爆裂封印；仅为参考，不是游戏贴图",
+      "source_name": "exec-738d6a4b-d618-4639-b5cc-8b29e833cc94.png",
+      "bytes": 3599365,
+      "sha256": "8b5fcd58c78e592622c9109f5df6512c8d8db62147d06ce13a7d0eb0db0f3aa4"
+    },
+    {
+      "file": "screenshots/four-levels/四级技能_实机对照图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "comparison.png",
+      "bytes": 919187,
+      "sha256": "214db557aa1f684ff23749101cf6a5500bdfa75f450f931695cc3e405dc13fa6"
+    },
+    {
+      "file": "screenshots/four-levels/Lv1_实机效果图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "lv1.png",
+      "bytes": 278271,
+      "sha256": "005109d1a45fd85e3928b080f61e9379e69af62686c7f44bfdc86d6905be119b"
+    },
+    {
+      "file": "screenshots/four-levels/Lv2_实机效果图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "lv2.png",
+      "bytes": 297799,
+      "sha256": "4dab814791ae56770992869745019bb0c80b3185c08055f1d2e89278a547df2f"
+    },
+    {
+      "file": "screenshots/four-levels/Lv3_实机效果图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "lv3.png",
+      "bytes": 382840,
+      "sha256": "66e8de82f0592e7ce8a8293cfe50b77c86d6b746d988ef01ea256d98bf09e69a"
+    },
+    {
+      "file": "screenshots/four-levels/Lv4_实机效果图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "lv4.png",
+      "bytes": 487741,
+      "sha256": "3393c3b3aed7bd38c938c69ae8be05e7ad0733200a1aebd42bfee073b63704db"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版动画序列图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "sequence.png",
+      "bytes": 825558,
+      "sha256": "5c15d5838cda29f346b3e0120d49d9f9be28c9f9a50deb848ba49e895ff5f815"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段1图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-0.png",
+      "bytes": 327763,
+      "sha256": "2234bd5cdee6c896fb6ef9df301c5708e988af64e6c9d3d0aa089f841f4321a0"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段2图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-1.png",
+      "bytes": 358033,
+      "sha256": "b03018fa5643bddf85d970166d26b5955e2c1b1f54168aa9b19692a544f6b1ed"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段3图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-2.png",
+      "bytes": 341575,
+      "sha256": "9f67dd06b0594f24b1ebec445fbf49054834473938bc4b35dbaa3cbba82c89a4"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段4图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-3.png",
+      "bytes": 400979,
+      "sha256": "6cdf2d6ddd9cecd12ef4786de7c2c1061788c65142fda377e236613fef321c38"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段5图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-4.png",
+      "bytes": 480406,
+      "sha256": "a8d6d1f379a4a5514d03bba8e4b736025c06737fe0e7e35a616be6060c714bfc"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段6图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-5.png",
+      "bytes": 493950,
+      "sha256": "4a04a5231c260476e374c980a96087fa6c3856a66246364b58eb290281000e89"
+    },
+    {
+      "file": "screenshots/four-levels/天狐雷劫_旧版阶段7图.png",
+      "role": "旧版四级实机截图归档；与生成概念图不同",
+      "source_name": "stage-6.png",
+      "bytes": 303650,
+      "sha256": "77fb29e325c2914bd68631bf9ad334f1f536fec37df3706fbfacc46e85f193a3"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_01_显现实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-0.png",
+      "bytes": 355722,
+      "sha256": "0b8335a85a0aa2af6719d81ce2a97854b36c070c94dcf0f73f9907965b3b2b8c"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_02_凝雷实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-1.png",
+      "bytes": 363826,
+      "sha256": "4a846ea51037d77fd4d4f48530231331c08189476137bf6e07fda9a3eeaaa96b"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_03_劈落实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-2.png",
+      "bytes": 417478,
+      "sha256": "6bb03af9a226787d4110a73b7f1fe6d047152f15389b70cc102e153ca3ffd45d"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_04_连锁实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-3.png",
+      "bytes": 486619,
+      "sha256": "18e8f714e00736c1a6dcbb3d8532b2b906b643b53eb86fce40f0297768254031"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_05_消散实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-4.png",
+      "bytes": 372792,
+      "sha256": "95ed018683cc8808b2d2fb293b49991946fedcf2287226e2b3b79777830da389"
+    },
+    {
+      "file": "screenshots/lv4-rework/天狐雷劫_06_清理实机图.png",
+      "role": "最近Lv4实机六阶段截图；保留当前文件快照",
+      "source_name": "stage-5.png",
+      "bytes": 303061,
+      "sha256": "b1021dc92fd2a29383fbeff3cc70278410ac06499f8cef18537bb74e8683e129"
+    },
+    {
+      "file": "screenshots/mobile-layout/天狐雷劫_手机390_战场与技能栏_预览图_v01.png",
+      "role": "手机布局修复后实机预览：上方固定战场、下方独立滚动技能栏",
+      "source_name": "天狐雷劫_手机390_战场与技能栏_预览图_v01.png",
+      "bytes": 218577,
+      "sha256": "088697117a7a29fe973932cb281e914b7f2a467342c1c44c1f58f247f2fd7bce"
+    },
+    {
+      "file": "screenshots/mobile-layout/天狐雷劫_手机390_全屏战场_预览图_v01.png",
+      "role": "手机全屏战场预览：技能栏默认收起，悬浮按钮打开，选择技能自动收起",
+      "source_name": "天狐雷劫_手机390_全屏战场_预览图_v01.png",
+      "bytes": 257182,
+      "sha256": "c41a89df33a8a7929747a68a02e687c85790b5bbcbf066874aa5df46f3c259e0"
+    }
+  ],
+  "skill_name": "天狐雷劫"
+}

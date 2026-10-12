@@ -1,9 +1,9 @@
 import type {Rune} from '../input/recognizer';
 export const RELICS=[
  {id:'brush',name:'朱砂灵笔',description:'攻击增加35%；追加弱化红色笔迹'},
- {id:'seal',name:'镇妖古印',description:'圆、三角、星形留下2.5秒持续符阵'},
+ {id:'seal',name:'镇妖古印',description:'圆阵、箭头留下2.5秒持续符阵'},
  {id:'mirror',name:'照妖古镜',description:'方向攻击追加镜像；圆阵伤害增加25%'},
- {id:'gourd',name:'聚风葫芦',description:'吸附与击退增强60%；旋风半径增加25%'},
+ {id:'gourd',name:'聚风葫芦',description:'击退增强60%'},
  {id:'bell',name:'引雷铜铃',description:'雷符附加2秒感电，每秒12伤害'},
  {id:'feather',name:'灵狐尾羽',description:'每3次有效绘符追加45伤害追踪狐火'}
 ] as const;

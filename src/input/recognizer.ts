@@ -2,7 +2,7 @@ export type Point={x:number;y:number};
 export type Rune='line'|'circle'|'triangle'|'star'|'z'|'spiral'|'ink';
 export type TalismanGeometry={raw:Point[];points:Point[];normalized:Point[];center:Point;aspect:number;rotation:number;winding:number;vertices:Point[];intersections:number};
 export type Recognition={rune:Rune|null;confidence:number;quality:number;valid:boolean;direction:Point;reason:string;normalized:Point[];geometry:TalismanGeometry};
-export const NAMES:Record<Rune,string>={line:'一字斩',circle:'圆形护阵',triangle:'三角破甲',star:'五角星阵',z:'折线雷符',spiral:'螺旋旋风',ink:'散墨符'};
+export const NAMES:Record<Rune,string>={line:'一字斩',circle:'圆形护阵',triangle:'箭头破甲',star:'五角星阵',z:'折线雷符',spiral:'螺旋旋风',ink:'散墨符'};
 export const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 export function smooth(points:Point[]):Point[]{return points.map((p,i)=>i===0||i===points.length-1?p:{x:(points[i-1].x+p.x*2+points[i+1].x)/4,y:(points[i-1].y+p.y*2+points[i+1].y)/4});}
 export function resample(points:Point[],count=64):Point[]{if(points.length<2)return points;const lens=[0];for(let i=1;i<points.length;i++)lens.push(lens[i-1]+distance(points[i],points[i-1]));const total=lens.at(-1)!;if(total<.001)return [points[0]];let at=1;return Array.from({length:count},(_,i)=>{const target=total*i/(count-1);while(at<lens.length-1&&lens[at]<target)at++;const f=(target-lens[at-1])/(lens[at]-lens[at-1]||1);return {x:points[at-1].x+(points[at].x-points[at-1].x)*f,y:points[at-1].y+(points[at].y-points[at-1].y)*f};});}
@@ -30,18 +30,32 @@ export function recognize(raw:Point[]):Recognition{
  for(let i=0;i<vertices.length-1;i++)for(let j=i+2;j<vertices.length-1;j++)if(!(i===0&&j===vertices.length-2)&&crosses(vertices[i],vertices[i+1],vertices[j],vertices[j+1]))geometry.intersections++;
  const deviation=pts.reduce((s,p)=>s+perpendicular(p,first,last),0)/pts.length;
  if(chord/length>.88&&deviation/length<.045)return result('line',chord/length,dir,true);
- let turn=0;const radii=pts.map(p=>distance(p,center));for(let i=1;i<pts.length;i++){const a=Math.atan2(pts[i-1].y-center.y,pts[i-1].x-center.x),b=Math.atan2(pts[i].y-center.y,pts[i].x-center.x);turn+=Math.atan2(Math.sin(b-a),Math.cos(b-a));}geometry.winding=Math.sign(turn)||1;
- const mean=radii.reduce((s,r)=>s+r,0)/radii.length,cv=Math.sqrt(radii.reduce((s,r)=>s+(r-mean)**2,0)/radii.length)/(mean||1);
- const radialFirst=radii.slice(0,16).reduce((s,r)=>s+r,0)/16,radialLast=radii.slice(-16).reduce((s,r)=>s+r,0)/16;
- if(Math.abs(turn)>8.2&&Math.abs(radialLast-radialFirst)/(mean||1)>.65&&cv>.25&&geometry.intersections<3){return result('spiral',Math.min(.96,.72+Math.abs(turn)/70),unit({x:last.x-center.x,y:last.y-center.y}),true);}
- const aspect=Math.min(w,h)/Math.max(w,h,1);
- if(closure<.18&&aspect>.35){
-  if(geometry.intersections===0&&vertices.length>=9){const error=match(pts,starOutline,true);if(error<.085){geometry.vertices=vertices.slice(0,-1).filter(p=>distance(p,center)>mean*1.1).slice(0,5);geometry.rotation=Math.atan2(geometry.vertices[0]?.y-center.y,geometry.vertices[0]?.x-center.x);return result('star',Math.max(.65,1-error*2.5),dir,true);}}
-
-  if(geometry.intersections>=3){const error=match(pts,templates.star,true);if(error<.16){const tips=vertices.slice(0,-1).filter(p=>distance(p,center)>mean*.85);geometry.vertices=tips.slice(0,5);geometry.rotation=Math.atan2(tips[0]?.y-center.y,tips[0]?.x-center.x);return result('star',Math.max(.6,1-error*2.3),dir,true);}}
-  const triangleError=match(pts,templates.triangle,true);if(geometry.intersections===0&&triangleError<.10){const corners=vertices.slice(0,-1);geometry.vertices=corners.slice(0,3);const farthest=Math.max(...corners.map(p=>distance(p,center)));const tip=corners.find(p=>distance(p,center)>=farthest*.95)??first;const direction=unit({x:tip.x-center.x,y:tip.y-center.y});geometry.rotation=Math.atan2(direction.y,direction.x);return result('triangle',Math.max(.65,1-triangleError*2.5),direction,true);}
-  if(geometry.intersections<2&&cv<.26&&Math.abs(turn)>4.8&&Math.abs(turn)<7.9&&vertices.length>5)return result('circle',Math.max(.65,1-cv),dir,true);
+ // Arrow: two mostly straight arms meeting at a tip. Rotation and stroke order do not matter.
+ let bestTip=-1,bestError=Infinity;
+ for(let i=10;i<pts.length-10;i++){
+  const tip=pts[i],a=distance(first,tip),b=distance(last,tip);
+  if(Math.min(a,b)<Math.max(w,h)*.22||Math.min(a,b)/Math.max(a,b)<.3)continue;
+  const cosine=((first.x-tip.x)*(last.x-tip.x)+(first.y-tip.y)*(last.y-tip.y))/(a*b);
+  if(cosine<-.6||cosine>.93)continue;
+  const error=(pts.slice(0,i+1).reduce((sum,p)=>sum+perpendicular(p,first,tip),0)+pts.slice(i+1).reduce((sum,p)=>sum+perpendicular(p,tip,last),0))/pts.length/Math.max(w,h);
+  if(error<bestError){bestError=error;bestTip=i;}
  }
- if(closure>.14&&vertices.length>=4&&vertices.length<=8&&geometry.intersections<2){const error=match(pts,templates.z,false);if(error<.115)return result('z',Math.max(.6,1-error*2.6),dir,true);}
+ if(closure>.18&&bestTip>=0&&bestError<.055){
+  const tip=pts[bestTip],base={x:(first.x+last.x)/2,y:(first.y+last.y)/2};
+  const direction=unit({x:tip.x-base.x,y:tip.y-base.y});
+  geometry.vertices=[first,tip,last];geometry.rotation=Math.atan2(direction.y,direction.x);
+  return result('triangle',Math.max(.65,1-bestError*4),direction,true);
+ }
+ // Z templates are aligned by rotation and reversed stroke order; reflection is also accepted.
+ if(closure>.14&&vertices.length>=4&&vertices.length<=8&&geometry.intersections<2){
+  const error=Math.min(match(pts,templates.z,false),match(pts,templates.z.map(p=>({x:-p.x,y:p.y})),false));
+  if(error<.16)return result('z',Math.max(.6,1-error*2.6),dir,true);
+ }
+ let turn=0;const radii=pts.map(p=>distance(p,center));
+ for(let i=1;i<pts.length;i++){const a=Math.atan2(pts[i-1].y-center.y,pts[i-1].x-center.x),b=Math.atan2(pts[i].y-center.y,pts[i].x-center.x);turn+=Math.atan2(Math.sin(b-a),Math.cos(b-a));}
+ geometry.winding=Math.sign(turn)||1;
+ const mean=radii.reduce((sum,r)=>sum+r,0)/radii.length,cv=Math.sqrt(radii.reduce((sum,r)=>sum+(r-mean)**2,0)/radii.length)/(mean||1);
+ const aspect=Math.min(w,h)/Math.max(w,h,1);
+ if(closure<.18&&aspect>.35&&geometry.intersections<2&&cv<.26&&Math.abs(turn)>4.8&&Math.abs(turn)<7.9&&vertices.length>5)return result('circle',Math.max(.65,1-cv),dir,true);
  return result('ink',.25,dir,true);
 }

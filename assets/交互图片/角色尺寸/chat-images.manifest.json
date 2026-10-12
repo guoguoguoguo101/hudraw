@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "topic": "角色尺寸",
+  "images": [
+    {
+      "name": "角色尺寸_375px_狐狸缩小后手机画幅实机图",
+      "namingPrefix": "角色尺寸_375px_狐狸缩小后手机画幅实机图",
+      "path": "预览实机图/角色尺寸_375px_狐狸缩小后手机画幅实机图_v01.png",
+      "version": 1,
+      "sha256": "6ac370bdf23c6de9f49def50aaf77c88fe5153064fd1361cdd354a40d21125d6",
+      "bytes": 186731,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前可访问的手机尺寸快照；早期同名截图已被覆盖。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.306Z",
+      "sources": [
+        {
+          "fileName": "phone-375.png",
+          "type": "实机/工具预览",
+          "purpose": "当前可访问的手机尺寸快照；早期同名截图已被覆盖。",
+          "repositorySource": "screenshots/mobile-size/phone-375.png"
+        }
+      ]
+    },
+    {
+      "name": "角色尺寸_390px_狐狸缩小后手机画幅实机图",
+      "namingPrefix": "角色尺寸_390px_狐狸缩小后手机画幅实机图",
+      "path": "预览实机图/角色尺寸_390px_狐狸缩小后手机画幅实机图_v01.png",
+      "version": 1,
+      "sha256": "2a1f40645f08ec86fd0f9f1fbc6325d054818955a922badd1caa1a73312c89d1",
+      "bytes": 198851,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前可访问的手机尺寸快照；早期同名截图已被覆盖。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.312Z",
+      "sources": [
+        {
+          "fileName": "phone-390.png",
+          "type": "实机/工具预览",
+          "purpose": "当前可访问的手机尺寸快照；早期同名截图已被覆盖。",
+          "repositorySource": "screenshots/mobile-size/phone-390.png"
+        }
+      ]
+    }
+  ],
+  "missingSources": [],
+  "unrecoverableHistory": [
+    {
+      "status": "同名旧版手机预览被覆盖，无法恢复",
+      "sources": [
+        "screenshots/mobile-size/phone-375.png",
+        "screenshots/mobile-size/phone-390.png"
+      ],
+      "note": "原角色尺寸及第一次缩小的早期截图未独立保存。"
+    }
+  ],
+  "updatedAt": "2026-10-12T19:28:16.317Z"
+}

@@ -1,0 +1,1384 @@
+{
+  "schemaVersion": 1,
+  "topic": "一字斩",
+  "images": [
+    {
+      "name": "一字斩_Lv4_纸符斩妖合成参考图",
+      "namingPrefix": "一字斩_Lv4_纸符斩妖合成参考图",
+      "path": "用户参考图/一字斩_Lv4_纸符斩妖合成参考图_v01.png",
+      "version": 1,
+      "sha256": "640b0979bafe468b746278e148b196eeac91aea98d90fd03aaa028da7f7a8066",
+      "bytes": 2050859,
+      "sourceType": "用户上传",
+      "purpose": "最初终极纸符斩目标，白金斩线、飞符与命中爆裂。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.740Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-148c6515-5914-4006-a80e-a9ad39cf79c0.png",
+          "type": "用户上传",
+          "purpose": "最初终极纸符斩目标，白金斩线、飞符与命中爆裂。"
+        },
+        {
+          "fileName": "Lv4_参考_爆发终极.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/Lv4_参考_爆发终极.png"
+        },
+        {
+          "fileName": "Lv4_参考_爆发终极.png",
+          "type": "既有项目参考图",
+          "purpose": "早期复制的参考文件；相同内容共用清晰命名的归档。",
+          "repositorySource": "assets/vfx/slash_upgrade/references/Lv4_参考_爆发终极.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_白金冲击波参考图",
+      "namingPrefix": "一字斩_Lv4_白金冲击波参考图",
+      "path": "用户参考图/一字斩_Lv4_白金冲击波参考图_v01.png",
+      "version": 1,
+      "sha256": "59980081feda8173eb5d577a866cf9c0f62320d814181421b884e462e485a7f0",
+      "bytes": 1915538,
+      "sourceType": "用户上传",
+      "purpose": "阶段1参考：由窄至宽的白金冲击波。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.754Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-1e56d6b7-fbc6-431d-ac0a-cea463716dfb.png",
+          "type": "用户上传",
+          "purpose": "阶段1参考：由窄至宽的白金冲击波。"
+        },
+        {
+          "fileName": "codex-clipboard-df21199a-478e-4cec-992f-8d3508e7ebc3.png",
+          "type": "用户上传",
+          "purpose": "用于区分第一段冲击波与第二段绘卷的视觉身份。"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_山海绘卷参考图",
+      "namingPrefix": "一字斩_Lv4_山海绘卷参考图",
+      "path": "用户参考图/一字斩_Lv4_山海绘卷参考图_v01.png",
+      "version": 1,
+      "sha256": "e56d8b3d0a1d503c289861c2b6e4b42a621c425fd68e9a34b28b968e0033c3f6",
+      "bytes": 1920850,
+      "sourceType": "用户上传",
+      "purpose": "阶段2参考：山海纹样、云海及绘卷展开。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.766Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-fb6d3ee1-435d-433e-9687-1ebffa7460fc.png",
+          "type": "用户上传",
+          "purpose": "阶段2参考：山海纹样、云海及绘卷展开。"
+        },
+        {
+          "fileName": "codex-clipboard-d172ed01-2564-4126-a1fc-b6d87c3d260c.png",
+          "type": "用户上传",
+          "purpose": "再次提供绘卷造型，确认转向并交叉释放。"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_两段合成构图参考图",
+      "namingPrefix": "一字斩_Lv4_两段合成构图参考图",
+      "path": "用户参考图/一字斩_Lv4_两段合成构图参考图_v01.png",
+      "version": 1,
+      "sha256": "06cd98f40ac09982c2535186d726b143823ae45167dc940ad4a5aab1d5dd1b0a",
+      "bytes": 2474598,
+      "sourceType": "用户上传",
+      "purpose": "用户确认两段交叉构图，此后要求绘卷弯成弓弧。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.781Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-59e8a32a-2fe4-4285-979d-3980bcba93f1.png",
+          "type": "用户上传",
+          "purpose": "用户确认两段交叉构图，此后要求绘卷弯成弓弧。"
+        },
+        {
+          "fileName": "codex-clipboard-9c3f3479-f925-48fe-b578-01e757dcd401.png",
+          "type": "用户上传",
+          "purpose": "追加飞符、朱砂封印、祥云、金边、火花，以及弓弧卷面。"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_四阶段山海长卷设计参考图",
+      "namingPrefix": "一字斩_Lv4_四阶段山海长卷设计参考图",
+      "path": "用户参考图/一字斩_Lv4_四阶段山海长卷设计参考图_v01.png",
+      "version": 1,
+      "sha256": "b16c98e537c2faa91a897bfc6bb4ec83d48b42d381b4609970c2e4296dce5bdc",
+      "bytes": 2385238,
+      "sourceType": "用户上传",
+      "purpose": "丰富卷内山峦、云海、红日、楼阁；起势、展开、延展、最终形态参考。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.811Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-12ccbc5b-cd23-4e0f-8484-9915fc4cc3e8.png",
+          "type": "用户上传",
+          "purpose": "丰富卷内山峦、云海、红日、楼阁；起势、展开、延展、最终形态参考。"
+        },
+        {
+          "fileName": "codex-clipboard-8b218102-5d08-45f4-b5cd-21c0a6dce30a.png",
+          "type": "用户上传",
+          "purpose": "用户要求两端卷轴与逐渐增强的燃烧纸焰。"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_山海卷气冲击波参考图",
+      "namingPrefix": "一字斩_Lv4_山海卷气冲击波参考图",
+      "path": "用户参考图/一字斩_Lv4_山海卷气冲击波参考图_v01.png",
+      "version": 1,
+      "sha256": "c17e00077a7bbf56eac2f7cc496d9af3d624ac566bdd426936ad389a8281a9f4",
+      "bytes": 2011018,
+      "sourceType": "用户上传",
+      "purpose": "保留画卷，仅修改冲击波：稳定白金主束、外扩云卷、山海塔影与慢消散。",
+      "status": "用户指定参考",
+      "archivedAt": "2026-10-12T19:28:15.829Z",
+      "sources": [
+        {
+          "fileName": "codex-clipboard-478c6fe9-f661-47fc-9c0c-0dd5d6adae4b.png",
+          "type": "用户上传",
+          "purpose": "保留画卷，仅修改冲击波：稳定白金主束、外扩云卷、山海塔影与慢消散。"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv1至Lv4_早期四级对照图",
+      "namingPrefix": "一字斩_Lv1至Lv4_早期四级对照图",
+      "path": "预览实机图/一字斩_Lv1至Lv4_早期四级对照图_v01.png",
+      "version": 1,
+      "sha256": "c392c6f8502d241536381fadf3f581a302558035c25d8c9c5dbdf67f8c4b189a",
+      "bytes": 769245,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.839Z",
+      "sources": [
+        {
+          "fileName": "comparison.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/comparison.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv1_早期实机图",
+      "namingPrefix": "一字斩_Lv1_早期实机图",
+      "path": "预览实机图/一字斩_Lv1_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "a42731de40fa750cd51b3f3e3014dcd5add65d9f5784c2865691a78aab62466d",
+      "bytes": 251188,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.847Z",
+      "sources": [
+        {
+          "fileName": "lv1.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv1.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv2_早期实机图",
+      "namingPrefix": "一字斩_Lv2_早期实机图",
+      "path": "预览实机图/一字斩_Lv2_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "b041249aa6749fd045485887620d365aef11e0f312406852f61838f54dea3717",
+      "bytes": 251734,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.854Z",
+      "sources": [
+        {
+          "fileName": "lv2.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv2.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv3_早期实机图",
+      "namingPrefix": "一字斩_Lv3_早期实机图",
+      "path": "预览实机图/一字斩_Lv3_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "f93146808acf1285239f6859de622fcfabaac3f7869a2f210ef6b2064a37ad0a",
+      "bytes": 257091,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.861Z",
+      "sources": [
+        {
+          "fileName": "lv3.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv3.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_早期爆裂实机图",
+      "namingPrefix": "一字斩_Lv4_早期爆裂实机图",
+      "path": "预览实机图/一字斩_Lv4_早期爆裂实机图_v01.png",
+      "version": 1,
+      "sha256": "b3e62db85b45c25410f1b9121cb405b3090f0676a3369a8f3075c4e9551bf76d",
+      "bytes": 268168,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.867Z",
+      "sources": [
+        {
+          "fileName": "lv4-burst.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv4-burst.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_早期消散实机图",
+      "namingPrefix": "一字斩_Lv4_早期消散实机图",
+      "path": "预览实机图/一字斩_Lv4_早期消散实机图_v01.png",
+      "version": 1,
+      "sha256": "1b33e7c2c3adf1249a49251de839103c402bc9af0e508af34b4f1a42f827007e",
+      "bytes": 254570,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.875Z",
+      "sources": [
+        {
+          "fileName": "lv4-fade.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv4-fade.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_早期扇斩实机图",
+      "namingPrefix": "一字斩_Lv4_早期扇斩实机图",
+      "path": "预览实机图/一字斩_Lv4_早期扇斩实机图_v01.png",
+      "version": 1,
+      "sha256": "0cac5216c8d7b4ec31930b526b156d58c5c61de7d4e17788ebc847b6c56fa876",
+      "bytes": 266995,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.881Z",
+      "sources": [
+        {
+          "fileName": "lv4-fan.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv4-fan.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_早期主斩实机图",
+      "namingPrefix": "一字斩_Lv4_早期主斩实机图",
+      "path": "预览实机图/一字斩_Lv4_早期主斩实机图_v01.png",
+      "version": 1,
+      "sha256": "7314cb7ec63db9b7e82fcc0b770fa5d262befe0be8759501ed1903ef47beea56",
+      "bytes": 252361,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.889Z",
+      "sources": [
+        {
+          "fileName": "lv4-line.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv4-line.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_早期实机图",
+      "namingPrefix": "一字斩_Lv4_早期实机图",
+      "path": "预览实机图/一字斩_Lv4_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "9c4ce3c95b53bb3c99119dabcd87c2918afc3eb582e9c2963e2d0ce05495798f",
+      "bytes": 265983,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.896Z",
+      "sources": [
+        {
+          "fileName": "lv4.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/slash-upgrade/lv4.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期余韵预览图",
+      "namingPrefix": "一字斩_Lv4_中期余韵预览图",
+      "path": "预览实机图/一字斩_Lv4_中期余韵预览图_v01.png",
+      "version": 1,
+      "sha256": "b48899a0a65c9458ac2dc9ed13ef17a1d1432b8527fc6c68dddeb902236c64cb",
+      "bytes": 30846,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.903Z",
+      "sources": [
+        {
+          "fileName": "afterglow.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/afterglow.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期战斗实机图",
+      "namingPrefix": "一字斩_Lv4_中期战斗实机图",
+      "path": "预览实机图/一字斩_Lv4_中期战斗实机图_v01.png",
+      "version": 1,
+      "sha256": "b881dd8f15b9a3e6e0ba4c74641b73a7ef8c972614162d467a153dcd122919ea",
+      "bytes": 287799,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.909Z",
+      "sources": [
+        {
+          "fileName": "battle.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/battle.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期蓄力实机图",
+      "namingPrefix": "一字斩_Lv4_中期蓄力实机图",
+      "path": "预览实机图/一字斩_Lv4_中期蓄力实机图_v01.png",
+      "version": 1,
+      "sha256": "3db5e03428c87d5929f574372524ba00f2b0e44405b904cbc1f4369d5e109172",
+      "bytes": 271114,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.917Z",
+      "sources": [
+        {
+          "fileName": "charge.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/charge.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期命中实机图",
+      "namingPrefix": "一字斩_Lv4_中期命中实机图",
+      "path": "预览实机图/一字斩_Lv4_中期命中实机图_v01.png",
+      "version": 1,
+      "sha256": "ab19c7fcb2cac7919ad8c449124e292bd31772894dd27752eaf7e64306a89b5e",
+      "bytes": 285900,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.924Z",
+      "sources": [
+        {
+          "fileName": "impact.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/impact.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期独立技能预览图",
+      "namingPrefix": "一字斩_Lv4_中期独立技能预览图",
+      "path": "预览实机图/一字斩_Lv4_中期独立技能预览图_v01.png",
+      "version": 1,
+      "sha256": "67620a57957ffbe7b8ae542461cb881959ba027675ab38a6534b222ee71e16cd",
+      "bytes": 52950,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.931Z",
+      "sources": [
+        {
+          "fileName": "skill.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/skill.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期第一段预览图",
+      "namingPrefix": "一字斩_Lv4_中期第一段预览图",
+      "path": "预览实机图/一字斩_Lv4_中期第一段预览图_v01.png",
+      "version": 1,
+      "sha256": "f66ff63ed20f15cd1d20f1834b68b74babc85d2fdbc418e95fb7faa987c6dfea",
+      "bytes": 24216,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.937Z",
+      "sources": [
+        {
+          "fileName": "stage1.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/stage1.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期绘卷展开预览图",
+      "namingPrefix": "一字斩_Lv4_中期绘卷展开预览图",
+      "path": "预览实机图/一字斩_Lv4_中期绘卷展开预览图_v01.png",
+      "version": 1,
+      "sha256": "0ddaf4c6469db7a95451a918a4b86f3157f8b0273e9eff7746dfe1e32af4d0c9",
+      "bytes": 49540,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.944Z",
+      "sources": [
+        {
+          "fileName": "stage2-opening.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/stage2-opening.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期测试页面图",
+      "namingPrefix": "一字斩_Lv4_中期测试页面图",
+      "path": "预览实机图/一字斩_Lv4_中期测试页面图_v01.png",
+      "version": 1,
+      "sha256": "c61df1579a0132361c6c25686a7b6fa221508988441d908fd24c35cdfdc3ac82",
+      "bytes": 457247,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.951Z",
+      "sources": [
+        {
+          "fileName": "test-page.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/test-page.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期尾迹实机图",
+      "namingPrefix": "一字斩_Lv4_中期尾迹实机图",
+      "path": "预览实机图/一字斩_Lv4_中期尾迹实机图_v01.png",
+      "version": 1,
+      "sha256": "f386ef660408c60a5e2325da1e077fabe0245549e705202f68ac5c9680ef70ab",
+      "bytes": 278374,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.959Z",
+      "sources": [
+        {
+          "fileName": "trail.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/trail.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_中期展开实机图",
+      "namingPrefix": "一字斩_Lv4_中期展开实机图",
+      "path": "预览实机图/一字斩_Lv4_中期展开实机图_v01.png",
+      "version": 1,
+      "sha256": "9b2f2eb24bde805f57502774da0af092b481714c6e2a17956783c31c298a5751",
+      "bytes": 284855,
+      "sourceType": "实机/工具预览",
+      "purpose": "早期实现留存，供版本对照。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.966Z",
+      "sources": [
+        {
+          "fileName": "unfold.png",
+          "type": "实机/工具预览",
+          "purpose": "早期实现留存，供版本对照。",
+          "repositorySource": "screenshots/ultimate-final/unfold.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_卷气冲击波与双卷头细节预览图",
+      "namingPrefix": "一字斩_Lv4_卷气冲击波与双卷头细节预览图",
+      "path": "预览实机图/一字斩_Lv4_卷气冲击波与双卷头细节预览图_v01.png",
+      "version": 1,
+      "sha256": "490aaf47f661ec91503ccfd4bf64e9352d8a81b7b4bb0fe29433a9d0b272ff87",
+      "bytes": 184705,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.973Z",
+      "sources": [
+        {
+          "fileName": "detail.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/detail.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第六帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第六帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第六帧实机图_v01.png",
+      "version": 1,
+      "sha256": "8a49ee1104911e4b89f8ee0c8fe0900480357df54ae49455f4988b8de88d4578",
+      "bytes": 249118,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.980Z",
+      "sources": [
+        {
+          "fileName": "live-1030.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-1030.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第一帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第一帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第一帧实机图_v01.png",
+      "version": 1,
+      "sha256": "cee881b0fdc85917689a4c1a8d016decd8de0345d54a37e2be2c9d712f80f783",
+      "bytes": 270801,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.988Z",
+      "sources": [
+        {
+          "fileName": "live-140.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-140.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第二帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第二帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第二帧实机图_v01.png",
+      "version": 1,
+      "sha256": "aeb7438c1fac5b7a04a2798e38877a7a98c1e345dd1cb24d2d00d4eeeb71db15",
+      "bytes": 327331,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:15.996Z",
+      "sources": [
+        {
+          "fileName": "live-280.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-280.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第三帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第三帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第三帧实机图_v01.png",
+      "version": 1,
+      "sha256": "84ef361dc34ec8ff38bc33d13bfb87de47bac757168a16eb6ab16b024562d4bf",
+      "bytes": 328385,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.005Z",
+      "sources": [
+        {
+          "fileName": "live-440.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-440.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第四帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第四帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第四帧实机图_v01.png",
+      "version": 1,
+      "sha256": "77b623896a2e46fc5834d148a106be3b3b50a2396308f0cf01104e1b628da7e1",
+      "bytes": 320279,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.012Z",
+      "sources": [
+        {
+          "fileName": "live-610.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-610.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画第五帧实机图",
+      "namingPrefix": "一字斩_Lv4_当前动画第五帧实机图",
+      "path": "预览实机图/一字斩_Lv4_当前动画第五帧实机图_v01.png",
+      "version": 1,
+      "sha256": "a6abb4fa79882ca64241470ddd1863bc015401f448130d0feaf429fef0cf5788",
+      "bytes": 307973,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.019Z",
+      "sources": [
+        {
+          "fileName": "live-780.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-780.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前动画连续过程图",
+      "namingPrefix": "一字斩_Lv4_当前动画连续过程图",
+      "path": "预览实机图/一字斩_Lv4_当前动画连续过程图_v01.png",
+      "version": 1,
+      "sha256": "2430ebeeb342aa9bd3ee0e7972e33ac007ff03627ad41da82beb8165c9e763e4",
+      "bytes": 1180376,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.029Z",
+      "sources": [
+        {
+          "fileName": "live-sequence.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/live-sequence.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_工作轮廓检查图_绘卷",
+      "namingPrefix": "一字斩_Lv4_工作轮廓检查图_绘卷",
+      "path": "预览实机图/一字斩_Lv4_工作轮廓检查图_绘卷_v01.png",
+      "version": 1,
+      "sha256": "0b326c93bbef7c0a9906c35232190a86ef2b56e3eb9bf8c82e210f6821f465c3",
+      "bytes": 168263,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.036Z",
+      "sources": [
+        {
+          "fileName": "outline-scroll.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/outline-scroll.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_工作轮廓检查图_冲击波",
+      "namingPrefix": "一字斩_Lv4_工作轮廓检查图_冲击波",
+      "path": "预览实机图/一字斩_Lv4_工作轮廓检查图_冲击波_v01.png",
+      "version": 1,
+      "sha256": "f6c56a4f386ae708047f996f06090714967abb89d5cc25164218f0c5f9515874",
+      "bytes": 87934,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.043Z",
+      "sources": [
+        {
+          "fileName": "outline-wave.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/outline-wave.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_工作轮廓对照图",
+      "namingPrefix": "一字斩_Lv4_工作轮廓对照图",
+      "path": "预览实机图/一字斩_Lv4_工作轮廓对照图_v01.png",
+      "version": 1,
+      "sha256": "f000f01b2bf7a7aa3612d931b9a31990dd7ade7f299bfb0fd10041cded8d7c3e",
+      "bytes": 218195,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.052Z",
+      "sources": [
+        {
+          "fileName": "outlines.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/outlines.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_当前战斗实机图",
+      "namingPrefix": "一字斩_Lv4_当前战斗实机图",
+      "path": "预览实机图/一字斩_Lv4_当前战斗实机图_v01.png",
+      "version": 1,
+      "sha256": "de68d7dc0dc6d5f033044f21b97cd77446c74d2194e01b058b62552d6138356a",
+      "bytes": 328920,
+      "sourceType": "实机/工具预览",
+      "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.060Z",
+      "sources": [
+        {
+          "fileName": "scene.png",
+          "type": "实机/工具预览",
+          "purpose": "当前工作文件留存快照；固定文件名的历史轮次曾被覆盖。帧编号为截取顺序，不保证精确动画时刻。轮廓工作图也可能包含当前装饰，不能当作历史纯白轮廓。",
+          "repositorySource": "screenshots/flowing-scroll/scene.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_爆裂预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_爆裂预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_爆裂预览图_v01.png",
+      "version": 1,
+      "sha256": "83f7821a6ed56de80a7a254be9fc414572d444d24e2d82d7ced5381c72331750",
+      "bytes": 293225,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.067Z",
+      "sources": [
+        {
+          "fileName": "A-burst.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-burst.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_蓄力预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_蓄力预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_蓄力预览图_v01.png",
+      "version": 1,
+      "sha256": "ef508e13fa67f21d4b324d9950489f1c6db1bb46bfbfe5cbdaca2b45a8d58141",
+      "bytes": 265578,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.076Z",
+      "sources": [
+        {
+          "fileName": "A-charge.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-charge.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_斜向预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_斜向预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_斜向预览图_v01.png",
+      "version": 1,
+      "sha256": "75ba396a8a89cf076751d7df61f29e6912e7a868584da3dd81ba5d76c539d619",
+      "bytes": 311758,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.083Z",
+      "sources": [
+        {
+          "fileName": "A-diagonal.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-diagonal.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_横向预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_横向预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_横向预览图_v01.png",
+      "version": 1,
+      "sha256": "61382199a0df0b1a134cc9b3540462956aab48c0e8896f7241cdd76d0dc5f5d2",
+      "bytes": 293472,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.091Z",
+      "sources": [
+        {
+          "fileName": "A-horizontal.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-horizontal.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_独立轮廓预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_独立轮廓预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_独立轮廓预览图_v01.png",
+      "version": 1,
+      "sha256": "6cc95217274fd4ae161db2cc966c946f95842de8d80839691a5a141e3ecd2989",
+      "bytes": 61762,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.098Z",
+      "sources": [
+        {
+          "fileName": "A-isolated.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-isolated.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_主斩预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_主斩预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_主斩预览图_v01.png",
+      "version": 1,
+      "sha256": "48bc708f371931f0a09b9b0376f2385ee3c5678241a1768401e63c6d02f46653",
+      "bytes": 283133,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.106Z",
+      "sources": [
+        {
+          "fileName": "A-main.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-main.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A版_尾迹预览图",
+      "namingPrefix": "一字斩_Lv4_历史A版_尾迹预览图",
+      "path": "预览实机图/一字斩_Lv4_历史A版_尾迹预览图_v01.png",
+      "version": 1,
+      "sha256": "616be1bf7cfbc7a1821df5d74c9b9e7315c8d6416fa499742d33888a3c96ba72",
+      "bytes": 281401,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.115Z",
+      "sources": [
+        {
+          "fileName": "A-trail.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/A-trail.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A与B方案实机对照图",
+      "namingPrefix": "一字斩_Lv4_历史A与B方案实机对照图",
+      "path": "预览实机图/一字斩_Lv4_历史A与B方案实机对照图_v01.png",
+      "version": 1,
+      "sha256": "df9a058ada8783955af64cbc82ba3aa2251cd1db8ba409b8f9dfdc4995e38305",
+      "bytes": 560596,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.122Z",
+      "sources": [
+        {
+          "fileName": "AB-comparison.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/AB-comparison.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_爆裂预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_爆裂预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_爆裂预览图_v01.png",
+      "version": 1,
+      "sha256": "0eb0fe540cb251b81181efab8c1962e9fe06ecf3075d57a3f30efde587c9d7ba",
+      "bytes": 306519,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.131Z",
+      "sources": [
+        {
+          "fileName": "B-burst.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-burst.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_蓄力预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_蓄力预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_蓄力预览图_v01.png",
+      "version": 1,
+      "sha256": "ce050deddf55aece004a3682b3066698bd11a382192a0e6eeb17443238fb42a1",
+      "bytes": 266146,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.137Z",
+      "sources": [
+        {
+          "fileName": "B-charge.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-charge.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_斜向预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_斜向预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_斜向预览图_v01.png",
+      "version": 1,
+      "sha256": "4e47c4083fe163365af2b142c3f89fd49e6d8dceabf971e0580614c0310e1e03",
+      "bytes": 325309,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.145Z",
+      "sources": [
+        {
+          "fileName": "B-diagonal.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-diagonal.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_横向预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_横向预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_横向预览图_v01.png",
+      "version": 1,
+      "sha256": "ae01572063133685f29a59a1c30f08bfb746fd0b016e4356fd35c1e5ed878c25",
+      "bytes": 302993,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.154Z",
+      "sources": [
+        {
+          "fileName": "B-horizontal.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-horizontal.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_独立轮廓预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_独立轮廓预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_独立轮廓预览图_v01.png",
+      "version": 1,
+      "sha256": "ccd05d8e974d2833e74df40a20d4aa545d9e351b0423f4d9efcb42ab5a90f910",
+      "bytes": 90895,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.162Z",
+      "sources": [
+        {
+          "fileName": "B-isolated.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-isolated.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_主斩预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_主斩预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_主斩预览图_v01.png",
+      "version": 1,
+      "sha256": "e18008f676ca9204e288acd1dfcc350c0b05347a076333666fa6590b139846a1",
+      "bytes": 289475,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.171Z",
+      "sources": [
+        {
+          "fileName": "B-main.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-main.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史B版_尾迹预览图",
+      "namingPrefix": "一字斩_Lv4_历史B版_尾迹预览图",
+      "path": "预览实机图/一字斩_Lv4_历史B版_尾迹预览图_v01.png",
+      "version": 1,
+      "sha256": "fabfb8081bd59184e1012f6991ada77499411e27b81b06ff4188e5b8fb250be2",
+      "bytes": 283818,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.180Z",
+      "sources": [
+        {
+          "fileName": "B-trail.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/B-trail.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_历史A与B方案独立对照图",
+      "namingPrefix": "一字斩_Lv4_历史A与B方案独立对照图",
+      "path": "预览实机图/一字斩_Lv4_历史A与B方案独立对照图_v01.png",
+      "version": 1,
+      "sha256": "3abd34aef04436fe8f7f78973d4c6f6941d574ca6730c29accd76cc43e4e66a2",
+      "bytes": 147613,
+      "sourceType": "实机/工具预览",
+      "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.187Z",
+      "sources": [
+        {
+          "fileName": "static-comparison.png",
+          "type": "实机/工具预览",
+          "purpose": "历史A/B探索留存；用户后续要求只维护一个版本，不代表最终方案。",
+          "repositorySource": "screenshots/ultimate-rework/static-comparison.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv1_资源包矢量基础形状",
+      "namingPrefix": "一字斩_Lv1_资源包矢量基础形状",
+      "path": "svg/slash_lv1.svg",
+      "version": 1,
+      "sha256": "6d27a0e6db1fc2b11d7ad5901d7414087058c6c8257b9d97c960bf45a004f1d1",
+      "bytes": 1140,
+      "sourceType": "资源包矢量基础形状",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.193Z",
+      "sources": [
+        {
+          "fileName": "slash_lv1.svg",
+          "type": "资源包矢量基础形状",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/svg/slash_lv1.svg"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv1_资源包预览图",
+      "namingPrefix": "一字斩_Lv1_资源包预览图",
+      "path": "preview/slash_lv1.png",
+      "version": 1,
+      "sha256": "d8b73ba53324f1f5b2599f6b4e9f7542470d409675a329d56b8a43560cd9cf95",
+      "bytes": 24216,
+      "sourceType": "资源包预览图",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.193Z",
+      "sources": [
+        {
+          "fileName": "slash_lv1.png",
+          "type": "资源包预览图",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/preview/slash_lv1.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv2_资源包矢量基础形状",
+      "namingPrefix": "一字斩_Lv2_资源包矢量基础形状",
+      "path": "svg/slash_lv2.svg",
+      "version": 1,
+      "sha256": "4ab08e387c7f0538dfc1b5d43f3ef0c918fc7b3c30ff1f6083a43caf00e3b2ea",
+      "bytes": 2104,
+      "sourceType": "资源包矢量基础形状",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.194Z",
+      "sources": [
+        {
+          "fileName": "slash_lv2.svg",
+          "type": "资源包矢量基础形状",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/svg/slash_lv2.svg"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv2_资源包预览图",
+      "namingPrefix": "一字斩_Lv2_资源包预览图",
+      "path": "preview/slash_lv2.png",
+      "version": 1,
+      "sha256": "320bafab3f049fd55be671787e4dd5c200b4fbe1c5700bb56946ea8118a1965a",
+      "bytes": 34947,
+      "sourceType": "资源包预览图",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.194Z",
+      "sources": [
+        {
+          "fileName": "slash_lv2.png",
+          "type": "资源包预览图",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/preview/slash_lv2.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv3_资源包矢量基础形状",
+      "namingPrefix": "一字斩_Lv3_资源包矢量基础形状",
+      "path": "svg/slash_lv3.svg",
+      "version": 1,
+      "sha256": "61a7f6d84197f5ffd1c076829267e016f67268d3e2624c04830a851f00879e35",
+      "bytes": 4834,
+      "sourceType": "资源包矢量基础形状",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.194Z",
+      "sources": [
+        {
+          "fileName": "slash_lv3.svg",
+          "type": "资源包矢量基础形状",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/svg/slash_lv3.svg"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv3_资源包预览图",
+      "namingPrefix": "一字斩_Lv3_资源包预览图",
+      "path": "preview/slash_lv3.png",
+      "version": 1,
+      "sha256": "07fb1bd640f84a96e09588f2c7b0732b86711d2708cb85694250a71882ba0e86",
+      "bytes": 66629,
+      "sourceType": "资源包预览图",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.195Z",
+      "sources": [
+        {
+          "fileName": "slash_lv3.png",
+          "type": "资源包预览图",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/preview/slash_lv3.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_资源包矢量基础形状",
+      "namingPrefix": "一字斩_Lv4_资源包矢量基础形状",
+      "path": "svg/slash_lv4.svg",
+      "version": 1,
+      "sha256": "47e4dca3be803dd01f07f1dd37b5bd9b6c97e3f703b1c52cb3bb1fe4ff28350a",
+      "bytes": 8155,
+      "sourceType": "资源包矢量基础形状",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.195Z",
+      "sources": [
+        {
+          "fileName": "slash_lv4.svg",
+          "type": "资源包矢量基础形状",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/svg/slash_lv4.svg"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv4_资源包预览图",
+      "namingPrefix": "一字斩_Lv4_资源包预览图",
+      "path": "preview/slash_lv4.png",
+      "version": 1,
+      "sha256": "5bcfc3de3a69f2177a1cd985489f86d9678f4ae294a43b935c4e3ae8065f8be9",
+      "bytes": 84235,
+      "sourceType": "资源包预览图",
+      "purpose": "用户提供资源包的基础形状，完整原件。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.196Z",
+      "sources": [
+        {
+          "fileName": "slash_lv4.png",
+          "type": "资源包预览图",
+          "purpose": "用户提供资源包的基础形状，完整原件。",
+          "repositorySource": "assets/vfx/slash_upgrade/preview/slash_lv4.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv1_细线锋芒资源参考图",
+      "namingPrefix": "一字斩_Lv1_细线锋芒资源参考图",
+      "path": "用户参考图/一字斩_Lv1_细线锋芒资源参考图_v01.png",
+      "version": 1,
+      "sha256": "677a291b06c5319554b1a9ea4d8718a32f3b846a8a8e34e47e64aaf3f13f95f6",
+      "bytes": 1780552,
+      "sourceType": "用户资源包参考图",
+      "purpose": "资源包references目录内原始视觉参考。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.201Z",
+      "sources": [
+        {
+          "fileName": "Lv1_参考_细线与锋芒.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/Lv1_参考_细线与锋芒.png"
+        },
+        {
+          "fileName": "Lv1_参考_细线与锋芒.png",
+          "type": "既有项目参考图",
+          "purpose": "早期复制的参考文件；相同内容共用清晰命名的归档。",
+          "repositorySource": "assets/vfx/slash_upgrade/references/Lv1_参考_细线与锋芒.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv2_双层瞬斩资源参考图",
+      "namingPrefix": "一字斩_Lv2_双层瞬斩资源参考图",
+      "path": "用户参考图/一字斩_Lv2_双层瞬斩资源参考图_v01.png",
+      "version": 1,
+      "sha256": "5473ceb71a3d636566f28389eca677390593c62ea78a68eae7cd3ecddc1ad544",
+      "bytes": 2101409,
+      "sourceType": "用户资源包参考图",
+      "purpose": "资源包references目录内原始视觉参考。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.213Z",
+      "sources": [
+        {
+          "fileName": "Lv2_参考_双层瞬斩.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/Lv2_参考_双层瞬斩.png"
+        },
+        {
+          "fileName": "Lv2_参考_双层瞬斩.png",
+          "type": "既有项目参考图",
+          "purpose": "早期复制的参考文件；相同内容共用清晰命名的归档。",
+          "repositorySource": "assets/vfx/slash_upgrade/references/Lv2_参考_双层瞬斩.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_Lv3_符纸破阵资源参考图",
+      "namingPrefix": "一字斩_Lv3_符纸破阵资源参考图",
+      "path": "用户参考图/一字斩_Lv3_符纸破阵资源参考图_v01.png",
+      "version": 1,
+      "sha256": "b79dc80d310f803d601d7df53630ed3df5b647e39cde06ce88b5c543397c31f8",
+      "bytes": 1867773,
+      "sourceType": "用户资源包参考图",
+      "purpose": "资源包references目录内原始视觉参考。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.224Z",
+      "sources": [
+        {
+          "fileName": "Lv3_参考_符纸破阵.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/Lv3_参考_符纸破阵.png"
+        },
+        {
+          "fileName": "Lv3_参考_符纸破阵.png",
+          "type": "既有项目参考图",
+          "purpose": "早期复制的参考文件；相同内容共用清晰命名的归档。",
+          "repositorySource": "assets/vfx/slash_upgrade/references/Lv3_参考_符纸破阵.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_资源包_补充视觉参考图",
+      "namingPrefix": "一字斩_资源包_补充视觉参考图",
+      "path": "用户参考图/一字斩_资源包_补充视觉参考图_v01.png",
+      "version": 1,
+      "sha256": "70b7c1c2bfb5bfd934f6356123b1dcc81ee92d5b2e0ef8f5ca59ab06f1bbdb50",
+      "bytes": 3099589,
+      "sourceType": "用户资源包参考图",
+      "purpose": "资源包references目录内原始视觉参考。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.241Z",
+      "sources": [
+        {
+          "fileName": "c18e1416-0acb-44c6-8742-501f62fe19b5.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/c18e1416-0acb-44c6-8742-501f62fe19b5.png"
+        }
+      ]
+    },
+    {
+      "name": "一字斩_资源包_补充小尺寸参考图",
+      "namingPrefix": "一字斩_资源包_补充小尺寸参考图",
+      "path": "用户参考图/一字斩_资源包_补充小尺寸参考图_v01.png",
+      "version": 1,
+      "sha256": "8fca010cd7d3b34628516e9260862eb25bd73d7e87711665777ea7952f598f6b",
+      "bytes": 61645,
+      "sourceType": "用户资源包参考图",
+      "purpose": "资源包references目录内原始视觉参考。",
+      "status": "基础资源原件",
+      "archivedAt": "2026-10-12T19:28:16.251Z",
+      "sources": [
+        {
+          "fileName": "download.png",
+          "type": "用户资源包参考图",
+          "purpose": "资源包references目录内原始视觉参考。",
+          "repositorySource": "assert/灵狐绘符_一字斩四级技能资源包/灵狐绘符_一字斩四级技能资源包/references/download.png"
+        }
+      ]
+    }
+  ],
+  "missingSources": [],
+  "unrecoverableHistory": [
+    {
+      "status": "同名历史工作图被覆盖，无法恢复",
+      "sources": [
+        "screenshots/flowing-scroll/detail.png",
+        "screenshots/flowing-scroll/scene.png",
+        "screenshots/flowing-scroll/live-sequence.png",
+        "screenshots/flowing-scroll/outlines.png"
+      ],
+      "note": "这些路径在本对话中展示过多个不同轮次。仅能保存磁盘当前留存内容；本归档不将当前图片冒充每一轮旧图。"
+    }
+  ],
+  "updatedAt": "2026-10-12T19:28:16.273Z"
+}

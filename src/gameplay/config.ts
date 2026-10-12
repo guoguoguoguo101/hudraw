@@ -1,5 +1,5 @@
 import type {Rune} from '../input/recognizer';
-export const COMBAT={duration:180,trainingDuration:90,initialHp:100,invulnerability:1.2,drawScale:.2,drawLimit:2,chargePeriod:5,maxPapers:3,startPapers:2,ordinaryCap:35,eliteCap:3};
+export const COMBAT={duration:180,trainingDuration:90,initialHp:100,invulnerability:1.2,drawScale:.2,drawLimit:4,chargePeriod:5,maxPapers:3,startPapers:2,ordinaryCap:35,eliteCap:3};
 export const SPELLS:Record<Rune,{damage:number;range:number;width:number;radius:number;duration:number;hits:number;shield:number;tick:number;armor:number}>={
  line:{damage:60,range:500,width:70,radius:0,duration:.7,hits:3,shield:0,tick:0,armor:0},
  circle:{damage:30,range:0,width:0,radius:200,duration:4,hits:35,shield:20,tick:0,armor:0},

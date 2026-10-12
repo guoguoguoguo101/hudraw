@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "topic": "四技能测试场",
+  "images": [
+    {
+      "name": "四技能测试场_圆阵_Lv4_早期实机图",
+      "namingPrefix": "四技能测试场_圆阵_Lv4_早期实机图",
+      "path": "预览实机图/四技能测试场_圆阵_Lv4_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "0db53bf690fde1abc16468feb91fd820c4ea6b24bd310d2c487dff98050dd908",
+      "bytes": 223243,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.340Z",
+      "sources": [
+        {
+          "fileName": "circle.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/circle.png"
+        }
+      ]
+    },
+    {
+      "name": "四技能测试场_四技能_Lv1至Lv4_等级测试页面图",
+      "namingPrefix": "四技能测试场_四技能_Lv1至Lv4_等级测试页面图",
+      "path": "预览实机图/四技能测试场_四技能_Lv1至Lv4_等级测试页面图_v01.png",
+      "version": 1,
+      "sha256": "493658a4e8ed500a9383c515c38999c5fb96fb3631df87c3b0a2b5ce06e08ea8",
+      "bytes": 529624,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.347Z",
+      "sources": [
+        {
+          "fileName": "lab-levels.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/lab-levels.png"
+        }
+      ]
+    },
+    {
+      "name": "四技能测试场_四技能_测试窗口实机图",
+      "namingPrefix": "四技能测试场_四技能_测试窗口实机图",
+      "path": "预览实机图/四技能测试场_四技能_测试窗口实机图_v01.png",
+      "version": 1,
+      "sha256": "ed8befffe3eded5ce19b1884209ef8ebcaa0cd14b9813d61db7eab66cfe6e2bb",
+      "bytes": 445182,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.355Z",
+      "sources": [
+        {
+          "fileName": "lab.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/lab.png"
+        }
+      ]
+    },
+    {
+      "name": "四技能测试场_一字斩_Lv4_早期实机图",
+      "namingPrefix": "四技能测试场_一字斩_Lv4_早期实机图",
+      "path": "预览实机图/四技能测试场_一字斩_Lv4_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "787db67518360e284f3a85fc481c2e7d69274b2ac881c15bda3903b2fa53f230",
+      "bytes": 206556,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.362Z",
+      "sources": [
+        {
+          "fileName": "line.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/line.png"
+        }
+      ]
+    },
+    {
+      "name": "四技能测试场_符箭_Lv4_早期实机图",
+      "namingPrefix": "四技能测试场_符箭_Lv4_早期实机图",
+      "path": "预览实机图/四技能测试场_符箭_Lv4_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "718dc8a0994e22b1655ea864e7082e760b3e93190af17656b8d9680f265ffde0",
+      "bytes": 210494,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.368Z",
+      "sources": [
+        {
+          "fileName": "triangle.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/triangle.png"
+        }
+      ]
+    },
+    {
+      "name": "四技能测试场_雷符_Lv4_早期实机图",
+      "namingPrefix": "四技能测试场_雷符_Lv4_早期实机图",
+      "path": "预览实机图/四技能测试场_雷符_Lv4_早期实机图_v01.png",
+      "version": 1,
+      "sha256": "14400f890e83268a08f0f550fd7b2c833f1b428ebf1a6b299670b9fc72bb315d",
+      "bytes": 214792,
+      "sourceType": "实机/工具预览",
+      "purpose": "本对话早期四技能测试及等级选择窗口。",
+      "status": "现存快照，不代表最终验收",
+      "archivedAt": "2026-10-12T19:28:16.375Z",
+      "sources": [
+        {
+          "fileName": "z.png",
+          "type": "实机/工具预览",
+          "purpose": "本对话早期四技能测试及等级选择窗口。",
+          "repositorySource": "screenshots/four-runes/z.png"
+        }
+      ]
+    }
+  ],
+  "missingSources": [],
+  "unrecoverableHistory": [],
+  "updatedAt": "2026-10-12T19:28:16.380Z"
+}

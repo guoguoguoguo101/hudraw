@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "units": "logical world units, adapt to existing game",
+  "notes": "visual render assets are illustrative modules not full sprite sequences",
+  "stages": [
+    {
+      "level": 1,
+      "name": "一字斩",
+      "damage": 60,
+      "range": 500,
+      "pierce": 3,
+      "hit_width": 70,
+      "visual_duration": 0.2,
+      "primary_hit_at": 0.06,
+      "max_hits_per_cast_per_enemy": 1,
+      "visual_file": "svg/slash_lv1.svg",
+      "additional_effect": "none"
+    },
+    {
+      "level": 2,
+      "name": "金芒横斩",
+      "damage": 80,
+      "range": 540,
+      "pierce": 4,
+      "hit_width": 95,
+      "visual_duration": 0.28,
+      "primary_hit_at": 0.07,
+      "max_hits_per_cast_per_enemy": 1,
+      "visual_file": "svg/slash_lv2.svg",
+      "additional_effect": "minor hit flash"
+    },
+    {
+      "level": 3,
+      "name": "破阵符斩",
+      "damage": 105,
+      "range": 580,
+      "pierce": 5,
+      "hit_width": 120,
+      "visual_duration": 0.38,
+      "primary_hit_at": 0.09,
+      "max_hits_per_cast_per_enemy": 1,
+      "visual_file": "svg/slash_lv3.svg",
+      "additional_effect": "one localized 25 damage cleave after main hit"
+    },
+    {
+      "level": 4,
+      "name": "天罡诛邪斩",
+      "damage": 145,
+      "range": 650,
+      "pierce": 7,
+      "hit_width": 160,
+      "visual_duration": 0.65,
+      "primary_hit_at": 0.13,
+      "max_hits_per_cast_per_enemy": 1,
+      "visual_file": "svg/slash_lv4.svg",
+      "additional_effect": "localized 40 damage burst on first 3 hit enemies, with per-cast cap"
+    }
+  ]
+}
