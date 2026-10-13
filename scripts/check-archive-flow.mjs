@@ -11,7 +11,7 @@ await page.evaluate(()=>localStorage.clear());await page.reload({waitUntil:'netw
 const canvas=page.locator('#app canvas');await canvas.waitFor();
 const xy=async(x,y)=>{const b=await canvas.boundingBox();return {x:b.x+b.width*x/720,y:b.y+b.height*y/1280};};
 const click=async(x,y)=>{const p=await xy(x,y);await page.mouse.click(p.x,p.y);await page.waitForTimeout(130);};
-await click(360,942);
+await click(360,838);
 const a=await xy(230,580),b=await xy(450,580);
 await page.mouse.move(a.x,a.y);await page.mouse.down();
 for(let i=1;i<=12;i++)await page.mouse.move(a.x+(b.x-a.x)*i/12,a.y,{steps:1});
@@ -25,7 +25,7 @@ assert.equal(restored.spells.line.casts,1);
 assert.equal(restored.recentRuns[0].result,'abandoned');
 const out=path.resolve('screenshots/archive');fs.mkdirSync(out,{recursive:true});
 const shot=async(name)=>canvas.screenshot({path:path.join(out,`${name}.png`)});
-await click(360,843);await shot('home-with-progress');
+await click(475,1060);await click(360,967);await shot('home-with-progress');
 await click(205,405);await click(350,240);await shot('spell-detail-with-progress');
 await click(58,70);await click(205,580);await click(350,240);await shot('chapter-with-progress');
 await click(58,70);await click(360,971);await shot('journal-with-progress');

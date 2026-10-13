@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-14",
+  "items": [
+    {
+      "role": "本对话沿用的用户参考：中心角色、战场与配色",
+      "file": "用户参考图/Z闪电_中央施法与剪纸风格参考图_v01.png",
+      "status": "讨论稿，未实机实现",
+      "sha256": "b889730d15ab07d0dab4b86dd9cc9f1fd7aa36d4b8784618712f92ecab29227d",
+      "source_name": "中央狐狸_四级战场参考图.png",
+      "bytes": 510574
+    },
+    {
+      "role": "讨论稿：笔迹确定实际攻击路线",
+      "file": "生成设计图/Z闪电_手绘路径与实际引雷对照图_v01.png",
+      "status": "讨论稿，未实机实现",
+      "sha256": "5cc06d2308c9607b2435446214d17ceb0fd8a4daa67d3318ba009758fd3d2e56",
+      "source_name": "exec-d00bab65-5de8-4973-b9b6-678941c7f0a1.png",
+      "bytes": 2070443
+    },
+    {
+      "role": "讨论稿：首段、折点、末段按顺序释放",
+      "file": "生成设计图/Z闪电_三段贯通与折点电爆时序图_v01.png",
+      "status": "讨论稿，未实机实现",
+      "sha256": "41a40ed1b04d534a88291c90a28bd3e29660a6122927b87665ae25b1910e0fe4",
+      "source_name": "exec-316f5538-6fc0-47d3-9ef0-98d913cad57f.png",
+      "bytes": 2063383
+    },
+    {
+      "role": "讨论稿：高阶天狐强化相同手绘路线",
+      "file": "生成设计图/Z闪电_Lv1与Lv4沿原路径升级对照图_v01.png",
+      "status": "讨论稿，未实机实现",
+      "sha256": "1bcd9ebc345863bb2e3050d568d22e4693da39193637c4d6b5cdc52b087d98ff",
+      "source_name": "exec-b52c4cd9-3615-4b94-83e3-2bc87842dff8.png",
+      "bytes": 2155575
+    }
+  ],
+  "skill_name": "Z闪电",
+  "generation_mode": "内置imagegen"
+}

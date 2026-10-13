@@ -1,8 +1,9 @@
+import {GESTURE_INPUT} from './brush-settings';
 export type Point={x:number;y:number};
 export type Rune='line'|'circle'|'triangle'|'star'|'z'|'spiral'|'ink';
 export type TalismanGeometry={raw:Point[];points:Point[];normalized:Point[];center:Point;aspect:number;rotation:number;winding:number;vertices:Point[];intersections:number};
-export type Recognition={rune:Rune|null;confidence:number;quality:number;valid:boolean;direction:Point;reason:string;normalized:Point[];geometry:TalismanGeometry};
-export const NAMES:Record<Rune,string>={line:'一字斩',circle:'圆形护阵',triangle:'箭头破甲',star:'五角星阵',z:'折线雷符',spiral:'螺旋旋风',ink:'散墨符'};
+export type Recognition={gestureId?:number;rune:Rune|null;confidence:number;quality:number;valid:boolean;direction:Point;reason:string;normalized:Point[];geometry:TalismanGeometry};
+export const NAMES:Record<Rune,string>={line:'一字斩',circle:'圆形护阵',triangle:'箭头破甲',star:'五角星阵',z:'折线雷符',spiral:'螺旋旋风',ink:'断符消散'};
 export const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 export function smooth(points:Point[]):Point[]{return points.map((p,i)=>i===0||i===points.length-1?p:{x:(points[i-1].x+p.x*2+points[i+1].x)/4,y:(points[i-1].y+p.y*2+points[i+1].y)/4});}
 export function resample(points:Point[],count=64):Point[]{if(points.length<2)return points;const lens=[0];for(let i=1;i<points.length;i++)lens.push(lens[i-1]+distance(points[i],points[i-1]));const total=lens.at(-1)!;if(total<.001)return [points[0]];let at=1;return Array.from({length:count},(_,i)=>{const target=total*i/(count-1);while(at<lens.length-1&&lens[at]<target)at++;const f=(target-lens[at-1])/(lens[at]-lens[at-1]||1);return {x:points[at-1].x+(points[at].x-points[at-1].x)*f,y:points[at-1].y+(points[at].y-points[at-1].y)*f};});}
@@ -23,13 +24,16 @@ export function recognize(raw:Point[]):Recognition{
  const pts=resample(smooth(clean)),norm=normalize(pts),xs=pts.map(p=>p.x),ys=pts.map(p=>p.y),w=xs.length?Math.max(...xs)-Math.min(...xs):0,h=ys.length?Math.max(...ys)-Math.min(...ys):0;
  const center={x:xs.length?(Math.max(...xs)+Math.min(...xs))/2:0,y:ys.length?(Math.max(...ys)+Math.min(...ys))/2:0};
  const vertices=simplify(pts,Math.max(w,h)*.045),geometry:TalismanGeometry={raw:clean.slice(0,400),points:pts,normalized:norm,center,aspect:w/Math.max(h,1),rotation:0,winding:1,vertices,intersections:0};
- const result=(rune:Rune|null,confidence=0,direction:Point={x:1,y:0},valid=false):Recognition=>({rune,confidence,quality:rune==='ink'?.25:Math.max(.4,Math.min(1,confidence*.8+.2)),valid,direction,reason:rune?NAMES[rune]:'笔迹太短 · 不消耗符纸',normalized:norm,geometry});
- if(clean.length<4||pts.length<4)return result(null);
- let length=0;for(let i=1;i<pts.length;i++)length+=distance(pts[i],pts[i-1]);if(length<60||Math.max(w,h)<38)return result(null);
+ const result=(rune:Rune|null,confidence=0,direction:Point={x:1,y:0},valid=false):Recognition=>({rune,confidence,quality:rune==='ink'?.25:Math.max(.4,Math.min(1,confidence*.8+.2)),valid,direction,reason:rune?NAMES[rune]:'笔迹未成符',normalized:norm,geometry});
+ if(clean.length<2||pts.length<4)return result(null);
+ let length=0;for(let i=1;i<pts.length;i++)length+=distance(pts[i],pts[i-1]);if(length<GESTURE_INPUT.minDistance||Math.max(w,h)<38)return result(null);
  const first=pts[0],last=pts.at(-1)!,chord=distance(first,last),dir=unit({x:last.x-first.x,y:last.y-first.y}),closure=chord/length;geometry.rotation=Math.atan2(dir.y,dir.x);
  for(let i=0;i<vertices.length-1;i++)for(let j=i+2;j<vertices.length-1;j++)if(!(i===0&&j===vertices.length-2)&&crosses(vertices[i],vertices[i+1],vertices[j],vertices[j+1]))geometry.intersections++;
  const deviation=pts.reduce((s,p)=>s+perpendicular(p,first,last),0)/pts.length;
- if(chord/length>.88&&deviation/length<.045)return result('line',chord/length,dir,true);
+ let rawLength=0;for(let i=1;i<clean.length;i++)rawLength+=distance(clean[i],clean[i-1]);
+ // Smoothing must not erase repeated reversals and upgrade dense scribbles into a line.
+ if(rawLength>length*2)return result('ink',.25,dir,true);
+ if(chord/rawLength>.88&&deviation/length<.045)return result('line',chord/rawLength,dir,true);
  // Arrow: two mostly straight arms meeting at a tip. Rotation and stroke order do not matter.
  let bestTip=-1,bestError=Infinity;
  for(let i=10;i<pts.length-10;i++){

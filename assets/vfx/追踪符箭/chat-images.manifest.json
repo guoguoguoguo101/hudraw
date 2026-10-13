@@ -442,10 +442,55 @@
           "repositorySource": "screenshots/fox-guardian/lv3.png"
         }
       ]
+    },
+    {
+      "file": "生成设计图/追踪符箭_交互_瞄准反馈概念图_v01.png",
+      "label": "瞄准反馈三阶段",
+      "type": "AI 生成概念图（内置 imagegen）",
+      "version": 1,
+      "status": "讨论草案，待评审，未实现",
+      "purpose": "画线、箭尖点名、从箭尾释放的三阶段反馈探索。",
+      "bytes": 2897545,
+      "sha256": "3a81d69e1d513d4de46dfc95a3ac554992d6f2366b455d9085274bd41b7d7565",
+      "width": 1536,
+      "height": 1024,
+      "archivedOn": "2026-10-14",
+      "promptFile": "生成设计图/指哪打哪_概念探索提示词_v01.md",
+      "sources": [
+        {
+          "fileName": "exec-cc2cf4b1-83b7-4413-a479-27848b2aa5e8.png",
+          "type": "AI 生成",
+          "purpose": "画线、箭尖点名、从箭尾释放的三阶段反馈探索。",
+          "status": "讨论草案，待评审，未实现"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/追踪符箭_Lv1至Lv4_交互进化概念图_v01.png",
+      "label": "四级进化对照",
+      "type": "AI 生成概念图（内置 imagegen）",
+      "version": 1,
+      "status": "讨论草案，待评审，未实现",
+      "purpose": "Lv1 沿线穿透、Lv2 留印回响、Lv3 合围、Lv4 守护与定向开道；均为候选机制。",
+      "bytes": 2947998,
+      "sha256": "0ccb96e4ab07fc05953a1f105e62b3e55e5e88875275d05c91059d535c1401f5",
+      "width": 1774,
+      "height": 887,
+      "archivedOn": "2026-10-14",
+      "promptFile": "生成设计图/指哪打哪_概念探索提示词_v01.md",
+      "sources": [
+        {
+          "fileName": "exec-78c785d4-1ca3-4911-87f8-c287c303eaca.png",
+          "type": "AI 生成",
+          "purpose": "Lv1 沿线穿透、Lv2 留印回响、Lv3 合围、Lv4 守护与定向开道；均为候选机制。",
+          "status": "讨论草案，待评审，未实现"
+        }
+      ]
     }
   ],
   "missingSources": [],
   "unrecoverableHistory": [
     "早期多箭追狐、抽象狐形、跳跃侧身狐狸等迭代的同名工作预览已被后续截图或录制覆盖；未找到独立原件，无法逐版恢复。现存旧版快照不能替代这些历史图片。"
-  ]
+  ],
+  "lastUpdatedOn": "2026-10-14"
 }

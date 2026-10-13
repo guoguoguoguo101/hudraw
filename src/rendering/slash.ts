@@ -26,8 +26,23 @@ export class SlashRenderer{
   for(const s of skills){if(s.rune!=='line'||!s.slash)continue;
    const item=this.items.get(s.id)??this.make(s),level=s.slash.level,stage=SLASH_STAGES[level-1],t=s.age;
    item.root.position.set(s.x,s.y);item.root.rotation=Math.atan2(s.direction.y,s.direction.x);
-   if(item.mirror){item.mirror.visible=s.mirror&&Math.abs(s.direction.x)>.025;item.mirror.position.set(s.x,s.y);item.mirror.rotation=Math.atan2(s.direction.y,-s.direction.x);}
+   if(item.mirror){item.mirror.visible=s.mirror&&!s.slash.path&&Math.abs(s.direction.x)>.025;item.mirror.position.set(s.x,s.y);item.mirror.rotation=Math.atan2(s.direction.y,-s.direction.x);}
    const [core,trail,rip,particles,flash]=item.layers;for(const g of item.layers)g.clear();
+   if(s.slash.path&&level===1){
+    item.evolution!.root.visible=false;item.evolutionMirror!.root.visible=false;if(item.mirror)item.mirror.visible=false;
+    item.root.rotation=0;
+    const alpha=clamp(t/.045)*clamp(1-t/Math.min(s.duration,.38)),path=s.slash.path;
+    const a=path[0],b=path.at(-1)!,cx=(a.x+b.x)/2,cy=(a.y+b.y)/2;
+    const raw=s.geometry.raw,drawn=raw.length>1?Math.hypot(raw.at(-1)!.x-raw[0].x,raw.at(-1)!.y-raw[0].y):s.range;
+    const extend=clamp(t/stage.primary_hit_at),fraction=Math.min(1,drawn/s.range)+(1-Math.min(1,drawn/s.range))*(1-(1-extend)**2);
+    const start={x:cx+(a.x-cx)*fraction,y:cy+(a.y-cy)*fraction},end={x:cx+(b.x-cx)*fraction,y:cy+(b.y-cy)*fraction};
+    for(const [g,width,color,opacity] of [[trail,7,RED,.8],[core,3,WHITE,1]] as const){
+     g.moveTo(start.x-s.x,start.y-s.y).lineTo(end.x-s.x,end.y-s.y);
+     g.stroke({width,color,alpha:alpha*opacity,cap:'round',join:'round'});
+    }
+    for(const hit of s.slash.contacts){const a=clamp(1-(t-hit.at)/.18);flash.circle(hit.x-s.x,hit.y-s.y,8+(1-a)*17).stroke({color:GOLD,width:2,alpha:a});}
+    continue;
+   }
    item.evolution!.root.visible=level!==4;item.evolutionMirror!.root.visible=level!==4;if(level!==4){item.ink?.clear();item.inkMask?.clear();item.evolution!.update(s);if(item.mirror?.visible)item.evolutionMirror!.update({...s,direction:{x:-s.direction.x,y:s.direction.y}});continue;}
    if(level===4){drawUltimate(s,item.layers,item.ink,item.inkMask,item.wave);for(const hit of s.slash.contacts){if(!hit.dead||!hit.kind)continue;let ghost=item.ghosts!.get(hit.id);if(!ghost){const texture=this.art[(hit.kind==='boss'?'oni':hit.kind)+'_body'];if(!texture)continue;ghost=new Container();for(const sign of [-1,1]){const part=new Container(),sprite=new Sprite(texture);sprite.anchor.set(.5);const mask=new Graphics().rect(-texture.width/2,sign<0?-texture.height/2:0,texture.width,texture.height/2).fill(0xffffff);part.addChild(sprite,mask);part.mask=mask;ghost.addChild(part);}item.root.addChild(ghost);item.ghosts!.set(hit.id,ghost);}const age=t-hit.at,dx=hit.x-s.x,dy=hit.y-s.y;ghost.position.set(dx*s.direction.x+dy*s.direction.y+age*s.slash.ultimate!.knockbackForce*.4,-dx*s.direction.y+dy*s.direction.x-age*90);ghost.rotation=-item.root.rotation+age*3;ghost.scale.set(enemyScale(hit.kind));ghost.alpha=Math.max(0,1-age/.16);ghost.children.forEach((part,i)=>{part.x=age*35*(i?-1:1);part.y=age*95*(i?1:-1);part.rotation=age*(i?2:-2);});}item.root.setChildIndex(item.wave!.root,0);item.root.setChildIndex(trail,1);item.root.setChildIndex(rip,2);item.root.setChildIndex(core,3);item.root.setChildIndex(particles,4);item.root.setChildIndex(flash,item.root.children.length-1);continue;}
 

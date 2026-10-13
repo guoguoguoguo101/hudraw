@@ -5,7 +5,8 @@ export type TouchHandler=(event:TouchEvent)=>void;
 export interface WechatAPI{
  createCanvas():HTMLCanvasElement;
  createImage():HTMLImageElement;
- getWindowInfo():{windowWidth:number;windowHeight:number;pixelRatio:number};
+ getWindowInfo():{windowWidth:number;windowHeight:number;pixelRatio:number;safeArea?:{top:number;bottom:number}};
+ getMenuButtonBoundingClientRect?():{top:number;bottom:number};
  getDeviceInfo():{platform:string;system:string;model:string};
  getFileSystemManager():{readFile(options:{filePath:string;encoding:'utf8';success:(result:{data:string})=>void;fail:(error:unknown)=>void}):void};
  getStorageSync(key:string):unknown;

@@ -444,10 +444,33 @@
           "repositorySource": "assets/vfx/fox_guardian/keyframes.png"
         }
       ]
+    },
+    {
+      "file": "生成设计图/灵狐降灵_Lv4_定向护送分镜概念图_v01.png",
+      "label": "守护Lv4定向演出",
+      "type": "AI 生成概念图（内置 imagegen）",
+      "version": 1,
+      "status": "讨论草案，待评审，未实现",
+      "purpose": "守护留在角色身边，尾卷响应箭头开道并在落点打击的候选 Lv4 分镜。",
+      "bytes": 2946224,
+      "sha256": "49833f9b67342b3dd3bab568e516d81bfc62ea84b1655e65b5f00b39f5c9449d",
+      "width": 1536,
+      "height": 1024,
+      "archivedOn": "2026-10-14",
+      "promptFile": "../追踪符箭/生成设计图/指哪打哪_概念探索提示词_v01.md",
+      "sources": [
+        {
+          "fileName": "exec-408aadbc-430c-4dde-8c1c-84709b620296.png",
+          "type": "AI 生成",
+          "purpose": "守护留在角色身边，尾卷响应箭头开道并在落点打击的候选 Lv4 分镜。",
+          "status": "讨论草案，待评审，未实现"
+        }
+      ]
     }
   ],
   "missingSources": [],
   "unrecoverableHistory": [
     "关键帧及动画曾在补充躯干、前肢、法衣连接和姿态调整时使用同名文件重新导出；这里保留现存最终工作快照，已被覆盖的中间稿未找到独立原件。"
-  ]
+  ],
+  "lastUpdatedOn": "2026-10-14"
 }

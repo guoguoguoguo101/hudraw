@@ -1,4 +1,6 @@
-import {Container,Graphics} from 'pixi.js';
+import {Container,Graphics,Text} from 'pixi.js';
+import type {InputController} from '../input/controller';
+import {COMBAT} from '../gameplay/config';
 import {text} from './interface';
 import {SKILL_LEVELS,type ActiveRune} from '../gameplay/skill-levels';
 import type {Game} from '../gameplay/game';
@@ -10,11 +12,12 @@ const GOLD=0xe7ba68,INK=0x192027,PAPER=0xfff7e8;
 type Zone={x:number;y:number;w:number;h:number;run:()=>void};
 /** Canvas controls shared by browser and WeChat, without HTML or DOM input. */
 export class PracticeUI{
- root=new Container();private picker:ActiveRune|null=null;private zones:Zone[]=[];private key='';
- constructor(private game:Game,private cancelDrawing:()=>void,private cast:(rune:ActiveRune)=>void){this.root.visible=false;}
+ root=new Container();private picker:ActiveRune|null=null;private zones:Zone[]=[];private key='';private info:Text|null=null;
+ constructor(private game:Game,private cancelDrawing:()=>void,private cast:(rune:ActiveRune)=>void,private tune:()=>void=()=>{},private input?:()=>InputController){this.root.visible=false;}
  reset(){this.picker=null;this.key='';}
  handle(e:InputEvent){
   if(!this.root.visible||e.kind!=='down')return false;
+  e={...e,y:e.y-this.root.y};
   const zone=this.zones.find(z=>e.x>=z.x&&e.x<=z.x+z.w&&e.y>=z.y&&e.y<=z.y+z.h);
   if(zone){this.cancelDrawing();zone.run();this.key='';this.update();return true;}
   if(this.picker){this.cancelDrawing();this.picker=null;this.key='';this.update();return true;}
@@ -23,7 +26,7 @@ export class PracticeUI{
  update(){
   this.root.visible=this.game.practice&&this.game.active;
   if(!this.root.visible)return;
-  const key=JSON.stringify([this.picker,this.game.practiceLevels]);if(key===this.key)return;this.key=key;
+  const key=JSON.stringify([this.picker,this.game.practiceLevels,this.game.ink.unlimited]);if(key===this.key){this.updateInfo();return;}this.key=key;
   this.root.removeChildren().forEach(child=>child.destroy({children:true}));this.zones=[];
   this.root.addChild(new Graphics().roundRect(16,1172,688,100,18).fill({color:INK,alpha:.97}).stroke({color:GOLD,width:1,alpha:.5}));
   for(const [i,rune] of RUNES.entries()){
@@ -33,6 +36,9 @@ export class PracticeUI{
    this.button(x+8,1224,146,36,()=>{this.picker=null;this.cast(rune);},false);
    text(this.root,'施放',x+81,1242,19,GOLD,{letterSpacing:2});
   }
+  this.button(505,1080,183,42,()=>{this.picker=null;this.tune();},false);text(this.root,'画笔 / 特效',596,1101,19,GOLD,{letterSpacing:0});
+  this.button(48,1080,268,42,()=>this.game.ink.setUnlimited(!this.game.ink.unlimited),false);text(this.root,this.game.ink.unlimited?'无限灵墨 · 切换有限':'有限灵墨 · 切换无限',182,1101,17,GOLD,{letterSpacing:0});
+  this.info=this.picker?null:text(this.root,'',360,1144,17,GOLD,{letterSpacing:0});
   if(this.picker){
    const rune=this.picker,levels=SKILL_LEVELS[rune];
    this.root.addChild(new Graphics().roundRect(32,952,656,205,20).fill({color:INK,alpha:.98}).stroke({color:GOLD,width:1}));
@@ -46,7 +52,9 @@ export class PracticeUI{
    });
    text(this.root,'画符或点「施放」试招 · 点击画境收起',360,1137,15,GOLD,{letterSpacing:0});
   }
+  this.updateInfo();
  }
+ private updateInfo(){if(!this.info)return;const input=this.input?.();this.info.text=input?.drawing?`收笔释放 · ${(Math.max(0,COMBAT.drawLimit-input.drawAge)).toFixed(1)}秒${input.exhausted?' · 灵墨耗尽':''}`:input?.last&&input.traceAge<.7?`${input.last.reason}${input.timedOut?' · 自动封笔':''}`:'短划出刀 · 未成符快速消散';}
  private button(x:number,y:number,w:number,h:number,run:()=>void,selected:boolean){
   this.root.addChild(new Graphics().roundRect(x,y,w,h,10).fill({color:selected?0x562a34:0x29333b}).stroke({color:GOLD,width:1,alpha:selected?1:.35}));
   this.zones.push({x,y,w,h,run});

@@ -1,0 +1,30 @@
+{
+  "flow": {
+    "kind": "flow",
+    "width": 28,
+    "pen": "fox",
+    "raw": 60,
+    "draw": false
+  },
+  "burst": {
+    "kind": "burst",
+    "center": {
+      "x": 247.67242063325028,
+      "y": 642.8275823213694
+    },
+    "hits": 0,
+    "last": "ink",
+    "points": 22,
+    "casts": 2
+  },
+  "timeout": {
+    "casts": 1,
+    "timeout": true
+  },
+  "viewports": [
+    390,
+    375,
+    430
+  ],
+  "errors": []
+}

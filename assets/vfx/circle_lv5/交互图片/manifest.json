@@ -4,8 +4,8 @@
   "archived_on": "2026-10-13",
   "scope": "本对话用户附件、矢量设计图、实机截图、对照图与动画",
   "version_policy": "v01 等为归档版本序号，不是原实现迭代次数",
-  "unique_files": 22,
-  "source_occurrences": 27,
+  "unique_files": 74,
+  "source_occurrences": 79,
   "user_upload_occurrences": 14,
   "user_reference_unique_files": 10,
   "items": [
@@ -363,6 +363,841 @@
           "purpose": "Core、Inner、Outer、Scroll、Ofuda、Fox Spirit、Shrine Props、Light FX 八层说明。"
         }
       ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_攻守概念图_v01.svg",
+      "source_type": "矢量概念讨论图",
+      "version": "v01",
+      "status": "讨论首稿，已由 v02 排版修订图替代；并非用户否定记录",
+      "created_on": "2026-10-14",
+      "bytes": 43128,
+      "sha256": "80ae2804394eda9d5afce833c640eed724182feac34b0287c921f5625e64400c",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_攻守概念图_v01.svg",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：远处镇妖阵与包含狐狸的护身阵，保留原地阵心、攻守位置、圈内目标与平面视觉。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_攻守概念图_v01.png",
+      "source_type": "矢量概念讨论图",
+      "version": "v01",
+      "status": "讨论首稿，已由 v02 排版修订图替代；并非用户否定记录",
+      "created_on": "2026-10-14",
+      "bytes": 366837,
+      "sha256": "eb6eaaa287d9e6c433aaea4908582ecbc2f6bc770821f47508e79150af1e9d93",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_攻守概念图_v01.png",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：远处镇妖阵与包含狐狸的护身阵，保留原地阵心、攻守位置、圈内目标与平面视觉。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_大小与容错讨论图_v01.svg",
+      "source_type": "矢量概念讨论图",
+      "version": "v01",
+      "status": "讨论首稿，已由 v02 排版修订图替代；并非用户否定记录",
+      "created_on": "2026-10-14",
+      "bytes": 34559,
+      "sha256": "f1cebc100f474672068405777957570921c7fa6e880bb851cebe9d0a912e80be",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_大小与容错讨论图_v01.svg",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：小中大圈取舍、歪圈与缺口容错、包含狐狸优先护身、全屏演出不等于全屏命中。数值为示意。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_大小与容错讨论图_v01.png",
+      "source_type": "矢量概念讨论图",
+      "version": "v01",
+      "status": "讨论首稿，已由 v02 排版修订图替代；并非用户否定记录",
+      "created_on": "2026-10-14",
+      "bytes": 277854,
+      "sha256": "a8f6bcc533f3d42753f8a8d620a519153abc4616216684dc9399d697957c9179",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_大小与容错讨论图_v01.png",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：小中大圈取舍、歪圈与缺口容错、包含狐狸优先护身、全屏演出不等于全屏命中。数值为示意。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_攻守概念图_v02.svg",
+      "source_type": "矢量概念讨论图",
+      "version": "v02",
+      "status": "新玩法讨论稿，未实现，待用户讨论",
+      "created_on": "2026-10-14",
+      "bytes": 42979,
+      "sha256": "11fc9477b8f1a7cc698407137c9e9bdb1c313caab9393d6707e09f6795dff9c7",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_攻守概念图_v02.svg",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：远处镇妖阵与包含狐狸的护身阵，保留原地阵心、攻守位置、圈内目标与平面视觉。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_攻守概念图_v02.png",
+      "source_type": "矢量概念讨论图",
+      "version": "v02",
+      "status": "新玩法讨论稿，未实现，待用户讨论",
+      "created_on": "2026-10-14",
+      "bytes": 364866,
+      "sha256": "b6523c7ad89b3cec2b9aabda86572188c8c41906bf96e0b6509e6ad8e4df5b53",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_攻守概念图_v02.png",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：远处镇妖阵与包含狐狸的护身阵，保留原地阵心、攻守位置、圈内目标与平面视觉。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_大小与容错讨论图_v02.svg",
+      "source_type": "矢量概念讨论图",
+      "version": "v02",
+      "status": "新玩法讨论稿，未实现，待用户讨论",
+      "created_on": "2026-10-14",
+      "bytes": 34265,
+      "sha256": "ef5e7f96f5cafe5d12f5bac392912d7fa6c7c2706a6334fea3eecaba5d8290ec",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_大小与容错讨论图_v02.svg",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：小中大圈取舍、歪圈与缺口容错、包含狐狸优先护身、全屏演出不等于全屏命中。数值为示意。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_一符两用_大小与容错讨论图_v02.png",
+      "source_type": "矢量概念讨论图",
+      "version": "v02",
+      "status": "新玩法讨论稿，未实现，待用户讨论",
+      "created_on": "2026-10-14",
+      "bytes": 244146,
+      "sha256": "6505a4883ed58caa2ea242c6b2a748fda954db66df53c9e64679b536ea6e1324",
+      "sources": [
+        {
+          "source_name": "圆形护阵_一符两用_大小与容错讨论图_v02.png",
+          "source_type": "本次概念设计",
+          "purpose": "讨论稿：小中大圈取舍、歪圈与缺口容错、包含狐狸优先护身、全屏演出不等于全屏命中。数值为示意。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_镇妖阵实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 273853,
+      "sha256": "ee84adb57c0ee1a2f4312687a4d541c0151642ea6e5bb9427c92e8fbeb8f0f1d",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1_镇妖阵实机预览图_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_镇妖阵实机预览图_v02.png",
+      "source_type": "实机截图",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 273727,
+      "sha256": "6ed578d90a2d8e76db7470094a74fec684b90d20aaf95b0897b330dc714a5186",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1_镇妖阵实机预览图_v02.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_镇妖阵实机预览图_v03.png",
+      "source_type": "实机截图",
+      "version": "v03",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 273336,
+      "sha256": "f68f3645c7de8db37108609fad0b86e65f165be2c65bc39806602096dc8139d8",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1_镇妖阵实机预览图_v03.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv4_镇妖阵对照图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 798994,
+      "sha256": "0533d47e5d5fbd578182829b2bb73cbba4e3c54ff0d3af6d3514c3c747869c56",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵对照图_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv4_镇妖阵对照图_v02.png",
+      "source_type": "实机截图",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 797355,
+      "sha256": "0d7dfeaaeef8aca6f677dabce06ce8db4e1c87c3beab9461868382f3d8545399",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵对照图_v02.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv4_镇妖阵对照图_v03.png",
+      "source_type": "实机截图",
+      "version": "v03",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 773919,
+      "sha256": "0fac52cc9d669ce814ac3545a3a1f990d5395e68cbf4ce87a0b70012296d5a0e",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵对照图_v03.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_镇妖阵实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 286375,
+      "sha256": "9455d3c3a913fbd2de9501d4acd254ac4742ba336a8c73375b87af1ee05f09ca",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv2_镇妖阵实机预览图_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_镇妖阵实机预览图_v02.png",
+      "source_type": "实机截图",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 286664,
+      "sha256": "7c60d8e26f4cf07e376db47460c693177ebac81e940dfe69297cd173ca7ce9bd",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv2_镇妖阵实机预览图_v02.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_镇妖阵实机预览图_v03.png",
+      "source_type": "实机截图",
+      "version": "v03",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 287357,
+      "sha256": "5c94e4aa0c762c4de1f7e2a426f1d1ce5b12aefce7d404536ac6645664947502",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv2_镇妖阵实机预览图_v03.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_镇妖阵实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 297753,
+      "sha256": "7d5aa6aecf3a7efeaee9e06d480f18d21a5d12f0703c91919882882b5074a8a7",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv3_镇妖阵实机预览图_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_镇妖阵实机预览图_v02.png",
+      "source_type": "实机截图",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 297276,
+      "sha256": "b6bf6efd0947b1a8d8c73dbc862ac50fffbd509ae339933f904bfa1d2f489125",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv3_镇妖阵实机预览图_v02.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_镇妖阵实机预览图_v03.png",
+      "source_type": "实机截图",
+      "version": "v03",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 296689,
+      "sha256": "71a7955980ab14a0ab61096fe940783facc001db7bd4c5831cf2747af4feb4b8",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv3_镇妖阵实机预览图_v03.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_四门镇封与破阵动画_v01.gif",
+      "source_type": "实机动画",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 3089281,
+      "sha256": "c1efc8b5110d62935938e05955b135d934377212910125c3273b0f8644a78c9d",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门镇封与破阵动画_v01.gif",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "Lv4 四门镇封、持续状态、破阵冲击和消散的实机动画。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_四门镇封与破阵动画_v02.gif",
+      "source_type": "实机动画",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 2942262,
+      "sha256": "413fe1b263a18f2c8606aaef3a9f25955d5907694501bfd921f3608495fecea4",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门镇封与破阵动画_v02.gif",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "Lv4 四门镇封、持续状态、破阵冲击和消散的实机动画。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_镇妖阵实机预览图_v01.png",
+      "source_type": "实机截图",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 345271,
+      "sha256": "22443317ed1651d1385ea2eeba5842aeb9a8fb59fa8ee9f25cd3028e764d8e9f",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_镇妖阵实机预览图_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_镇妖阵实机预览图_v02.png",
+      "source_type": "实机截图",
+      "version": "v02",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 345235,
+      "sha256": "43f43215788a32eae35297cd1e4a58d2bb8113e9c49fc43c96153d05bb7fe76b",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_镇妖阵实机预览图_v02.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_镇妖阵实机预览图_v03.png",
+      "source_type": "实机截图",
+      "version": "v03",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 321184,
+      "sha256": "97f49f99d5c0e1ebf9232c95b646228e76c442c156ad5c889ae0cf2abb07dab9",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_镇妖阵实机预览图_v03.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "画圈圆心落点、固定等级范围、圈内敌人与圈外狐狸的实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v01.png",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 381792,
+      "sha256": "c2103164aa2043758f5bf09358ae44ec7e8b84bb207952649be0344d1b891e9a",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "镇妖阵运行时路径直接导出，可编辑；独立展示圆环、符纸、四门与封印结构。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v01.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 144592,
+      "sha256": "1e3c403000db0552aebd512ca0ce3b7696ab9119706a024b191362737b5276f8",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v01.svg",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "镇妖阵运行时路径直接导出，可编辑；独立展示圆环、符纸、四门与封印结构。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v01.png",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 196622,
+      "sha256": "23668f8476aa417ea75f3c138eef9cb0c05073349fe2f04abb296807b52c798f",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v01.png",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "镇妖阵运行时路径直接导出，可编辑；独立展示圆环、符纸、四门与封印结构。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v01.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v01",
+      "status": "AI 重设计前版本；用户认为元素过少、表现较弱，保留过程记录",
+      "created_on": "2026-10-14",
+      "bytes": 60587,
+      "sha256": "4fad55a0e00291fd4738ea95e23d380d0f300cf7e8490116e614c91beecac9ea",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v01.svg",
+          "source_type": "本次实机验证与矢量导出",
+          "purpose": "镇妖阵运行时路径直接导出，可编辑；独立展示圆环、符纸、四门与封印结构。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v02.png",
+      "source_type": "运行时矢量导出",
+      "version": "v02",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 586126,
+      "sha256": "bf0f93dbc67fab768127c1cd123ccd1f169e6246380aaaae75ce3eee1ddef080",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v02.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v02.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v02",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 466022,
+      "sha256": "2b8c1155f6e6fa76823e43ba537934759bada705371ca6121498a52ce6fc2525",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v02.svg",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v03.png",
+      "source_type": "运行时矢量导出",
+      "version": "v03",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 598427,
+      "sha256": "59dc974c53fe0351e1edb4bb2149a84a0658bf3b606cec69e11ca19929c8ef17",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v03.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v03.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v03",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 477177,
+      "sha256": "b9483219bfbe0822b61a7b4beadbadea6d86d56ac75c6c4290ce7bdb696b2f87",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵矢量结构对照_v03.svg",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v02.png",
+      "source_type": "运行时矢量导出",
+      "version": "v02",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 312108,
+      "sha256": "a817e166b56597c5a2cf7fbcfefeab0b015937d114997e9c10a521a584664503",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v02.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v02.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v02",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 210261,
+      "sha256": "a50b1ce020a53883db0dbfd7a4ab0723ceecc8d23e802caa158d4ef4181b7555",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v02.svg",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v03.png",
+      "source_type": "运行时矢量导出",
+      "version": "v03",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 322369,
+      "sha256": "04f9080b49e1edc05026752a74f973f047ef102aa95b48efe74a695855d55c58",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v03.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_四门封妖矢量实机导出_v03.svg",
+      "source_type": "运行时矢量导出",
+      "version": "v03",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 213735,
+      "sha256": "732f8b7332b56a0c4f8d0fb610fe2ab6694b1e27a15e32ca77a7f666176f7cf9",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门封妖矢量实机导出_v03.svg",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "运行时纯矢量结构导出；直接使用代码内路径，可编辑，无概念位图贴图。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_山海镇印_AI概念图_v01.png",
+      "source_type": "AI 概念图",
+      "version": "v01",
+      "status": "AI 方向探索，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 2395950,
+      "sha256": "6f8189bb8b60f1788e29aa4e1cbf647eca2af5df142c41189553a1cfb8251c00",
+      "prompt_file": "生成设计图/镇妖阵_AI探索提示词_v01.json",
+      "sources": [
+        {
+          "source_name": "exec-ff3f3726-a48a-4338-950f-2c239218bd3d.png",
+          "source_type": "内置 imagegen",
+          "purpose": "山海绘卷、云纹与仙鹤备选方向；已保存供比较。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_百符天牢_AI概念图_v01.png",
+      "source_type": "AI 概念图",
+      "version": "v01",
+      "status": "AI 方向探索，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 2250522,
+      "sha256": "d8ec0d8de801a1fb670c2f676ce69ab3721f7c34f1ac76a9aab0beff5167fd60",
+      "prompt_file": "生成设计图/镇妖阵_AI探索提示词_v01.json",
+      "sources": [
+        {
+          "source_name": "exec-cc7758f1-ca68-413e-852d-84d5ccb5b60e.png",
+          "source_type": "内置 imagegen",
+          "purpose": "采用可拆分的图形元素作为矢量重绘参考：四门编绳、纸垂、结扣、灯笼、内向符刃与红白流焰。"
+        }
+      ]
+    },
+    {
+      "file": "生成设计图/圆形护阵_Lv4_赤绳封门_AI概念图_v01.png",
+      "source_type": "AI 概念图",
+      "version": "v01",
+      "status": "AI 方向探索，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 2320446,
+      "sha256": "eafbd7043db04c3c4b3c3730f3811a883d9c4fc9a95f7cc3772c265a2da4c331",
+      "prompt_file": "生成设计图/镇妖阵_AI探索提示词_v01.json",
+      "sources": [
+        {
+          "source_name": "exec-64bfebeb-6d17-4163-8b1a-0563d67755a6.png",
+          "source_type": "内置 imagegen",
+          "purpose": "采用可拆分的图形元素作为矢量重绘参考：四门编绳、纸垂、结扣、灯笼、内向符刃与红白流焰。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_镇妖阵实机预览图_v04.png",
+      "source_type": "实机截图",
+      "version": "v04",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 246727,
+      "sha256": "52c381a7a9c489ec89483a67ddddecbd5a2d8d291d54991873e5cc3781c2c4d9",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1_镇妖阵实机预览图_v04.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1_镇妖阵实机预览图_v05.png",
+      "source_type": "实机截图",
+      "version": "v05",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 248427,
+      "sha256": "be9ade3d80d0aae2a8aa0433829ccf15011c31e8487082ac132be550a449d87c",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1_镇妖阵实机预览图_v05.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv4_镇妖阵对照图_v04.png",
+      "source_type": "实机截图",
+      "version": "v04",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 906591,
+      "sha256": "2f90188fd6e02313f91701fd3575ea247aee39b85b485434abbc4eb91e94705e",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵对照图_v04.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv1至Lv4_镇妖阵对照图_v05.png",
+      "source_type": "实机截图",
+      "version": "v05",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 906965,
+      "sha256": "ba1c330883fbb573c65a4ed9e7eb2776da7a145eef4cd1b4018bf06046d35e91",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv1至Lv4_镇妖阵对照图_v05.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_镇妖阵实机预览图_v04.png",
+      "source_type": "实机截图",
+      "version": "v04",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 267526,
+      "sha256": "2824b4e15de31bd780865f7a329ed54e47438b52aae365d2fd6286cc7a5cb8c0",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv2_镇妖阵实机预览图_v04.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv2_镇妖阵实机预览图_v05.png",
+      "source_type": "实机截图",
+      "version": "v05",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 268119,
+      "sha256": "f9202a1eb5ea0807d11122cc2c6ded4aa7934420008ea439add46f7d1b3ab31b",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv2_镇妖阵实机预览图_v05.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_镇妖阵实机预览图_v04.png",
+      "source_type": "实机截图",
+      "version": "v04",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 283420,
+      "sha256": "4155e107f3ed6dcae63bf7d802754c6c1eaceec39d45f5f7bcb14b342e967c09",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv3_镇妖阵实机预览图_v04.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv3_镇妖阵实机预览图_v05.png",
+      "source_type": "实机截图",
+      "version": "v05",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 283182,
+      "sha256": "93d991d3eb575484e121a07abb022c9664c1a05a09300cd19d4c7134fea05411",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv3_镇妖阵实机预览图_v05.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_四门镇封与破阵动画_v03.gif",
+      "source_type": "实机动画",
+      "version": "v03",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 3324280,
+      "sha256": "ea5d924ff45938f0e3209b6be53b5ccc1f700a1003b5b4411b9ca55e7ddb947b",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门镇封与破阵动画_v03.gif",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 探索后的四门镇妖阵：编绳收紧、灯笼飘带摆动、卷曲火焰、持续状态与破阵消散。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_四门镇封与破阵动画_v04.gif",
+      "source_type": "实机动画",
+      "version": "v04",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 3367221,
+      "sha256": "56435ae55e4c2b1708cf10897155f091d3ef44e838da9789378bf2d0b4296d52",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_四门镇封与破阵动画_v04.gif",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 探索后的四门镇妖阵：编绳收紧、灯笼飘带摆动、卷曲火焰、持续状态与破阵消散。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_镇妖阵实机预览图_v04.png",
+      "source_type": "实机截图",
+      "version": "v04",
+      "status": "AI 重绘过程版本；已进一步修订卷焰、云纹和结扣位置",
+      "created_on": "2026-10-14",
+      "bytes": 304009,
+      "sha256": "516a1d3af193f86d1ec655f49abad2193a0b331db70a16750b50ffe71e891db0",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_镇妖阵实机预览图_v04.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
+    },
+    {
+      "file": "预览实机图/圆形护阵_Lv4_镇妖阵实机预览图_v05.png",
+      "source_type": "实机截图",
+      "version": "v05",
+      "status": "当前 AI 元素重绘实现，待用户评审",
+      "created_on": "2026-10-14",
+      "bytes": 305049,
+      "sha256": "3d731a19c05e63697b88023841c43794aec18c32416711cf49983f3c834dd446",
+      "sources": [
+        {
+          "source_name": "圆形护阵_Lv4_镇妖阵实机预览图_v05.png",
+          "source_type": "本次实机与矢量导出",
+          "purpose": "AI 元素重绘后的等级递进与镇妖阵落点实机预览。"
+        }
+      ]
     }
   ],
   "missing_sources": [],
@@ -387,5 +1222,6 @@
       "scope": "全屏六阶段改版之前的动画",
       "reason": "同名 GIF 被当前全屏分层版覆盖，旧动画原文件无法恢复"
     }
-  ]
+  ],
+  "last_updated_on": "2026-10-14"
 }

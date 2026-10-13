@@ -27,7 +27,7 @@ export class SlashEvolution {
   for(const g of [this.outer,this.clouds,this.trail,this.flames,this.body,this.mask,this.backEdge,this.frontEdge,this.core,this.papers,this.impact,this.dissolve])g.clear();
   this.landscape.visible=false;this.root.alpha=1;
   const dx=s.direction.x,dy=s.direction.y,edge=Math.min(Math.abs(dx)>.001?(dx>0?698-s.x:s.x-22)/Math.abs(dx):Infinity,Math.abs(dy)>.001?(dy>0?1180-s.y:s.y-175)/Math.abs(dy):Infinity);
-  const reach=Math.max(120,Math.min(s.range,edge-12,lv===5?620:lv===3?560:480));
+  const reach=s.slash?.path?s.range:Math.max(120,Math.min(s.range,edge-12,lv===5?620:lv===3?560:480));
   const head=18+reach*q.travel,tail=Math.max(14,head-(lv===1?reach*.68:lv===2?reach*.8:reach*.9));
   if(t<q.launch){const a=clamp(t/q.launch);this.core.moveTo(12,0).quadraticCurveTo(25,-5,40*a,0).stroke({color:GOLD,width:2,alpha:Math.sin(a*Math.PI)});if(lv===5){this.flames.moveTo(-17,-14).lineTo(11,-18).lineTo(-3,13).lineTo(17,9).stroke({color:RED,width:2,alpha:1-a*.5});this.core.moveTo(-24,12).bezierCurveTo(-5,23,18,-13,36,0).stroke({color:GOLD,width:2,alpha:.8});}}
   if(lv===2&&t>=q.launch){drawPaperLight(s,{outer:this.outer,core:this.core,trail:this.trail,flames:this.flames,papers:this.papers,sparks:this.dissolve},reach,head,fade);this.hits(s,fade);return;}

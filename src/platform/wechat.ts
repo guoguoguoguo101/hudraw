@@ -5,6 +5,7 @@ import type {CanvasSurface,InputEvent,PlatformAdapter,Sound} from './adapter';
 import {wechat as wx,type TouchHandler} from './wechat-api';
 import {WechatDiagnostics} from './wechat-diagnostics';
 import type {FrameSample} from './frame-sample';
+import {gameViewport} from './viewport';
 
 export function readPackageText(filePath:string):Promise<string>{
  return new Promise((resolve,reject)=>{
@@ -13,8 +14,9 @@ export function readPackageText(filePath:string):Promise<string>{
  });
 }
 export function viewport(){
- const {windowWidth:w,windowHeight:h}=wx.getWindowInfo(),scale=Math.min(w/720,h/1280);
- return {x:(w-720*scale)/2,y:(h-1280*scale)/2,width:720*scale,height:1280*scale,scale,screenWidth:w,screenHeight:h};
+ const {windowWidth:w,windowHeight:h,safeArea}=wx.getWindowInfo();
+ const capsule=wx.getMenuButtonBoundingClientRect?.();
+ return gameViewport(w,h,Math.max(safeArea?.top??0,capsule?capsule.bottom+8:0),safeArea?Math.max(0,h-safeArea.bottom):0);
 }
 export class WechatAdapter implements PlatformAdapter{
  diagnostic=new WechatDiagnostics();
@@ -56,7 +58,7 @@ export class WechatAdapter implements PlatformAdapter{
    if(!touch)return;
    const rect=viewport(),point=worldPoint({x:touch.clientX,y:touch.clientY},rect);
    if(kind==='down'){
-    if(point.x<0||point.y<0||point.x>720||point.y>1280)return;
+    if(point.x<0||point.y<rect.top||point.x>720||point.y>rect.bottom)return;
     active=touch.identifier;
    }
    fn({...point,id:touch.identifier,kind});
@@ -77,5 +79,5 @@ export class WechatAdapter implements PlatformAdapter{
  unlockAudio(){this.sound(synth=>synth.unlock());}
  setMuted(muted:boolean){this.sound(synth=>synth.mute(muted));}
  query(_key:string){return null;}
- pixelRatio(){return Math.min(wx.getWindowInfo().pixelRatio||1,1.5);}
+ pixelRatio(){return Math.min(wx.getWindowInfo().pixelRatio||1,2);}
 }

@@ -13,7 +13,7 @@ const xy=async(x,y)=>{const b=await canvas.boundingBox();return {x:b.x+b.width*x
 const click=async(x,y)=>{const p=await xy(x,y);await page.mouse.click(p.x,p.y);await page.waitForTimeout(180);};
 const capture=async(name)=>{await canvas.screenshot({path:path.join(out,`${name}.png`)});};
 await capture('menu');
-await click(360,843);await capture('home');
+await click(475,1060);await click(360,967);await capture('home');
 await click(205,405);await capture('spells');await click(350,350);await capture('spell-detail');
 await click(58,70);await click(515,405);await capture('enemies');await click(350,350);await capture('enemy-detail');
 await click(58,70);await click(205,580);await capture('chapters');await click(350,265);await capture('chapter-detail');

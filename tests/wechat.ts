@@ -3,6 +3,16 @@ import fs from 'node:fs/promises';
 import ts from 'typescript';
 import vm from 'node:vm';
 import type {TouchEvent,TouchHandler} from '../src/platform/wechat-api';
+import {CanvasTextMetrics,TextStyle} from 'pixi.js';
+import {installWechatTextMetrics} from '../src/platform/wechat-text';
+
+const originalMeasureFont=CanvasTextMetrics.measureFont;
+CanvasTextMetrics.measureFont=()=>({ascent:18,descent:0,fontSize:18});
+installWechatTextMetrics();
+assert.deepEqual(CanvasTextMetrics.measureFont('20px serif'),{ascent:20,descent:5,fontSize:25},'native missing descent must leave room below the baseline');
+assert.deepEqual(CanvasTextMetrics.measureFont('40px serif'),{ascent:40,descent:10,fontSize:50},'font bounds must scale with text size');
+assert.ok((TextStyle.defaultTextStyle.padding??0)>=4,'text textures need edge padding');
+CanvasTextMetrics.measureFont=originalMeasureFont;
 
 const handlers=new Map<string,TouchHandler>();
 const hides:(()=>void)[]=[];
@@ -19,11 +29,24 @@ Object.assign(globalThis,{wx:{
  getFileSystemManager:()=>({readFile:({filePath,success,fail}:{filePath:string;success:(r:{data:string})=>void;fail:(e:unknown)=>void})=>void fs.readFile(filePath,'utf8').then(data=>success({data}),fail)}),
 }});
 const {WechatAdapter,viewport,readPackageText}=await import('../src/platform/wechat');
+const {gameViewport}=await import('../src/platform/viewport');
+for(const [w,h] of [[360,640],[390,844],[430,932],[390,1000]]){
+ const rect=gameViewport(w,h,84,34);
+ assert.ok(Math.abs(rect.y+rect.top*rect.scale)<1e-8);
+ assert.ok(Math.abs(rect.y+rect.bottom*rect.scale-h)<1e-8);
+ assert.ok(Math.abs(rect.y+rect.headerOffset*rect.scale-84)<1e-8,'HUD clears menu capsule');
+ assert.ok(Math.abs(rect.y+(1280+rect.footerOffset)*rect.scale-(h-34))<1e-8,'footer clears home indicator');
+ assert.equal(rect.width/720,rect.height/1280,'characters retain uniform scale');
+}
 const adapter=new WechatAdapter(),events:import('../src/platform/adapter').InputEvent[]=[];
 const dispose=adapter.input({width:720,height:1280},event=>events.push(event));
 function send(kind:string,id:number,x:number,y:number){const touches=[{identifier:id,clientX:x,clientY:y}];handlers.get(kind)!({changedTouches:touches,touches} as TouchEvent);}
 const v=viewport();
-send('down',1,195,10);assert.equal(events.length,0,'letterbox must not start drawing');
+assert.equal(v.y+v.top*v.scale,0,'scenery reaches the top of a tall screen');
+assert.equal(v.y+v.bottom*v.scale,844,'scenery reaches the bottom of a tall screen');
+assert.ok(Math.abs(v.y+(32+v.headerOffset)*v.scale-32*v.scale)<1e-8,'HUD anchors to top');
+assert.ok(Math.abs(v.y+(1252+v.footerOffset)*v.scale-(844-28*v.scale))<1e-8,'legend anchors to bottom');
+send('down',1,195,-10);assert.equal(events.length,0,'outside screen must not start drawing');
 send('down',1,195,422);assert.equal(events[0].x,360);assert.equal(events[0].y,640);
 send('down',2,100,200);send('move',2,100,200);assert.equal(events.length,1,'second finger ignored');
 send('move',1,v.x+v.width,v.y+v.height);assert.equal(events[1].x,720);assert.equal(events[1].y,1280);
@@ -32,7 +55,7 @@ send('up',1,195,422);assert.equal(events[2].kind,'up');
 send('down',3,195,422);hides.forEach(fn=>fn());send('down',4,195,422);assert.equal(events.at(-1)?.id,4,'hide releases active finger');
 dispose();assert.equal(handlers.size,0);
 assert.equal(adapter.read('progress'),null);assert.equal(adapter.write('progress','saved'),true);assert.equal(adapter.read('progress'),'saved');
-assert.equal(adapter.pixelRatio(),1.5);
+assert.equal(adapter.pixelRatio(),2);
 adapter.recordFrame({intervalMs:17,updateMs:2,state:'playing',enemies:12,skills:[],low:true,completed:true});adapter.finishFrame();
 const savedDiagnostic=storage.get('linghu-last-diagnostics');assert.ok(savedDiagnostic);
 const restarted=new WechatAdapter();restarted.recordFrame({intervalMs:17,updateMs:1,state:'menu',enemies:0,skills:[],low:true,completed:true});restarted.finishFrame();assert.equal(storage.get('linghu-last-diagnostics'),savedDiagnostic,'menu on restart must preserve previous combat report');

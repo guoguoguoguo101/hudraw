@@ -29,13 +29,13 @@ test('one projectile retargets within original sector, cannot hit twice',()=>{
 const isolated=()=>{const g=new Game();g.start();g.director.disabled=true;g.duration=1e9;g.maxHp=g.life=1e6;return g;};
 test('four real skill pipelines, all brush levels and higher skill levels inherit correctly',()=>{
  for(const rune of ['line','circle','triangle','z'] as const)for(let brushLevel=1;brushLevel<=3;brushLevel++)for(const skillLevel of [1,2,3,4]){
-  const run=(brush:number)=>{const g=isolated(),e=g.spawn('boss',{x:510,y:665})!;e.hp=e.maxHp=1e6;e.armorPool=0;e.ai='Recovery';g.modifiers.owned.set('brush',brush);g.cast(rune);applySkillLevel(g.skills[0],skillLevel);const main=g.skills[0].damage;const initialPapers=g.charges.papers;
-   let contacts=0;for(let i=0;i<4*120;i++){g.update(1/120);for(const s of g.brush.strokes)contacts=Math.max(contacts,s.contacts.length);}return {damage:1e6-e.hp,main,papers:g.charges.papers,initialPapers,casts:g.casts,contacts,shield:g.shield};};
+  const run=(brush:number)=>{const g=isolated(),e=g.spawn('boss',{x:510,y:665})!;e.hp=e.maxHp=1e6;e.armorPool=0;e.ai='Recovery';g.modifiers.owned.set('brush',brush);g.cast(rune);applySkillLevel(g.skills[0],skillLevel);const main=g.skills[0].damage;const initialPapers=g.ink.currentInk;
+   let contacts=0;for(let i=0;i<4*120;i++){g.update(1/120);for(const s of g.brush.strokes)contacts=Math.max(contacts,s.contacts.length);}return {damage:1e6-e.hp,main,papers:g.ink.currentInk,initialPapers,casts:g.casts,contacts,shield:g.shield};};
   const plain=run(0),enhanced=run(brushLevel);assert.equal(enhanced.main,plain.main);assert.equal(enhanced.casts,1);assert.equal(enhanced.papers,plain.papers);assert.equal(enhanced.shield,plain.shield);assert.ok(enhanced.damage>plain.damage,JSON.stringify({rune,brushLevel,skillLevel,plain,enhanced}));
  }
 });
 test('pause/realm use battle time; in-flight level captured; reset removes queues; ink excluded',()=>{
- const g=isolated();g.modifiers.add('brush');g.cast('line');g.modifiers.owned.set('brush',3);g.update(.06);assert.equal(g.brush.strokes[0].level,1);g.pause();g.advance(2);assert.ok(g.brush.strokes[0].age<0);g.pause();const before=g.time;g.advance(.5,true);assert.ok(Math.abs(g.time-before-.2)<1e-8);assert.ok(g.brush.strokes[0].age>=0&&g.brush.strokes[0].age<.2);g.start();assert.equal(g.brush.strokes.length,0);g.modifiers.add('brush');g.cast('ink');g.update(.5);assert.equal(g.brush.strokes.length,0);
+ const g=isolated();g.modifiers.add('brush');g.cast('line');g.modifiers.owned.set('brush',3);g.update(.06);assert.equal(g.brush.strokes[0].level,1);g.pause();g.advance(2);assert.ok(g.brush.strokes[0].age<0);g.pause();const before=g.time;g.advance(.5,true);assert.ok(Math.abs(g.time-before-.25)<1e-8);assert.ok(g.brush.strokes[0].age>=0&&g.brush.strokes[0].age<.2);g.start();assert.equal(g.brush.strokes.length,0);g.modifiers.add('brush');g.cast('ink');g.update(.5);assert.equal(g.brush.strokes.length,0);
 });
 test('queues bounded, unequipped base untouched, rank capped',()=>{const g=isolated();for(let i=0;i<9;i++)g.modifiers.add('brush');assert.equal(g.modifiers.count('brush'),3);const b=new CinnabarBrush();for(let i=0;i<100;i++){b.beginCast(i,3);b.onPrimary({...ray,castId:i},0);}assert.ok(b.strokes.length<=24);});
 console.log(count+' cinnabar brush suites passed');

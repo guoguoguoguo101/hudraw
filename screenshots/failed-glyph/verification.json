@@ -1,0 +1,163 @@
+{
+  "results": {
+    "arc": {
+      "early": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 14.520064567246495,
+        "refund": 0,
+        "ink": 85.4799354327535,
+        "trace": 119,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      },
+      "late": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 14.520064567246495,
+        "refund": 0,
+        "ink": 85.4799354327535,
+        "trace": 0,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      }
+    },
+    "wave": {
+      "early": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 16.523401683392464,
+        "refund": 0,
+        "ink": 83.47659831660752,
+        "trace": 119,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      },
+      "late": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 16.523401683392464,
+        "refund": 0,
+        "ink": 83.47659831660752,
+        "trace": 0,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      }
+    },
+    "scribble": {
+      "early": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 80.41616163651877,
+        "refund": 0,
+        "ink": 19.583838363481235,
+        "trace": 43,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      },
+      "late": {
+        "rune": "ink",
+        "success": false,
+        "skills": 0,
+        "events": [],
+        "cost": 80.41616163651877,
+        "refund": 0,
+        "ink": 19.583838363481235,
+        "trace": 0,
+        "cursor": 0,
+        "finish": 0,
+        "children": 6,
+        "oldRenderer": false,
+        "hp": [
+          240
+        ]
+      }
+    }
+  },
+  "cleared": {
+    "points": 0,
+    "dry": 0,
+    "times": 0,
+    "hp": [
+      240
+    ],
+    "skills": 0
+  },
+  "straight": [
+    {
+      "rune": "line",
+      "released": true,
+      "hits": 0,
+      "visible": true,
+      "geometry": 2,
+      "skills": 1
+    },
+    {
+      "rune": "line",
+      "released": true,
+      "hits": 0,
+      "visible": true,
+      "geometry": 2,
+      "skills": 1
+    },
+    {
+      "rune": "line",
+      "released": true,
+      "hits": 0,
+      "visible": true,
+      "geometry": 2,
+      "skills": 1
+    }
+  ],
+  "timed": {
+    "cost": 149.05803002831385,
+    "ink": 83.47659831660752,
+    "timeout": true,
+    "skills": 0,
+    "refund": 0
+  },
+  "stress": {
+    "count": 6,
+    "after": 6,
+    "skills": 0,
+    "events": 0,
+    "trace": 0,
+    "points": 0
+  },
+  "errors": []
+}

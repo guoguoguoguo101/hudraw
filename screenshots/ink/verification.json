@@ -1,0 +1,80 @@
+{
+  "during": {
+    "ink": 48.999999853280876,
+    "cost": 0,
+    "refund": 0,
+    "notice": "",
+    "casts": 0,
+    "unlimited": false
+  },
+  "returned": {
+    "ink": 50.09999986795279,
+    "cost": 11.000000146719126,
+    "refund": 1.1000000146719127,
+    "notice": "回墨 +1.1",
+    "rune": "line",
+    "casts": 1,
+    "unlimited": false
+  },
+  "second": {
+    "ink": 39.099999721233665,
+    "cost": 11.000000146719126,
+    "refund": 1.1000000146719127,
+    "notice": "回墨 +1.1",
+    "casts": 1,
+    "unlimited": false
+  },
+  "exhausted": {
+    "ink": 0,
+    "cost": 11.000000146719126,
+    "refund": 1.1000000146719127,
+    "notice": "",
+    "casts": 2,
+    "unlimited": false
+  },
+  "sealed": {
+    "ink": 0.8,
+    "cost": 8,
+    "refund": 0.8,
+    "notice": "回墨 +0.8",
+    "rune": "line",
+    "casts": 3,
+    "unlimited": false
+  },
+  "empty": {
+    "ink": 0,
+    "cost": 8,
+    "refund": 0.8,
+    "notice": "灵墨不足",
+    "rune": "line",
+    "casts": 3,
+    "unlimited": false
+  },
+  "glyphs": [
+    {
+      "expected": "line",
+      "actual": "line",
+      "cost": 11,
+      "refund": 1.1
+    },
+    {
+      "expected": "circle",
+      "actual": "circle",
+      "cost": 21.703823463285623,
+      "refund": 2.1703823463285623
+    },
+    {
+      "expected": "triangle",
+      "actual": "triangle",
+      "cost": 15.316949906249127,
+      "refund": 1.5316949906249127
+    },
+    {
+      "expected": "z",
+      "actual": "z",
+      "cost": 21.360861978049364,
+      "refund": 2.1360861978049366
+    }
+  ],
+  "errors": []
+}

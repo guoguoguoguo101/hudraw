@@ -3,6 +3,7 @@ import {THUNDER_STAGES} from '../gameplay/thunder';
 import {ARROW_STAGES} from '../gameplay/arrows';
 import {FOX_GUARDIAN_DEFAULTS,playFoxGuardianSkill,guardianTimeline,type FoxGuardianConfig} from '../gameplay/fox-guardian';
 import {circleStage} from '../gameplay/circle-levels';
+import {SEAL_NAMES} from '../gameplay/circle';
 import {FOX_SCALE} from '../rendering/appearance';
 import {SKILL_LEVELS,applySkillLevel,type ActiveRune} from '../gameplay/skill-levels';
 import {selectUltimate,ultimateParams,type UltimateVariant,type UltimateParams} from '../gameplay/ultimate';
@@ -21,22 +22,24 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  let controlsOpen=false;
  const setControls=(open:boolean)=>{controlsOpen=open;document.body.classList.toggle('lab-controls-open',open);controlsToggle.textContent=open?'收起技能栏':'技能栏';controlsToggle.setAttribute('aria-expanded',String(open));panel.inert=mobileLayout.matches&&!open;};
  controlsToggle.onclick=()=>setControls(!controlsOpen);mobileLayout.addEventListener('change',()=>setControls(false));setControls(false);
- panel.addEventListener('click',event=>{const target=event.target instanceof Element?event.target.closest('button'):null;if(mobileLayout.matches&&target&&/^(雷符 Lv|符箭 Lv|圆阵 Lv|预览 Lv|释放$|重播)/.test(target.textContent??'')){setControls(false);controlsToggle.focus({preventScroll:true});}});
+ panel.addEventListener('click',event=>{const target=event.target instanceof Element?event.target.closest('button'):null;if(mobileLayout.matches&&target&&/^(雷符 Lv|符箭 Lv|圆阵 Lv|镇妖阵 Lv|预览 Lv|释放$|重播)/.test(target.textContent??'')){setControls(false);controlsToggle.focus({preventScroll:true});}});
  const ranks=new Map<Rune,number>();let direction=0,frozen=false,spawnAt=0;
- panel.innerHTML='<h1>技能测试场</h1><p>无限符纸 · 无敌 · 不结算 · 不保存进度</p><p>点击技能自动画符；也可以在画面中手画。</p>';
+ panel.innerHTML='<h1>技能测试场</h1><p>无限灵墨 · 无敌 · 不结算 · 不保存进度</p><p>点击技能自动画符；也可以在画面中手画。</p>';
  const row=(title:string)=>{const el=document.createElement('div');el.className='lab-row';const label=document.createElement('span');label.textContent=title;el.append(label);panel.append(el);return el;};
  const button=(parent:HTMLElement,label:string,fn:()=>void)=>{const b=document.createElement('button');b.textContent=label;b.onclick=fn;parent.append(b);return b;};
  const number=(parent:HTMLElement,value:number,min:number,max:number,change:(n:number)=>void)=>{const el=document.createElement('input');el.type='number';el.value=String(value);el.min=String(min);el.max=String(max);const set=(n:number)=>{n=Math.max(min,Math.min(max,Math.floor(Number.isFinite(n)?n:min)));el.value=String(n);change(n);};button(parent,'−',()=>set(Number(el.value)-1));parent.append(el);button(parent,'+',()=>set(Number(el.value)+1));el.onchange=()=>set(Number(el.value));return el;};
  const aim=row('施法方向');const select=document.createElement('select');for(const [i,name] of ['→ 右','↘ 右下','↓ 下','↙ 左下','← 左','↖ 左上','↑ 上','↗ 右上'].entries()){const option=document.createElement('option');option.value=String(i*Math.PI/4);option.textContent=name;select.append(option);}select.onchange=()=>direction=Number(select.value);aim.append(select);
  const status=document.createElement('p');status.className='lab-status';
- const afterCast=(r:Recognition)=>{const s=game.skills.at(-1);if(s){applySkillLevel(s,ranks.get(s.rune)??1);status.textContent=`${s.rune in SKILL_LEVELS?SKILL_LEVELS[s.rune as ActiveRune][(s.testLevel??1)-1].name:r.reason} Lv${s.testLevel} · 伤害参数 ${s.damage.toFixed(1)} · 范围 ${s.radius||s.range} · 持续 ${s.duration.toFixed(2)}秒`;}game.charges.papers=3;};
+ const afterCast=(r:Recognition)=>{const s=game.skills.at(-1);if(s){applySkillLevel(s,ranks.get(s.rune)??1);const name=s.circle?.mode==='seal'?SEAL_NAMES[s.circle.level-1]:s.rune in SKILL_LEVELS?SKILL_LEVELS[s.rune as ActiveRune][(s.testLevel??1)-1].name:r.reason;status.textContent=`${name} Lv${s.testLevel} · 伤害参数 ${s.damage.toFixed(1)} · 范围 ${s.radius||s.range} · 持续 ${s.duration.toFixed(2)}秒`;}};
+ let circlePreviewMode:'ward'|'seal'='ward';
  const points=(rune:Rune)=>{
   const base=rune==='circle'?Array.from({length:100},(_,i)=>({x:Math.cos(i/99*Math.PI*2)*120,y:Math.sin(i/99*Math.PI*2)*120})):rune==='triangle'?resample([{x:-90,y:-100},{x:100,y:0},{x:-90,y:100}],100):rune==='z'?resample([{x:-110,y:-100},{x:110,y:-100},{x:-110,y:100},{x:110,y:100}],100):resample([{x:-140,y:0},{x:140,y:0}],100);
   const angle=rune==='z'?direction-Math.atan2(200,220):direction;
-  return base.map(p=>({x:360+p.x*Math.cos(angle)-p.y*Math.sin(angle),y:665+p.x*Math.sin(angle)+p.y*Math.cos(angle)}));
+  const centerY=rune==='circle'&&circlePreviewMode==='seal'?320:665;
+  return base.map(p=>({x:360+p.x*Math.cos(angle)-p.y*Math.sin(angle),y:centerY+p.x*Math.sin(angle)+p.y*Math.cos(angle)}));
  };
  panel.insertAdjacentHTML('beforeend','<h2>技能栏 · 1 / 2 / 3 / 4 键施放</h2><p>直线、圆形护阵支持Lv1–Lv5，其余技能支持Lv1–Lv4。等级同时改变伤害、范围或攻击方式。</p>');
- const cast=(rune:ActiveRune)=>{if(game.state==='paused')game.pause();input.cancel();const pts=points(rune);game.charges.papers=3;input.event({...pts[0],id:777,kind:'down'});for(const p of pts)input.event({...p,id:777,kind:'move'});input.event({...pts.at(-1)!,id:777,kind:'up'});};
+ const cast=(rune:ActiveRune)=>{if(game.state==='paused')game.pause();input.cancel();const pts=points(rune);input.event({...pts[0],id:777,kind:'down'});for(const p of pts)input.event({...p,id:777,kind:'move'});input.event({...pts.at(-1)!,id:777,kind:'up'});};
  const runes=['line','circle','triangle','z'] as const;
  for(const [index,rune] of runes.entries()){
   ranks.set(rune,1);const el=row(`${index+1} · ${NAMES[rune]}`);button(el,'释放',()=>cast(rune));
@@ -54,11 +57,14 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  const timeLabel=document.createElement('p');previewPanel.append(timeLabel);
  const moveArrowTargets=(dt:number)=>{if(previewRune!=='triangle')return;for(const e of game.enemies){const b=arrowBases.get(e.id);if(b){const offset=movingArrows?Math.sin((game.time+dt)*3.6+b.phase)*55:0;e.x=b.x-Math.sin(direction)*offset;e.y=b.y+Math.cos(direction)*offset;e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
  const arrowOptions:Partial<FoxGuardianConfig>={};
- const preparePreview=(level:number,time?:number,rune:ActiveRune='line')=>{
+ const preparePreview=(level:number,time?:number,rune:ActiveRune='line',circleMode:'ward'|'seal'=circlePreviewMode)=>{
+  if(rune==='circle')circlePreviewMode=circleMode;
   previewRune=rune;previewEnd=rune==='z'?THUNDER_STAGES[level-1].duration:rune==='circle'?circleStage(level).duration:rune==='triangle'?ARROW_STAGES[level-1].duration:level===4?1.05:SLASH_STAGES[level-1].visual_duration;scrub.max=String(previewEnd);
   previewActive=true;previewPlaying=time===undefined;previewLevel=level;previewTime=0;input.cancel();game.brush.clear();game.skills=[];game.events=[];game.enemies=[];game.state='playing';game.pendingLevels=0;game.xp=0;game.time=0;game.score=0;game.kills=0;game.casts=0;game.hitStopRemaining=0;view.begin();view.animator.clear();view.entrance.y=665;view.entrance.scale=FOX_SCALE;
   arrowBases.clear();
-  if(rune==='z'){for(let i=0;i<[1,3,6,8][level-1];i++){const a=-Math.PI/2+i*(level===2?.8:Math.PI*2/[1,3,6,8][level-1]),r=level===2?170:220;const e=game.spawn('crow',{x:360+Math.cos(a)*r,y:665+Math.sin(a)*r})!;e.hp=e.maxHp=3000;e.ai='Recovery';}}else if(rune==='triangle')for(let i=0;i<(level===4?1:level===3?3:1);i++){
+  game.shield=game.shieldTime=0;
+  if(rune==='circle'&&circleMode==='seal'&&level<5){for(const [x,y] of [[285,305],[435,305],[360,400],[590,825]]){const e=game.spawn('ink',{x,y})!;e.hp=e.maxHp=1600;e.ai='Recovery';}}
+  else if(rune==='z'){for(let i=0;i<[1,3,6,8][level-1];i++){const a=-Math.PI/2+i*(level===2?.8:Math.PI*2/[1,3,6,8][level-1]),r=level===2?170:220;const e=game.spawn('crow',{x:360+Math.cos(a)*r,y:665+Math.sin(a)*r})!;e.hp=e.maxHp=3000;e.ai='Recovery';}}else if(rune==='triangle')for(let i=0;i<(level===4?1:level===3?3:1);i++){
    const a=direction+(level===4?i*Math.PI/3:(i-((level===3?3:1)-1)/2)*.38),distance=level===4?260:220+(i%2)*40;
    const e=game.spawn('crow',{x:360+Math.cos(a)*distance,y:665+Math.sin(a)*distance})!;e.hp=e.maxHp=2000;e.ai='Recovery';arrowBases.set(e.id,{x:e.x,y:e.y,phase:i*.8});
   }else for(let i=0;i<3;i++){const distance=100+i*105;const e=game.spawn('ink',{x:360+Math.cos(direction)*distance,y:665+Math.sin(direction)*distance})!;e.hp=e.maxHp=level===4?190:600;e.ai='Recovery';}
@@ -83,13 +89,16 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  Object.assign(window,{__SLASH_PREVIEW__:{frame:preparePreview,variant:chooseVariant,params:()=>({...ultimateParams})}});
  const circlePanel=document.createElement('section');circlePanel.className='slash-preview';circlePanel.innerHTML='<h2>圆形护阵 · 五级动画预览</h2><p>红金阵纹 → 灵光护罩 → 镇妖重阵 → 九尾结界 → 天狐山海界。Lv5 全屏展卷、九尾降临；下方勾选图层可单独查看，共用时间轴可检查起符、展开与消散。</p>';previewPanel.after(circlePanel);
  const circleRow=document.createElement('div');circleRow.className='lab-row';circlePanel.append(circleRow);
- for(let lv=1;lv<=5;lv++)button(circleRow,`圆阵 Lv${lv}`,()=>preparePreview(lv,undefined,'circle'));
+ for(let lv=1;lv<=5;lv++)button(circleRow,`圆阵 Lv${lv}`,()=>preparePreview(lv,undefined,'circle','ward'));
+ const sealRow=document.createElement('div');sealRow.className='lab-row';circlePanel.append(sealRow);
+ for(let lv=1;lv<=4;lv++)button(sealRow,`镇妖阵 Lv${lv}`,()=>preparePreview(lv,undefined,'circle','seal'));
+ const sealHelp=document.createElement('p');sealHelp.textContent='镇妖阵在画圈圆心落下：持续镇封、破阵震荡；Lv4 四门封妖。守护阵沿用原样，Lv5 直接播放天狐山海界。';circlePanel.append(sealHelp);
  button(circlePanel,'冻结 / 播放圆阵',()=>{if(previewRune!=='circle')preparePreview(1,0,'circle');else previewPlaying=!previewPlaying;});
  const layerRow=document.createElement('div');layerRow.className='lab-levels';circlePanel.append(layerRow);
  for(const [key,name] of [['Core','本体核心'],['Inner Circle','内圈'],['Outer Circle','外圈'],['Scroll Ring','绘卷环'],['Ofuda','符纸'],['Fox Spirit','九尾狐灵'],['Shrine Props','神社云鹤'],['Light FX','光效花瓣']]){
   const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=true;check.onchange=()=>view.circles.setLayerVisibility(key,check.checked);label.append(check,document.createTextNode(name));layerRow.append(label);
  }
- Object.assign(window,{__CIRCLE_PREVIEW__:{frame:(level:number,time?:number)=>preparePreview(level,time,'circle')}});
+ Object.assign(window,{__CIRCLE_PREVIEW__:{frame:(level:number,time?:number,mode:'ward'|'seal'='ward')=>preparePreview(level,time,'circle',mode)}});
  const arrowPanel=document.createElement('section');arrowPanel.className='slash-preview';arrowPanel.id='arrow-preview';arrowPanel.innerHTML='<h2>符箭 / 狐灵降临 · 四级动画预览</h2><p>Lv4 灵狐降灵 · 起势 → 灵狐钻出 → 绕身一圈 → 绘卷法衣 → 守护定格。尾巴与红白长卷连续收成披帛、腰环和衣摆。</p>';circlePanel.after(arrowPanel);
  const arrowRow=document.createElement('div');arrowRow.className='lab-row';arrowPanel.append(arrowRow);
  for(let lv=1;lv<=4;lv++)button(arrowRow,`符箭 Lv${lv}`,()=>preparePreview(lv,undefined,'triangle'));
@@ -118,8 +127,8 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  number(row('局外修行（0–10阶）'),0,0,10,n=>{game.cultivation=n;game.maxHp=100+4*n;game.life=game.maxHp;});
  const targets=()=>{game.brush.clear();game.enemies=[];for(const [x,y] of [[510,665],[590,710],[480,810],[360,850],[205,665],[360,460],[220,510],[500,490]]){const e=game.spawn('ink',{x,y})!;e.ai='Recovery';}game.skills=[];view.begin();};
  const tools=row('');button(tools,'重置靶子 / 清特效',targets);const toggle=button(tools,'小怪：移动',()=>{frozen=!frozen;toggle.textContent=frozen?'小怪：静止':'小怪：移动';});button(tools,'暂停 / 继续',()=>game.pause());
- const beforeFrame=(dt=0)=>{game.charges.papers=3;game.invulnerable=999;game.life=game.maxHp;game.xp=0;if(game.state==='upgrade'){game.pendingLevels=0;game.choices=[];game.state='playing';}if(previewActive){game.state='playing';if(previewPlaying){const step=Math.min(dt,Math.max(0,previewEnd-previewTime));const held=Math.min(step,game.hitStopRemaining);game.hitStopRemaining-=held;moveArrowTargets(step-held);game.update(step-held);for(const event of game.drain())view.event(event);view.update(game,input,step-held,60);previewTime+=step;syncArrow();scrub.value=String(previewTime);timeLabel.textContent=`Lv${previewLevel} · ${previewTime.toFixed(3)}秒`;if(previewTime>=previewEnd){if(previewRepeat)preparePreview(previewLevel,undefined,previewRune);else previewPlaying=false;}}for(const e of game.enemies){if(e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;}}return;}if(game.active&&game.time>=spawnAt){spawnAt=game.time+.6;if(game.enemies.length<24)game.spawn(game.random()<.3?'crow':'ink');}for(const e of game.enemies){if(frozen&&e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
+ const beforeFrame=(dt=0)=>{game.invulnerable=999;game.life=game.maxHp;game.xp=0;if(game.state==='upgrade'){game.pendingLevels=0;game.choices=[];game.state='playing';}if(previewActive){game.state='playing';if(previewPlaying){const step=Math.min(dt,Math.max(0,previewEnd-previewTime));const held=Math.min(step,game.hitStopRemaining);game.hitStopRemaining-=held;moveArrowTargets(step-held);game.update(step-held);for(const event of game.drain())view.event(event);view.update(game,input,step-held,60);previewTime+=step;syncArrow();scrub.value=String(previewTime);timeLabel.textContent=`Lv${previewLevel} · ${previewTime.toFixed(3)}秒`;if(previewTime>=previewEnd){if(previewRepeat)preparePreview(previewLevel,undefined,previewRune);else previewPlaying=false;}}for(const e of game.enemies){if(e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;}}return;}if(game.active&&game.time>=spawnAt){spawnAt=game.time+.6;if(game.enemies.length<24)game.spawn(game.random()<.3?'crow':'ink');}for(const e of game.enemies){if(frozen&&e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
  Object.assign(window,{__BRUSH_PREVIEW__:{frame:(rune:ActiveRune,skillLevel:number,brushLevel:number,time?:number)=>{game.modifiers.owned.set('brush',Math.max(0,Math.min(3,brushLevel)));preparePreview(skillLevel,time,rune);}}});
- game.cultivation=0;game.start();const initialBrush=Math.max(0,Math.min(3,Number(new URLSearchParams(location.search).get('brush'))||0));if(initialBrush)game.modifiers.owned.set('brush',initialBrush);game.duration=1e9;game.director.disabled=true;targets();if(new URLSearchParams(location.search).get('thunder')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,undefined,'z');thunderPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('arrow')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,2.16,'triangle');syncArrow();arrowPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('ultimate')==='1'){direction=Math.PI/4;select.value=String(direction);preparePreview(4);}
+ game.cultivation=0;game.start();game.ink.setUnlimited(true);const initialBrush=Math.max(0,Math.min(3,Number(new URLSearchParams(location.search).get('brush'))||0));if(initialBrush)game.modifiers.owned.set('brush',initialBrush);game.duration=1e9;game.director.disabled=true;targets();if(new URLSearchParams(location.search).get('thunder')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,undefined,'z');thunderPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('arrow')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,2.16,'triangle');syncArrow();arrowPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('ultimate')==='1'){direction=Math.PI/4;select.value=String(direction);preparePreview(4);}
  return {beforeFrame,afterCast,ownsSimulation:()=>previewActive};
 }

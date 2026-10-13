@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {Game} from '../src/gameplay/game';
+import {COMBAT} from '../src/gameplay/config';
+
+const game=new Game();
+game.start(false,false,true);
+assert.equal(game.endless,true);
+assert.equal(game.practice,false);
+assert.equal(game.duration,Infinity);
+game.hurt(10);
+assert.equal(game.life,90,'endless retains real combat damage');
+game.time=181;game.bossDead=true;game.invulnerable=1000;
+game.update(1/60);
+assert.equal(game.state,'playing','endless continues beyond the normal finish');
+assert.equal(game.wave,6);
+assert.equal(game.enemies.filter(e=>e.kind==='boss').length,1);
+const nextBoss=game.director.nextBoss;
+game.time=nextBoss+1;game.director.update(game,1);
+assert.equal(game.enemies.filter(e=>e.kind==='boss').length,1,'bosses never overlap');
+game.enemies=[];game.director.update(game,1);
+assert.equal(game.enemies.filter(e=>e.kind==='boss').length,1,'later bosses continue to spawn');
+game.invulnerable=0;game.hurt(1000);
+assert.equal(game.state,'lose');
+game.menu();assert.equal(game.endless,false);
+game.start();assert.equal(game.duration,COMBAT.duration);
+game.start(false,true,true);assert.equal(game.endless,false);assert.equal(game.practice,true);
+game.start(true,false,true);assert.equal(game.endless,false);assert.equal(game.duration,COMBAT.trainingDuration);
+console.log('PASS: endless duration, waves, damage, recurring bosses, defeat and mode isolation');

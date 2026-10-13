@@ -4,13 +4,35 @@ import type {Skill,Enemy} from '../core/types';
 import {visualEnd,scrollWidth,ultimateParams,ultimateVariant,type UltimateParams,type UltimateVariant} from './ultimate';
 export const SLASH_STAGES=config.stages;
 export type SlashContact={id:number;x:number;y:number;at:number;secondary:boolean;kind?:Enemy['kind'];dead?:boolean};
-export type SlashState={level:number;contacts:SlashContact[];pending:{id:number;at:number;damage:number;kind:'main'|'extra'}[];extraHit:Set<number>;scheduled:boolean;ultimate?:UltimateParams;variant?:UltimateVariant;secondaryAt?:number;secondaryCenter?:{x:number;y:number};secondaryDone?:boolean};
+export type SlashState={path?:{x:number;y:number}[];level:number;contacts:SlashContact[];pending:{id:number;at:number;damage:number;kind:'main'|'extra'}[];extraHit:Set<number>;scheduled:boolean;ultimate?:UltimateParams;variant?:UltimateVariant;secondaryAt?:number;secondaryCenter?:{x:number;y:number};secondaryDone?:boolean};
 export function configureSlash(s:Skill,level=1){
  const stage=SLASH_STAGES[Math.max(0,Math.min(4,level-1))];
  s.damage=s.damage/60*stage.damage;s.range=stage.range;s.duration=stage.visual_duration;
  s.slash={level:stage.level,contacts:[],pending:[],extraHit:new Set(),scheduled:false};
  if(stage.level===5){s.slash.ultimate={...ultimateParams,slashLength:stage.range,slashWidth:stage.hit_width,scrollOpenAt:.23,scrollOpenDuration:.25,scrollHoldUntil:.78,fadeOutDuration:.37,secondaryDamage:stage.secondary_damage};s.slash.variant=ultimateVariant;s.slash.secondaryAt=.65;}
  if(stage.level===4){s.slash.ultimate={...ultimateParams};s.slash.variant=ultimateVariant;s.range=ultimateParams.slashLength;s.duration=Math.max(visualEnd(ultimateParams),ultimateParams.scrollHoldUntil+ultimateParams.fadeOutDuration);s.slash.secondaryAt=ultimateParams.scrollOpenAt+ultimateParams.scrollOpenDuration;}
+}
+export function attachSwipe(s:Skill){
+ const points=s.geometry.raw.length>=2?s.geometry.raw:s.geometry.points;
+ if(!s.slash||points.length<2)return;
+ const a=points[0],b=points.at(-1)!,length=Math.hypot(b.x-a.x,b.y-a.y);
+ if(length<.001)return;
+ const direction={x:(b.x-a.x)/length,y:(b.y-a.y)/length};
+ const center={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+ const range=SLASH_STAGES[s.slash.level-1].range,half=range/2;
+ const start={x:center.x-direction.x*half,y:center.y-direction.y*half};
+ const end={x:center.x+direction.x*half,y:center.y+direction.y*half};
+ s.slash.path=[start,end];s.x=start.x;s.y=start.y;s.direction=direction;s.range=range;
+ if(s.slash.ultimate)s.slash.ultimate.slashLength=range;
+}
+function swipeCandidates(enemies:Enemy[],s:Skill,width:number){
+ const path=s.slash!.path!;
+ return enemies.filter(e=>e.hp>0&&path.slice(1).some((b,i)=>{
+  const a=path[i],dx=b.x-a.x,dy=b.y-a.y,length=dx*dx+dy*dy;
+  const t=Math.max(0,Math.min(1,((e.x-a.x)*dx+(e.y-a.y)*dy)/(length||1)));
+  const radius=e.kind==='boss'?55:e.kind==='oni'?34:23;
+  return Math.hypot(e.x-a.x-dx*t,e.y-a.y-dy*t)<=width/2+radius;
+ })).sort((a,b)=>Math.hypot(a.x-s.x,a.y-s.y)-Math.hypot(b.x-s.x,b.y-s.y)||a.id-b.id);
 }
 function candidates(enemies:Enemy[],s:Skill,d:{x:number;y:number},width:number){
  return enemies.filter(e=>{
@@ -25,8 +47,8 @@ export function updateSlash(g:Game,s:Skill){
  if(!state.scheduled&&s.age+1e-8>=stage.primary_hit_at){
   state.scheduled=true;s.released=true;
   g.primaryAction({kind:'ray',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,range:s.range,width:state.ultimate?.slashWidth??stage.hit_width,pierce:stage.pierce});
-  const dirs=[s.direction];if(s.mirror){const mirror={x:-s.direction.x,y:s.direction.y};if(Math.hypot(mirror.x-s.direction.x,mirror.y-s.direction.y)>.05)dirs.push(mirror);}
-  const selected=new Set<number>();for(const dir of dirs)for(const e of candidates(g.enemies,s,dir,state.ultimate?.slashWidth??stage.hit_width)){
+  const dirs=[s.direction];if(s.mirror&&!state.path){const mirror={x:-s.direction.x,y:s.direction.y};if(Math.hypot(mirror.x-s.direction.x,mirror.y-s.direction.y)>.05)dirs.push(mirror);}
+  const selected=new Set<number>();for(const dir of dirs)for(const e of (state.path?swipeCandidates(g.enemies,s,stage.hit_width):candidates(g.enemies,s,dir,state.ultimate?.slashWidth??stage.hit_width))){
    if(selected.has(e.id))continue;if(selected.size>=stage.pierce)break;selected.add(e.id);
    state.pending.push({id:e.id,at:stage.primary_hit_at+(state.level===3?(selected.size-1)*.008:0),damage:s.damage,kind:'main'});
   }

@@ -1,6 +1,7 @@
 import {AccessibilitySystem,CanvasSource,DOMAdapter,DOMPipe,EventSystem,ResizePlugin,extensions,type Adapter} from 'pixi.js';
 import {wechat as wx} from './wechat-api';
 import {installWechatTextureStyle} from './wechat-texture-style';
+import {installWechatTextMetrics} from './wechat-text';
 
 /** Adapt Pixi's canvas/text environment without emulating an HTML page. */
 export function configureWechatPixi(){
@@ -33,6 +34,7 @@ export function configureWechatPixi(){
   fetch:async()=>{throw new Error('微信资源请通过 WechatAdapter.loadAsset 加载');},
   parseXML:()=>{throw new Error('微信测试包只加载预生成 PNG，不支持运行时 XML');},
  } satisfies Adapter);
+ installWechatTextMetrics();
  // Textures created from wx canvases have no browser HTMLCanvasElement constructor.
  const originalTest=CanvasSource.test;
  CanvasSource.test=(resource):resource is ReturnType<Adapter['createCanvas']>=>!!resource&&typeof resource==='object'&&(canvases.has(resource)||originalTest(resource));

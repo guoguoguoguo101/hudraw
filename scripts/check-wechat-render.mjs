@@ -70,7 +70,7 @@ try{
   const s=390/720,touch={identifier:1,clientX:x*s,clientY:(844-1280*s)/2+y*s};
   for(const fn of globalThis.__wxListeners[name])fn({touches:[touch],changedTouches:[touch]});
  },{name,x,y});
- await touch('TouchStart',360,942);await touch('TouchEnd',360,942);
+ await touch('TouchStart',360,838);await touch('TouchEnd',360,838);
  // The game refreshes menu hit zones during its next frame.
  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  // Deliver one stroke together so slow software WebGL cannot exceed the draw timeout between automation calls.
@@ -82,26 +82,43 @@ try{
  const progress=await page.evaluate(()=>JSON.parse(globalThis.__wxStorage.get('linghu-player-progress-v1')));
  assert.deepEqual(errors,[]);
  assert.equal(progress.stats.totalRuns,1);assert.equal(progress.spells.line?.casts,1,JSON.stringify(progress.stats));
- const tap=async(x,y)=>{await touch('TouchStart',x,y);await touch('TouchEnd',x,y);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));};
- await tap(647,87);await tap(360,880);await tap(360,755);
+ await fs.mkdir(path.resolve('screenshots/layout'),{recursive:true});
+ await page.screenshot({path:path.resolve('screenshots/layout/fullscreen-battle.png')});
+ const edgeOffset=(844-1280*(390/720))/2/(390/720);
+ const tap=async(x,y,anchor='world')=>{y+=anchor==='header'?-edgeOffset:anchor==='footer'?edgeOffset:0;await touch('TouchStart',x,y);await touch('TouchEnd',x,y);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));};
+ await tap(647,87,'header');await tap(360,880);await tap(360,1157);
  const beforePractice=await page.evaluate(()=>globalThis.__wxStorage.get('linghu-player-progress-v1'));
- await tap(105,1204);
+ await tap(105,1204,'footer');
  await fs.mkdir(path.resolve('screenshots/practice'),{recursive:true});
  await page.screenshot({path:path.resolve('screenshots/practice/level-picker.png')});
- await tap(596,1050);
- for(const [x,levelX] of [[275,596],[445,581],[615,581]]){await tap(x,1204);await tap(levelX,1050);}
- for(const x of [105,275,445,615])await tap(x,1242);
+ await tap(596,1050,'footer');
+ for(const [x,levelX] of [[275,596],[445,581],[615,581]]){await tap(x,1204,'footer');await tap(levelX,1050,'footer');}
+ for(const x of [105,275,445,615])await tap(x,1242,'footer');
  await page.evaluate(()=>{
   const send=(name,x)=>{const s=390/720,touch={identifier:1,clientX:x*s,clientY:(844-1280*s)/2+580*s};for(const fn of globalThis.__wxListeners[name])fn({touches:[touch],changedTouches:[touch]});};
   send('TouchStart',230);for(let i=1;i<=12;i++)send('TouchMove',230+i*220/12);send('TouchEnd',450);
  });
  await page.waitForTimeout(300);
  await page.screenshot({path:path.resolve('screenshots/practice/free-cast.png')});
- await tap(647,87);await tap(360,543);
+ // The same canvas tuning controls must work without browser DOM widgets.
+ await tap(596,1101,'footer');await tap(438,320);
+ assert.equal(await page.evaluate(()=>globalThis.__wxStorage.get('linghu-brush-skin')),'gold');
+ await tap(360,375);await tap(623,496);
+ await fs.mkdir(path.resolve('screenshots/spirit-pen'),{recursive:true});
+ await page.screenshot({path:path.resolve('screenshots/spirit-pen/wechat-effect-controls.png')});
+ await tap(628,221);
+ await page.evaluate(()=>{
+  const scale=390/720,offset=(844-1280*scale)/2;
+  const send=(name,x,y)=>{const touch={identifier:1,clientX:x*scale,clientY:offset+y*scale};for(const fn of globalThis.__wxListeners[name])fn({touches:[touch],changedTouches:[touch]});};
+  send('TouchStart',150,520);for(let i=1;i<60;i++){const t=i/59;send('TouchMove',150+t*370,520+Math.sin(t*Math.PI*2)*80);}send('TouchEnd',520,520);
+ });
+ await page.waitForTimeout(140);await page.screenshot({path:path.resolve('screenshots/spirit-pen/wechat-failure-clean.png')});
+ await tap(647,87,'header');await tap(360,543);
  const diagnostic=JSON.parse(await page.evaluate(()=>globalThis.__diagnosticReport));
  if(diagnostic.glError!==0)console.error(JSON.stringify(diagnostic));
  assert.equal(diagnostic.build,'ios-diagnostics-4');assert.equal(diagnostic.clock,'monotonic-ms');assert.ok(diagnostic.gameplay.frames>0);assert.ok(diagnostic.gameplay.fps>0&&diagnostic.gameplay.fps<200);assert.ok(diagnostic.gameplay.maxFrameMs<1000);assert.equal(diagnostic.gameplay.unfinishedUpdates,0,'paused report must contain completed updates');assert.ok(diagnostic.totalFrames>=diagnostic.gameplay.frames);assert.ok(diagnostic.actions.some(a=>a.action==='practice'&&a.state==='playing'));assert.equal(diagnostic.renderer.webGLVersion,1);assert.equal(diagnostic.glError,0,'WebGL1 rendering must not produce INVALID_ENUM');assert.deepEqual(diagnostic.glErrors,[]);
  assert.equal(await page.evaluate(()=>globalThis.__wxStorage.get('linghu-player-progress-v1')),beforePractice,'practice must not change saved progress');
+ assert.deepEqual(errors,[],'brush controls and failed glyph fade must not cause runtime errors');
  assert.deepEqual(errors,[]);
  console.log('PASS: WeChat package startup without unsafe-eval, rendering, normal cast, practice entry and four level pickers, free cast and progress isolation (browser-backed wx mock only)');
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
