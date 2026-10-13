@@ -14,7 +14,7 @@ export class TalismanSpellFactory{
   if(s.rune==='z'){updateThunder(g,s);return;}if(s.rune==='line')updateSlash(g,s);if(s.rune==='triangle')updateArrows(g,s,dt);
   if(s.rune!=='line'&&s.rune!=='triangle'&&!s.released&&s.age>=.08){s.released=true;const cfg=SPELLS[s.rune];
    if(s.rune==='star'){for(const d of this.directions(s)){const targets=Target.ray(g.enemies,d,s.range,cfg.width*(s.testLevel&&s.testLevel>=3?1.5:1)).slice(0,8);for(const e of targets){const count=s.hitCounts.get(e.id)??0;if(count>=2)continue;s.hitCounts.set(e.id,count+1);s.hit.add(e.id);g.damage(e,s.damage,90*s.strength);}}}
-   if(s.rune==='circle'){g.shield=Math.max(g.shield,circleStage(s.testLevel).shield);g.shieldTime=s.duration;for(const e of [...g.enemies])if(Target.distance(e)<s.radius){s.hit.add(e.id);g.damage(e,s.damage,240*s.strength);}}
+   if(s.rune==='circle'){g.primaryAction({kind:'area',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,radius:s.radius});g.shield=Math.max(g.shield,circleStage(s.testLevel).shield);g.shieldTime=s.duration;for(const e of [...g.enemies])if(Target.distance(e)<s.radius){s.hit.add(e.id);g.damage(e,s.damage,240*s.strength);}}
    if(s.rune==='spiral'){const e=Target.priority(g.enemies,s.direction,s.range);s.x=e?.x??WORLD.foxX+s.direction.x*180;s.y=e?.y??WORLD.foxY+s.direction.y*180;}
    if(s.rune==='ink')for(const e of Target.sector(g.enemies,s.direction,160,-.1).slice(0,2)){s.hit.add(e.id);g.damage(e,s.damage,30);}
   }

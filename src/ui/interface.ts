@@ -5,11 +5,13 @@ import {RELICS} from '../gameplay/modifiers';
 import type {InputController} from '../input/controller';
 import type {Game} from '../gameplay/game';
 import type {Point} from '../input/recognizer';
-export type Action='start'|'teach'|'pause'|'resume'|'restart'|'menu'|'sound'|'quality'|'debug'|'choose0'|'choose1'|'choose2'|'cultivate';
+import type {ProgressTracker} from '../progress/tracker';
+export type Action='diagnostics'|'practice'|'start'|'teach'|'pause'|'resume'|'restart'|'menu'|'sound'|'quality'|'debug'|'choose0'|'choose1'|'choose2'|'cultivate'|'archive'|'achievements'|'cultivationArchive'|'journal';
 const COLORS={gold:0xe7ba68,ink:0x192027,white:0xfff7e8,red:0xd84332,wine:0x562a34,paper:0xf3e7cb,jade:0x72b5a4};
 export function text(parent:Container,str:string,x:number,y:number,size:number,color=COLORS.gold,opts:Partial<TextStyleOptions>={}){const t=new Text({text:str,style:{fontFamily:['KaiTi','STKaiti','serif'],fontSize:size,fill:color,align:'center',letterSpacing:2,...opts}});t.anchor.set(.5);t.position.set(x,y);parent.addChild(t);return t;}
 type Zone={x:number;y:number;w:number;h:number;action:Action};
 export class Interface{
+ canDiagnostics=false;tracker?:ProgressTracker;
  root=new Container();hud=new Container();overlay=new Container();tip:Text;score:Text;timer:Text;phase:Text;hearts:Container[]=[];progress=new Graphics();zones:Zone[]=[];lastState='';lastLife=-1;panelAge=0;hintAge=0;muted=false;low=false;best=0;debug=false;counter:Text;practice:Text;runeStatus:Text;castMeter=new Graphics();drawMeter=new Graphics();levelLabel:Text;relicStatus:Text;drawStatus:Text;bossLabel:Text;bossMeter=new Graphics();cultivation=0;spirit=0;
  constructor(private art:Art,private onAction:(a:Action)=>void){this.root.addChild(this.hud,this.overlay);
  this.hud.addChild(new Graphics().roundRect(24,32,672,117,24).fill({color:COLORS.ink,alpha:.91}).stroke({color:COLORS.gold,width:1,alpha:.35}));
@@ -31,13 +33,14 @@ export class Interface{
  if(['playing','tutorial'].includes(state)){this.zones.push({x:610,y:48,w:80,h:80,action:'pause'});return;}
  if(state==='upgrade'){this.overlay.addChild(new Graphics().rect(0,0,720,1280).fill({color:COLORS.ink,alpha:.78}));text(this.overlay,'灵气凝华',360,346,54,COLORS.paper);text(this.overlay,`LV ${game.level} · 战斗暂停，选择一件法宝`,360,410,22,COLORS.gold);game.choices.forEach((id,i)=>{const item=RELICS.find(r=>r.id===id)!;const y=544+i*142;this.button(item.name,360,y,562,112,('choose'+i) as Action);text(this.overlay,item.description,360,y+34,18,COLORS.gold,{letterSpacing:0,wordWrap:true,wordWrapWidth:510});});return;}
  if(state==='menu'){
+  if(this.canDiagnostics)this.button('运行诊断',610,70,144,44,'diagnostics');
   text(this.overlay,'山 海 剪 纸 幻 想',360,174,18,COLORS.wine,{letterSpacing:7});
   text(this.overlay,'灵狐画符',360,286,78,COLORS.ink,{letterSpacing:8,fontWeight:'normal'});
   text(this.overlay,'一笔镇妖  ·  四符守山海',360,366,24,COLORS.ink);
   this.overlay.addChild(new Graphics().moveTo(184,405).lineTo(298,405).moveTo(422,405).lineTo(536,405).stroke({color:COLORS.wine,width:1}));
   text(this.overlay,'◆',360,405,18,COLORS.wine);
   text(this.overlay,'四种自由符术 · 落笔进入慢动作符境',360,457,19,COLORS.wine,{letterSpacing:0});
-  this.button('进入三分钟试炼',360,942,410,76,'start',true);this.button('九十秒符术入门',360,1038,410,65,'teach');
+  this.button('演武画境 · 自由试符',360,755,410,62,'practice');this.button('万象符录',360,843,410,70,'archive');this.button('进入三分钟试炼',360,942,410,76,'start',true);this.button('九十秒符术入门',360,1038,410,65,'teach');
   text(this.overlay,`最佳灵魄 ${this.best} · 灵玉 ${this.spirit}`,360,1104,18,COLORS.gold,{letterSpacing:1});this.button(`修行 ${this.cultivation} 阶 · 消耗100灵玉`,360,1150,410,43,'cultivate');
   text(this.overlay,'直线 / 圆 / 箭头 ∧ V < > / Z',360,1192,17,COLORS.paper);
   this.button(this.muted?'音效：关':'音效：开',181,1238,210,43,'sound');this.button(this.low?'画质：轻盈':'画质：精致',539,1238,210,43,'quality');return;
@@ -47,10 +50,11 @@ export class Interface{
  this.overlay.addChild(new Graphics().roundRect(80,334,560,650,26).fill({color:COLORS.paper,alpha:.98}).stroke({color:COLORS.gold,width:2}));
  text(this.overlay,isPause?'歇笔片刻':state==='win'?'山海安宁':'灵火未尽',360,428,54,COLORS.wine);
  text(this.overlay,isPause?'画卷静止，灵狐等你':state==='win'?'九尾展灵，万妖归寂':'收拾笔意，再守一回山海',360,499,21,COLORS.wine,{letterSpacing:1});
- if(!isPause){text(this.overlay,String(game.score).padStart(4,'0'),360,588,66,COLORS.red,{fontFamily:'Georgia',letterSpacing:3});text(this.overlay,`灵魄 · 斩妖 ${game.kills} · 施符 ${game.casts}`,360,653,21,COLORS.wine,{letterSpacing:0});text(this.overlay,`守护 ${Math.floor(game.time)} / ${game.duration} 秒`,360,706,21,COLORS.wine);}
- this.button(isPause?'继续画符':'再守一卷',360,isPause?609:794,402,72,isPause?'resume':'restart',true);
- if(isPause){this.button(this.muted?'音效：关':'音效：开',249,716,190,54,'sound');this.button(this.low?'画质：轻盈':'画质：精致',470,716,190,54,'quality');this.button(this.debug?'关闭手势调试':'查看手势调试',360,796,402,54,'debug');}
- this.button('回到山海',360,isPause?880:884,402,61,'menu');
+ if(!isPause){text(this.overlay,String(game.score).padStart(4,'0'),360,568,62,COLORS.red,{fontFamily:'Georgia',letterSpacing:3});text(this.overlay,`灵魄 · 斩妖 ${game.kills} · 施符 ${game.casts}`,360,628,21,COLORS.wine,{letterSpacing:0});text(this.overlay,`守护 ${Math.floor(game.time)} / ${game.duration} 秒`,360,675,21,COLORS.wine);const notes=this.tracker?.runNotices??[];if(notes.length)text(this.overlay,notes.slice(-2).join(' · '),360,716,17,COLORS.red,{letterSpacing:0,wordWrap:true,wordWrapWidth:490});}
+ this.button(isPause?'继续画符':'再守一卷',360,isPause?609:780,402,68,isPause?'resume':'restart',true);
+ if(isPause){if(this.canDiagnostics)this.button('复制运行诊断',360,543,402,44,'diagnostics');this.button(this.muted?'音效：关':'音效：开',249,716,190,54,'sound');this.button(this.low?'画质：轻盈':'画质：精致',470,716,190,54,'quality');this.button(this.debug?'关闭手势调试':'查看手势调试',360,796,402,54,'debug');}
+ if(!isPause)this.button('万象符录',360,855,402,58,'archive');
+ this.button('回到山海',360,isPause?880:927,402,56,'menu');
  }
  hint(str:string){this.tip.text=str;this.hintAge=1.8;}
  update(game:Game,dt:number,fps:number,input?:InputController){

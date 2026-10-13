@@ -1,0 +1,27 @@
+import {chromium} from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const base=process.env.LINGHU_URL||'http://127.0.0.1:4173/';
+const out=path.resolve('screenshots/archive');fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'});
+const page=await browser.newPage({viewport:{width:450,height:800},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto(base,{waitUntil:'networkidle'});
+const canvas=page.locator('#app canvas');await canvas.waitFor();
+const xy=async(x,y)=>{const b=await canvas.boundingBox();return {x:b.x+b.width*x/720,y:b.y+b.height*y/1280};};
+const click=async(x,y)=>{const p=await xy(x,y);await page.mouse.click(p.x,p.y);await page.waitForTimeout(180);};
+const capture=async(name)=>{await canvas.screenshot({path:path.join(out,`${name}.png`)});};
+await capture('menu');
+await click(360,843);await capture('home');
+await click(205,405);await capture('spells');await click(350,350);await capture('spell-detail');
+await click(58,70);await click(515,405);await capture('enemies');await click(350,350);await capture('enemy-detail');
+await click(58,70);await click(205,580);await capture('chapters');await click(350,265);await capture('chapter-detail');
+await click(58,70);await click(515,580);await capture('treasures');await click(350,350);await capture('treasure-detail');
+await click(58,70);await click(360,751);await capture('achievements');
+for(let i=0;i<4;i++){const from=await xy(360,1050),to=await xy(360,250);await page.mouse.move(from.x,from.y);await page.mouse.down();await page.mouse.move(to.x,to.y,{steps:12});await page.mouse.up();}await capture('achievements-bottom');
+await click(58,70);await click(360,861);await capture('cultivation');
+await click(58,70);await click(360,971);await capture('journal');
+await browser.close();
+if(errors.length)throw new Error(errors.join('\n'));
+console.log(`Saved archive screenshots to ${out}`);

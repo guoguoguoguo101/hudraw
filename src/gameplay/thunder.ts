@@ -21,4 +21,5 @@ export function updateThunder(g:Game,s:Skill){
   if(s.age+1e-8<target.at)continue;target.struck=true;s.released=true;
   if(e&&!s.hit.has(e.id)){s.hit.add(e.id);g.damage(e,s.damage*(state.level===4?1:.9**state.targets.indexOf(target)),state.level===4?240:70*s.strength);if(s.shock&&e.hp>0)e.shock=s.shockDuration;}
  }
+ if(state.selected&&state.targets.length&&state.targets.every(t=>t.struck)){g.primaryAction({kind:'chain',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,hits:state.targets.flatMap((t,i)=>s.hit.has(t.id)?[{id:t.id,position:{x:t.x,y:t.y},damage:s.damage*(state.level===4?1:.9**i)}]:[])});}
 }

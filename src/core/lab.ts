@@ -1,3 +1,4 @@
+import {SLASH_STAGES} from '../gameplay/slash';
 import {THUNDER_STAGES} from '../gameplay/thunder';
 import {ARROW_STAGES} from '../gameplay/arrows';
 import {FOX_GUARDIAN_DEFAULTS,playFoxGuardianSkill,guardianTimeline,type FoxGuardianConfig} from '../gameplay/fox-guardian';
@@ -34,7 +35,7 @@ export function setupLab(game:Game,view:GameView,input:InputController){
   const angle=rune==='z'?direction-Math.atan2(200,220):direction;
   return base.map(p=>({x:360+p.x*Math.cos(angle)-p.y*Math.sin(angle),y:665+p.x*Math.sin(angle)+p.y*Math.cos(angle)}));
  };
- panel.insertAdjacentHTML('beforeend','<h2>技能栏 · 1 / 2 / 3 / 4 键施放</h2><p>圆形护阵支持Lv1–Lv5，其余技能支持Lv1–Lv4。等级同时改变伤害、范围或攻击方式。</p>');
+ panel.insertAdjacentHTML('beforeend','<h2>技能栏 · 1 / 2 / 3 / 4 键施放</h2><p>直线、圆形护阵支持Lv1–Lv5，其余技能支持Lv1–Lv4。等级同时改变伤害、范围或攻击方式。</p>');
  const cast=(rune:ActiveRune)=>{if(game.state==='paused')game.pause();input.cancel();const pts=points(rune);game.charges.papers=3;input.event({...pts[0],id:777,kind:'down'});for(const p of pts)input.event({...p,id:777,kind:'move'});input.event({...pts.at(-1)!,id:777,kind:'up'});};
  const runes=['line','circle','triangle','z'] as const;
  for(const [index,rune] of runes.entries()){
@@ -46,16 +47,16 @@ export function setupLab(game:Game,view:GameView,input:InputController){
   }
  }
  window.addEventListener('keydown',e=>{if(e.repeat||(e.target instanceof HTMLElement&&['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)))return;const rune=runes[Number(e.key)-1];if(rune){e.preventDefault();cast(rune);}});
- const previewPanel=document.createElement('section');previewPanel.className='slash-preview';previewPanel.innerHTML='<h2>一字斩 · 四级动画预览</h2><p>一键切换并重播；可冻结动画，拖动时间检查每层特效。预览靶不移动。</p>';panel.insertBefore(previewPanel,panel.querySelector('h2'));
+ const previewPanel=document.createElement('section');previewPanel.className='slash-preview';previewPanel.innerHTML='<h2>一字斩 · 五级动画预览</h2><p>一键切换并重播；可冻结动画，拖动时间检查每层特效。预览靶不移动。</p>';panel.insertBefore(previewPanel,panel.querySelector('h2'));
  const previewRow=document.createElement('div');previewRow.className='lab-row';previewPanel.append(previewRow);
- let previewActive=false,previewLevel=1,previewTime=0,previewPlaying=false,previewRune:ActiveRune='line',previewEnd=1.05;let movingArrows=true;const arrowBases=new Map<number,{x:number;y:number;phase:number}>();
+ let previewRepeat=false;let previewActive=false,previewLevel=1,previewTime=0,previewPlaying=false,previewRune:ActiveRune='line',previewEnd=1.05;let movingArrows=true;const arrowBases=new Map<number,{x:number;y:number;phase:number}>();
  const scrub=document.createElement('input');scrub.type='range';scrub.min='0';scrub.max='1.05';scrub.step='.005';scrub.value='0';scrub.style.width='100%';previewPanel.append(scrub);
  const timeLabel=document.createElement('p');previewPanel.append(timeLabel);
  const moveArrowTargets=(dt:number)=>{if(previewRune!=='triangle')return;for(const e of game.enemies){const b=arrowBases.get(e.id);if(b){const offset=movingArrows?Math.sin((game.time+dt)*3.6+b.phase)*55:0;e.x=b.x-Math.sin(direction)*offset;e.y=b.y+Math.cos(direction)*offset;e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
  const arrowOptions:Partial<FoxGuardianConfig>={};
  const preparePreview=(level:number,time?:number,rune:ActiveRune='line')=>{
-  previewRune=rune;previewEnd=rune==='z'?THUNDER_STAGES[level-1].duration:rune==='circle'?circleStage(level).duration:rune==='triangle'?ARROW_STAGES[level-1].duration:1.05;scrub.max=String(previewEnd);
-  previewActive=true;previewPlaying=time===undefined;previewLevel=level;previewTime=0;input.cancel();game.skills=[];game.events=[];game.enemies=[];game.state='playing';game.pendingLevels=0;game.xp=0;game.time=0;game.score=0;game.kills=0;game.casts=0;game.hitStopRemaining=0;view.begin();view.animator.clear();view.entrance.y=665;view.entrance.scale=FOX_SCALE;
+  previewRune=rune;previewEnd=rune==='z'?THUNDER_STAGES[level-1].duration:rune==='circle'?circleStage(level).duration:rune==='triangle'?ARROW_STAGES[level-1].duration:level===4?1.05:SLASH_STAGES[level-1].visual_duration;scrub.max=String(previewEnd);
+  previewActive=true;previewPlaying=time===undefined;previewLevel=level;previewTime=0;input.cancel();game.brush.clear();game.skills=[];game.events=[];game.enemies=[];game.state='playing';game.pendingLevels=0;game.xp=0;game.time=0;game.score=0;game.kills=0;game.casts=0;game.hitStopRemaining=0;view.begin();view.animator.clear();view.entrance.y=665;view.entrance.scale=FOX_SCALE;
   arrowBases.clear();
   if(rune==='z'){for(let i=0;i<[1,3,6,8][level-1];i++){const a=-Math.PI/2+i*(level===2?.8:Math.PI*2/[1,3,6,8][level-1]),r=level===2?170:220;const e=game.spawn('crow',{x:360+Math.cos(a)*r,y:665+Math.sin(a)*r})!;e.hp=e.maxHp=3000;e.ai='Recovery';}}else if(rune==='triangle')for(let i=0;i<(level===4?1:level===3?3:1);i++){
    const a=direction+(level===4?i*Math.PI/3:(i-((level===3?3:1)-1)/2)*.38),distance=level===4?260:220+(i%2)*40;
@@ -65,7 +66,10 @@ export function setupLab(game:Game,view:GameView,input:InputController){
   if(time!==undefined){for(let t=0;t<time-1e-8;){const dt=Math.min(1/120,time-t);moveArrowTargets(dt);game.update(dt);for(const event of game.drain())view.event(event);view.update(game,input,dt,60);t+=dt;}previewTime=time;}
   view.update(game,input,0,60);view.ui.timer.text='∞';scrub.value=String(previewTime);timeLabel.textContent=`Lv${level} · ${SKILL_LEVELS[rune][level-1].name} · ${previewTime.toFixed(3)}秒`;
  };
- for(let lv=1;lv<=4;lv++)button(previewRow,`预览 Lv${lv}`,()=>preparePreview(lv));
+ for(let lv=1;lv<=5;lv++)button(previewRow,`预览 Lv${lv}`,()=>preparePreview(lv));
+ const repeatButton=button(previewRow,'自动重播：关',()=>{previewRepeat=!previewRepeat;repeatButton.textContent=previewRepeat?'自动重播：开':'自动重播：关';if(previewRepeat)preparePreview(previewLevel,undefined,previewRune);});
+ const captureRow=document.createElement('div');captureRow.className='lab-row';previewPanel.append(captureRow);for(const [i,time] of [.14,.18,.24,.37,.56].entries())button(captureRow,`截图定格 Lv${i+1}`,()=>preparePreview(i+1,time,'line'));
+ const awakeningRow=document.createElement('div');awakeningRow.className='lab-row';previewPanel.append(awakeningRow);for(const [label,time] of [['Lv5 起笔',.07],['Lv5 冲击波',.20],['Lv5 展卷',.38],['Lv5 卷面',.56],['Lv5 终结斩',.70],['Lv5 消散',.95]] as const)button(awakeningRow,label,()=>preparePreview(5,time,'line'));
  const variantControls=document.createElement('div');variantControls.className='lab-row';previewPanel.append(variantControls);
  const knobs=new Map<keyof UltimateParams,HTMLInputElement>();
  const chooseVariant=(variant:UltimateVariant)=>{selectUltimate(variant);for(const [key,el] of knobs)el.value=String(ultimateParams[key]);preparePreview(4);};
@@ -107,13 +111,15 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  button(thunderPanel,'冻结 / 播放雷符',()=>{if(previewRune!=='z')preparePreview(1,0,'z');else previewPlaying=!previewPlaying;});
  button(thunderPanel,'重播雷符',()=>preparePreview(previewRune==='z'?previewLevel:4,undefined,'z'));
  Object.assign(window,{__THUNDER_PREVIEW__:{frame:(level:number,time?:number)=>preparePreview(level,time,'z')}});
- panel.append(status);panel.insertAdjacentHTML('beforeend','<h2>法宝等级</h2><p>0为未获得；调整后下一次施法生效。</p>');
- for(const relic of RELICS){const el=row(relic.name);number(el,0,0,100,n=>{if(n)game.modifiers.owned.set(relic.id as RelicId,n);else game.modifiers.owned.delete(relic.id as RelicId);});const description=document.createElement('small');description.textContent=relic.description;panel.append(description);}
+ const brushPanel=document.createElement('section');brushPanel.innerHTML='<h2>朱砂灵笔 · 独立副笔测试</h2><p>25% / 35% / 45% · 延迟0.12秒 · 不加主技能伤害或护盾。先选下方法宝等级，再点技能预览。</p>';panel.append(brushPanel);for(const rune of runes){button(brushPanel,NAMES[rune],()=>preparePreview(ranks.get(rune)??1,undefined,rune));button(brushPanel,'定格·'+NAMES[rune],()=>{const lv=ranks.get(rune)??1;const time=rune==='line'?.24:rune==='circle'?.3:rune==='triangle'?(lv===4?2.6:.42):THUNDER_STAGES[lv-1].start+(THUNDER_STAGES[lv-1].targets-1)*THUNDER_STAGES[lv-1].interval+.2;preparePreview(lv,time,rune);});}
+ panel.append(status);panel.insertAdjacentHTML('beforeend','<h2>法宝等级</h2><p>0为未获得；朱砂灵笔Lv1–Lv3独立副笔，不改变主技能。调整后下一次施法生效。</p>');
+ for(const relic of RELICS){const el=row(relic.name);number(el,relic.id==='brush'?Math.max(0,Math.min(3,Number(new URLSearchParams(location.search).get('brush'))||0)):0,0,relic.id==='brush'?3:100,n=>{if(n)game.modifiers.owned.set(relic.id as RelicId,n);else game.modifiers.owned.delete(relic.id as RelicId);});const description=document.createElement('small');description.textContent=relic.description;panel.append(description);}
  panel.insertAdjacentHTML('beforeend','<h2>修行与靶场</h2>');
  number(row('局外修行（0–10阶）'),0,0,10,n=>{game.cultivation=n;game.maxHp=100+4*n;game.life=game.maxHp;});
- const targets=()=>{game.enemies=[];for(const [x,y] of [[510,665],[590,710],[480,810],[360,850],[205,665],[360,460],[220,510],[500,490]]){const e=game.spawn('ink',{x,y})!;e.ai='Recovery';}game.skills=[];view.begin();};
+ const targets=()=>{game.brush.clear();game.enemies=[];for(const [x,y] of [[510,665],[590,710],[480,810],[360,850],[205,665],[360,460],[220,510],[500,490]]){const e=game.spawn('ink',{x,y})!;e.ai='Recovery';}game.skills=[];view.begin();};
  const tools=row('');button(tools,'重置靶子 / 清特效',targets);const toggle=button(tools,'小怪：移动',()=>{frozen=!frozen;toggle.textContent=frozen?'小怪：静止':'小怪：移动';});button(tools,'暂停 / 继续',()=>game.pause());
- const beforeFrame=(dt=0)=>{game.charges.papers=3;game.invulnerable=999;game.life=game.maxHp;game.xp=0;if(game.state==='upgrade'){game.pendingLevels=0;game.choices=[];game.state='playing';}if(previewActive){game.state='playing';if(previewPlaying){const step=Math.min(dt,Math.max(0,previewEnd-previewTime));const held=Math.min(step,game.hitStopRemaining);game.hitStopRemaining-=held;moveArrowTargets(step-held);game.update(step-held);for(const event of game.drain())view.event(event);view.update(game,input,step-held,60);previewTime+=step;syncArrow();scrub.value=String(previewTime);timeLabel.textContent=`Lv${previewLevel} · ${previewTime.toFixed(3)}秒`;if(previewTime>=previewEnd)previewPlaying=false;}for(const e of game.enemies){if(e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;}}return;}if(game.active&&game.time>=spawnAt){spawnAt=game.time+.6;if(game.enemies.length<24)game.spawn(game.random()<.3?'crow':'ink');}for(const e of game.enemies){if(frozen&&e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
- game.cultivation=0;game.start();game.duration=1e9;game.director.disabled=true;targets();if(new URLSearchParams(location.search).get('thunder')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,undefined,'z');thunderPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('arrow')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,2.16,'triangle');syncArrow();arrowPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('ultimate')==='1'){direction=Math.PI/4;select.value=String(direction);preparePreview(4);}
+ const beforeFrame=(dt=0)=>{game.charges.papers=3;game.invulnerable=999;game.life=game.maxHp;game.xp=0;if(game.state==='upgrade'){game.pendingLevels=0;game.choices=[];game.state='playing';}if(previewActive){game.state='playing';if(previewPlaying){const step=Math.min(dt,Math.max(0,previewEnd-previewTime));const held=Math.min(step,game.hitStopRemaining);game.hitStopRemaining-=held;moveArrowTargets(step-held);game.update(step-held);for(const event of game.drain())view.event(event);view.update(game,input,step-held,60);previewTime+=step;syncArrow();scrub.value=String(previewTime);timeLabel.textContent=`Lv${previewLevel} · ${previewTime.toFixed(3)}秒`;if(previewTime>=previewEnd){if(previewRepeat)preparePreview(previewLevel,undefined,previewRune);else previewPlaying=false;}}for(const e of game.enemies){if(e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;}}return;}if(game.active&&game.time>=spawnAt){spawnAt=game.time+.6;if(game.enemies.length<24)game.spawn(game.random()<.3?'crow':'ink');}for(const e of game.enemies){if(frozen&&e.ai!=='Hit'){e.ai='Recovery';e.stateAge=0;e.vx=e.vy=0;}}};
+ Object.assign(window,{__BRUSH_PREVIEW__:{frame:(rune:ActiveRune,skillLevel:number,brushLevel:number,time?:number)=>{game.modifiers.owned.set('brush',Math.max(0,Math.min(3,brushLevel)));preparePreview(skillLevel,time,rune);}}});
+ game.cultivation=0;game.start();const initialBrush=Math.max(0,Math.min(3,Number(new URLSearchParams(location.search).get('brush'))||0));if(initialBrush)game.modifiers.owned.set('brush',initialBrush);game.duration=1e9;game.director.disabled=true;targets();if(new URLSearchParams(location.search).get('thunder')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,undefined,'z');thunderPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('arrow')==='1'){direction=-Math.PI/2;select.value=String(Math.PI*1.5);preparePreview(4,2.16,'triangle');syncArrow();arrowPanel.scrollIntoView({block:'nearest'});}if(new URLSearchParams(location.search).get('ultimate')==='1'){direction=Math.PI/4;select.value=String(direction);preparePreview(4);}
  return {beforeFrame,afterCast,ownsSimulation:()=>previewActive};
 }

@@ -8,10 +8,13 @@
     "dev": "vite --host 127.0.0.1 --port 5173",
     "dev:lan": "vite --host 0.0.0.0 --port 5174 --strictPort",
     "build": "tsc --noEmit && vite build",
-    "test": "tsx tests/run.ts",
+    "test": "tsx tests/run.ts && tsx tests/cinnabar-brush.ts && tsx tests/progress.ts",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "check:platform": "tsx scripts/check-platform.ts",
-    "preview:lan": "vite preview --host 0.0.0.0 --port 4173 --strictPort"
+    "preview:lan": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
+    "build:wechat": "tsc --noEmit && node scripts/build-wechat.mjs",
+    "test:wechat": "tsx tests/wechat.ts && node scripts/check-wechat-render.mjs",
+    "test:practice": "tsx tests/practice.ts"
   },
   "dependencies": {
     "pixi.js": "^8.14.0"

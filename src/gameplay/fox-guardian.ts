@@ -34,6 +34,6 @@ export function guardianCamera(t:number,cfg=FOX_GUARDIAN_DEFAULTS){
 /** A guardian completes its ritual; there is no Lv4 projectile or pursuit state. */
 export function updateFoxGuardian(g:Game,s:Skill){
  const cfg=guardianConfig(s),state=guardianTimeline(s.age,cfg);if(s.released||s.age+1e-8<state.releaseAt)return;
- s.released=true;g.shield=Math.max(g.shield,cfg.shield);g.shieldTime=Math.max(g.shieldTime,cfg.shieldDuration);
+ s.released=true;g.primaryAction({kind:'area',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,radius:cfg.releaseRadius});g.shield=Math.max(g.shield,cfg.shield);g.shieldTime=Math.max(g.shieldTime,cfg.shieldDuration);
  for(const e of [...g.enemies])if(Math.hypot(e.x-s.x,e.y-s.y)<=cfg.releaseRadius&&!s.hit.has(e.id)){s.hit.add(e.id);g.breakArmor(e);g.damage(e,s.damage,180*s.strength);}
 }

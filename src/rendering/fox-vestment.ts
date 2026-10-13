@@ -20,7 +20,8 @@ export class FoxVestment{
    // Reordering preserves the declared overlaps when a scroll becomes an outfit.
    parent.addChild(g);
   }
-  for(const [id,part] of parts)if(!live.has(id)){part.graphic.destroy();parts.delete(id);}
+  // Phase changes hide/reuse glyph parts; the parent skill cleans them up at its end.
+  for(const [id,part] of parts)if(!live.has(id))part.graphic.visible=false;
  }
  update(s:Skill){
   const scene=buildGuardianScene(s.age,guardianConfig(s));this.phase=scene.phase;this.clothProgress=scene.clothProgress;

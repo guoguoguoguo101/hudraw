@@ -10,7 +10,7 @@ export class BrowserAdapter implements PlatformAdapter{
  keyboard(fn:(key:string)=>void){window.addEventListener('keydown',e=>{if(['Escape','d','D','m','M'].includes(e.key)){e.preventDefault();fn(e.key);}});}
  lifecycle(fn:()=>void){window.addEventListener('blur',fn);document.addEventListener('visibilitychange',()=>{if(document.hidden)fn();});}
  read(key:string){try{return localStorage.getItem(key);}catch{return null;}}
- write(key:string,value:string){try{localStorage.setItem(key,value);}catch{/* Private browsing still permits play. */}}
+ write(key:string,value:string){try{localStorage.setItem(key,value);return true;}catch{return false;}}
  audio(sound:Sound){this.synth.play(sound);}
  unlockAudio(){this.synth.unlock();}
  setMuted(muted:boolean){this.synth.mute(muted);}

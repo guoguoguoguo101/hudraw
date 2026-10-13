@@ -6,9 +6,10 @@ export const SLASH_STAGES=config.stages;
 export type SlashContact={id:number;x:number;y:number;at:number;secondary:boolean;kind?:Enemy['kind'];dead?:boolean};
 export type SlashState={level:number;contacts:SlashContact[];pending:{id:number;at:number;damage:number;kind:'main'|'extra'}[];extraHit:Set<number>;scheduled:boolean;ultimate?:UltimateParams;variant?:UltimateVariant;secondaryAt?:number;secondaryCenter?:{x:number;y:number};secondaryDone?:boolean};
 export function configureSlash(s:Skill,level=1){
- const stage=SLASH_STAGES[Math.max(0,Math.min(3,level-1))];
+ const stage=SLASH_STAGES[Math.max(0,Math.min(4,level-1))];
  s.damage=s.damage/60*stage.damage;s.range=stage.range;s.duration=stage.visual_duration;
  s.slash={level:stage.level,contacts:[],pending:[],extraHit:new Set(),scheduled:false};
+ if(stage.level===5){s.slash.ultimate={...ultimateParams,slashLength:stage.range,slashWidth:stage.hit_width,scrollOpenAt:.23,scrollOpenDuration:.25,scrollHoldUntil:.78,fadeOutDuration:.37,secondaryDamage:stage.secondary_damage};s.slash.variant=ultimateVariant;s.slash.secondaryAt=.65;}
  if(stage.level===4){s.slash.ultimate={...ultimateParams};s.slash.variant=ultimateVariant;s.range=ultimateParams.slashLength;s.duration=Math.max(visualEnd(ultimateParams),ultimateParams.scrollHoldUntil+ultimateParams.fadeOutDuration);s.slash.secondaryAt=ultimateParams.scrollOpenAt+ultimateParams.scrollOpenDuration;}
 }
 function candidates(enemies:Enemy[],s:Skill,d:{x:number;y:number},width:number){
@@ -23,6 +24,7 @@ export function updateSlash(g:Game,s:Skill){
  const state=s.slash!,stage=SLASH_STAGES[state.level-1];
  if(!state.scheduled&&s.age+1e-8>=stage.primary_hit_at){
   state.scheduled=true;s.released=true;
+  g.primaryAction({kind:'ray',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,range:s.range,width:state.ultimate?.slashWidth??stage.hit_width,pierce:stage.pierce});
   const dirs=[s.direction];if(s.mirror){const mirror={x:-s.direction.x,y:s.direction.y};if(Math.hypot(mirror.x-s.direction.x,mirror.y-s.direction.y)>.05)dirs.push(mirror);}
   const selected=new Set<number>();for(const dir of dirs)for(const e of candidates(g.enemies,s,dir,state.ultimate?.slashWidth??stage.hit_width)){
    if(selected.has(e.id))continue;if(selected.size>=stage.pierce)break;selected.add(e.id);

@@ -11,7 +11,7 @@ export const SKILL_LEVELS={
 } as const;
 export type ActiveRune=keyof typeof SKILL_LEVELS;
 export function applySkillLevel(s:Skill,level:number){
- s.testLevel=Math.max(1,Math.min(s.rune==='circle'?5:4,Math.floor(level)));const i=s.testLevel-1;if(s.rune==='line'){s.damage*=60/SLASH_STAGES[(s.slash?.level??1)-1].damage;configureSlash(s,s.testLevel);return;}
+ s.testLevel=Math.max(1,Math.min(s.rune==='circle'||s.rune==='line'?5:4,Math.floor(level)));const i=s.testLevel-1;if(s.rune==='line'){s.damage*=60/SLASH_STAGES[(s.slash?.level??1)-1].damage;configureSlash(s,s.testLevel);return;}
  if(s.rune==='circle'){const stage=circleStage(s.testLevel);s.damage*=stage.damage;s.radius=Math.max(s.radius,stage.radius);s.duration=Math.max(s.duration,stage.duration);return;}
  s.damage*=[1,1.5,2.2,3.5][i];s.range*=[1,1.1,1.2,1.3][i];
  if(s.rune==='triangle')configureArrows(s,s.testLevel);

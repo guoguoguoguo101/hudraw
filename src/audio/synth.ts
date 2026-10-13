@@ -1,7 +1,8 @@
 import type {Sound} from '../platform/adapter';
 export class Synth{
+ constructor(private createContext:()=>AudioContext=()=>new AudioContext()){}
  context:AudioContext|null=null;master:GainNode|null=null;muted=false;
- unlock(){this.context??=new AudioContext();if(!this.master){this.master=this.context.createGain();this.master.gain.value=this.muted?0:.25;this.master.connect(this.context.destination);}void this.context.resume();}
+ unlock(){this.context??=this.createContext();if(!this.master){this.master=this.context.createGain();this.master.gain.value=this.muted?0:.25;this.master.connect(this.context.destination);}void this.context.resume();}
  mute(value:boolean){this.muted=value;if(this.master&&this.context)this.master.gain.setTargetAtTime(value?0:.25,this.context.currentTime,.08);}
  play(kind:Sound){if(!this.context||!this.master)return;const c=this.context,now=c.currentTime;
  const notes:Record<Sound,number[]>={line:[330,660],circle:[220,330,440],z:[587,880,1174],hit:[100,160],hurt:[110,82],win:[293.66,329.63,440,587.33,659.25],lose:[220,146,110],tap:[440]};

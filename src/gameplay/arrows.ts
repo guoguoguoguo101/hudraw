@@ -44,6 +44,7 @@ export function updateArrows(g:Game,s:Skill,dt:number){
    const candidates=Target.sector(g.enemies,p.seekDirection,s.range,.35).filter(e=>!s.hit.has(e.id));
    target=candidates.sort((a,b)=>Target.distance(a,p)-Target.distance(b,p))[0];p.target=target?.id??null;
   }
+  if(p.index===0&&p.distance===0)g.primaryAction({kind:'projectile',castId:s.id,origin:{x:p.x,y:p.y},direction:{...p.seekDirection},damage:s.damage,targetId:p.target,speed:stage.speed,range:s.range});
   const speed=stage.speed,step=speed*Math.min(dt,Math.max(0,s.age-p.launch));
   if(target){
    const desired=Math.atan2(target.y-p.y,target.x-p.x),difference=Math.atan2(Math.sin(desired-p.angle),Math.cos(desired-p.angle));
