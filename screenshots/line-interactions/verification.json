@@ -1,0 +1,194 @@
+{
+  "results": [
+    {
+      "name": "menu",
+      "traces": 0,
+      "crosses": 0,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "five-skills",
+      "traces": 0,
+      "crosses": 0,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "trace",
+      "traces": 1,
+      "crosses": 0,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "cross-gather",
+      "traces": 2,
+      "crosses": 1,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "cross",
+      "traces": 2,
+      "crosses": 1,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "cross-tail",
+      "traces": 2,
+      "crosses": 1,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "triangle-window",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-area-cut",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-rotate",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-collapse",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-flash",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-fragments",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-tail",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-hold-2s",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-refraction",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "triangle-refraction-disabled",
+      "traces": 1,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "cross-375",
+      "traces": 2,
+      "crosses": 1,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "cross-390",
+      "traces": 2,
+      "crosses": 1,
+      "triangles": 0,
+      "glError": 0
+    },
+    {
+      "name": "particles-small",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "particles-large",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "particles-low-quality",
+      "traces": 0,
+      "crosses": 1,
+      "triangles": 1,
+      "glError": 0
+    },
+    {
+      "name": "old-practice",
+      "traces": 0,
+      "crosses": 0,
+      "triangles": 0,
+      "glError": 0
+    }
+  ],
+  "fragmentCounts": [
+    20,
+    46
+  ],
+  "rejection": {
+    "accepted": true,
+    "before": 6,
+    "after": 6,
+    "fallbacks": 1
+  },
+  "oldState": {
+    "interaction": false,
+    "text": [
+      "一字斩 Lv1",
+      "施放",
+      "圆形护阵 Lv1",
+      "施放",
+      "追踪符箭 Lv1",
+      "施放",
+      "揽月狐尾 Lv1",
+      "施放",
+      "九霄雷诏 Lv1",
+      "施放",
+      "千叠月 Lv1",
+      "施放",
+      "缚妖咒 Lv1",
+      "施放",
+      "三才符 Lv1",
+      "飞刃",
+      "阵法",
+      "画笔 / 特效",
+      "无限灵墨 · 切换有限",
+      "三才符：小三角飞刃 · 大三角成阵"
+    ]
+  },
+  "errors": []
+}

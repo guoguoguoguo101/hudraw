@@ -1,9 +1,11 @@
+import {analyzeTriangle,type TriangleGeometry} from './triangle-geometry';
 import {GESTURE_INPUT} from './brush-settings';
+import {analyzeAdvanced,type AdvancedGeometry} from './advanced-geometry';
 export type Point={x:number;y:number};
-export type Rune='line'|'circle'|'triangle'|'star'|'z'|'spiral'|'ink';
-export type TalismanGeometry={raw:Point[];points:Point[];normalized:Point[];center:Point;aspect:number;rotation:number;winding:number;vertices:Point[];intersections:number};
-export type Recognition={gestureId?:number;rune:Rune|null;confidence:number;quality:number;valid:boolean;direction:Point;reason:string;normalized:Point[];geometry:TalismanGeometry};
-export const NAMES:Record<Rune,string>={line:'一字斩',circle:'圆形护阵',triangle:'箭头破甲',star:'五角星阵',z:'折线雷符',spiral:'螺旋旋风',ink:'断符消散'};
+export type Rune='sancai'|'line'|'circle'|'triangle'|'star'|'z'|'spiral'|'arc'|'wave'|'ink';
+export type TalismanGeometry={triangle?:TriangleGeometry;advanced?:AdvancedGeometry;raw:Point[];points:Point[];normalized:Point[];center:Point;aspect:number;rotation:number;winding:number;vertices:Point[];intersections:number};
+export type Recognition={fallback?:boolean;fallbackPath?:Point[];fallbackPen?:import('./brush-settings').PenSnapshot;gestureId?:number;rune:Rune|null;confidence:number;quality:number;valid:boolean;direction:Point;reason:string;normalized:Point[];geometry:TalismanGeometry};
+export const NAMES:Record<Rune,string>={sancai:'三才符',line:'一字斩',circle:'圆形护阵',triangle:'箭头破甲',star:'五角星阵',z:'九霄雷诏',spiral:'缚妖咒',arc:'揽月狐尾',wave:'千叠月',ink:'断符消散'};
 export const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 export function smooth(points:Point[]):Point[]{return points.map((p,i)=>i===0||i===points.length-1?p:{x:(points[i-1].x+p.x*2+points[i+1].x)/4,y:(points[i-1].y+p.y*2+points[i+1].y)/4});}
 export function resample(points:Point[],count=64):Point[]{if(points.length<2)return points;const lens=[0];for(let i=1;i<points.length;i++)lens.push(lens[i-1]+distance(points[i],points[i-1]));const total=lens.at(-1)!;if(total<.001)return [points[0]];let at=1;return Array.from({length:count},(_,i)=>{const target=total*i/(count-1);while(at<lens.length-1&&lens[at]<target)at++;const f=(target-lens[at-1])/(lens[at]-lens[at-1]||1);return {x:points[at-1].x+(points[at].x-points[at-1].x)*f,y:points[at-1].y+(points[at].y-points[at-1].y)*f};});}
@@ -19,11 +21,70 @@ const templates={triangle:regular(3),star:regular(5,2),z:[{x:-1,y:-1},{x:1,y:-1}
 function match(points:Point[],template:Point[],closed:boolean){const a=centered(normalize(closed?resample(points,65).slice(0,-1):resample(points))),b=centered(normalize(closed?resample(template,65).slice(0,-1):resample(template)));let best=1;for(const original of [a,[...a].reverse()])for(let shift=0;shift<(closed?64:1);shift+=closed?2:1){const candidate=original.map((_,i)=>original[(i+shift)%64]);let dot=0,cross=0;candidate.forEach((p,i)=>{dot+=p.x*b[i].x+p.y*b[i].y;cross+=p.x*b[i].y-p.y*b[i].x;});const angle=Math.atan2(cross,dot),scale=Math.sqrt(b.reduce((s,p)=>s+p.x*p.x+p.y*p.y,0)/Math.max(.0001,candidate.reduce((s,p)=>s+p.x*p.x+p.y*p.y,0))),co=Math.cos(angle)*scale,si=Math.sin(angle)*scale;const error=Math.sqrt(candidate.reduce((s,p,i)=>s+(p.x*co-p.y*si-b[i].x)**2+(p.x*si+p.y*co-b[i].y)**2,0)/64);best=Math.min(best,error);}return best;}
 /** Single-stroke API; strokes[] is retained for a later multi-stroke recognizer. */
 export class GestureRecognizer{recognize(strokes:Point[][]){return recognize(strokes[0]??[]);}}
+/** A deliberate arrow needs straight arms and a turn concentrated at one tip. */
+function arrowTip(points:Point[],span:number){
+ const p=resample(points,25),turns:number[]=[];let netTurn=0;
+ for(let i=1;i<p.length-1;i++){
+  const a=p[i-1],b=p[i],c=p[i+1];
+  const t=Math.atan2((b.x-a.x)*(c.y-b.y)-(b.y-a.y)*(c.x-b.x),(b.x-a.x)*(c.x-b.x)+(b.y-a.y)*(c.y-b.y));
+  netTurn+=t;turns.push(Math.abs(t)<.05?0:Math.abs(t));
+ }
+ const total=Math.abs(netTurn);
+ const corner=Math.max(...turns.map((t,i)=>t+(turns[i+1]??0)));
+ if(total<.8||corner/total<.65)return -1;
+ const first=points[0],last=points.at(-1)!;
+ let best=-1,bestError=Infinity;
+ for(let i=10;i<points.length-10;i++){
+  const tip=points[i],a=distance(first,tip),b=distance(last,tip);
+  if(Math.min(a,b)<span*.22||Math.min(a,b)/Math.max(a,b)<.4)continue;
+  const cosine=((first.x-tip.x)*(last.x-tip.x)+(first.y-tip.y)*(last.y-tip.y))/(a*b);
+  if(cosine<-.6||cosine>.93)continue;
+  const left=points.slice(0,i+1).map(v=>perpendicular(v,first,tip)/a);
+  const right=points.slice(i).map(v=>perpendicular(v,tip,last)/b);
+  const mean=(values:number[])=>values.reduce((sum,v)=>sum+v,0)/values.length;
+  const armLength=(from:number,to:number)=>points.slice(from+1,to+1).reduce((sum,v,j)=>sum+distance(points[from+j],v),0);
+  if(mean(left)>.02||mean(right)>.02||Math.max(...left,...right)>.06||armLength(0,i)>a*1.025||armLength(i,points.length-1)>b*1.025)continue;
+  const error=mean(left)+mean(right);
+  if(error<bestError){best=i;bestError=error;}
+ }
+ return best;
+}
+/** Fallback for an open, curved stroke, after the explicit glyphs have had priority. */
+function arcConfidence(points:Point[],length:number,chord:number){
+ if(length<GESTURE_INPUT.minDistance||chord<24||chord/length<.22)return 0;
+ const p=smooth(resample(points,17)),a=p[0],b=p.at(-1)!;
+ const side=p.map(v=>((v.x-a.x)*(b.y-a.y)-(v.y-a.y)*(b.x-a.x))/chord);
+ const bend=Math.max(...side.map(Math.abs))/chord;
+ if(bend<Math.max(.045,5/chord)||side.some(v=>v>chord*.2)&&side.some(v=>v< -chord*.2))return 0;
+ // Inspect corners before the coarse arc smoothing can round a squared U into a curve.
+ const outline=resample(points,33),corners:number[]=[];
+ for(let i=1;i<outline.length-1;i++){
+  const a=outline[i-1],b=outline[i],c=outline[i+1];
+  corners.push(Math.abs(Math.atan2((b.x-a.x)*(c.y-b.y)-(b.y-a.y)*(c.x-b.x),(b.x-a.x)*(c.x-b.x)+(b.y-a.y)*(c.y-b.y))));
+ }
+ if(corners.some((t,i)=>t+(corners[i+1]??0)>1.15))return 0;
+ let positive=0,negative=0,max=0;const turns:number[]=[];
+ for(let i=1;i<p.length-1;i++){
+  const u={x:p[i].x-p[i-1].x,y:p[i].y-p[i-1].y},v={x:p[i+1].x-p[i].x,y:p[i+1].y-p[i].y};
+  const t=Math.atan2(u.x*v.y-u.y*v.x,u.x*v.x+u.y*v.y);
+  turns.push(Math.abs(t)<.025?0:Math.abs(t));
+  max=Math.max(max,Math.abs(t));if(Math.abs(t)<.025)continue;if(t>0)positive+=t;else negative-=t;
+ }
+ const total=positive+negative;
+ const corner=Math.max(...turns.map((t,i)=>t+(turns[i+1]??0)));
+ // Bound wandering and reversals, without requiring a fixed arc angle or uniform curvature.
+ if(total<.15||total>5||max>1.2||max/Math.max(total,.001)>.7||corner/Math.max(total,.001)>.85||Math.max(positive,negative)/Math.max(total,.001)<.6)return 0;
+ // Check the unsimplified outline too: coarse smoothing must not hide a small loop.
+ for(let i=1;i<points.length;i++)for(let j=i+2;j<points.length;j++)if(crosses(points[i-1],points[i],points[j-1],points[j]))return 0;
+ return Math.min(.98,.8+.18*Math.max(positive,negative)/total);
+}
 export function recognize(raw:Point[]):Recognition{
  const clean:Point[]=[];for(const p of raw)if(Number.isFinite(p.x)&&Number.isFinite(p.y)&&(!clean.length||distance(p,clean.at(-1)!)>1.5))clean.push({...p});
+ const endpoint=raw.at(-1);
+ if(endpoint&&Number.isFinite(endpoint.x)&&Number.isFinite(endpoint.y)&&clean.length&&distance(endpoint,clean.at(-1)!)>0)clean.push({...endpoint});
  const pts=resample(smooth(clean)),norm=normalize(pts),xs=pts.map(p=>p.x),ys=pts.map(p=>p.y),w=xs.length?Math.max(...xs)-Math.min(...xs):0,h=ys.length?Math.max(...ys)-Math.min(...ys):0;
  const center={x:xs.length?(Math.max(...xs)+Math.min(...xs))/2:0,y:ys.length?(Math.max(...ys)+Math.min(...ys))/2:0};
- const vertices=simplify(pts,Math.max(w,h)*.045),geometry:TalismanGeometry={raw:clean.slice(0,400),points:pts,normalized:norm,center,aspect:w/Math.max(h,1),rotation:0,winding:1,vertices,intersections:0};
+ const vertices=simplify(pts,Math.max(w,h)*.045),geometry:TalismanGeometry={raw:clean.length>400?resample(clean,400):clean.slice(),points:pts,normalized:norm,center,aspect:w/Math.max(h,1),rotation:0,winding:1,vertices,intersections:0};
  const result=(rune:Rune|null,confidence=0,direction:Point={x:1,y:0},valid=false):Recognition=>({rune,confidence,quality:rune==='ink'?.25:Math.max(.4,Math.min(1,confidence*.8+.2)),valid,direction,reason:rune?NAMES[rune]:'笔迹未成符',normalized:norm,geometry});
  if(clean.length<2||pts.length<4)return result(null);
  let length=0;for(let i=1;i<pts.length;i++)length+=distance(pts[i],pts[i-1]);if(length<GESTURE_INPUT.minDistance||Math.max(w,h)<38)return result(null);
@@ -33,33 +94,36 @@ export function recognize(raw:Point[]):Recognition{
  let rawLength=0;for(let i=1;i<clean.length;i++)rawLength+=distance(clean[i],clean[i-1]);
  // Smoothing must not erase repeated reversals and upgrade dense scribbles into a line.
  if(rawLength>length*2)return result('ink',.25,dir,true);
- if(chord/rawLength>.88&&deviation/length<.045)return result('line',chord/rawLength,dir,true);
- // Arrow: two mostly straight arms meeting at a tip. Rotation and stroke order do not matter.
- let bestTip=-1,bestError=Infinity;
- for(let i=10;i<pts.length-10;i++){
-  const tip=pts[i],a=distance(first,tip),b=distance(last,tip);
-  if(Math.min(a,b)<Math.max(w,h)*.22||Math.min(a,b)/Math.max(a,b)<.3)continue;
-  const cosine=((first.x-tip.x)*(last.x-tip.x)+(first.y-tip.y)*(last.y-tip.y))/(a*b);
-  if(cosine<-.6||cosine>.93)continue;
-  const error=(pts.slice(0,i+1).reduce((sum,p)=>sum+perpendicular(p,first,tip),0)+pts.slice(i+1).reduce((sum,p)=>sum+perpendicular(p,tip,last),0))/pts.length/Math.max(w,h);
-  if(error<bestError){bestError=error;bestTip=i;}
+ const advanced=analyzeAdvanced(resample(smooth(clean),Math.min(192,Math.max(64,Math.ceil(rawLength/6)))));geometry.advanced=advanced;
+ const triangle=analyzeTriangle(resample(smooth(clean),128));
+ if(triangle){geometry.triangle=triangle;geometry.center=triangle.center;geometry.vertices=triangle.vertices;const r=result('sancai',.95,dir,true);r.reason=triangle.form==='small'?'三锋裂影 · 定点旋刃':'三才诛妖阵 · 三剑成阵';return r;}
+ if(advanced.kind)return result(advanced.kind,advanced.confidence,dir,true);
+ if(deviation/length<.045){
+  // Permit hand jitter, but reject deliberate retracing even if the final chord is long.
+  let peak=0;
+  for(const p of clean){
+   const along=(p.x-first.x)*dir.x+(p.y-first.y)*dir.y;
+   peak=Math.max(peak,along);
+   if(peak-along>Math.max(4,Math.min(8,chord*.02)))return result('ink',.25,dir,true);
+  }
+  if(chord/rawLength>.88)return result('line',chord/rawLength,dir,true);
  }
- if(closure>.18&&bestTip>=0&&bestError<.055){
+ const bestTip=closure>.18&&geometry.intersections===0?arrowTip(pts,Math.max(w,h)):-1;
+ if(bestTip>=0){
   const tip=pts[bestTip],base={x:(first.x+last.x)/2,y:(first.y+last.y)/2};
   const direction=unit({x:tip.x-base.x,y:tip.y-base.y});
   geometry.vertices=[first,tip,last];geometry.rotation=Math.atan2(direction.y,direction.x);
-  return result('triangle',Math.max(.65,1-bestError*4),direction,true);
+  const error=(pts.slice(0,bestTip+1).reduce((sum,p)=>sum+perpendicular(p,first,tip),0)+pts.slice(bestTip+1).reduce((sum,p)=>sum+perpendicular(p,tip,last),0))/pts.length/Math.max(w,h);
+  return result('triangle',Math.max(.65,1-error*4),direction,true);
  }
- // Z templates are aligned by rotation and reversed stroke order; reflection is also accepted.
- if(closure>.14&&vertices.length>=4&&vertices.length<=8&&geometry.intersections<2){
-  const error=Math.min(match(pts,templates.z,false),match(pts,templates.z.map(p=>({x:-p.x,y:p.y})),false));
-  if(error<.16)return result('z',Math.max(.6,1-error*2.6),dir,true);
- }
+ // Reserve closed and nearly closed circles before trying the forgiving open-stroke fallback.
  let turn=0;const radii=pts.map(p=>distance(p,center));
  for(let i=1;i<pts.length;i++){const a=Math.atan2(pts[i-1].y-center.y,pts[i-1].x-center.x),b=Math.atan2(pts[i].y-center.y,pts[i].x-center.x);turn+=Math.atan2(Math.sin(b-a),Math.cos(b-a));}
  geometry.winding=Math.sign(turn)||1;
  const mean=radii.reduce((sum,r)=>sum+r,0)/radii.length,cv=Math.sqrt(radii.reduce((sum,r)=>sum+(r-mean)**2,0)/radii.length)/(mean||1);
  const aspect=Math.min(w,h)/Math.max(w,h,1);
  if(closure<.18&&aspect>.35&&geometry.intersections<2&&cv<.26&&Math.abs(turn)>4.8&&Math.abs(turn)<7.9&&vertices.length>5)return result('circle',Math.max(.65,1-cv),dir,true);
+ const arc=geometry.intersections===0?arcConfidence(pts,length,chord):0;
+ if(arc)return result('arc',arc,dir,true);
  return result('ink',.25,dir,true);
 }

@@ -1,4 +1,5 @@
 import {Container,Graphics} from 'pixi.js';
+import {geometry,geometryTime} from './shared-geometry';
 import {WardCloud} from './ward-atmosphere';
 const RED=0xea402c,WINE=0x952b28,GOLD=0xefbb68,CREAM=0xffedc8,INK=0x151b20;
 const clamp=(v:number)=>Math.max(0,Math.min(1,v));
@@ -24,6 +25,7 @@ class SealFire{
  art=new Graphics();
  constructor(public radius:number,public seed:number,public count:number){}
  update(t:number){
+  geometry(this.art,`seal-fire/${this.radius}/${this.seed}/${this.count}/${geometryTime(t)}`,()=>{
   const r=this.radius,g=this.art,span=this.count===2?1.75:1.24,phase=t*1.9+this.seed*1.6;
   const shape=(width:number,shift:number)=>{
    const left:number[]=[],right:number[]=[];
@@ -48,6 +50,7 @@ class SealFire{
    const a=this.seed*Math.PI*2/this.count+t*.24+span*.75+j*.17,rr=r*(1.10+j*.008),x=Math.cos(a)*rr,y=Math.sin(a)*rr,dx=-Math.sin(a),dy=Math.cos(a),bend=Math.sin(phase-j*.5)*9;
    g.moveTo(x,y).quadraticCurveTo(x+dx*20-Math.cos(a)*bend,y+dy*20-Math.sin(a)*bend,x+dx*36,y+dy*36).quadraticCurveTo(x+dx*15+Math.cos(a)*5,y+dy*15+Math.sin(a)*5,x,y).fill({color:j%2?RED:CREAM,alpha:.7});
   }
+  });
  }
 }
 /** Elements translated from the AI concepts: sacred rope, paper curtain, seal-blades,

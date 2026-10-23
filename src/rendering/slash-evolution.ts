@@ -1,4 +1,5 @@
 import {drawPaperLight} from './slash-paper-light';
+import {drawBasicSlash} from './slash-basic';
 import {Container,Graphics} from 'pixi.js';
 import type {Skill} from '../core/types';
 import {slashVariation} from './slash-upgrades';
@@ -28,6 +29,7 @@ export class SlashEvolution {
   this.landscape.visible=false;this.root.alpha=1;
   const dx=s.direction.x,dy=s.direction.y,edge=Math.min(Math.abs(dx)>.001?(dx>0?698-s.x:s.x-22)/Math.abs(dx):Infinity,Math.abs(dy)>.001?(dy>0?1180-s.y:s.y-175)/Math.abs(dy):Infinity);
   const reach=s.slash?.path?s.range:Math.max(120,Math.min(s.range,edge-12,lv===5?620:lv===3?560:480));
+  if(lv===1){drawBasicSlash(s,{outer:this.outer,trail:this.trail,flames:this.flames,core:this.core,sparks:this.dissolve},reach);this.hits(s,fade);return;}
   const head=18+reach*q.travel,tail=Math.max(14,head-(lv===1?reach*.68:lv===2?reach*.8:reach*.9));
   if(t<q.launch){const a=clamp(t/q.launch);this.core.moveTo(12,0).quadraticCurveTo(25,-5,40*a,0).stroke({color:GOLD,width:2,alpha:Math.sin(a*Math.PI)});if(lv===5){this.flames.moveTo(-17,-14).lineTo(11,-18).lineTo(-3,13).lineTo(17,9).stroke({color:RED,width:2,alpha:1-a*.5});this.core.moveTo(-24,12).bezierCurveTo(-5,23,18,-13,36,0).stroke({color:GOLD,width:2,alpha:.8});}}
   if(lv===2&&t>=q.launch){drawPaperLight(s,{outer:this.outer,core:this.core,trail:this.trail,flames:this.flames,papers:this.papers,sparks:this.dissolve},reach,head,fade);this.hits(s,fade);return;}
@@ -40,13 +42,14 @@ export class SlashEvolution {
    if(lv>=3){const growth=smooth((t-q.launch-.025)/.065);for(let i=0;i<(lv===5?5:4);i++){const f=.2+i*.16,sign=i%2?-1:1,r=(lv===5?36:27)*( .8+slashVariation(s.id,i)*.35)*growth;cloud(this.clouds,tail+(head-tail)*f,sign*(16+r*.5),r,sign,waveFade*.88);}}
   }
   if(lv>=2&&t>=q.launch){for(let i=0;i<(lv===2?3:5);i++){const r=slashVariation(s.id,i+20),born=q.launch+i*.013,age=t-born;if(age<0)continue;const f=clamp(age/(lv===5?.55:.26)),x=22+reach*(.1+r*.25)+reach*.65*f,y=(i%2?-1:1)*(12+(25+r*30)*f),a=(r-.5)*.9+age*(r-.5)*5;this.paper(this.papers,x,y,a,lv===2?.75:.80,fade*clamp(1-f*.6));}}
-  if(lv===5&&q.open>0)this.scroll(s,reach,q.open,q.finish,q.dissolve);
+  if(lv===5&&q.open>0)this.scroll(s,s.slash!.scrollRange??reach,q.open,q.finish,q.dissolve);
   this.hits(s,fade);
   if(lv===1&&t>.21){for(let i=0;i<3;i++){const f=slashVariation(s.id,i),x=tail+(head-tail)*f;this.dissolve.moveTo(x,(f-.5)*8).lineTo(x+10,(f-.5)*12).stroke({color:GOLD,width:1,alpha:fade});}}
  }
  private paper(g:Graphics,x:number,y:number,a:number,scale:number,alpha:number){g.save().setTransform(Math.cos(a)*scale,Math.sin(a)*scale,-Math.sin(a)*scale,Math.cos(a)*scale,x,y);g.moveTo(-6,-15).lineTo(7,-14).lineTo(5,14).lineTo(-5,16).closePath().fill({color:IVORY,alpha}).stroke({color:GOLD,width:.8,alpha});g.moveTo(-3,-8).lineTo(3,-8).lineTo(-2,2).lineTo(3,2).moveTo(0,-11).lineTo(0,10).stroke({color:RED,width:1.5,alpha});g.restore();}
  private scroll(s:Skill,reach:number,open:number,finish:number,tear:number){
-  const t=s.age,start=48,dx=s.direction.x,dy=s.direction.y,boundX=Math.abs(dx)>.001?((dx>0?698-s.x:s.x-22)-138*Math.abs(dy))/Math.abs(dx)-start:Infinity,boundY=Math.abs(dy)>.001?((dy>0?1180-s.y:s.y-175)-138*Math.abs(dx))/Math.abs(dy)-start:Infinity,full=Math.max(80,Math.min(reach*.84,boundX,boundY)),length=Math.max(5,full*open*(1-tear*.28)),half=(70+Math.sin(open*Math.PI)*15+open*60)*(1-tear*.28),alpha=1-tear;
+  const origin=s.slash!.secondaryOrigin??s,offset=(origin.x-s.x)*s.direction.x+(origin.y-s.y)*s.direction.y;
+  const t=s.age,start=48+offset,dx=s.direction.x,dy=s.direction.y,boundX=Math.abs(dx)>.001?((dx>0?698-origin.x:origin.x-22)-138*Math.abs(dy))/Math.abs(dx)-48:Infinity,boundY=Math.abs(dy)>.001?((dy>0?1180-origin.y:origin.y-175)-138*Math.abs(dx))/Math.abs(dy)-48:Infinity,full=Math.max(80,Math.min(reach*.84,boundX,boundY)),length=Math.max(5,full*open*(1-tear*.28)),half=(70+Math.sin(open*Math.PI)*15+open*60)*(1-tear*.28),alpha=1-tear;
   parchmentContour(this.body,start,length,half,t,tear);this.body.fill({color:IVORY,alpha});parchmentContour(this.mask,start,length,half,t,tear);this.mask.fill(WHITE);
   const angle=Math.atan2(s.direction.y,s.direction.x),w=Math.abs(full*s.direction.x)+Math.abs(260*s.direction.y),h=Math.abs(full*s.direction.y)+Math.abs(260*s.direction.x);
   const cache=`${s.id}:${full.toFixed(2)}:${angle}`;if(this.cached!==cache){this.cached=cache;this.paintLandscape(w,h,s.id);}

@@ -40,11 +40,11 @@ test('repeated scribble costs ink but never refunds or generates any attack',()=
 });
 test('depletion interpolates to the exact paid point, keeps visual tail only, then allows one slash',()=>{
  const {g,input}=setup();g.ink.setAmount(8);down(input);move(input,500);close(g.ink.currentInk,0);close(input.points.at(-1)!.x,196);assert.equal(input.exhausted,true);assert.equal(g.casts,0);
- move(input,680,1000);assert.equal(input.points.length,2);assert.ok(input.dryPoints.length>=2);up(input,680,1000);assert.equal(g.casts,1);assert.equal(input.last?.rune,'line');close(g.ink.last.cost,8);close(g.ink.currentInk,.8);assert.ok(g.skills[0].geometry.raw.every(p=>p.x<=196));
+ move(input,680,1000);assert.equal(input.points.length,2);assert.ok(input.dryPoints.length>=2);up(input,680,1000);assert.equal(g.casts,1);assert.equal(input.last?.rune,'line');close(g.ink.last.cost,8);close(g.ink.currentInk,.8);assert.ok(g.skills[0].geometry.raw.every(p=>p.x<=196));close(g.skills[0].range,144);
 });
-test('failed partial circle has no refund and system cancel restores uncommitted cost',()=>{
- const {g,input}=setup();down(input,360,380);for(let i=1;i<=20;i++){const a=-Math.PI/2+i/20*Math.PI;move(input,360+Math.cos(a)*120,500+Math.sin(a)*120);}up(input,360,620);assert.equal(input.last?.rune,'ink');assert.equal(g.ink.last.refund,0);assert.ok(g.ink.currentInk<100);
- const before=g.ink.currentInk;down(input);move(input,400);assert.ok(g.ink.currentInk<before);input.event({kind:'cancel',id:1,x:400,y:500});close(g.ink.currentInk,before);assert.equal(g.casts,0);assert.equal(g.skills.length,0);
+test('half circle now casts one moon tail; system cancel restores only uncommitted cost',()=>{
+ const {g,input}=setup();down(input,360,380);for(let i=1;i<=20;i++){const a=-Math.PI/2+i/20*Math.PI;move(input,360+Math.cos(a)*120,500+Math.sin(a)*120);}up(input,360,620);assert.equal(input.last?.rune,'arc');assert.ok(g.ink.last.refund>0);assert.ok(g.ink.currentInk<100);
+ const before=g.ink.currentInk;down(input);move(input,400);assert.ok(g.ink.currentInk<before);input.event({kind:'cancel',id:1,x:400,y:500});close(g.ink.currentInk,before);assert.equal(g.casts,1);assert.equal(g.skills.length,1);
 });
 test('timeout seals once, no held recovery, no extra finger, no refund of settled stroke on cancellation',()=>{
  const {g,input}=setup();down(input);move(input,340);input.update(3);assert.equal(g.casts,1);const balance=g.ink.currentInk;assert.equal(g.ink.isWaitingRelease,true);

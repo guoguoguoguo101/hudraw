@@ -1,0 +1,75 @@
+{
+  "results": [
+    {
+      "level": 1,
+      "length": 100,
+      "range": 150,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 1,
+      "length": 400,
+      "range": 600,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 2,
+      "length": 100,
+      "range": 150,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 2,
+      "length": 400,
+      "range": 600,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 3,
+      "length": 100,
+      "range": 150,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 3,
+      "length": 400,
+      "range": 600,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 4,
+      "length": 100,
+      "range": 150,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 4,
+      "length": 400,
+      "range": 600,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 5,
+      "length": 100,
+      "range": 150,
+      "visible": true,
+      "glError": 0
+    },
+    {
+      "level": 5,
+      "length": 400,
+      "range": 600,
+      "visible": true,
+      "glError": 0
+    }
+  ],
+  "errors": []
+}

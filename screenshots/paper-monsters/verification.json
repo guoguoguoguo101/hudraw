@@ -1,0 +1,708 @@
+{
+  "results": [
+    {
+      "name": "mixed-430",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 9,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 10,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 11,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 12,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 13,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 14,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 15,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 16,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "moving-430",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 9,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 10,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 11,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 12,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 13,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 14,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 15,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 16,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "frozen-430",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 9,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 10,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 11,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 12,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 13,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 14,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 15,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 16,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    },
+    {
+      "name": "hit-430",
+      "looks": [
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 21,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 22,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 23,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 24,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    },
+    {
+      "name": "mixed-375",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 26,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 27,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 28,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 29,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 30,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 31,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 32,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 33,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "moving-375",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 26,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 27,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 28,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 29,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 30,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 31,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 32,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 33,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "frozen-375",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 26,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 27,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 28,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 29,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 30,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 31,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 32,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 33,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    },
+    {
+      "name": "hit-375",
+      "looks": [
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 38,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 39,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 40,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 41,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    },
+    {
+      "name": "mixed-390",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 43,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 44,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 45,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 46,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 47,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 48,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 49,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 50,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "moving-390",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 43,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 44,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 45,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 46,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 47,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 48,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 49,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 50,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": false,
+      "gl": 0
+    },
+    {
+      "name": "frozen-390",
+      "looks": [
+        "paper-moth",
+        "paper-lantern",
+        "paper-umbrella",
+        "paper-frog",
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 43,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 44,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        },
+        {
+          "id": 45,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-umbrella"
+        },
+        {
+          "id": 46,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-frog"
+        },
+        {
+          "id": 47,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 48,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 49,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 50,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    },
+    {
+      "name": "hit-390",
+      "looks": [
+        "paper-spines",
+        "paper-rabbit",
+        "paper-moth",
+        "paper-lantern"
+      ],
+      "enemies": [
+        {
+          "id": 55,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-spines"
+        },
+        {
+          "id": 56,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-rabbit"
+        },
+        {
+          "id": 57,
+          "hp": 30,
+          "kind": "crow",
+          "look": "paper-moth"
+        },
+        {
+          "id": 58,
+          "hp": 40,
+          "kind": "ink",
+          "look": "paper-lantern"
+        }
+      ],
+      "frozen": true,
+      "gl": 0
+    }
+  ],
+  "poolCounts": [
+    17,
+    17,
+    17,
+    17,
+    17
+  ],
+  "errors": []
+}

@@ -1,3 +1,5 @@
+import {glyphSample} from '../input/glyph-samples';
+import {MOON_TAIL_STAGES} from '../gameplay/moon-tail';
 import {SLASH_STAGES} from '../gameplay/slash';
 import {THUNDER_STAGES} from '../gameplay/thunder';
 import {ARROW_STAGES} from '../gameplay/arrows';
@@ -33,14 +35,14 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  const afterCast=(r:Recognition)=>{const s=game.skills.at(-1);if(s){applySkillLevel(s,ranks.get(s.rune)??1);const name=s.circle?.mode==='seal'?SEAL_NAMES[s.circle.level-1]:s.rune in SKILL_LEVELS?SKILL_LEVELS[s.rune as ActiveRune][(s.testLevel??1)-1].name:r.reason;status.textContent=`${name} Lv${s.testLevel} · 伤害参数 ${s.damage.toFixed(1)} · 范围 ${s.radius||s.range} · 持续 ${s.duration.toFixed(2)}秒`;}};
  let circlePreviewMode:'ward'|'seal'='ward';
  const points=(rune:Rune)=>{
-  const base=rune==='circle'?Array.from({length:100},(_,i)=>({x:Math.cos(i/99*Math.PI*2)*120,y:Math.sin(i/99*Math.PI*2)*120})):rune==='triangle'?resample([{x:-90,y:-100},{x:100,y:0},{x:-90,y:100}],100):rune==='z'?resample([{x:-110,y:-100},{x:110,y:-100},{x:-110,y:100},{x:110,y:100}],100):resample([{x:-140,y:0},{x:140,y:0}],100);
-  const angle=rune==='z'?direction-Math.atan2(200,220):direction;
+  const base=glyphSample(rune);
+  const angle=direction;
   const centerY=rune==='circle'&&circlePreviewMode==='seal'?320:665;
   return base.map(p=>({x:360+p.x*Math.cos(angle)-p.y*Math.sin(angle),y:centerY+p.x*Math.sin(angle)+p.y*Math.cos(angle)}));
  };
- panel.insertAdjacentHTML('beforeend','<h2>技能栏 · 1 / 2 / 3 / 4 键施放</h2><p>直线、圆形护阵支持Lv1–Lv5，其余技能支持Lv1–Lv4。等级同时改变伤害、范围或攻击方式。</p>');
+ panel.insertAdjacentHTML('beforeend','<h2>技能栏 · 1–7 键施放</h2><p>直线、圆形护阵支持Lv1–Lv5，其余技能支持Lv1–Lv4。等级同时改变伤害、范围或攻击方式。</p>');
  const cast=(rune:ActiveRune)=>{if(game.state==='paused')game.pause();input.cancel();const pts=points(rune);input.event({...pts[0],id:777,kind:'down'});for(const p of pts)input.event({...p,id:777,kind:'move'});input.event({...pts.at(-1)!,id:777,kind:'up'});};
- const runes=['line','circle','triangle','z'] as const;
+ const runes=['line','circle','triangle','arc','z','wave','spiral'] as const;
  for(const [index,rune] of runes.entries()){
   ranks.set(rune,1);const el=row(`${index+1} · ${NAMES[rune]}`);button(el,'释放',()=>cast(rune));
   const choices=document.createElement('div');choices.className='lab-levels';panel.append(choices);
@@ -59,7 +61,7 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  const arrowOptions:Partial<FoxGuardianConfig>={};
  const preparePreview=(level:number,time?:number,rune:ActiveRune='line',circleMode:'ward'|'seal'=circlePreviewMode)=>{
   if(rune==='circle')circlePreviewMode=circleMode;
-  previewRune=rune;previewEnd=rune==='z'?THUNDER_STAGES[level-1].duration:rune==='circle'?circleStage(level).duration:rune==='triangle'?ARROW_STAGES[level-1].duration:level===4?1.05:SLASH_STAGES[level-1].visual_duration;scrub.max=String(previewEnd);
+  previewRune=rune;previewEnd=rune==='arc'?MOON_TAIL_STAGES[level-1].release+MOON_TAIL_STAGES[level-1].range/MOON_TAIL_STAGES[level-1].speed+.65:rune==='z'?THUNDER_STAGES[level-1].duration:rune==='circle'?circleStage(level).duration:rune==='triangle'?ARROW_STAGES[level-1].duration:level===4?1.05:SLASH_STAGES[level-1].visual_duration;scrub.max=String(previewEnd);
   previewActive=true;previewPlaying=time===undefined;previewLevel=level;previewTime=0;input.cancel();game.brush.clear();game.skills=[];game.events=[];game.enemies=[];game.state='playing';game.pendingLevels=0;game.xp=0;game.time=0;game.score=0;game.kills=0;game.casts=0;game.hitStopRemaining=0;view.begin();view.animator.clear();view.entrance.y=665;view.entrance.scale=FOX_SCALE;
   arrowBases.clear();
   game.shield=game.shieldTime=0;
@@ -114,13 +116,13 @@ export function setupLab(game:Game,view:GameView,input:InputController){
  for(const [key,label,min,max,step] of [['foxScale','守护狐体量',.8,1.8,.05],['orbitRadius','盘旋半径',60,185,5],['scrollWidth','法衣卷面宽度',.5,1.5,.05],['paperCount','符纸数量',0,18,1],['patternOpacity','绘卷纹样浓度',0,1,.05],['cameraStrength','镜头推拉幅度',0,1,.05]] as const){const row=document.createElement('label');row.className='lab-row';row.textContent=label;const el=document.createElement('input');el.type='number';el.min=String(min);el.max=String(max);el.step=String(step);el.value=String(FOX_GUARDIAN_DEFAULTS[key]);el.onchange=()=>{arrowOptions[key]=Math.max(min,Math.min(max,Number(el.value)||min));};row.append(el);arrowParams.append(row);}
  for(let i=0;i<5;i++){const row=document.createElement('label');row.className='lab-row';row.textContent=['起势秒','钻出秒','盘旋秒','法衣成形秒','定格秒'][i];const el=document.createElement('input');el.type='number';el.min='.1';el.max='3';el.step='.05';el.value=String(FOX_GUARDIAN_DEFAULTS.phaseDurations[i]);el.onchange=()=>{const times=arrowOptions.phaseDurations??[...FOX_GUARDIAN_DEFAULTS.phaseDurations];times[i]=Math.max(.1,Math.min(3,Number(el.value)||.1));arrowOptions.phaseDurations=times;};row.append(el);arrowParams.append(row);}
  Object.assign(window,{__ARROW_PREVIEW__:{frame:(level:number,time?:number)=>{preparePreview(level,time,'triangle');syncArrow();},moving:(enabled:boolean)=>{movingArrows=enabled;moving.checked=enabled;},direction:(angle:number)=>{direction=angle;select.value=String(angle);},params:(options?:Partial<FoxGuardianConfig>)=>{if(options)Object.assign(arrowOptions,options);return {...FOX_GUARDIAN_DEFAULTS,...arrowOptions};}}});
- const thunderPanel=document.createElement('section');thunderPanel.className='slash-preview';thunderPanel.innerHTML='<h2>Z · 天狐雷劫 · 四级矢量动画</h2><p>一道引雷 → 三段奔雷 → 六目标天符雷网 → 天狐开卷、八道雷劫。共用时间轴可检查起势、落雷与消散。</p>';arrowPanel.after(thunderPanel);
+ const thunderPanel=document.createElement('section');thunderPanel.className='slash-preview';thunderPanel.innerHTML='<h2>九霄雷诏 · 天狐雷劫 · 四级矢量动画</h2><p>多折角沿笔迹引雷 → 节点连锁 → 雷诏残纹 → 原版天狐雷劫。共用时间轴可检查起势、落雷与消散。</p>';arrowPanel.after(thunderPanel);
  const thunderRow=document.createElement('div');thunderRow.className='lab-row';thunderPanel.append(thunderRow);
  for(let lv=1;lv<=4;lv++)button(thunderRow,`雷符 Lv${lv}`,()=>preparePreview(lv,undefined,'z'));
  button(thunderPanel,'冻结 / 播放雷符',()=>{if(previewRune!=='z')preparePreview(1,0,'z');else previewPlaying=!previewPlaying;});
  button(thunderPanel,'重播雷符',()=>preparePreview(previewRune==='z'?previewLevel:4,undefined,'z'));
  Object.assign(window,{__THUNDER_PREVIEW__:{frame:(level:number,time?:number)=>preparePreview(level,time,'z')}});
- const brushPanel=document.createElement('section');brushPanel.innerHTML='<h2>朱砂灵笔 · 独立副笔测试</h2><p>25% / 35% / 45% · 延迟0.12秒 · 不加主技能伤害或护盾。先选下方法宝等级，再点技能预览。</p>';panel.append(brushPanel);for(const rune of runes){button(brushPanel,NAMES[rune],()=>preparePreview(ranks.get(rune)??1,undefined,rune));button(brushPanel,'定格·'+NAMES[rune],()=>{const lv=ranks.get(rune)??1;const time=rune==='line'?.24:rune==='circle'?.3:rune==='triangle'?(lv===4?2.6:.42):THUNDER_STAGES[lv-1].start+(THUNDER_STAGES[lv-1].targets-1)*THUNDER_STAGES[lv-1].interval+.2;preparePreview(lv,time,rune);});}
+ const brushPanel=document.createElement('section');brushPanel.innerHTML='<h2>朱砂灵笔 · 独立副笔测试</h2><p>25% / 35% / 45% · 延迟0.12秒 · 不加主技能伤害或护盾。先选下方法宝等级，再点技能预览。</p>';panel.append(brushPanel);for(const rune of runes){button(brushPanel,NAMES[rune],()=>preparePreview(ranks.get(rune)??1,undefined,rune));button(brushPanel,'定格·'+NAMES[rune],()=>{const lv=ranks.get(rune)??1;const time=rune==='arc'?.55:rune==='line'?.24:rune==='circle'?.3:rune==='triangle'?(lv===4?2.6:.42):THUNDER_STAGES[lv-1].start+(THUNDER_STAGES[lv-1].targets-1)*THUNDER_STAGES[lv-1].interval+.2;preparePreview(lv,time,rune);});}
  panel.append(status);panel.insertAdjacentHTML('beforeend','<h2>法宝等级</h2><p>0为未获得；朱砂灵笔Lv1–Lv3独立副笔，不改变主技能。调整后下一次施法生效。</p>');
  for(const relic of RELICS){const el=row(relic.name);number(el,relic.id==='brush'?Math.max(0,Math.min(3,Number(new URLSearchParams(location.search).get('brush'))||0)):0,0,relic.id==='brush'?3:100,n=>{if(n)game.modifiers.owned.set(relic.id as RelicId,n);else game.modifiers.owned.delete(relic.id as RelicId);});const description=document.createElement('small');description.textContent=relic.description;panel.append(description);}
  panel.insertAdjacentHTML('beforeend','<h2>修行与靶场</h2>');

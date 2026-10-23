@@ -1,0 +1,138 @@
+{
+  "results": [
+    {
+      "rune": "z",
+      "level": 1,
+      "time": 0.42,
+      "hits": 3,
+      "nodes": 3,
+      "glError": 0
+    },
+    {
+      "rune": "z",
+      "level": 2,
+      "time": 0.65,
+      "hits": 4,
+      "nodes": 4,
+      "glError": 0
+    },
+    {
+      "rune": "z",
+      "level": 3,
+      "time": 1.06,
+      "hits": 4,
+      "nodes": 5,
+      "glError": 0
+    },
+    {
+      "rune": "z",
+      "level": 4,
+      "time": 1.95,
+      "hits": 3,
+      "nodes": 5,
+      "glError": 0
+    },
+    {
+      "rune": "wave",
+      "level": 1,
+      "time": 0.46,
+      "hits": 2,
+      "arcs": 2,
+      "glError": 0
+    },
+    {
+      "rune": "wave",
+      "level": 2,
+      "time": 0.66,
+      "hits": 2,
+      "arcs": 3,
+      "glError": 0
+    },
+    {
+      "rune": "wave",
+      "level": 3,
+      "time": 0.86,
+      "hits": 3,
+      "arcs": 4,
+      "glError": 0
+    },
+    {
+      "rune": "wave",
+      "level": 4,
+      "time": 1.35,
+      "hits": 5,
+      "arcs": 5,
+      "glError": 0
+    },
+    {
+      "rune": "spiral",
+      "level": 1,
+      "time": 0.5,
+      "hits": 5,
+      "turns": 2,
+      "glError": 0
+    },
+    {
+      "rune": "spiral",
+      "level": 2,
+      "time": 0.5,
+      "hits": 5,
+      "turns": 2.21305803729056,
+      "glError": 0
+    },
+    {
+      "rune": "spiral",
+      "level": 3,
+      "time": 0.5,
+      "hits": 5,
+      "turns": 2.21305803729056,
+      "glError": 0
+    },
+    {
+      "rune": "spiral",
+      "level": 4,
+      "time": 0.5,
+      "hits": 5,
+      "turns": 2.21305803729056,
+      "glError": 0
+    }
+  ],
+  "buttons": [
+    {
+      "rune": "line",
+      "result": "line",
+      "level": 5
+    },
+    {
+      "rune": "circle",
+      "result": "circle",
+      "level": 5
+    },
+    {
+      "rune": "triangle",
+      "result": "triangle",
+      "level": 4
+    },
+    {
+      "rune": "arc",
+      "result": "arc",
+      "level": 4
+    },
+    {
+      "rune": "z",
+      "result": "z",
+      "level": 4
+    },
+    {
+      "rune": "wave",
+      "result": "wave",
+      "level": 4
+    },
+    {
+      "rune": "spiral",
+      "result": "spiral",
+      "level": 4
+    }
+  ],
+  "errors": []
+}

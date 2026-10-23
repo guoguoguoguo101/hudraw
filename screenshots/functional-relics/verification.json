@@ -1,0 +1,620 @@
+{
+  "results": [
+    {
+      "name": "dock-430",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0.3,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 9,
+          "x": 555,
+          "y": 500,
+          "age": 1
+        },
+        {
+          "id": 10,
+          "x": 505,
+          "y": 435,
+          "age": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "lantern-430",
+      "state": "playing",
+      "uses": {
+        "lantern": 2,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": {
+        "x": 519.9999772892442,
+        "y": 499.999994322311,
+        "id": 1,
+        "remaining": 4.650000000000001,
+        "hits": 3,
+        "radius": 180
+      },
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0.3,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 9,
+          "x": 554.4166666666666,
+          "y": 499.9999999053719,
+          "age": 1.3499999999999988,
+          "lure": 1
+        },
+        {
+          "id": 10,
+          "x": 507.75452522587113,
+          "y": 446.9362930083016,
+          "age": 1.3499999999999988,
+          "lure": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "equipment-430",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0.3,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 9,
+          "x": 554.4166666666666,
+          "y": 499.9999999053719,
+          "age": 1.3499999999999988,
+          "lure": 1
+        },
+        {
+          "id": 10,
+          "x": 507.75452522587113,
+          "y": 446.9362930083016,
+          "age": 1.3499999999999988,
+          "lure": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "stop-430",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 1,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 2.9000000000000004,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0.3,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 9,
+          "x": 554.4166666666666,
+          "y": 499.9999999053719,
+          "age": 1.3499999999999988,
+          "lure": 1
+        },
+        {
+          "id": 10,
+          "x": 507.75452522587113,
+          "y": 446.9362930083016,
+          "age": 1.3499999999999988,
+          "lure": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "rescue-430",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "rescue-first-430",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 1,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "revived-430",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 30,
+      "stroke": 2,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "dock-375",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 20,
+          "x": 555,
+          "y": 500,
+          "age": 1
+        },
+        {
+          "id": 21,
+          "x": 505,
+          "y": 435,
+          "age": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "lantern-375",
+      "state": "playing",
+      "uses": {
+        "lantern": 2,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": {
+        "x": 520.00001953125,
+        "y": 500.0000195312501,
+        "id": 2,
+        "remaining": 4.650000000000001,
+        "hits": 3,
+        "radius": 180
+      },
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 20,
+          "x": 554.4166666666667,
+          "y": 500.000000325521,
+          "age": 1.3499999999999988,
+          "lure": 2
+        },
+        {
+          "id": 21,
+          "x": 507.75453157650503,
+          "y": 446.9362915427709,
+          "age": 1.3499999999999988,
+          "lure": 2
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "equipment-375",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 20,
+          "x": 554.4166666666667,
+          "y": 500.000000325521,
+          "age": 1.3499999999999988,
+          "lure": 2
+        },
+        {
+          "id": 21,
+          "x": 507.75453157650503,
+          "y": 446.9362915427709,
+          "age": 1.3499999999999988,
+          "lure": 2
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "stop-375",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 1,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 2.9000000000000004,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 20,
+          "x": 554.4166666666667,
+          "y": 500.000000325521,
+          "age": 1.3499999999999988,
+          "lure": 2
+        },
+        {
+          "id": 21,
+          "x": 507.75453157650503,
+          "y": 446.9362915427709,
+          "age": 1.3499999999999988,
+          "lure": 2
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "rescue-375",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "rescue-first-375",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 1,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "revived-375",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 30,
+      "stroke": 2,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "dock-390",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 31,
+          "x": 555,
+          "y": 500,
+          "age": 1
+        },
+        {
+          "id": 32,
+          "x": 505,
+          "y": 435,
+          "age": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "lantern-390",
+      "state": "playing",
+      "uses": {
+        "lantern": 2,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": {
+        "x": 519.9999812199519,
+        "y": 499.99998121995185,
+        "id": 3,
+        "remaining": 4.650000000000001,
+        "hits": 3,
+        "radius": 180
+      },
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 31,
+          "x": 554.4166666666667,
+          "y": 499.9999996869994,
+          "age": 1.3499999999999988,
+          "lure": 3
+        },
+        {
+          "id": 32,
+          "x": 507.75452643836087,
+          "y": 446.93629272849677,
+          "age": 1.3499999999999988,
+          "lure": 3
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "equipment-390",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 31,
+          "x": 554.4166666666667,
+          "y": 499.9999996869994,
+          "age": 1.3499999999999988,
+          "lure": 3
+        },
+        {
+          "id": 32,
+          "x": 507.75452643836087,
+          "y": 446.93629272849677,
+          "age": 1.3499999999999988,
+          "lure": 3
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "stop-390",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 1,
+        "soul": 1
+      },
+      "lamp": null,
+      "stop": 2.9000000000000004,
+      "life": 100,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 3,
+      "fire": 0,
+      "time": 0.35,
+      "ink": 100,
+      "enemies": [
+        {
+          "id": 31,
+          "x": 554.4166666666667,
+          "y": 499.9999996869994,
+          "age": 1.3499999999999988,
+          "lure": 3
+        },
+        {
+          "id": 32,
+          "x": 507.75452643836087,
+          "y": 446.93629272849677,
+          "age": 1.3499999999999988,
+          "lure": 3
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "rescue-390",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 0,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "rescue-first-390",
+      "state": "reviving",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 0,
+      "stroke": 1,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "revived-390",
+      "state": "playing",
+      "uses": {
+        "lantern": 3,
+        "hourglass": 2,
+        "soul": 0
+      },
+      "lamp": null,
+      "stop": 0,
+      "life": 30,
+      "stroke": 2,
+      "ready": 0,
+      "remaining": 2.99,
+      "fire": 3.0000000000000036,
+      "time": 1.4499999999999997,
+      "ink": 100,
+      "enemies": [],
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

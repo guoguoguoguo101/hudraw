@@ -4,7 +4,7 @@ import type {Skill,Enemy} from '../core/types';
 import {visualEnd,scrollWidth,ultimateParams,ultimateVariant,type UltimateParams,type UltimateVariant} from './ultimate';
 export const SLASH_STAGES=config.stages;
 export type SlashContact={id:number;x:number;y:number;at:number;secondary:boolean;kind?:Enemy['kind'];dead?:boolean};
-export type SlashState={path?:{x:number;y:number}[];level:number;contacts:SlashContact[];pending:{id:number;at:number;damage:number;kind:'main'|'extra'}[];extraHit:Set<number>;scheduled:boolean;ultimate?:UltimateParams;variant?:UltimateVariant;secondaryAt?:number;secondaryCenter?:{x:number;y:number};secondaryDone?:boolean};
+export type SlashState={secondaryOrigin?:{x:number;y:number};scrollRange?:number;path?:{x:number;y:number}[];level:number;contacts:SlashContact[];pending:{id:number;at:number;damage:number;kind:'main'|'extra'}[];extraHit:Set<number>;scheduled:boolean;ultimate?:UltimateParams;variant?:UltimateVariant;secondaryAt?:number;secondaryCenter?:{x:number;y:number};secondaryDone?:boolean};
 export function configureSlash(s:Skill,level=1){
  const stage=SLASH_STAGES[Math.max(0,Math.min(4,level-1))];
  s.damage=s.damage/60*stage.damage;s.range=stage.range;s.duration=stage.visual_duration;
@@ -19,7 +19,12 @@ export function attachSwipe(s:Skill){
  if(length<.001)return;
  const direction={x:(b.x-a.x)/length,y:(b.y-a.y)/length};
  const center={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
- const range=SLASH_STAGES[s.slash.level-1].range,half=range/2;
+ const legacyRange=SLASH_STAGES[s.slash.level-1].range,range=length*1.5,half=range/2;
+ // Keep the existing scroll anchor and dimensions separate from the hand-drawn main slash.
+ if(s.slash.ultimate){
+  s.slash.secondaryOrigin={x:center.x-direction.x*legacyRange/2,y:center.y-direction.y*legacyRange/2};
+  s.slash.scrollRange=legacyRange;
+ }
  const start={x:center.x-direction.x*half,y:center.y-direction.y*half};
  const end={x:center.x+direction.x*half,y:center.y+direction.y*half};
  s.slash.path=[start,end];s.x=start.x;s.y=start.y;s.direction=direction;s.range=range;
@@ -46,10 +51,10 @@ export function updateSlash(g:Game,s:Skill){
  const state=s.slash!,stage=SLASH_STAGES[state.level-1];
  if(!state.scheduled&&s.age+1e-8>=stage.primary_hit_at){
   state.scheduled=true;s.released=true;
-  g.primaryAction({kind:'ray',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,range:s.range,width:state.ultimate?.slashWidth??stage.hit_width,pierce:stage.pierce});
+  g.primaryAction({kind:'ray',castId:s.id,origin:{x:s.x,y:s.y},direction:{...s.direction},damage:s.damage,range:s.range,width:state.ultimate?.slashWidth??stage.hit_width,pierce:Number.MAX_SAFE_INTEGER});
   const dirs=[s.direction];if(s.mirror&&!state.path){const mirror={x:-s.direction.x,y:s.direction.y};if(Math.hypot(mirror.x-s.direction.x,mirror.y-s.direction.y)>.05)dirs.push(mirror);}
   const selected=new Set<number>();for(const dir of dirs)for(const e of (state.path?swipeCandidates(g.enemies,s,stage.hit_width):candidates(g.enemies,s,dir,state.ultimate?.slashWidth??stage.hit_width))){
-   if(selected.has(e.id))continue;if(selected.size>=stage.pierce)break;selected.add(e.id);
+   if(selected.has(e.id))continue;selected.add(e.id);
    state.pending.push({id:e.id,at:stage.primary_hit_at+(state.level===3?(selected.size-1)*.008:0),damage:s.damage,kind:'main'});
   }
  }
@@ -68,8 +73,9 @@ export function updateSlash(g:Game,s:Skill){
  }
  if(state.ultimate&&!state.secondaryCenter&&s.age>=state.ultimate.scrollOpenAt){
   const contacts=state.contacts.filter(hit=>!hit.secondary);const target=contacts[Math.min(1,contacts.length-1)];
-  const distance=target?Math.max(110,Math.min(330,(target.x-s.x)*s.direction.x+(target.y-s.y)*s.direction.y)):260;
-  const center={x:s.x+s.direction.x*distance,y:s.y+s.direction.y*distance};state.secondaryCenter=center;
+  const origin=state.secondaryOrigin??s;
+  const distance=target?Math.max(110,Math.min(330,(target.x-origin.x)*s.direction.x+(target.y-origin.y)*s.direction.y)):260;
+  const center={x:origin.x+s.direction.x*distance,y:origin.y+s.direction.y*distance};state.secondaryCenter=center;
  }
  if(state.ultimate&&!state.secondaryDone&&s.age+1e-8>=state.secondaryAt!){
   state.secondaryDone=true;

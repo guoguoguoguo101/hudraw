@@ -11,12 +11,12 @@ export const CHAPTERS=[
 ] as const;
 export type ChapterId=typeof CHAPTERS[number]['id'];
 
-export const SPELLS=(['line','circle','triangle','z','star','spiral'] as Rune[]).map(id=>({
- id,name:NAMES[id],school:id==='z'?'雷':id==='circle'?'护':id==='spiral'?'风':'符',
- available:id!=='star'&&id!=='spiral',
- levels:Array.from({length:5},(_,i)=>{
+export const SPELLS=(['line','circle','triangle','sancai','z','arc','wave','spiral','star'] as Rune[]).map(id=>({
+ id,name:NAMES[id],school:id==='z'?'雷':id==='circle'?'护':id==='spiral'?'缚':'符',
+ available:id!=='star',category:id==='star'?'unavailable':['sancai','z','wave','spiral'].includes(id)?'advanced':'basic',unlockIntegrationPending:['sancai','z','wave','spiral'].includes(id),
+ levels:Array.from({length:['sancai','arc','z','wave','spiral','triangle'].includes(id)?4:5},(_,i)=>{
   const defined=SKILL_LEVELS[id as keyof typeof SKILL_LEVELS] as readonly {name:string;detail:string}[]|undefined;
-  return {level:i+1,name:defined?.[i]?.name??`第${i+1}重 · 尚未开放`,description:defined?.[i]?.detail??'该形态尚未完成',implemented:!!defined?.[i]};
+  return {level:i+1,name:defined?.[i]?.name??`第${i+1}重 · 尚未开放`,description:defined?.[i]?.detail?(defined[i].detail+(id==='arc'?' · 精准绘出弧符即可施法，冗长笔画只会增加墨耗。':'')):'该形态尚未完成',implemented:!!defined?.[i]};
  })
 }));
 export const ENEMIES:{id:EnemyKind;name:string;type:string;description:string}[]=[
