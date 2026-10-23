@@ -1,0 +1,257 @@
+{
+  "results": [
+    {
+      "name": "release-430",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768642682452,
+      "cost": 13.852313573175497,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "sweep-430",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768642682452,
+      "cost": 13.852313573175497,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "hit-430",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768642682452,
+      "cost": 13.852313573175497,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "tail-430",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768642682452,
+      "cost": 13.852313573175497,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "release-375",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768659699855,
+      "cost": 13.852313403001439,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "sweep-375",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768659699855,
+      "cost": 13.852313403001439,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "hit-375",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768659699855,
+      "cost": 13.852313403001439,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "tail-375",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768659699855,
+      "cost": 13.852313403001439,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "release-390",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768673426966,
+      "cost": 13.852313265730352,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "sweep-390",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768673426966,
+      "cost": 13.852313265730352,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "hit-390",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768673426966,
+      "cost": 13.852313265730352,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "tail-390",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 86.14768673426966,
+      "cost": 13.852313265730352,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        240
+      ],
+      "glError": 0
+    },
+    {
+      "name": "retrace",
+      "casts": 1,
+      "live": 1,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 69.41056888899867,
+      "cost": 30.589431111001335,
+      "refund": 0,
+      "fallback": true,
+      "reason": "随笔划斩 · 沿笔迹切割",
+      "hp": [
+        210,
+        210
+      ],
+      "glError": 0
+    },
+    {
+      "name": "old-practice-failure",
+      "casts": 0,
+      "live": 0,
+      "formal": 0,
+      "skills": [],
+      "traces": 0,
+      "ink": 69.41056888899867,
+      "cost": 30.589431111001335,
+      "refund": 0,
+      "fallback": false,
+      "reason": "未成符 · 断符消散",
+      "hp": [
+        240,
+        240
+      ],
+      "glError": 0
+    }
+  ],
+  "errors": []
+}

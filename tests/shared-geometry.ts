@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {Graphics} from 'pixi.js';
+import {SharedGeometry,geometry,withSharedGeometry} from '../src/rendering/shared-geometry';
+const cache=new SharedGeometry(),a=new Graphics(),b=new Graphics();let builds=0;
+const draw=(g:Graphics,key:string)=>geometry(g,key,()=>{builds++;g.clear().circle(0,0,12).fill(0xffcc88);return {tip:12};});
+cache.begin();withSharedGeometry(cache,()=>{assert.deepEqual(draw(a,'frame0'),{tip:12});draw(b,'frame0');});assert.equal(builds,1);assert.equal(a.context,b.context);
+cache.begin();const previous=b.context;withSharedGeometry(cache,()=>draw(a,'frame1'));assert.equal(b.context,previous);assert.notEqual(a.context,b.context);assert.ok(previous.instructions.length>0);
+for(let frame=2;frame<2400;frame++){cache.begin();withSharedGeometry(cache,()=>draw(a,`frame${frame}`));}assert.ok(cache.size<1400,'bounded retired frame cache');assert.ok(b.context.instructions.length>0,'live old frame cannot be evicted');
+b.destroy({children:true});cache.begin();a.destroy({children:true});cache.clear();assert.equal(cache.size,0);
+const ordinary=new Graphics();draw(ordinary,'outside-cache');assert.equal(ordinary.context.instructions.length,1);ordinary.destroy();
+try{withSharedGeometry(cache,()=>{throw Error('scope exit');});}catch{}const next=new Graphics();draw(next,'ordinary-after-exception');assert.equal(cache.size,0);next.destroy();
+console.log('PASS shared geometry: identical frames, independent clocks, live references, bounded eviction, cleanup, original-mode and exception isolation');

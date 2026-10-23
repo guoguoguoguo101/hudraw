@@ -1,0 +1,48 @@
+{
+  "result": [
+    {
+      "skin": "cinnabar",
+      "geometry": 127,
+      "firstWidth": 2.5750594904883006,
+      "lastWidth": 0.2943944791749674,
+      "unchanged": true,
+      "clean": true
+    },
+    {
+      "skin": "fox",
+      "geometry": 122,
+      "firstWidth": 2.5750594904883006,
+      "lastWidth": 0.29439447917496736,
+      "unchanged": true,
+      "clean": true
+    },
+    {
+      "skin": "gold",
+      "geometry": 122,
+      "firstWidth": 2.5750594904883006,
+      "lastWidth": 0.29439447917496736,
+      "unchanged": true,
+      "clean": true
+    },
+    {
+      "skin": "mountain",
+      "geometry": 122,
+      "firstWidth": 2.5750594904883006,
+      "lastWidth": 0.29439447917496736,
+      "unchanged": true,
+      "clean": true
+    }
+  ],
+  "live": {
+    "drawing": true,
+    "samples": 48,
+    "geometry": 190
+  },
+  "clean": 0,
+  "depleted": {
+    "dry": 2,
+    "empty": 0,
+    "clean": 0
+  },
+  "errors": []
+}

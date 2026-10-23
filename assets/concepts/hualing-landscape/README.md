@@ -1,0 +1,15 @@
+# 山河流转 · AI 氛围参考
+
+2026-10-23。使用内置 image_gen 工具，参考项目实机截图 `screenshots/hualing-resonance/10-chain-ready.png`，生成 `reference-v01.png`。仅用于构图、配色和层次参考；运行景观实现位于 `src/rendering/scroll-landscape.ts`，不加载此 PNG。
+
+## 原始提示词
+
+Use case: stylized-concept. This is an ART DIRECTION REFERENCE for implementing VECTOR game scenery, not a replacement bitmap background. Create a beautiful wide presentation with three equally large tall portrait gameplay scenery views side by side, the same camera and same layered mountain valley changing over time. Preserve the attached game's graphic vocabulary: sharp Chinese flat cut-paper silhouettes, angular vermilion peaks, tiny ivory/red paper FOX fixed at bottom-center of gameplay arena, Chinese pagoda right, shrine gate left, broad charcoal paper courtyard in lower half. NOT 3D, not a human hero, not photorealistic, not elaborate painterly concept art. Crisp polygon geometry, carved thin linework, connected negative-space paper details, intentional layer depth. Subtle tactile paper grain may inspire procedural hatching. Keep the central combat floor open and readable; scenery frames it.
+
+Scene 1 short title “落日 · 丹霞照谷”: warm parchment sky, enormous red-orange sun partly obscured by tiered rust-red mountain ridges, fine gold cloud curls, river reflecting sunset through mountain gorge, highly detailed tiny eaved pagoda and stone shrine gate, autumn maple branches and a few golden-lit hanging lanterns on sides. A curved stone terrace with engraved circular pattern supports small fox; quiet center, decorative edges.
+
+Scene 2 short title “起风 · 云渡秋山”: same exact topography, sun dimmer hidden behind long gently curled ash-blue paper clouds, muted green-grey distant peaks, rolling thin cloud sea between ridges, strong directional wind carries elegant red and gold maple leaves across upper scene with a few fine wind filaments. Distinct grey-teal light and strong foreground dark vermilion accents. Several delicate ember flames appear on upper part of empty courtyard as an interaction opportunity, but no large spell effects.
+
+Scene 3 short title “夜色 · 月照山灵”: same exact topography in rich indigo/navy and desaturated blue-green silhouettes, warm ivory full moon, sparse tiny stars, pale silver river and waterfall, warm amber lantern windows and pagoda windows precisely lit, wisps of silver mist and a few fireflies at edges. A faint majestic paper tiger spirit contour emerges in a far mountain wall as a soft discovery, NOT giant opaque monster obscuring battle arena. Crimson maple frame remains subdued at edges, fox retains high contrast.
+
+Composition should feel implementable using layered filled polygons, curves, stippling and clipped glints. Elegant strong silhouette, exquisite sparse architectural details, no rectangular game UI, no cards, no text except three short stage labels. No extra unrelated decorative borders, no watermarks. The progression from warm sunset to windy dusk to moonlit night should be immediately obvious while SAME environment layout remains stable.

@@ -1,3 +1,4 @@
+import {pathSlice,pathPoint} from '../input/advanced-geometry';
 import {FoxThunderUltimate} from './fox-thunder-ultimate';
 import {Container,Graphics} from 'pixi.js';
 import type {Skill} from '../core/types';
@@ -47,55 +48,15 @@ class ThunderItem{
  }
  update(s:Skill){
   if(this.ultimate){this.ultimate.update(s);return;}
-  const t=s.age,l=this.level,stage=THUNDER_STAGES[l-1],fade=clamp((s.duration-t)/(l===4?1.1:.45));this.root.alpha=fade;
-  const g=this.effects,o=this.ornaments,sky=this.sky;g.clear();o.clear();sky.clear();this.tails.clear();
-  const origin={x:s.x,y:s.y-25};
-  if(l===2&&t>.12){cloud(sky,origin.x+Math.sin(t)*35,origin.y-70,.55,t);}
-  if(l===4){
-   const reveal=clamp((t-.12)/.85),spread=1-(1-reveal)**3;sky.alpha=reveal;
-   sky.rect(30,205,660,405).fill({color:INK,alpha:.30});
-   for(const sign of [-1,1]){
-    const x=360+sign*(95+spread*170);cloud(sky,x,270+Math.sin(t*1.5+sign)*9,1.1,t);cloud(sky,x+sign*25,450,.7,t);
-    sky.moveTo(x,235).bezierCurveTo(x-sign*70,290,x+sign*60,380,x-sign*35,445).stroke({color:RED,width:14,alpha:.65});
-   }
-   for(let i=0;i<9;i++){
-    const a=-Math.PI*.98+i*Math.PI*.12,len=215+(i%3)*22,centers:{x:number;y:number;w:number;a:number}[]=[];
-    let x=360,y=452;
-    for(let j=0;j<=32;j++){const u=j/32,angle=a+Math.sin(t*1.6-i*.7-u*3)*u*.22+u**3*(i<4?-1:1)*2.9;if(j){x+=Math.cos(angle)*len*spread/32;y+=Math.sin(angle)*len*spread/32;}centers.push({x,y,w:(6+Math.sin(u*Math.PI)*24)*(1-u**6)*spread,a:angle});}
-    const outline:number[]=[];for(const p of centers)outline.push(p.x-Math.sin(p.a)*p.w,p.y+Math.cos(p.a)*p.w);for(const p of [...centers].reverse())outline.push(p.x+Math.sin(p.a)*p.w,p.y-Math.cos(p.a)*p.w);
-    this.tails.poly(outline).fill({color:WHITE,alpha:reveal*.94}).stroke({color:RED,width:4,alpha:.75}).poly(outline).stroke({color:GOLD,width:1.4});
-    for(const side of [-.5,.55]){const pts=centers.slice(3,30);this.tails.moveTo(pts[0].x-Math.sin(pts[0].a)*pts[0].w*side,pts[0].y+Math.cos(pts[0].a)*pts[0].w*side);for(const p of pts)this.tails.lineTo(p.x-Math.sin(p.a)*p.w*side,p.y+Math.cos(p.a)*p.w*side);this.tails.stroke({color:side<0?RED:GOLD,width:2,alpha:.8});}
-    for(let k=8;k<23;k+=4){const p=centers[k];this.tails.poly([p.x-10,p.y+7,p.x-2,p.y-5,p.x+6,p.y+2,p.x+12,p.y-8,p.x+17,p.y+7]).fill({color:INK,alpha:.25});}
-   }
-   this.head.position.set(360,426+Math.sin(t*1.6)*4);this.head.scale.set(.4+spread*.75);this.head.alpha=reveal;
-   const impact=clamp((t-stage.start)/.3);if(impact>0){
-    const rr=80+impact*215;const shape:number[]=[];for(let i=0;i<32;i++){const a=i*Math.PI/16,r=i%2?rr*.8:rr;shape.push(360+Math.cos(a)*r,685+Math.sin(a)*r*.72);}g.poly(shape).stroke({color:RED,width:4,alpha:.7}).poly(shape).stroke({color:GOLD,width:1.4});
-    for(let i=0;i<12;i++){const a=i*Math.PI/6+t*.10;seal(o,360+Math.cos(a)*rr*.86,685+Math.sin(a)*rr*.61,10,t);}
-    bolt(g,{x:360,y:420},{x:360,y:632},22,t,0,.75+.2*Math.sin(t*14));
-    for(let i=0;i<5;i++){const a=i*Math.PI*2/5;cloud(o,360+Math.cos(a)*rr,695+Math.sin(a)*rr*.65,.35+impact*.16,t+i);}
-   }else if(t>1.1){bolt(g,{x:360,y:485},{x:360,y:570},2,t,1,clamp((t-1.1)*2));}
-  }
-  this.scrolls.forEach((scroll,i)=>{
-   const x=l===4?360+(i===0?-1:1)*235:[220,360,500][i],y=l===4?360:385+(i%2)*-52;
-   scroll.position.set(x,y+Math.sin(t*1.6+i)*8);scroll.rotation=Math.PI/2+(l===4?(i===0?-.4:.4):Math.sin(t+i)*.035);scroll.update(l===4?t+.3:t+i*.14);scroll.alpha*=clamp((t-.1)/.35);
-   if(l===3)cloud(sky,x,y+88,.48,t+i);
-  });
-  const targets=s.thunder!.targets;
-  if(!targets.length&&t>=stage.start){const end={x:origin.x+s.direction.x*190,y:origin.y+s.direction.y*190};bolt(g,origin,end,l===1?2:5,t,3,.45);}
-  targets.forEach((p,i)=>{
-   if(t<p.at)return;const elapsed=t-p.at,al=clamp((s.duration-.2-t)/.45)*(.8+.15*Math.sin(t*24+i));
-   const previous=i?targets[i-1]:origin;
-   bolt(g,previous,p,l===1?2:l===2?7:3.5,t,i,al);
-   if(l>=3){const a={x:l===4?360+(i-3.5)*48:[220,360,500][i%3],y:l===4?425:410};bolt(g,a,p,l===4?8:4,t,i+8,al);}
-   if(l>=2){seal(o,p.x,p.y,18+clamp(elapsed/.16)*(l===4?18:6),t);}
-   if(l===2){const u=.5+Math.sin(t*2+i)*.15;cloud(o,previous.x+(p.x-previous.x)*u,previous.y+(p.y-previous.y)*u,.24,t+i);}
-   for(let k=0;k<(l===1?3:l===4?12:6);k++){const a=k*2.4+i,r=18+clamp(elapsed/.3)*32+Math.sin(t*4+k)*8;const x=p.x+Math.cos(a)*r,y=p.y+Math.sin(a)*r; o.poly([x,y-5,x+3,y,x,y+5,x-3,y]).fill({color:k%2?RED:GOLD,alpha:.8});}
-  });
-  if(l>=2)for(let i=0;i<(l===4?18:l===3?9:3);i++){
-   const a=i*2.4+t*.28,r=90+(i%5)*40,x=360+Math.cos(a)*r,y=640+Math.sin(a)*r*.8-Math.sin(t*2+i)*12;
-   o.poly([x-5,y-12,x+5,y-9,x+3,y+13,x-7,y+10]).fill({color:WHITE,alpha:clamp(t/.3)}).stroke({color:RED,width:1});o.moveTo(x,y-7).lineTo(x-3,y).lineTo(x+2,y+3).lineTo(x-3,y+7).stroke({color:RED,width:1});
-  }
-  this.cranes.forEach((crane,i)=>{const a=t*.5+i*Math.PI*2/this.cranes.length;crane.update(t);crane.position.set(360+Math.cos(a)*(l===4?240:185),l===4?430+Math.sin(a)*140:390+Math.sin(a)*60);crane.scale.set(l===4?.45:.30);crane.rotation=Math.sin(a)*.3;crane.alpha=clamp((t-.4)/.4);});
+  const t=s.age,l=this.level,state=s.thunder!,stage=THUNDER_STAGES[l-1],fade=clamp((s.duration-t)/.35);this.root.alpha=fade;
+  const g=this.effects,o=this.ornaments;g.clear();o.clear();this.sky.clear();this.tails.clear();
+  this.scrolls.forEach((v,i)=>{v.visible=l>=3;v.update(t+i*.14);v.position.set(220+i*140,340);v.rotation=Math.PI/2;v.alpha*=.4;});
+  this.cranes.forEach(c=>c.visible=false);
+  const path=state.path;g.moveTo(path[0].x,path[0].y);for(const p of path.slice(1))g.lineTo(p.x,p.y);g.stroke({color:GOLD,width:1,alpha:.18});
+  if(state.travel>0){const p=pathSlice(path,Math.max(0,state.travel-state.length*.4),state.travel);for(let i=1;i<p.length;i++)bolt(g,p[i-1],p[i],l===1?2:l===2?4:5,t,i,.85);const tip=pathPoint(path,state.travel);g.circle(tip.x,tip.y,5+l).fill({color:WHITE});}
+  for(const [i,p] of state.targets.entries()){if(t<p.at)continue;const age=t-p.at,alpha=clamp(1-age/(l>=3?.8:.4));if(alpha<=0)continue;seal(o,p.x,p.y,12+l*4+clamp(age/.2)*12,t);o.alpha=fade;g.circle(p.x,p.y,12+age*60).stroke({color:RED,width:2,alpha});if(l>=2)cloud(o,p.x,p.y-25,.2,t+i);}
+  for(const chain of state.chains){const alpha=clamp(1-(t-chain.at)/.25);if(alpha)bolt(g,chain.from,chain.to,2,t,1,alpha);}
+
  }
 }
 export class ThunderRenderer{

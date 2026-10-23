@@ -2,6 +2,9 @@ import {INK} from './ink-config';
 import type {Rune} from '../input/recognizer';
 export const COMBAT={duration:180,trainingDuration:90,initialHp:100,invulnerability:1.2,drawScale:.5,drawLimit:INK.maxDrawDuration,ordinaryCap:35,eliteCap:3};
 export const SPELLS:Record<Rune,{damage:number;range:number;width:number;radius:number;duration:number;hits:number;shield:number;tick:number;armor:number}>={
+ sancai:{damage:0,range:0,width:0,radius:0,duration:2,hits:0,shield:0,tick:0,armor:0},
+ wave:{damage:45,range:0,width:24,radius:0,duration:2,hits:35,shield:0,tick:0,armor:0},
+ arc:{damage:45,range:400,width:150,radius:0,duration:1.5,hits:35,shield:0,tick:0,armor:0},
  line:{damage:60,range:500,width:70,radius:0,duration:.7,hits:3,shield:0,tick:0,armor:0},
  circle:{damage:30,range:0,width:0,radius:200,duration:4,hits:35,shield:20,tick:0,armor:0},
  triangle:{damage:110,range:520,width:0,radius:0,duration:.85,hits:1,shield:0,tick:0,armor:.25},

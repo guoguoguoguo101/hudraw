@@ -1,3 +1,4 @@
+import {BURNING_SEA_STYLES} from '../gameplay/burning-sea-styles';
 import {Container,Graphics,Text} from 'pixi.js';
 import {text} from './interface';
 import {BRUSH_SKINS,type BrushSettings,type PenParams} from '../input/brush-settings';
@@ -7,8 +8,8 @@ import type {InputController} from '../input/controller';
 type Zone={x:number;y:number;w:number;h:number;run:()=>void};
 type Param=[keyof PenParams,string,number,number,number];
 const GROUPS:{name:string;fields:Param[]}[]=[
- {name:'笔迹',fields:[['cursorSize','笔锋大小',10,32,2],['offsetY','笔锋上移',-32,0,2],['strokeWidth','笔迹宽度',2,14,1],['brightness','笔迹亮度',.2,1,.1],['trailTime','亮拖尾秒',.06,.4,.02],['oldAlpha','旧迹浓度',.05,.5,.05],['particles','流光数量',0,10,1]]},
- {name:'起收',fields:[['startSize','起笔涟漪',8,40,2],['startDuration','起笔秒',.08,.3,.02],['endGlow','成符凝亮',0,1,.1],['fadeTime','成符原迹退场秒',.08,.15,.01]]},
+ {name:'笔迹',fields:[['cursorSize','笔锋大小',10,32,2],['offsetY','笔尖偏移',-32,0,2],['strokeWidth','笔画厚度',2,14,1],['brightness','朱砂浓度',.2,1,.1],['trailTime','流光跟随秒',.06,.4,.02],['oldAlpha','笔迹厚重感',.05,.5,.05],['particles','流光数量',0,10,1]]},
+ {name:'起收',fields:[['startSize','落墨大小',8,40,2],['startDuration','落墨铺开秒',.08,.3,.02],['endGlow','成符金润',0,1,.1],['fadeTime','成符原迹退场秒',.08,.15,.01]]},
  {name:'配色',fields:[]}
 ];
 const PAPER=0xfff3dc,GOLD=0xe7ba68,INK=0x192027;
@@ -25,13 +26,13 @@ export class BrushPanel{
  private render(){this.root.removeChildren().forEach(c=>c.destroy({children:true}));this.zones=[];this.status=null;
   this.shade=new Graphics().rect(0,this.top,720,this.height).fill({color:INK,alpha:.88});this.root.addChild(this.shade,new Graphics().roundRect(24,185,672,978,22).fill({color:0x14232a,alpha:.98}).stroke({color:GOLD,width:1.5}));
   text(this.root,this.mode==='collection'?'灵笔收藏':'灵笔 · 特效调节',360,223,32,PAPER);
-  text(this.root,'四笔共用符术 · 外观不改变战斗能力',360,264,17,GOLD,{letterSpacing:0});
+  text(this.root,'焚山煮海随笔换外观 · 四笔伤害相同',360,264,17,GOLD,{letterSpacing:0});
   this.button('收起',586,200,86,42,()=>this.close());
   if(this.mode==='collection'){
    BRUSH_SKINS.forEach((s,i)=>{const x=48+i%2*316,y=300+Math.floor(i/2)*407;const selected=this.pen.id===s.id;
     this.root.addChild(new Graphics().roundRect(x,y,308,395,14).fill({color:0xf3e7cb}).stroke({color:selected?0xb84034:GOLD,width:selected?3:1}));
     text(this.root,s.name,x+154,y+28,27,INK);const pen={...this.pen.snapshot(),id:s.id,body:s.body,core:s.core,gold:s.gold};drawBrushPortrait(this.root,pen,x+147,y+178,.65);
-    text(this.root,s.detail,x+154,y+318,16,0x562a34,{letterSpacing:0});this.button(selected?'正在使用':'选用此笔',x+48,y+345,212,36,()=>{this.pen.select(s.id);this.render();},selected);
+    text(this.root,BURNING_SEA_STYLES[s.id].name+' · 焚山煮海',x+154,y+318,16,0x562a34,{letterSpacing:0});this.button(selected?'正在使用':'选用此笔',x+48,y+345,212,36,()=>{this.pen.select(s.id);this.render();},selected);
    });
    text(this.root,'完整灵笔用于收藏 · 战斗中显示小型笔锋',360,1140,16,GOLD,{letterSpacing:0});return;
   }
@@ -45,10 +46,10 @@ export class BrushPanel{
    this.button('−',438,y,50,42,()=>change(-step));text(this.root,String(this.pen.params[key]),544,y+21,22,GOLD,{letterSpacing:0});this.button('+',598,y,50,42,()=>change(step));
   });
   if(this.tab===2){const colors=[0xd84332,0xea5536,0xe7ba68,0xfff3dc,0x29343b,0xc79a59,0xffd887,0xf2e7ce];
-   (['body','gold','core'] as const).forEach((key,i)=>{const y=487+i*110;text(this.root,['主体颜色','细线颜色','亮芯颜色'][i],180,y,21,PAPER);colors.forEach((color,j)=>{const x=74+j*73,yy=y+27;this.root.addChild(new Graphics().roundRect(x,yy,56,42,6).fill({color}).stroke({color:pen[key]===color?0xffffff:GOLD,width:pen[key]===color?3:1}));this.zones.push({x,y:yy,w:56,h:42,run:()=>{this.pen.colors={body:pen.body,gold:pen.gold,core:pen.core,[key]:color};this.render();}});});});
+   (['body','gold','core'] as const).forEach((key,i)=>{const y=487+i*110;text(this.root,['朱砂颜色','金润颜色','笔毫与飞白'][i],180,y,21,PAPER);colors.forEach((color,j)=>{const x=74+j*73,yy=y+27;this.root.addChild(new Graphics().roundRect(x,yy,56,42,6).fill({color}).stroke({color:pen[key]===color?0xffffff:GOLD,width:pen[key]===color?3:1}));this.zones.push({x,y:yy,w:56,h:42,run:()=>{this.pen.colors={body:pen.body,gold:pen.gold,core:pen.core,[key]:color};this.render();}});});});
   }
   this.button('恢复默认参数',354,976,290,42,()=>{this.pen.reset();this.render();});
   this.status=text(this.root,'',360,1053,17,GOLD,{letterSpacing:0,lineHeight:25,wordWrap:true,wordWrapWidth:594});
-  text(this.root,'未成符只消散 · 不产生狐火或攻击',360,1126,16,PAPER,{letterSpacing:0});
+  text(this.root,'焚山煮海：'+BURNING_SEA_STYLES[this.pen.id].name+' · 换笔即可预览',360,1126,16,PAPER,{letterSpacing:0});
  }
 }

@@ -11,7 +11,7 @@ export class SpawnDirector{
    // Continuous replacements, with a bounded crowd so long sessions stay usable on phones.
    this.budget=Math.min(3,this.budget+dt*2);
    const count=game.enemies.filter(e=>e.kind==='ink'||e.kind==='crow').length;
-   if(count<12&&this.budget>=1){game.spawn(game.random()<.35?'crow':'ink');this.budget-=1;}
+   if(count<12&&this.budget>=1){game.spawn(game.random()<.35?'crow':'ink',game.hualingPractice?{x:65+game.random()*590,y:game.hualing.bounds.top+45}:undefined);this.budget-=1;}
    return;
   }
   const at=game.endless?this.nextBoss:game.training?this.config.trainingBossAt:this.config.bossAt;

@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "mode": "ward",
+      "age": 0.15,
+      "count": 1,
+      "mean": 0.4737021880648989,
+      "changedRatio": 0.0035088886670880883
+    },
+    {
+      "mode": "ward",
+      "age": 1.2,
+      "count": 1,
+      "mean": 0.7347672755098645,
+      "changedRatio": 0.004795333311153253
+    },
+    {
+      "mode": "ward",
+      "age": 3,
+      "count": 10,
+      "mean": 0.11747235807521265,
+      "changedRatio": 0.001134511095585055
+    },
+    {
+      "mode": "seal",
+      "age": 0.6,
+      "count": 1,
+      "mean": 0.9055062048773996,
+      "changedRatio": 0.009057235696620865
+    },
+    {
+      "mode": "seal",
+      "age": 2,
+      "count": 10,
+      "mean": 0.32992869104257466,
+      "changedRatio": 0.004575750518459372
+    },
+    {
+      "mode": "seal",
+      "age": 5.8,
+      "count": 1,
+      "mean": 1.3418039059121003,
+      "changedRatio": 0.014301715629193421
+    },
+    {
+      "mode": "pen",
+      "age": 0,
+      "count": 0,
+      "mean": 0.0683678788080425,
+      "changedRatio": 0.0005578290137627397
+    }
+  ],
+  "cleanup": {
+    "cache": 0,
+    "pages": 0,
+    "optimized": false,
+    "pen": false
+  },
+  "errors": []
+}

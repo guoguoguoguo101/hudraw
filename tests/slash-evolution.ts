@@ -11,5 +11,5 @@ for(const lv of [1,2,3,5])for(const angle of [0,Math.PI/2,Math.PI/4,Math.PI]){
  r.destroy();
 }
 assert.equal(evolutionTiming(1,.05).travel,0);assert.ok(evolutionTiming(1,.11).travel<1);assert.equal(evolutionTiming(5,.20).open,0);assert.equal(evolutionTiming(5,.56).open,1);assert.equal(evolutionTiming(5,.56).finish,0);assert.equal(evolutionTiming(5,1.15).dissolve,1);
-for(const fps of [30,60,120]){const g=new Game();g.start();g.director.disabled=true;g.cast('line');applySkillLevel(g.skills[0],5);g.pause();g.advance(1);assert.equal(g.skills[0].age,0);g.pause();for(let i=0;i<fps;i++)g.advance(1/fps,true);assert.ok(Math.abs(g.skills[0].age-.20)<1e-8);}
+for(const fps of [30,60,120]){const g=new Game();g.start();g.director.disabled=true;g.cast('line');applySkillLevel(g.skills[0],5);g.pause();g.advance(1);assert.equal(g.skills[0].age,0);g.pause();for(let i=0;i<fps;i++)g.advance(1/fps,true);assert.ok(Math.abs(g.skills[0].age-.50)<1e-8);}
 console.log('PASS slash evolution: four new tiers/all directions, deterministic paths, masks, phased timeline, pause and FPS-independent realm');

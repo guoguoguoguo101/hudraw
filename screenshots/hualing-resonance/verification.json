@@ -1,0 +1,320 @@
+{
+  "shots": [
+    {
+      "name": "01-scene-390",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 0,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "02-partial-reverse",
+      "phase": "repairing",
+      "progress": 0.1437784452508665,
+      "pointer": null,
+      "casts": 1,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "03-disconnected-progress",
+      "phase": "repairing",
+      "progress": 0.5704674247288767,
+      "pointer": null,
+      "casts": 2,
+      "fallbacks": 2,
+      "gl": 0
+    },
+    {
+      "name": "04-card-collecting",
+      "phase": "collecting",
+      "progress": 1,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 3,
+      "gl": 0
+    },
+    {
+      "name": "05-card-stored",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 3,
+      "gl": 0
+    },
+    {
+      "name": "06-drag-preview",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": 1,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "07-release",
+      "phase": "spent",
+      "progress": 1,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "08-scene-375",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "09-partial-375",
+      "phase": "repairing",
+      "progress": 0.10473002931712802,
+      "pointer": null,
+      "casts": 4,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "08-scene-430",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 4,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "09-partial-430",
+      "phase": "repairing",
+      "progress": 0.10473002931712802,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "10-chain-ready",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 0,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "11-chain-cut",
+      "phase": "repairing",
+      "progress": 0.4451245127883571,
+      "pointer": null,
+      "casts": 1,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "12-chain-card",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "13-chain-target",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": 1,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "13-chain-release",
+      "phase": "spent",
+      "progress": 1,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "14-fire-ready",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 3,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "15-fire-small-card",
+      "phase": "stored",
+      "progress": 0.2,
+      "pointer": null,
+      "casts": 4,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "16-fire-gather",
+      "phase": "collecting",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "17-fire-strong-card",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "18-fire-target",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": 1,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "18-fire-release",
+      "phase": "spent",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "19-beast-ready",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "20-beast-partial",
+      "phase": "repairing",
+      "progress": 0.6457871189806422,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 1,
+      "gl": 0
+    },
+    {
+      "name": "21-beast-awake",
+      "phase": "collecting",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 2,
+      "gl": 0
+    },
+    {
+      "name": "22-beast-card",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 2,
+      "gl": 0
+    },
+    {
+      "name": "23-beast-target",
+      "phase": "stored",
+      "progress": 1,
+      "pointer": 1,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "23-beast-release",
+      "phase": "spent",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "24-beast-hunting",
+      "phase": "spent",
+      "progress": 1,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-chain-375",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-fire-375",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-beast-375",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-chain-430",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-fire-430",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    },
+    {
+      "name": "25-beast-430",
+      "phase": "repairing",
+      "progress": 0,
+      "pointer": null,
+      "casts": 5,
+      "fallbacks": 0,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,396 @@
+{
+  "environment": {
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "viewport": [
+      430,
+      932
+    ],
+    "resolution": 1.5,
+    "canvas": [
+      645,
+      1398
+    ],
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1060 6GB (0x00001C03) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "results": [
+    {
+      "name": "empty",
+      "count": 0,
+      "actualEnemies": 0,
+      "coldMs": 16.4,
+      "nodes": 368,
+      "updateMs": {
+        "median": 0.2,
+        "p95": 0.5,
+        "max": 0.6
+      },
+      "circleUpdateMs": {
+        "median": 0,
+        "p95": 0,
+        "max": 0.1
+      },
+      "renderSubmitMs": {
+        "median": 0.5,
+        "p95": 0.8,
+        "max": 1
+      },
+      "drawCalls": {
+        "median": 25,
+        "p95": 25,
+        "max": 25
+      },
+      "graphicsClears": {
+        "median": 29,
+        "p95": 29,
+        "max": 29
+      }
+    },
+    {
+      "name": "ward1",
+      "count": 1,
+      "actualEnemies": 0,
+      "coldMs": 35.7,
+      "nodes": 857,
+      "updateMs": {
+        "median": 0.7,
+        "p95": 1.3,
+        "max": 1.3
+      },
+      "circleUpdateMs": {
+        "median": 0.4,
+        "p95": 0.8,
+        "max": 0.9
+      },
+      "renderSubmitMs": {
+        "median": 2.1,
+        "p95": 3.3,
+        "max": 3.6
+      },
+      "drawCalls": {
+        "median": 64,
+        "p95": 65,
+        "max": 65
+      },
+      "graphicsClears": {
+        "median": 56,
+        "p95": 56,
+        "max": 56
+      }
+    },
+    {
+      "name": "ward10",
+      "count": 10,
+      "actualEnemies": 0,
+      "coldMs": 110.7,
+      "nodes": 5258,
+      "updateMs": {
+        "median": 2.4,
+        "p95": 3.8,
+        "max": 4.7
+      },
+      "circleUpdateMs": {
+        "median": 2.1,
+        "p95": 3.4,
+        "max": 4.2
+      },
+      "renderSubmitMs": {
+        "median": 8.7,
+        "p95": 13.7,
+        "max": 18.6
+      },
+      "drawCalls": {
+        "median": 424,
+        "p95": 434,
+        "max": 434
+      },
+      "graphicsClears": {
+        "median": 110,
+        "p95": 110,
+        "max": 110
+      }
+    },
+    {
+      "name": "ward10-frozen-art-diagnostic",
+      "count": 10,
+      "freeze": true,
+      "actualEnemies": 0,
+      "coldMs": 86.5,
+      "nodes": 3808,
+      "updateMs": {
+        "median": 0.3,
+        "p95": 0.5,
+        "max": 0.6
+      },
+      "circleUpdateMs": {
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "renderSubmitMs": {
+        "median": 6.1,
+        "p95": 8.2,
+        "max": 9.1
+      },
+      "drawCalls": {
+        "median": 682,
+        "p95": 682,
+        "max": 682
+      },
+      "graphicsClears": {
+        "median": 29,
+        "p95": 29,
+        "max": 29
+      }
+    },
+    {
+      "name": "seal1",
+      "count": 1,
+      "mode": "seal",
+      "actualEnemies": 0,
+      "coldMs": 14,
+      "nodes": 669,
+      "updateMs": {
+        "median": 0.6,
+        "p95": 1.1,
+        "max": 2.2
+      },
+      "circleUpdateMs": {
+        "median": 0.4,
+        "p95": 0.7,
+        "max": 1.5
+      },
+      "renderSubmitMs": {
+        "median": 1.3,
+        "p95": 2.2,
+        "max": 2.6
+      },
+      "drawCalls": {
+        "median": 70,
+        "p95": 70,
+        "max": 70
+      },
+      "graphicsClears": {
+        "median": 38,
+        "p95": 38,
+        "max": 38
+      }
+    },
+    {
+      "name": "seal10",
+      "count": 10,
+      "mode": "seal",
+      "actualEnemies": 0,
+      "coldMs": 71.9,
+      "nodes": 3378,
+      "updateMs": {
+        "median": 1.8,
+        "p95": 5.3,
+        "max": 5.9
+      },
+      "circleUpdateMs": {
+        "median": 1.6,
+        "p95": 5,
+        "max": 5.7
+      },
+      "renderSubmitMs": {
+        "median": 7,
+        "p95": 9.6,
+        "max": 11
+      },
+      "drawCalls": {
+        "median": 475,
+        "p95": 475,
+        "max": 475
+      },
+      "graphicsClears": {
+        "median": 91,
+        "p95": 91,
+        "max": 91
+      }
+    },
+    {
+      "name": "seal10-enemies35",
+      "count": 10,
+      "mode": "seal",
+      "enemies": 35,
+      "actualEnemies": 35,
+      "coldMs": 85.3,
+      "nodes": 3448,
+      "updateMs": {
+        "median": 2.8,
+        "p95": 6.1,
+        "max": 6.4
+      },
+      "circleUpdateMs": {
+        "median": 2.5,
+        "p95": 5.7,
+        "max": 5.9
+      },
+      "renderSubmitMs": {
+        "median": 8.6,
+        "p95": 14.4,
+        "max": 22.7
+      },
+      "drawCalls": {
+        "median": 485,
+        "p95": 485,
+        "max": 485
+      },
+      "graphicsClears": {
+        "median": 91,
+        "p95": 91,
+        "max": 91
+      }
+    },
+    {
+      "name": "enemies35",
+      "count": 0,
+      "enemies": 35,
+      "actualEnemies": 35,
+      "coldMs": 1.5,
+      "nodes": 508,
+      "updateMs": {
+        "median": 0.2,
+        "p95": 0.5,
+        "max": 0.5
+      },
+      "circleUpdateMs": {
+        "median": 0,
+        "p95": 0,
+        "max": 0.1
+      },
+      "renderSubmitMs": {
+        "median": 0.4,
+        "p95": 0.9,
+        "max": 1
+      },
+      "drawCalls": {
+        "median": 25,
+        "p95": 25,
+        "max": 25
+      },
+      "graphicsClears": {
+        "median": 29,
+        "p95": 29,
+        "max": 29
+      }
+    }
+  ],
+  "ai": [
+    {
+      "enemies": 10,
+      "pairsPerStep": 90,
+      "cpuMs": {
+        "median": 0,
+        "p95": 0.1,
+        "max": 0.7
+      }
+    },
+    {
+      "enemies": 20,
+      "pairsPerStep": 380,
+      "cpuMs": {
+        "median": 0,
+        "p95": 0.1,
+        "max": 0.1
+      }
+    },
+    {
+      "enemies": 35,
+      "pairsPerStep": 1190,
+      "cpuMs": {
+        "median": 0,
+        "p95": 0.1,
+        "max": 0.2
+      }
+    }
+  ],
+  "pen": [
+    {
+      "points": 30,
+      "motion": "held",
+      "penUpdateMs": {
+        "median": 0.1,
+        "p95": 0.1,
+        "max": 0.2
+      },
+      "renderSubmitMs": {
+        "median": 0.2,
+        "p95": 0.7,
+        "max": 0.7
+      }
+    },
+    {
+      "points": 30,
+      "motion": "changing",
+      "penUpdateMs": {
+        "median": 0.4,
+        "p95": 0.7,
+        "max": 0.7
+      },
+      "renderSubmitMs": {
+        "median": 1.5,
+        "p95": 2.7,
+        "max": 3.6
+      }
+    },
+    {
+      "points": 150,
+      "motion": "held",
+      "penUpdateMs": {
+        "median": 0,
+        "p95": 0.2,
+        "max": 0.2
+      },
+      "renderSubmitMs": {
+        "median": 0.2,
+        "p95": 0.6,
+        "max": 0.7
+      }
+    },
+    {
+      "points": 150,
+      "motion": "changing",
+      "penUpdateMs": {
+        "median": 0.9,
+        "p95": 1.3,
+        "max": 1.8
+      },
+      "renderSubmitMs": {
+        "median": 4.2,
+        "p95": 5.4,
+        "max": 5.7
+      }
+    },
+    {
+      "points": 400,
+      "motion": "held",
+      "penUpdateMs": {
+        "median": 0.1,
+        "p95": 0.2,
+        "max": 0.2
+      },
+      "renderSubmitMs": {
+        "median": 0.2,
+        "p95": 0.7,
+        "max": 0.7
+      }
+    },
+    {
+      "points": 400,
+      "motion": "changing",
+      "penUpdateMs": {
+        "median": 1.3,
+        "p95": 1.8,
+        "max": 2.3
+      },
+      "renderSubmitMs": {
+        "median": 7.3,
+        "p95": 12.5,
+        "max": 13.4
+      }
+    }
+  ],
+  "note": "Desktop headless dev build; median/p95 CPU timings in ms, submission excludes asynchronous GPU completion; no real-device FPS claim.",
+  "errors": []
+}

@@ -1,6 +1,7 @@
 import {SpiritFlame} from './ward-atmosphere';
 import {drawGuardianFox} from './guardian-fox';
 import {Container,Graphics} from 'pixi.js';
+import {geometry,geometryTime} from './shared-geometry';
 const CREAM=0xffeac6,GOLD=0xffc968,RED=0xe94b30;
 /** Articulated tails: motion propagates from rump to tip with a phase delay. */
 export class FoxSpirit{
@@ -22,6 +23,7 @@ export class FoxSpirit{
  }
  update(t:number){
   this.tails.forEach((g,i)=>{
+   const tip=geometry(g,`fox/${this.radius}/${this.form}/${i}/${geometryTime(t)}`,()=>{
    const coiled=this.form==='coiled',base=-Math.PI*1.1+i*Math.PI*1.2/8,len=this.radius*(.82+.10*Math.sin(i*Math.PI/8));
    const centers:{x:number;y:number;w:number;a:number}[]=[];
    let x=0,y=12;
@@ -33,11 +35,13 @@ export class FoxSpirit{
    const outline:number[]=[];for(const p of centers)outline.push(p.x-Math.sin(p.a)*p.w,p.y+Math.cos(p.a)*p.w);for(const p of [...centers].reverse())outline.push(p.x+Math.sin(p.a)*p.w,p.y-Math.cos(p.a)*p.w);
    g.clear().poly(outline).stroke({color:RED,width:10,alpha:.12}).poly(outline).fill({color:CREAM,alpha:this.form==='ascendant'?.90:.67}).stroke({color:GOLD,width:1.6,alpha:.85});
    for(const side of [-.6,.4]){const strand=centers.slice(3,29);g.moveTo(strand[0].x-Math.sin(strand[0].a)*strand[0].w*side,strand[0].y+Math.cos(strand[0].a)*strand[0].w*side);for(const p of strand)g.lineTo(p.x-Math.sin(p.a)*p.w*side,p.y+Math.cos(p.a)*p.w*side);g.stroke({color:side<0?CREAM:RED,width:1.5,alpha:side<0?.75:.35});}
-   const tip=centers[30],fire=this.fires[i];fire.position.set(tip.x,tip.y);fire.rotation=tip.a+Math.PI/2;fire.scale.set(.42);fire.update(t);
+   return centers[30];
+   });
+   const fire=this.fires[i];fire.position.set(tip.x,tip.y);fire.rotation=tip.a+Math.PI/2;fire.scale.set(.42);fire.update(t);
   });
   const bodyScale=1.28;this.body.scale.set(bodyScale+Math.sin(t*2)*.019,bodyScale+Math.sin(t*2+.6)*.023);
   this.body.rotation=this.form==='coiled'?-.35+Math.sin(t)*.08:Math.sin(t*.8)*.015;
-  this.ribbons.clear();for(const sign of [-1,1]){const wave=Math.sin(t*2.1+sign)*13;this.ribbons.moveTo(sign*13,-25).bezierCurveTo(sign*67,-49,sign*92,18+wave,sign*148,-12+wave).bezierCurveTo(sign*120,38+wave,sign*66,-20,sign*14,-17).closePath().fill({color:RED,alpha:.85}).stroke({color:GOLD,width:1,alpha:.7});}
+  geometry(this.ribbons,`fox-ribbon/${geometryTime(t)}`,()=>{this.ribbons.clear();for(const sign of [-1,1]){const wave=Math.sin(t*2.1+sign)*13;this.ribbons.moveTo(sign*13,-25).bezierCurveTo(sign*67,-49,sign*92,18+wave,sign*148,-12+wave).bezierCurveTo(sign*120,38+wave,sign*66,-20,sign*14,-17).closePath().fill({color:RED,alpha:.85}).stroke({color:GOLD,width:1,alpha:.7});}});
   this.charms.forEach((p,i)=>{const side=i%2?-1:1;p.position.set(side*this.radius*(.28+i*.042),this.radius*(-.26+(i%3)*.20)+Math.sin(t*1.8+i)*5);p.rotation=Math.sin(t*1.7+i)*.16;});
   this.root.position.y=-this.radius*(this.form==='ascendant'?.54:.49)+Math.sin(t*1.7)*4;
  }

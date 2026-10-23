@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "width": 430,
+      "burning": {
+        "remaining": 3.75,
+        "traces": 34,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          240
+        ],
+        "gl": 0
+      },
+      "ended": {
+        "remaining": 0,
+        "traces": 0,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          60
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 375,
+      "burning": {
+        "remaining": 3.75,
+        "traces": 34,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          240
+        ],
+        "gl": 0
+      },
+      "ended": {
+        "remaining": 0,
+        "traces": 0,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          60
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 390,
+      "burning": {
+        "remaining": 3.75,
+        "traces": 34,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          240
+        ],
+        "gl": 0
+      },
+      "ended": {
+        "remaining": 0,
+        "traces": 0,
+        "formal": 0,
+        "fallback": 0,
+        "ink": 100,
+        "hp": [
+          60
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "id": "cinnabar",
+      "pen": "cinnabar",
+      "render": "cinnabar",
+      "remaining": 3.7,
+      "ink": 100,
+      "gl": 0,
+      "text": "留痕一字斩 Lv1|施放|圆形护阵 Lv1|施放|九霄雷诏 Lv1|施放|追踪符箭 Lv1|施放|三才符 Lv1|飞刃|阵法|画笔 / 特效|无限灵墨 · 切换有限|清空残痕|焚山煮海 · 绘火中|朱砂金焰 · 4秒绘火|三角折射 · 试验开|朱砂金焰 · 余 3.7 秒 · 可松手续画"
+    },
+    {
+      "id": "fox",
+      "pen": "fox",
+      "render": "fox",
+      "remaining": 3.7,
+      "ink": 100,
+      "gl": 0,
+      "text": "留痕一字斩 Lv1|施放|圆形护阵 Lv1|施放|九霄雷诏 Lv1|施放|追踪符箭 Lv1|施放|三才符 Lv1|飞刃|阵法|画笔 / 特效|无限灵墨 · 切换有限|清空残痕|焚山煮海 · 绘火中|青碧狐焰 · 4秒绘火|三角折射 · 试验开|青碧狐焰 · 余 3.7 秒 · 可松手续画"
+    },
+    {
+      "id": "gold",
+      "pen": "gold",
+      "render": "gold",
+      "remaining": 3.7,
+      "ink": 100,
+      "gl": 0,
+      "text": "留痕一字斩 Lv1|施放|圆形护阵 Lv1|施放|九霄雷诏 Lv1|施放|追踪符箭 Lv1|施放|三才符 Lv1|飞刃|阵法|画笔 / 特效|无限灵墨 · 切换有限|清空残痕|焚山煮海 · 绘火中|白金御焰 · 4秒绘火|三角折射 · 试验开|白金御焰 · 余 3.7 秒 · 可松手续画"
+    },
+    {
+      "id": "mountain",
+      "pen": "mountain",
+      "render": "mountain",
+      "remaining": 3.7,
+      "ink": 100,
+      "gl": 0,
+      "text": "留痕一字斩 Lv1|施放|圆形护阵 Lv1|施放|九霄雷诏 Lv1|施放|追踪符箭 Lv1|施放|三才符 Lv1|飞刃|阵法|画笔 / 特效|无限灵墨 · 切换有限|清空残痕|焚山煮海 · 绘火中|山海墨焰 · 4秒绘火|三角折射 · 试验开|山海墨焰 · 余 3.7 秒 · 可松手续画"
+    }
+  ],
+  "hashes": [
+    "b9e7daebb76fa50a6137b8134f2f55b761827396ec0bf5094e4b771fcc0ac8a9",
+    "525dc51fcda51945f090f34ec14a0d172ad6117ae3a3b6c9bf8cf0f6783a57c9",
+    "05750e0137cefc4c1c5909aaf9ce5ef61defa204f43db250243806144721b117",
+    "b02f5ce467002829643f4e50dda1d15d05f8fdf0b76d4f11a9d65fb3ebdb882c"
+  ],
+  "errors": []
+}

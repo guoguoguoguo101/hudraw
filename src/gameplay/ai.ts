@@ -14,20 +14,20 @@ export class BossController{
  }
 }
 export class EnemyAI{
- static update(g:Game,e:Enemy,dt:number){if(e.hp<=0||e.ai==='Death')return;e.age+=dt;e.stateAge+=dt;e.hit=Math.max(0,e.hit-dt);e.armorTime=Math.max(0,e.armorTime-dt);if(!e.armorTime)e.armor=0;
-  if(e.shock>0){const old=e.shock;e.shock=Math.max(0,e.shock-dt);if(Math.ceil(old)!==Math.ceil(e.shock))g.damage(e,12,0);if(e.hp<=0)return;}
+ static status(g:Game,e:Enemy,dt:number){e.hit=Math.max(0,e.hit-dt);e.armorTime=Math.max(0,e.armorTime-dt);if(!e.armorTime)e.armor=0;if(e.shock>0){const old=e.shock;e.shock=Math.max(0,e.shock-dt);if(Math.ceil(old)!==Math.ceil(e.shock))g.damage(e,12,0);}}
+ static update(g:Game,e:Enemy,dt:number){if(e.hp<=0||e.ai==='Death')return;e.bindingImmunity=Math.max(0,(e.bindingImmunity??0)-dt);e.age+=dt;e.stateAge+=dt;this.status(g,e,dt);if(e.hp<=0)return;
   if(e.kind==='boss'){BossController.update(g,e,dt);return;}
-  const stats=ENEMIES[e.kind],dx=WORLD.foxX-e.x,dy=WORLD.foxY-e.y,d=Math.hypot(dx,dy)||1;
+  const target=g.functionalRelics.target(e),moveScale=g.functionalRelics.moveScale(e),stats=ENEMIES[e.kind],dx=target.x-e.x,dy=target.y-e.y,d=Math.hypot(dx,dy)||1;
   e.x+=e.vx*dt;e.y+=e.vy*dt;e.vx*=Math.exp(-dt*6);e.vy*=Math.exp(-dt*6);
   if(e.ai==='Spawn'){if(e.stateAge>.3)state(e,'Approach');return;}
   if(e.ai==='Hit'){if(e.stateAge>.18)state(e,'Approach');return;}
   if(e.ai==='Recovery'){e.x-=dx/d*(e.kind==='crow'?65:35)*dt;e.y-=dy/d*(e.kind==='crow'?65:35)*dt;if(e.stateAge>=stats.recovery)state(e,'Approach');return;}
   if(e.ai==='Approach'){
    let sx=0,sy=0;for(const other of g.enemies){if(other===e||other.hp<=0||other.kind==='boss')continue;const ox=e.x-other.x,oy=e.y-other.y,od=Math.hypot(ox,oy);if(od>0&&od<47){sx+=ox/od*(47-od)*1.1;sy+=oy/od*(47-od)*1.1;}}
-   const orbit=e.kind==='crow'?Math.sin(e.age*2+e.id)*.45:0;e.x+=(dx/d*e.speed-dy/d*e.speed*orbit+sx)*dt;e.y+=(dy/d*e.speed+dx/d*e.speed*orbit+sy)*dt;
-   if(d<(e.kind==='crow'?155:68)){state(e,'Telegraph');e.aim={x:dx/d,y:dy/d};e.attackOrigin={x:e.x,y:e.y};}return;
+   const orbit=e.kind==='crow'?Math.sin(e.age*2+e.id)*.45:0;e.x+=(dx/d*e.speed*moveScale-dy/d*e.speed*orbit+sx)*dt;e.y+=(dy/d*e.speed*moveScale+dx/d*e.speed*orbit+sy)*dt;
+   if(d<(e.lureId?(e.kind==='crow'?90:55):(e.kind==='crow'?155:68))){state(e,'Telegraph');e.aim={x:dx/d,y:dy/d};e.attackOrigin={x:e.x,y:e.y};e.lureHit=false;}return;
   }
-  if(e.ai==='Telegraph'&&e.stateAge>=stats.windup){state(e,'Attack');if(e.kind!=='crow'&&d<100)g.hurt(stats.damage);return;}
-  if(e.ai==='Attack'){if(e.kind==='crow'){e.x+=e.aim.x*390*dt;e.y+=e.aim.y*390*dt;if(Math.hypot(e.x-WORLD.foxX,e.y-WORLD.foxY)<55)g.hurt(stats.damage);}if(e.stateAge>(e.kind==='crow'?.46:.25))state(e,'Recovery');}
+  if(e.ai==='Telegraph'&&e.stateAge>=stats.windup){state(e,'Attack');if(e.kind!=='crow'&&d<100)g.hitEnemyTarget(e,stats.damage);return;}
+  if(e.ai==='Attack'){if(e.kind==='crow'){e.x+=e.aim.x*390*dt;e.y+=e.aim.y*390*dt;if(Math.hypot(e.x-target.x,e.y-target.y)<55)g.hitEnemyTarget(e,stats.damage);}if(e.stateAge>(e.kind==='crow'?.46:.25))state(e,'Recovery');}
  }
 }

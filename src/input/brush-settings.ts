@@ -5,7 +5,7 @@ export const BRUSH_SKINS=[
  {id:'mountain',name:'山海墨笔',body:0x29343b,core:0xf2e7ce,gold:0xc79a59,detail:'山海入墨 · 云纹随笔'}
 ] as const;
 export type BrushId=typeof BRUSH_SKINS[number]['id'];
-export const PEN_DEFAULTS={cursorSize:18,offsetY:-14,strokeWidth:4,brightness:.85,trailTime:.16,oldAlpha:.5,particles:0,startSize:16,startDuration:.12,endGlow:.65,fadeTime:.1};
+export const PEN_DEFAULTS={cursorSize:18,offsetY:-14,strokeWidth:10,brightness:.95,trailTime:.16,oldAlpha:.5,particles:0,startSize:16,startDuration:.12,endGlow:.65,fadeTime:.1};
 export const FAILED_STROKE={fadeDuration:.12};
 export type PenParams=typeof PEN_DEFAULTS;
 export type PenSnapshot={id:BrushId;body:number;core:number;gold:number;params:PenParams};

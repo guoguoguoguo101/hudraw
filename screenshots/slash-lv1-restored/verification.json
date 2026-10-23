@@ -1,0 +1,89 @@
+{
+  "results": [
+    {
+      "length": 300,
+      "angle": 0,
+      "time": 0.1,
+      "range": 450,
+      "damage": 60,
+      "visible": true,
+      "edge": 3,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 300,
+      "angle": 0,
+      "time": 0.18,
+      "range": 450,
+      "damage": 60,
+      "visible": true,
+      "edge": 2,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 300,
+      "angle": 0,
+      "time": 0.26,
+      "range": 450,
+      "damage": 60,
+      "visible": true,
+      "edge": 2,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 100,
+      "angle": 0.7,
+      "time": 0.14,
+      "range": 150.00000000000009,
+      "damage": 60,
+      "visible": true,
+      "edge": 3,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 180,
+      "angle": -1.5707963267948966,
+      "time": 0.14,
+      "range": 270,
+      "damage": 60,
+      "visible": true,
+      "edge": 3,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 300,
+      "angle": 3.141592653589793,
+      "time": 0.14,
+      "range": 450,
+      "damage": 60,
+      "visible": true,
+      "edge": 3,
+      "wake": 1,
+      "hits": 0,
+      "glError": 0
+    },
+    {
+      "length": 300,
+      "angle": 0,
+      "time": 0.12,
+      "range": 450,
+      "damage": 60,
+      "visible": true,
+      "edge": 3,
+      "wake": 1,
+      "hits": 2,
+      "glError": 0
+    }
+  ],
+  "errors": []
+}

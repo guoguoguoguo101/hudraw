@@ -3,11 +3,23 @@ import {AscendantWard} from './circle-ascendant';
 import {DemonSeal} from './circle-seal';
 import {Container,Graphics} from 'pixi.js';
 import type {Skill,Enemy} from '../core/types';
+import {SharedGeometry,withSharedGeometry} from './shared-geometry';
+import {StaticArtAtlas} from './static-art-atlas';
 const GOLD=0xe7ba68,WHITE=0xfff2ce,RED=0xd84332;
 const clamp=(n:number)=>Math.max(0,Math.min(1,n));
 type Ward={seal?:DemonSeal;mode:string;grand?:GrandWard|AscendantWard;back:Container;front:Container;floor:Container;rings:Container;dome:Graphics;tails:Container;wave:Graphics;papers:Container[];level:number;radius:number};
 /** Geometry is cached at cast time; animation only changes transforms and opacity. */
 export class CircleRenderer{
+ optimized=false;geometryCache=new SharedGeometry();
+ private sharedFrames=false;
+ atlas?:StaticArtAtlas;
+ private prepare(w:Ward){
+  if(!this.optimized||!this.atlas||w.level===5)return w;
+  const dynamic=new Set<Graphics>();
+  if(w.seal){dynamic.add(w.seal.marks);for(const f of w.seal.ritual.fires)dynamic.add(f.art);for(const g of w.seal.ritual.streamers)dynamic.add(g);}
+  if(w.grand instanceof GrandWard){for(const f of w.grand.flames)dynamic.add(f.art);const fox=w.grand.fox;if(fox){fox.tails.forEach(g=>dynamic.add(g));dynamic.add(fox.ribbons);fox.fires.forEach(f=>dynamic.add(f.art));}}
+  const key=`${w.mode}/${w.level}/${w.radius}`;this.atlas.bake(w.back,key+'/back',dynamic);this.atlas.bake(w.front,key+'/front',dynamic);return w;
+ }
  back=new Container();front=new Container();wards=new Map<number,Ward>();cinematic=new Graphics();cinematicStrength=0;layerVisibility=new Map<string,boolean>();
  constructor(){this.back.addChild(this.cinematic);this.cinematic.rect(0,0,720,1280).fill({color:0x161d20});this.cinematic.visible=false;}
  setLayerVisibility(name:string,visible:boolean){this.layerVisibility.set(name,visible);for(const w of this.wards.values())this.applyLayerVisibility(w);}
@@ -18,7 +30,7 @@ export class CircleRenderer{
   const mode=s.circle?.mode??'ward';
   if(mode==='seal'){
    const seal=new DemonSeal(level,r);back.addChild(seal.root);front.addChild(seal.front);
-   const w:Ward={seal,mode,back,front,floor,rings,dome,tails,wave,papers:[],level,radius:r};this.wards.set(s.id,w);return w;
+   const w:Ward={seal,mode,back,front,floor,rings,dome,tails,wave,papers:[],level,radius:r};this.wards.set(s.id,w);return this.prepare(w);
   }
   const base=new Graphics();floor.addChildAt(base,0);base.circle(0,0,r).fill({color:RED,alpha:level===5?.05:.08+level*.015});
   for(let j=0;j<(level===5?3:level+1);j++){
@@ -40,9 +52,17 @@ export class CircleRenderer{
   const papers:Container[]=[];for(let i=0;i<[4,6,8,9,0][level-1];i++){
    const paper=new Container(),g=new Graphics();paper.addChild(g);g.rect(-12,-25,24,50).fill({color:WHITE}).stroke({color:GOLD,width:1.5});g.moveTo(0,-19).lineTo(-4,-10).lineTo(0,-5).lineTo(4,-10).closePath().stroke({color:RED,width:2});g.moveTo(0,-5).lineTo(0,19).moveTo(-7,0).lineTo(7,3).moveTo(-7,9).lineTo(6,7).moveTo(-5,17).lineTo(0,12).lineTo(6,19).stroke({color:RED,width:2});papers.push(paper);
   }
-  const grand=level===5?new AscendantWard(r):level>=3?new GrandWard(level,r):undefined;if(grand){back.addChild(grand.root);front.addChild(grand.front);}const w={mode,back,front,floor,rings,dome,tails,wave,papers,level,radius:r,grand};this.wards.set(s.id,w);return w;
+  const grand=level===5?new AscendantWard(r):level>=3?new GrandWard(level,r):undefined;if(grand){back.addChild(grand.root);front.addChild(grand.front);}const w={mode,back,front,floor,rings,dome,tails,wave,papers,level,radius:r,grand};this.wards.set(s.id,w);return this.prepare(w);
  }
  update(skills:Skill[],enemies:Enemy[]=[]){
+  const share=this.optimized&&skills.filter(s=>s.rune==='circle').length>1;
+  // A single effect is cheaper with its own reusable path buffers. Rebuild only render nodes when switching.
+  if(share!==this.sharedFrames){this.clear();this.sharedFrames=share;}
+  if(share)this.geometryCache.begin();
+  withSharedGeometry(share?this.geometryCache:undefined,()=>this.updateWards(skills,enemies));
+  if(this.optimized)this.atlas?.update();
+ }
+ private updateWards(skills:Skill[],enemies:Enemy[]=[]){
   const circles=skills.filter(s=>s.rune==='circle'),alive=new Set(circles.map(s=>s.id));this.cinematicStrength=Math.max(0,...circles.filter(s=>s.testLevel===5).map(s=>clamp((s.age-.12)/.5)*clamp((s.duration-s.age)/.65)));this.cinematic.visible=this.cinematicStrength>0;this.cinematic.alpha=this.cinematicStrength*.98;for(const [id,w] of this.wards)if(!alive.has(id)){w.back.destroy({children:true});w.front.destroy({children:true});this.wards.delete(id);}
   for(const s of circles){let w=this.wards.get(s.id);if(w&&(w.level!==(s.testLevel??1)||w.radius!==s.radius||w.mode!==(s.circle?.mode??'ward'))){w.back.destroy({children:true});w.front.destroy({children:true});this.wards.delete(s.id);w=undefined;}w??=this.create(s);
    const t=s.age,open=1-(1-clamp(t/.32))**3,fade=clamp((s.duration-t)/.55),alpha=clamp(t/.09)*fade,r=w.radius;
@@ -57,5 +77,5 @@ export class CircleRenderer{
    if(w.grand?.fox)w.back.addChild(w.grand.root);
   }
  }
- clear(){for(const w of this.wards.values()){w.back.destroy({children:true});w.front.destroy({children:true});}this.wards.clear();this.cinematicStrength=0;this.cinematic.visible=false;}
+ clear(){for(const w of this.wards.values()){w.back.destroy({children:true});w.front.destroy({children:true});}this.wards.clear();this.geometryCache.clear();this.atlas?.cancel();this.cinematicStrength=0;this.cinematic.visible=false;}
 }
