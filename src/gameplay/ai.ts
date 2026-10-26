@@ -19,15 +19,27 @@ export class EnemyAI{
   if(e.kind==='boss'){BossController.update(g,e,dt);return;}
   const target=g.functionalRelics.target(e),moveScale=g.functionalRelics.moveScale(e),stats=ENEMIES[e.kind],dx=target.x-e.x,dy=target.y-e.y,d=Math.hypot(dx,dy)||1;
   e.x+=e.vx*dt;e.y+=e.vy*dt;e.vx*=Math.exp(-dt*6);e.vy*=Math.exp(-dt*6);
+  // Keep bodies readable around the fox; only a telegraphed attack may enter this space.
+  if(g.hualingPractice&&!e.lureId&&e.ai!=='Attack'&&e.ai!=='Recovery'){
+   const fx=e.x-WORLD.foxX,fy=e.y-WORLD.foxY,fd=Math.hypot(fx,fy),clearance=e.kind==='crow'?190:150;
+   if(fd<clearance){e.x=WORLD.foxX+(fd?fx/fd:0)*clearance;e.y=WORLD.foxY+(fd?fy/fd:-1)*clearance;return;}
+  }
   if(e.ai==='Spawn'){if(e.stateAge>.3)state(e,'Approach');return;}
   if(e.ai==='Hit'){if(e.stateAge>.18)state(e,'Approach');return;}
-  if(e.ai==='Recovery'){e.x-=dx/d*(e.kind==='crow'?65:35)*dt;e.y-=dy/d*(e.kind==='crow'?65:35)*dt;if(e.stateAge>=stats.recovery)state(e,'Approach');return;}
+  if(e.ai==='Recovery'){const retreat=g.hualingPractice?180:e.kind==='crow'?65:35;e.x-=dx/d*retreat*dt;e.y-=dy/d*retreat*dt;if(e.stateAge>=stats.recovery)state(e,'Approach');return;}
   if(e.ai==='Approach'){
-   let sx=0,sy=0;for(const other of g.enemies){if(other===e||other.hp<=0||other.kind==='boss')continue;const ox=e.x-other.x,oy=e.y-other.y,od=Math.hypot(ox,oy);if(od>0&&od<47){sx+=ox/od*(47-od)*1.1;sy+=oy/od*(47-od)*1.1;}}
-   const orbit=e.kind==='crow'?Math.sin(e.age*2+e.id)*.45:0;e.x+=(dx/d*e.speed*moveScale-dy/d*e.speed*orbit+sx)*dt;e.y+=(dy/d*e.speed*moveScale+dx/d*e.speed*orbit+sy)*dt;
-   if(d<(e.lureId?(e.kind==='crow'?90:55):(e.kind==='crow'?155:68))){state(e,'Telegraph');e.aim={x:dx/d,y:dy/d};e.attackOrigin={x:e.x,y:e.y};e.lureHit=false;}return;
+   let sx=0,sy=0;for(const other of g.enemies){if(other===e||other.hp<=0||other.kind==='boss')continue;const ox=e.x-other.x,oy=e.y-other.y,od=Math.hypot(ox,oy),gap=g.hualingPractice?(other.elite?145:95):47;if(od>0&&od<gap){sx+=ox/od*(gap-od)*1.1;sy+=oy/od*(gap-od)*1.1;}}
+   const special=g.hualingPractice?e.look:undefined;
+   const orbit=special==='snow-owl'?Math.sin(e.age*2.2+e.id)*.65:special==='sea-fish'?Math.sin(e.age*4+e.id)*.85:special==='sea-crab'?Math.sin(e.age*2+e.id)*1.5:special==='star-ray'?.85:special==='star-kite'?Math.sign(Math.sin(e.age*3+e.id))*.7:e.kind==='crow'?Math.sin(e.age*2+e.id)*.45:0;
+   const pulse=special==='snow-marten'?.55+.65*Math.max(0,Math.sin(e.age*4)):special==='snow-shell'?.75:special==='sea-jelly'?.55+.65*Math.max(0,Math.sin(e.age*3)):special==='star-bell'?.45+.9*Math.max(0,Math.sin(e.age*2.2)):1;e.x+=(dx/d*e.speed*moveScale*pulse*(g.hualingPractice&&g.hualing.upgrades.trail.isSlowed(e.id)?.72:1)-dy/d*e.speed*orbit+sx)*dt;e.y+=(dy/d*e.speed*moveScale*pulse*(g.hualingPractice&&g.hualing.upgrades.trail.isSlowed(e.id)?.72:1)+dx/d*e.speed*orbit+sy)*dt;
+   if(d<(e.lureId?(e.kind==='crow'?90:55):g.hualingPractice?(e.kind==='crow'?220:180):(e.kind==='crow'?155:68))){state(e,'Telegraph');e.aim={x:dx/d,y:dy/d};e.attackOrigin={x:e.x,y:e.y};e.lureHit=false;}return;
   }
-  if(e.ai==='Telegraph'&&e.stateAge>=stats.windup){state(e,'Attack');if(e.kind!=='crow'&&d<100)g.hitEnemyTarget(e,stats.damage);return;}
+  if(e.ai==='Telegraph'&&e.stateAge>=stats.windup){state(e,'Attack');if(e.kind!=='crow'&&d<100&&!g.hualingPractice)g.hitEnemyTarget(e,stats.damage);return;}
+  if(e.ai==='Attack'&&g.hualingPractice&&!e.lureId){
+   e.x+=e.aim.x*320*dt;e.y+=e.aim.y*320*dt;
+   if(Math.hypot(e.x-target.x,e.y-target.y)<60){g.hitEnemyTarget(e,stats.damage);state(e,'Recovery');}
+   else if(e.stateAge>.7)state(e,'Recovery');return;
+  }
   if(e.ai==='Attack'){if(e.kind==='crow'){e.x+=e.aim.x*390*dt;e.y+=e.aim.y*390*dt;if(Math.hypot(e.x-target.x,e.y-target.y)<55)g.hitEnemyTarget(e,stats.damage);}if(e.stateAge>(e.kind==='crow'?.46:.25))state(e,'Recovery');}
  }
 }

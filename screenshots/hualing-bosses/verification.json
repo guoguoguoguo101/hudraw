@@ -1,0 +1,883 @@
+{
+  "shots": [
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 1,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.4999999999999947,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 3.9499999999999895,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.069999999999989,
+      "enemies": [
+        {
+          "hp": 1745.9
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.269999999999988,
+      "enemies": [
+        {
+          "hp": 1745.9
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 7.769999999999976,
+      "enemies": [
+        {
+          "hp": 1452
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 7.889999999999975,
+      "enemies": [
+        {
+          "hp": 997.9000000000001
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.390000000000143,
+      "enemies": [
+        {
+          "hp": 704
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.510000000000149,
+      "enemies": [
+        {
+          "hp": 249.90000000000003
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.610000000000154,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 16.260000000000357,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "起风",
+      "chapter": "valley",
+      "stage": "wind",
+      "event": "seal",
+      "time": 27.009999999999746,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "起风",
+      "chapter": "valley",
+      "stage": "wind",
+      "event": "seal",
+      "time": 27.009999999999746,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "起风",
+      "chapter": "valley",
+      "stage": "wind",
+      "event": "fire",
+      "time": 42.47666666666554,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 1,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.4999999999999947,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.5799999999999943,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 5.429999999999983,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 5.549999999999982,
+      "enemies": [
+        {
+          "hp": 2130.7
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 5.749999999999981,
+      "enemies": [
+        {
+          "hp": 2130.7
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 7.929999999999974,
+      "enemies": [
+        {
+          "hp": 1715.9999999999995
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 10.730000000000103,
+      "enemies": [
+        {
+          "hp": 1715.9999999999995
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 10.85000000000011,
+      "enemies": [
+        {
+          "hp": 1246.6999999999996
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 13.030000000000218,
+      "enemies": [
+        {
+          "hp": 831.9999999999994
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 15.83000000000035,
+      "enemies": [
+        {
+          "hp": 831.9999999999994
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 15.950000000000356,
+      "enemies": [
+        {
+          "hp": 362.6999999999995
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 16.050000000000356,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 21.300000000000058,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "珊瑚绯潮",
+      "chapter": "sea",
+      "stage": "wind",
+      "event": "chain",
+      "time": 37.44999999999898,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "珊瑚绯潮",
+      "chapter": "sea",
+      "stage": "wind",
+      "event": "chain",
+      "time": 37.44999999999898,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月下鲸歌",
+      "chapter": "sea",
+      "stage": "night",
+      "event": "chain",
+      "time": 59.86666666666437,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 1,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.4999999999999947,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 3.0699999999999914,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 3.189999999999991,
+      "enemies": [
+        {
+          "hp": 1966.8
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 3.3899999999999904,
+      "enemies": [
+        {
+          "hp": 1966.8
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 5.9999999999999805,
+      "enemies": [
+        {
+          "hp": 1583.9999999999998
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6.11999999999998,
+      "enemies": [
+        {
+          "hp": 1150.7999999999997
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 8.730000000000006,
+      "enemies": [
+        {
+          "hp": 767.9999999999995
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 8.850000000000012,
+      "enemies": [
+        {
+          "hp": 334.79999999999956
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 8.950000000000017,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 14.350000000000286,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "seal",
+      "time": 27.349999999999714,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "seal",
+      "time": 27.349999999999714,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "fire",
+      "time": 48.066666666665206,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 1,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.4999999999999947,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.4999999999999947,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 3.9999999999999893,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.119999999999989,
+      "enemies": [
+        {
+          "hp": 1884.85
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.319999999999988,
+      "enemies": [
+        {
+          "hp": 1884.85
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6.41999999999998,
+      "enemies": [
+        {
+          "hp": 1518
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 7.869999999999975,
+      "enemies": [
+        {
+          "hp": 1518
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 7.9899999999999745,
+      "enemies": [
+        {
+          "hp": 1102.85
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 10.090000000000078,
+      "enemies": [
+        {
+          "hp": 735.9999999999999
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.54000000000015,
+      "enemies": [
+        {
+          "hp": 735.9999999999999
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.660000000000156,
+      "enemies": [
+        {
+          "hp": 320.8499999999999
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 11.760000000000161,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 18.11000000000025,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 33.15999999999929,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 33.15999999999929,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "chain",
+      "time": 56.72666666666462,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2200
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2600
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2400
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 4.24999999999999,
+      "enemies": [
+        {
+          "hp": 2300
+        }
+      ],
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

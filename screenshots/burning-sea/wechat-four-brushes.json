@@ -1,22 +1,22 @@
 [
   {
     "id": "cinnabar",
-    "before": 96,
-    "after": 3501
+    "before": 153,
+    "after": 3575
   },
   {
     "id": "fox",
     "before": 0,
-    "after": 2036
+    "after": 2064
   },
   {
     "id": "gold",
-    "before": 49,
-    "after": 2144
+    "before": 48,
+    "after": 2184
   },
   {
     "id": "mountain",
-    "before": 866,
-    "after": 5367
+    "before": 856,
+    "after": 5486
   }
 ]

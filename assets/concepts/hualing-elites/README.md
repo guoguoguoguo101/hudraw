@@ -1,0 +1,10 @@
+# 画灵 · 落日妖谷精英造型
+
+2026-10-24，使用内置 image_gen 生成 umbrella-lantern-v01.png。图片只作角色轮廓、配色与部件参考，不整图加载到游戏。
+
+当前实现：赤骨伞姬、吊魂灯主；运行时使用 Pixi Graphics 绘制伞面纸纹、外露骨架、面具、裙摆、鹿骨灯架、悬灯、破罩火芯和可扫灭魂灯。
+
+## 完整生成提示词
+
+Use case: stylized-concept. Asset type: TWO ELITE ENEMY character turnaround and gameplay art direction board for a Chinese vermilion papercut mobile painting roguelike. Landscape sheet split in two equal clean panels on warm ivory handmade paper with faint dark jade ground shadows. LEFT: 赤骨伞姬, an elegant unsettling anthropomorphic old paper parasol demon, no human skin rendering. Huge asymmetrical vermilion paper umbrella with ivory negative-space filigree, exposed curved bone ribs, faded antique gold seams, one small mask-like face hanging in the shadow underneath, long torn dark wine red paper skirt and two thin bone legs. Four clearly legible pale bone ribs on the front umbrella, two with illuminated warm-gold crack lines as interactable break points. A small inset silhouette shows umbrella folding tightly before a dash, another shows broken folded canopy exposing the pale face and chest. RIGHT: 吊魂灯主, a tall floating deer-bone-shaped papercut lantern rack with three asymmetrical suspended vermilion paper lanterns, pale ivory antler supports, a large central faceted paper lantern body with carved cutout eyes, warm candle-gold cores, torn tassels like finger bones. Central paper shade cracked open in small inset, exposing distinct pale gold flame heart. Three detached small folded lantern wisps float beside it, clearly separate shootable entities. Both enemies must be created from flat layered cut-paper shapes, folds, silhouettes and negative spaces, refined readable silhouettes at 100 pixels tall, powerful elegant art not cute chibi, not photorealistic, no 3D metallic armor, no neon aura, no realistic gore. Palette vermilion, oxblood, ivory bone, dark jade and muted gold. Exact Chinese headings only 赤骨伞姬 and 吊魂灯主. No HUD or explanatory text, no watermark. High quality production concept emphasizing body articulation and visible interactive parts that can be recreated with vector drawing.
+

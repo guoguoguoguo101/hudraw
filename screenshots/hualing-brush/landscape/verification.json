@@ -1,0 +1,174 @@
+{
+  "shots": [
+    {
+      "name": "01-sunset-390",
+      "stage": "sunset",
+      "time": 0,
+      "auto": true,
+      "event": "seal",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "02-wind-390",
+      "stage": "wind",
+      "time": 39,
+      "auto": false,
+      "event": "fire",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "03-night-390",
+      "stage": "night",
+      "time": 74,
+      "auto": false,
+      "event": "beast",
+      "progress": 0,
+      "cards": [
+        {
+          "kind": "fire",
+          "slot": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "04-progress-preserved",
+      "stage": "sunset",
+      "time": 6,
+      "auto": false,
+      "event": "seal",
+      "progress": 0.14377844525086644,
+      "cards": [
+        {
+          "kind": "fire",
+          "slot": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "05-archived-card-drag",
+      "stage": "sunset",
+      "time": 6,
+      "auto": false,
+      "event": "seal",
+      "progress": 0.14377844525086644,
+      "cards": [
+        {
+          "kind": "fire",
+          "slot": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "06-transition-wind",
+      "stage": "sunset",
+      "time": 24.99999999999986,
+      "auto": true,
+      "event": "seal",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "07-auto-wind",
+      "stage": "wind",
+      "time": 33.99999999999933,
+      "auto": true,
+      "event": "fire",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "08-transition-night",
+      "stage": "wind",
+      "time": 55.99999999999805,
+      "auto": true,
+      "event": "fire",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "09-auto-night",
+      "stage": "night",
+      "time": 67.9999999999972,
+      "auto": true,
+      "event": "beast",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-sunset-375",
+      "stage": "sunset",
+      "time": 6,
+      "auto": false,
+      "event": "seal",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-wind-375",
+      "stage": "wind",
+      "time": 39,
+      "auto": false,
+      "event": "fire",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-night-375",
+      "stage": "night",
+      "time": 74,
+      "auto": false,
+      "event": "beast",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-sunset-430",
+      "stage": "sunset",
+      "time": 6,
+      "auto": false,
+      "event": "seal",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-wind-430",
+      "stage": "wind",
+      "time": 39,
+      "auto": false,
+      "event": "fire",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    },
+    {
+      "name": "10-night-430",
+      "stage": "night",
+      "time": 74,
+      "auto": false,
+      "event": "beast",
+      "progress": 0,
+      "cards": [],
+      "gl": 0
+    }
+  ],
+  "timing": {
+    "median": 3.5,
+    "p95": 4.800000000745058
+  },
+  "errors": []
+}

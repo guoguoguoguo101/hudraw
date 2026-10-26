@@ -1,0 +1,203 @@
+{
+  "results": [
+    {
+      "name": "straight-lv0-390",
+      "missing": 0,
+      "samples": 300,
+      "width": 16,
+      "segments": 100,
+      "retained": 24,
+      "level": 0,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv1-390",
+      "missing": 0,
+      "samples": 300,
+      "width": 19,
+      "segments": 100,
+      "retained": 24,
+      "level": 1,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv2-390",
+      "missing": 0,
+      "samples": 300,
+      "width": 23,
+      "segments": 100,
+      "retained": 24,
+      "level": 2,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv3-390",
+      "missing": 0,
+      "samples": 300,
+      "width": 28,
+      "segments": 100,
+      "retained": 24,
+      "level": 3,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv4-390",
+      "missing": 0,
+      "samples": 300,
+      "width": 32,
+      "segments": 100,
+      "retained": 24,
+      "level": 4,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "fast-turn-release-390",
+      "missing": 0,
+      "samples": 540,
+      "width": 0,
+      "segments": 140,
+      "retained": 24,
+      "level": 4,
+      "release": true,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv0-375",
+      "missing": 0,
+      "samples": 300,
+      "width": 16,
+      "segments": 100,
+      "retained": 24,
+      "level": 0,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv1-375",
+      "missing": 0,
+      "samples": 300,
+      "width": 19,
+      "segments": 100,
+      "retained": 24,
+      "level": 1,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv2-375",
+      "missing": 0,
+      "samples": 300,
+      "width": 23,
+      "segments": 100,
+      "retained": 24,
+      "level": 2,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv3-375",
+      "missing": 0,
+      "samples": 300,
+      "width": 28,
+      "segments": 100,
+      "retained": 24,
+      "level": 3,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv4-375",
+      "missing": 0,
+      "samples": 300,
+      "width": 32,
+      "segments": 100,
+      "retained": 24,
+      "level": 4,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "fast-turn-release-375",
+      "missing": 0,
+      "samples": 540,
+      "width": 0,
+      "segments": 140,
+      "retained": 24,
+      "level": 4,
+      "release": true,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv0-430",
+      "missing": 0,
+      "samples": 300,
+      "width": 16,
+      "segments": 100,
+      "retained": 24,
+      "level": 0,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv1-430",
+      "missing": 0,
+      "samples": 300,
+      "width": 19,
+      "segments": 100,
+      "retained": 24,
+      "level": 1,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv2-430",
+      "missing": 0,
+      "samples": 300,
+      "width": 23,
+      "segments": 100,
+      "retained": 24,
+      "level": 2,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv3-430",
+      "missing": 0,
+      "samples": 300,
+      "width": 28,
+      "segments": 100,
+      "retained": 24,
+      "level": 3,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "straight-lv4-430",
+      "missing": 0,
+      "samples": 300,
+      "width": 32,
+      "segments": 100,
+      "retained": 24,
+      "level": 4,
+      "release": false,
+      "gl": 0
+    },
+    {
+      "name": "fast-turn-release-430",
+      "missing": 0,
+      "samples": 540,
+      "width": 0,
+      "segments": 140,
+      "retained": 24,
+      "level": 4,
+      "release": true,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

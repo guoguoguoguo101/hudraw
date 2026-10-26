@@ -39,6 +39,20 @@ for(const [w,h] of [[360,640],[390,844],[430,932],[390,1000]]){
  assert.equal(rect.width/720,rect.height/1280,'characters retain uniform scale');
 }
 const adapter=new WechatAdapter(),events:import('../src/platform/adapter').InputEvent[]=[];
+for(const chapter of ['sea','palace','snow']){
+ const name=chapter+'-landscape.json',expected=JSON.parse(await fs.readFile('public/art/chapters/'+name,'utf8'));
+ const actual=await adapter.loadAsset('wechat-game/art/chapters/'+name);
+ assert.deepEqual(actual,expected,chapter+': packaged scene must decode losslessly through the native adapter');
+}
+for(const chapter of ['valley','sea','palace','snow']){
+ const name=chapter+'-boss.json',expected=JSON.parse(await fs.readFile('public/art/bosses/'+name,'utf8'));
+ const actual=await adapter.loadAsset('wechat-game/art/bosses/'+name);
+ assert.deepEqual(actual,expected,chapter+': packaged boss must decode losslessly through the native adapter');
+}
+for(const name of await fs.readdir('public/art/elites'))if(name.endsWith('.png'))assert.deepEqual(await fs.readFile('wechat-game/art/elites/'+name),await fs.readFile('public/art/elites/'+name),'elite '+name+': native PNG copied exactly');
+async function packageBytes(dir:string):Promise<number>{let bytes=0;for(const entry of await fs.readdir(dir,{withFileTypes:true})){const name=dir+'/'+entry.name;if(entry.isDirectory())bytes+=await packageBytes(name);else if(entry.isFile())bytes+=(await fs.stat(name)).size;}return bytes;}
+assert.ok(await packageBytes('wechat-game')<4*1024*1024,'entire WeChat package must stay below 4MB');
+console.log('PASS: three chapter and four boss assets decode identically to source; complete package stays below 4MB');
 const dispose=adapter.input({width:720,height:1280},event=>events.push(event));
 function send(kind:string,id:number,x:number,y:number){const touches=[{identifier:id,clientX:x,clientY:y}];handlers.get(kind)!({changedTouches:touches,touches} as TouchEvent);}
 const v=viewport();

@@ -1,0 +1,816 @@
+{
+  "shots": [
+    {
+      "name": "落日",
+      "chapter": "valley",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "paper-moth",
+          "hp": 30
+        },
+        {
+          "look": "paper-lantern",
+          "hp": 40
+        },
+        {
+          "look": "paper-umbrella",
+          "hp": 40
+        },
+        {
+          "look": "paper-frog",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "起风",
+      "chapter": "valley",
+      "stage": "wind",
+      "event": "fire",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "paper-moth",
+          "hp": 30
+        },
+        {
+          "look": "paper-lantern",
+          "hp": 40
+        },
+        {
+          "look": "paper-umbrella",
+          "hp": 40
+        },
+        {
+          "look": "paper-frog",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "夜色",
+      "chapter": "valley",
+      "stage": "night",
+      "event": "beast",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "paper-moth",
+          "hp": 30
+        },
+        {
+          "look": "paper-lantern",
+          "hp": 40
+        },
+        {
+          "look": "paper-umbrella",
+          "hp": 40
+        },
+        {
+          "look": "paper-frog",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "珊瑚绯潮",
+      "chapter": "sea",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月下鲸歌",
+      "chapter": "sea",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "fire",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "靛金星阙",
+      "chapter": "palace",
+      "stage": "night",
+      "event": "chain",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "珊瑚绯潮",
+      "chapter": "sea",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月下鲸歌",
+      "chapter": "sea",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "fire",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "靛金星阙",
+      "chapter": "palace",
+      "stage": "night",
+      "event": "chain",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "珊瑚绯潮",
+      "chapter": "sea",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月下鲸歌",
+      "chapter": "sea",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 60
+        },
+        {
+          "look": "sea-jelly",
+          "hp": 60
+        },
+        {
+          "look": "sea-crab",
+          "hp": 100
+        },
+        {
+          "look": "sea-fish",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月白云庭",
+      "chapter": "palace",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "朱金日宫",
+      "chapter": "palace",
+      "stage": "wind",
+      "event": "fire",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "靛金星阙",
+      "chapter": "palace",
+      "stage": "night",
+      "event": "chain",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "star-ray",
+          "hp": 60
+        },
+        {
+          "look": "star-bell",
+          "hp": 100
+        },
+        {
+          "look": "star-kite",
+          "hp": 60
+        },
+        {
+          "look": "star-ray",
+          "hp": 60
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    }
+  ],
+  "errors": [],
+  "timings": [
+    {
+      "chapter": "sea",
+      "median": 1.800000000745058,
+      "p95": 2.099999997764826
+    },
+    {
+      "chapter": "palace",
+      "median": 1.9000000022351742,
+      "p95": 2.100000001490116
+    },
+    {
+      "chapter": "snow",
+      "median": 1.5999999977648258,
+      "p95": 1.800000000745058
+    }
+  ],
+  "motion": [
+    {
+      "chapter": "sea",
+      "changedPixels": 13133
+    },
+    {
+      "chapter": "palace",
+      "changedPixels": 2833
+    },
+    {
+      "chapter": "snow",
+      "changedPixels": 2503
+    }
+  ]
+}

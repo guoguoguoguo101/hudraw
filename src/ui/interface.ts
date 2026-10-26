@@ -47,7 +47,7 @@ export class Interface{
   text(this.overlay,'灵狐绘卷',360,314,68,COLORS.paper,{letterSpacing:6,fontWeight:'normal'});
   text(this.overlay,'一笔镇妖 · 四符守山海',360,374,21,COLORS.paper);
   this.button('入画山海',360,838,440,96,'start',true);
-  text(this.overlay,'山海试炼 · 镇守落日妖谷',360,863,17,COLORS.paper,{letterSpacing:1});
+  text(this.overlay,'四卷山海 · 四十关试炼',360,863,17,COLORS.paper,{letterSpacing:1});
   // Keep the fox and scenery clear above a compact, consistently aligned menu.
   this.button('无尽妖潮',360,953,440,90,'endless');
   text(this.overlay,'无限闯关 · 一笔续守山海',360,977,16,COLORS.gold,{letterSpacing:1});
@@ -95,6 +95,7 @@ export class Interface{
  }
  hint(str:string){this.tip.text=str;this.hintAge=1.8;}
  update(game:Game,dt:number,fps:number,input?:InputController){
+ if(game.hualingPractice&&game.active)this.hud.visible=game.hualing.journey.chapter==='valley'&&!game.hualing.bosses.active;
  this.title.text=game.hualingPractice?'画 灵':'灵狐绘卷';this.hintAge=Math.max(0,this.hintAge-dt);if(!this.hintAge)this.tip.text=game.time>=game.duration&&!game.bossDead?'决胜 · 斩灭鬼王完成试炼':game.training?'按住绘符 · 三秒符境 · 松手释放':'按住绘符 · 观察方向 · 三分钟试炼';
  this.timer.text=game.endless?'∞':String(Math.max(0,Math.ceil(game.duration-game.time)));this.score.text=String(game.score).padStart(4,'0');this.phase.text=`生命 ${Math.ceil(game.life)} / ${game.maxHp}${game.shield?' +'+Math.ceil(game.shield)+'盾':''}`;
  if(game.endless){this.phase.text=`第 ${game.wave+1} 关 · 生命 ${Math.ceil(game.life)}`;if(!this.hintAge)this.tip.text='无限闯关 · 每三十秒迎来下一关';}
@@ -104,12 +105,12 @@ export class Interface{
 
  const preview=input?.drawing?input.preview:input?.last;this.drawStatus.text=input?.drawing?`符境 ${(COMBAT.drawLimit-input.drawAge).toFixed(1)}秒 · ${preview?.valid?(preview.rune==='line'?'松手出刀 · 划过小怪':preview.rune==='ink'?'未成符 · 松手消散':preview.reason+' · 松手施符'):'落笔 · 划动施符'}`:input&&input.traceAge<.7&&preview?preview.reason:'';
  this.drawMeter.clear();if(input?.drawing)this.drawMeter.moveTo(208,1165).lineTo(512,1165).stroke({color:COLORS.gold,width:2,alpha:.18}).moveTo(208,1165).lineTo(208+304*(1-input.drawAge/COMBAT.drawLimit),1165).stroke({color:COLORS.gold,width:2,alpha:.8});
- this.relicStatus.text=[...game.modifiers.owned].map(([id,n])=>RELICS.find(r=>r.id===id)!.name.slice(2)+'×'+n).join(' · ');this.practice.text='';const boss=game.enemies.find(e=>e.kind==='boss');this.tip.visible=!boss;this.bossLabel.text=boss?`赤面鬼王 · ${['','甲胄','召妖','血月'][boss.phase]} ${boss.ai==='Telegraph'?'蓄力 '+Math.max(0,BOSS.windups[boss.phase-1]-boss.stateAge).toFixed(1)+'秒':''}`:'';this.bossMeter.clear();if(boss)this.bossMeter.moveTo(168,272).lineTo(552,272).stroke({color:COLORS.ink,width:6}).moveTo(168,272).lineTo(168+384*Math.max(0,boss.hp/boss.maxHp),272).stroke({color:COLORS.red,width:4});
+ this.relicStatus.text=[...game.modifiers.owned].map(([id,n])=>RELICS.find(r=>r.id===id)!.name.slice(2)+'×'+n).join(' · ');this.practice.text='';const boss=game.enemies.find(e=>e.kind==='boss'&&!e.chapterBoss);this.tip.visible=!boss;this.bossLabel.text=boss?`赤面鬼王 · ${['','甲胄','召妖','血月'][boss.phase]} ${boss.ai==='Telegraph'?'蓄力 '+Math.max(0,BOSS.windups[boss.phase-1]-boss.stateAge).toFixed(1)+'秒':''}`:'';this.bossMeter.clear();if(boss)this.bossMeter.moveTo(168,272).lineTo(552,272).stroke({color:COLORS.ink,width:6}).moveTo(168,272).lineTo(168+384*Math.max(0,boss.hp/boss.maxHp),272).stroke({color:COLORS.red,width:4});
  this.footer.visible=this.hud.visible&&!game.practice;
  if(game.practice){this.timer.text='∞';this.levelLabel.text='演武画境';this.phase.text=game.functionalRelics.enabled?`生命 ${Math.ceil(game.life)} / ${game.maxHp} · 演武免伤`:'无伤试符 · 小怪源源不绝';if(!game.interactionPractice)this.tip.text='下方选等级 · 画符看效果';this.relicStatus.text='';}
  if(game.interactionPractice){this.levelLabel.text='符术交互 · 原型';this.phase.text=`留痕 ${game.interactions.traces.length}/6 · 三秒连斩`;if(!this.hintAge)this.tip.text=input?.drawing?'落笔搭形 · 松手出刀':'两线交叉爆发 · 三线围合绞杀';}
- if(game.hualingPractice){this.tip.visible=false;this.levelLabel.text='画灵 · 绘物试验';this.phase.text='演武免伤 · 灵符不限次数';this.tip.text='直线 / 圆 · 基础施法    选纸符 · 绘物成灵';this.practice.text='';this.timer.text='∞';}
- this.counter.text=this.debug?`FPS ${Math.round(fps)}  ENEMIES ${game.enemies.length} · 时速 ${input?.drawing?'50%':'100%'}`:'';
+ if(game.hualingPractice){this.tip.visible=false;this.levelLabel.text='画灵 · 绘物试验';this.drawStatus.text='';this.drawMeter.clear();this.phase.text='挥笔划妖 · 自在绘物';this.tip.text='笔尖划过即命中 · 选纸符绘物成灵';this.practice.text='';this.timer.text='∞';}
+ this.counter.text=this.debug?`FPS ${Math.round(fps)}  ENEMIES ${game.enemies.length} · 时速 ${input?.drawing&&!game.hualingPractice?'50%':'100%'}`:'';
  }
  hit(p:Point){if(['playing','tutorial','reviving'].includes(this.lastState))p={x:p.x,y:p.y-this.hud.y};const z=[...this.zones].reverse().find(z=>p.x>=z.x&&p.x<=z.x+z.w&&p.y>=z.y&&p.y<=z.y+z.h);if(z){this.onAction(z.action);return true;}return ['menu','paused','upgrade','win','lose'].includes(this.lastState);}
 }

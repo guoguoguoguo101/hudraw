@@ -1,0 +1,145 @@
+{
+  "results": [
+    {
+      "kind": "umbrella",
+      "expected": "umbrella",
+      "count": 1,
+      "parts": 0,
+      "gl": 0
+    },
+    {
+      "kind": "lantern",
+      "expected": "lantern",
+      "count": 1,
+      "parts": 0,
+      "gl": 0
+    },
+    {
+      "kind": "puppet",
+      "expected": "puppet",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "stele",
+      "expected": "stele",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "moth",
+      "expected": "moth",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "reefCrab",
+      "expected": "reefCrab",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "jelly",
+      "expected": "jelly",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "clam",
+      "expected": "clam",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "hermit",
+      "expected": "hermit",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "rays",
+      "expected": "rays",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "mirror",
+      "expected": "mirror",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "weaver",
+      "expected": "weaver",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "bell",
+      "expected": "bell",
+      "count": 1,
+      "parts": 1,
+      "gl": 0
+    },
+    {
+      "kind": "official",
+      "expected": "official",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "blade",
+      "expected": "blade",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "frostApe",
+      "expected": "frostApe",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "crone",
+      "expected": "crone",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "pineApe",
+      "expected": "pineApe",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    },
+    {
+      "kind": "deer",
+      "expected": "deer",
+      "count": 1,
+      "parts": 2,
+      "gl": 0
+    },
+    {
+      "kind": "guardian",
+      "expected": "guardian",
+      "count": 1,
+      "parts": 3,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

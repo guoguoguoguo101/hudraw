@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
 
 const base=process.env.LINGHU_PREVIEW_URL??'http://127.0.0.1:5175';
-const folder='screenshots/hualing-resonance';await mkdir(folder,{recursive:true});
+const folder='screenshots/hualing-brush/resonance';await mkdir(folder,{recursive:true});
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[],shots=[];
 page.on('pageerror',e=>errors.push(e.message));
@@ -35,19 +35,19 @@ async function reset(){await page.evaluate(()=>{
  const a=window.__LINGHU__;a.input.cancel();a.game.hualing.reset();a.game.hualing.frozen=true;a.game.skills=[];a.game.freeSlashes.clear();a.game.enemies=[];a.game.director.disabled=true;a.game.seedHualingEnemies();for(const e of a.game.enemies)e.speed=0;
  a.view.entrance.y=665;a.view.entrance.scale=.32;a.view.animator.clear();a.hualingUI.reset();
  });await frame();}
-async function selectScene(index){const footer=await page.evaluate(()=>window.__LINGHU__.view.ui.footer.y);await click({x:91+index*122,y:1017+footer});}
+async function selectScene(index){const footer=await page.evaluate(()=>window.__LINGHU__.view.ui.footer.y);await click({x:82+index*102,y:1017+footer});}
 const circle=(p,r)=>Array.from({length:81},(_,i)=>({x:p.x+Math.cos(i/80*Math.PI*2)*r,y:p.y+Math.sin(i/80*Math.PI*2)*r}));
 async function rewardRelease(name){
  const data=await page.evaluate(()=>{const a=window.__LINGHU__,s=a.game.hualing.sceneSeal;a.game.skills=[];a.game.freeSlashes.clear();a.game.enemies=[];const target=s.center(a.game.hualing.bounds),slot=s.slot(a.game.hualing.bounds);const e=a.game.spawn('oni',{x:target.x+40,y:target.y});e.speed=0;e.ai='Approach';return {target,slot,damage:s.damage};});
  await move(data.slot);await page.mouse.down();await move(data.target);await shot(name+'-target');await page.mouse.up();await frame(.25);await shot(name+'-release');return data;
 }
 try{
- await page.goto(`${base}/?qa=1&mode=hualing`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.__LINGHU__);await page.evaluate(()=>window.__LINGHU__.app.ticker.stop());await reset();
+ await page.goto(`${base}/?qa=1&mode=hualing`,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.__LINGHU__);await page.evaluate(()=>window.__LINGHU__.app.ticker.stop());await reset();
  await shot('01-scene-390');let guides=await paths();
- // Start from a far endpoint, reverse direction; the same real stroke still casts a line.
- const partial=await draw(sampled([guides[0].at(-1),guides[0].at(-2)]));assert.ok(partial.progress>.05&&partial.progress<.4);assert.equal(partial.casts,1);
+ // Start from a far endpoint, reverse direction; the same real stroke also uses the ordinary brush.
+ const partial=await draw(sampled([guides[0].at(-1),guides[0].at(-2)]));assert.ok(partial.progress>.05&&partial.progress<.4);assert.equal(partial.casts,0);
  await shot('02-partial-reverse');const repeated=await draw(sampled([guides[0].at(-2),guides[0].at(-1)]));assert.equal(repeated.progress,partial.progress);
- const off=await draw([{x:65,y:760},{x:100,y:720},{x:145,y:780},{x:195,y:730}]);assert.equal(off.progress,partial.progress);assert.ok(off.fallbacks>0);
+ const off=await draw([{x:65,y:760},{x:100,y:720},{x:145,y:780},{x:195,y:730}]);assert.equal(off.progress,partial.progress);assert.equal(off.fallbacks,0);
  await page.evaluate(()=>window.__LINGHU__.action('pause'));await frame(.5);assert.equal((await frame()).progress,partial.progress);await page.evaluate(()=>{window.__LINGHU__.action('resume');window.__LINGHU__.app.ticker.stop();});await frame();
  // Continue at a different, disconnected section; no required start point or order.
  await draw(sampled([...guides[1]].reverse()));await shot('03-disconnected-progress');
@@ -61,7 +61,7 @@ try{
  await move(slot);await page.mouse.down();await move(target);await shot('06-drag-preview');await page.mouse.up();assert.equal((await frame()).phase,'spent');await frame(.25);await shot('07-release');
  const hp=await page.evaluate(()=>window.__LINGHU__.game.enemies.map(e=>({hp:e.hp,maxHp:e.maxHp})));assert.equal(hp[0].hp,hp[0].maxHp-120);assert.equal(hp[1].hp,hp[1].maxHp);
  await frame(.4);assert.deepEqual(await page.evaluate(()=>window.__LINGHU__.game.enemies.map(e=>e.hp)),hp.map(e=>e.hp));
- const footer=await page.evaluate(()=>window.__LINGHU__.view.ui.footer.y);await click({x:608,y:1017+footer});assert.equal((await frame()).phase,'repairing');assert.equal((await frame()).progress,0);
+ const footer=await page.evaluate(()=>window.__LINGHU__.view.ui.footer.y);await click({x:632,y:1017+footer});assert.equal((await frame()).phase,'repairing');assert.equal((await frame()).progress,0);
  for(const [width,height] of [[375,667],[430,932]]){
   await page.setViewportSize({width,height});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await reset();guides=await paths();
   await shot(`08-scene-${width}`);await draw(sampled(guides[2]));assert.ok((await frame()).progress>0);await shot(`09-partial-${width}`);
@@ -78,18 +78,16 @@ try{
  await rewardRelease('13-chain');assert.equal((await frame()).phase,'spent');assert.equal(await page.evaluate(()=>window.__LINGHU__.game.enemies[0].hp),80);
  await selectScene(2);await shot('14-fire-ready');
  const small=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing,s=m.sceneSeal,c=s.center(m.bounds),p=s.flames[0];return {x:c.x+p.x,y:c.y+p.y};});
- await draw(circle(small,45));assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.power),1);await frame(1);await shot('15-fire-small-card');
- await selectScene(2);const fireCenter=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing;return m.sceneSeal.center(m.bounds);});await draw(circle(fireCenter,230));assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.power),5);
+ await draw([{x:small.x-30,y:small.y},{x:small.x+30,y:small.y}]);assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.captured.size),1);assert.equal((await frame()).phase,'repairing');await shot('15-fire-partial');
+ const flames=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing,s=m.sceneSeal,c=s.center(m.bounds);return s.flames.slice(1).map(p=>({x:c.x+p.x,y:c.y+p.y}));});for(const p of flames)await draw([{x:p.x-30,y:p.y},{x:p.x+30,y:p.y}]);assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.power),5);
  await frame(.3);await shot('16-fire-gather');await frame(.7);await shot('17-fire-strong-card');await rewardRelease('18-fire');assert.equal(await page.evaluate(()=>window.__LINGHU__.game.enemies[0].hp),30);
- await selectScene(3);await shot('19-beast-ready');guides=await paths();await draw(sampled([...guides[1]].reverse()));assert.ok((await frame()).progress>.4);await shot('20-beast-partial');
- await page.evaluate(()=>window.__LINGHU__.action('pause'));await frame(.2);const beastPartial=(await frame()).progress;await page.evaluate(()=>{window.__LINGHU__.action('resume');window.__LINGHU__.app.ticker.stop();});await frame();assert.equal((await frame()).progress,beastPartial);
- await draw(sampled(guides[0]));assert.equal((await frame()).phase,'collecting');await frame(.25);await shot('21-beast-awake');await frame(.75);await shot('22-beast-card');
- assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.beast.alive),false);await rewardRelease('23-beast');assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.beast.alive),true);await frame(2);await shot('24-beast-hunting');assert.ok(await page.evaluate(()=>window.__LINGHU__.game.enemies[0].hp<240));
- await selectScene(1);assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.sceneSeal.beast.alive),false);
+ // Companion cards are now claimed directly; dedicated summon coverage lives in check-hualing-summons.mjs.
+ const summonFooter=await page.evaluate(()=>window.__LINGHU__.view.ui.footer.y);await click({x:399,y:1017+summonFooter});
+ assert.ok(await page.evaluate(()=>window.__LINGHU__.game.hualing.scenes.some(s=>s.mode==='beast'&&s.phase==='stored'&&s.progress===0)));await shot('19-tiger-card-without-tracing');
  for(const [width,height] of [[375,667],[430,932]]){
   await page.setViewportSize({width,height});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await reset();
-  for(const [index,name] of [[1,'chain'],[2,'fire'],[3,'beast']]){await selectScene(index);await shot(`25-${name}-${width}`);}
+  for(const [index,name] of [[1,'chain'],[2,'fire']]){await selectScene(index);await shot(`25-${name}-${width}`);}
  }
  assert.deepEqual(errors,[]);await writeFile(`${folder}/verification.json`,JSON.stringify({shots,errors},null,2));
- console.log('PASS scene resonance browser: seal, chain cuts, small/big fire circles and power, giant beast repair/collect/summon/hunt, real card drops and damage, pause, mode switching, reset, 375/390/430 layouts, legacy selector isolation, no page/WebGL errors');
+ console.log('PASS scene resonance browser: seal, chain cuts, local fire collection and power, direct tiger card claim, real card drops and damage, pause, mode switching, reset, 375/390/430 layouts, legacy selector isolation, no page/WebGL errors');
 }finally{await browser.close();}

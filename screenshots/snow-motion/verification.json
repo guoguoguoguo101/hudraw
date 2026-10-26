@@ -1,0 +1,60 @@
+{
+  "headPixels": 8891,
+  "floorPixels": 0,
+  "transform": [
+    {
+      "x": 406.31113998542867,
+      "y": 323,
+      "rotation": -0.009498526389564093,
+      "scaleY": 1.014
+    }
+  ],
+  "errors": [],
+  "shots": [
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [],
+      "gl": 0
+    }
+  ]
+}

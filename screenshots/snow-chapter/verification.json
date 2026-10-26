@@ -1,0 +1,135 @@
+{
+  "shots": [
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 6,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 10
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "hp": 880
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "风雪入梦",
+      "chapter": "snow",
+      "stage": "wind",
+      "event": "chain",
+      "time": 39,
+      "enemies": [
+        {
+          "hp": 850
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "hp": 840
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "hp": 840
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "hp": 790
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "月照苏灵",
+      "chapter": "snow",
+      "stage": "night",
+      "event": "fire",
+      "time": 74,
+      "enemies": [
+        {
+          "hp": 790
+        }
+      ],
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

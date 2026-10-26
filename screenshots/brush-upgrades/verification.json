@@ -1,0 +1,509 @@
+{
+  "results": [
+    {
+      "name": "custom-390",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": "custom",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.01590000000148939,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-spray-ready-390",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 1,
+        "drops": 15,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.6909000000014898,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv4-390",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 5,
+        "splashes": 3,
+        "time": 0,
+        "clock": 0.9809000000014907,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0,
+        "kills": 0,
+        "picks": 0,
+        "pending": 1,
+        "gl": 0
+      }
+    },
+    {
+      "name": "custom-375",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": "custom",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.006,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-spray-ready-375",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 1,
+        "drops": 15,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.6810000000000004,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv4-375",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 5,
+        "splashes": 3,
+        "time": 0,
+        "clock": 0.9710000000000012,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0,
+        "kills": 0,
+        "picks": 0,
+        "pending": 1,
+        "gl": 0
+      }
+    },
+    {
+      "name": "custom-430",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": "custom",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-spray-ready-430",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 1,
+        "drops": 15,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.6750000000000004,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv4-430",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 4,
+          "splash": 4,
+          "trail": 4
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 5,
+        "splashes": 3,
+        "time": 0,
+        "clock": 0.9650000000000012,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0,
+        "kills": 0,
+        "picks": 0,
+        "pending": 1,
+        "gl": 0
+      }
+    },
+    {
+      "name": "spray-lv1",
+      "state": {
+        "levels": {
+          "spray": 1,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 1,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "spray-lv2",
+      "state": {
+        "levels": {
+          "spray": 2,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 2,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "spray-lv3",
+      "state": {
+        "levels": {
+          "spray": 3,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 7,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "spray-lv4",
+      "state": {
+        "levels": {
+          "spray": 4,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 5,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-lv1",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 1,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-lv2",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 2,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-lv3",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 3,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "wide-lv4",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 4,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 0,
+        "time": 0,
+        "clock": 0.8750000000000014,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv1",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 1,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 1,
+        "time": 0,
+        "clock": 2.0150000000000006,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv2",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 2,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 1,
+        "time": 0,
+        "clock": 2.0150000000000006,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv3",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 3,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 6,
+        "splashes": 1,
+        "time": 0,
+        "clock": 2.0150000000000006,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "splash-lv4",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 4,
+          "trail": 0
+        },
+        "panel": null,
+        "charge": 0,
+        "drops": 0,
+        "splashes": 3,
+        "time": 0,
+        "clock": 2.0150000000000006,
+        "kills": 0,
+        "picks": 0,
+        "pending": 0,
+        "gl": 0
+      }
+    }
+  ],
+  "errors": []
+}

@@ -8,7 +8,7 @@
     "dev": "vite --host 127.0.0.1 --port 5173",
     "dev:lan": "vite --host 0.0.0.0 --port 5174 --strictPort",
     "build": "tsc --noEmit && vite build",
-    "test": "tsx tests/hualing.ts && tsx tests/talisman-barrage.ts && tsx tests/paper-tiger.ts && tsx tests/functional-relics.ts && tsx tests/shared-geometry.ts && tsx tests/triangle-refraction.ts && tsx tests/burning-sea.ts && tsx tests/fallback-slash.ts && tsx tests/line-interactions.ts && tsx tests/sancai.ts && tsx tests/thunder-gesture.ts && tsx tests/advanced-spells.ts && tsx tests/moon-tail.ts && tsx tests/run.ts && tsx tests/cinnabar-brush.ts && tsx tests/progress.ts && tsx tests/spirit-pen.ts && tsx tests/ink.ts",
+    "test": "tsx tests/mountain-run.ts && tsx tests/ink-trail.ts && tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts && tsx tests/ink-carp.ts && tsx tests/brush-contact.ts && tsx tests/elite-roster.ts && tsx tests/elite-motion.ts && tsx tests/hualing.ts && tsx tests/hualing-combo.ts && tsx tests/hualing-chapters.ts && tsx tests/hualing-summons.ts && tsx tests/boss-motion.ts && tsx tests/boss-battlefield.ts && tsx tests/hualing-bosses.ts && tsx tests/snow-chapter.ts && tsx tests/chapter-vector-art.ts && tsx tests/talisman-barrage.ts && tsx tests/paper-tiger.ts && tsx tests/functional-relics.ts && tsx tests/shared-geometry.ts && tsx tests/triangle-refraction.ts && tsx tests/burning-sea.ts && tsx tests/fallback-slash.ts && tsx tests/line-interactions.ts && tsx tests/sancai.ts && tsx tests/thunder-gesture.ts && tsx tests/advanced-spells.ts && tsx tests/moon-tail.ts && tsx tests/run.ts && tsx tests/cinnabar-brush.ts && tsx tests/progress.ts && tsx tests/spirit-pen.ts && tsx tests/ink.ts",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "check:platform": "tsx scripts/check-platform.ts",
     "preview:lan": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
@@ -23,8 +23,22 @@
     "profile:combat": "node scripts/profile-combat.mjs",
     "test:functional-relics": "tsx tests/functional-relics.ts",
     "test:functional-relics:preview": "node scripts/check-functional-relics.mjs",
-    "test:hualing": "tsx tests/hualing.ts",
+    "test:ink-trail": "tsx tests/ink-trail.ts",
+    "test:ink-trail:preview": "node scripts/check-ink-trail.mjs",
+    "test:brush-upgrades": "tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts",
+    "test:brush-continuity:preview": "node scripts/check-brush-continuity.mjs",
+    "test:brush-upgrades:preview": "node scripts/check-brush-upgrades.mjs",
+    "test:dual-brush": "tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts",
+    "test:dual-brush:preview": "node scripts/check-dual-brush-paper.mjs",
+    "test:elite-roster": "tsx tests/elite-roster.ts && node scripts/check-elite-roster.mjs",
+    "test:hualing": "tsx tests/elite-motion.ts && tsx tests/elite-roster.ts && tsx tests/dragon-motion.ts && tsx tests/ink-trail.ts && tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts && tsx tests/ink-carp.ts && tsx tests/hualing.ts && tsx tests/hualing-combo.ts && tsx tests/hualing-chapters.ts && tsx tests/hualing-summons.ts && tsx tests/boss-motion.ts && tsx tests/boss-battlefield.ts && tsx tests/hualing-bosses.ts && tsx tests/snow-chapter.ts && tsx tests/chapter-vector-art.ts",
     "test:paper-monsters:preview": "node scripts/check-paper-monsters.mjs",
+    "test:snow-chapter:preview": "node scripts/check-snow-chapter.mjs",
+    "test:hualing-bosses:preview": "node scripts/check-hualing-bosses.mjs",
+    "test:hualing-summons:preview": "node scripts/check-hualing-summons.mjs",
+    "test:snow-motion:preview": "node scripts/check-snow-motion.mjs",
+    "test:hualing-chapters:preview": "node scripts/check-hualing-chapters.mjs",
+    "test:hualing-combo:preview": "node scripts/check-hualing-combo.mjs",
     "test:hualing:preview": "node scripts/check-hualing.mjs",
     "test:hualing-resonance:preview": "node scripts/check-hualing-resonance.mjs",
     "test:hualing-landscape:preview": "node scripts/check-hualing-landscape.mjs",
@@ -35,17 +49,19 @@
     "test:line-interactions": "tsx tests/line-interactions.ts",
     "test:line-interactions:preview": "node scripts/check-line-interactions.mjs",
     "test:paper-tiger": "tsx tests/paper-tiger.ts",
-    "test:paper-tiger:preview": "node scripts/check-paper-tiger.mjs"
+    "test:paper-tiger:preview": "node scripts/check-paper-tiger.mjs",
+    "test:mountain-run": "tsx tests/mountain-run.ts && node scripts/check-mountain-run.mjs && node scripts/check-mountain-themes.mjs"
   },
   "dependencies": {
+    "fflate": "^0.8.2",
     "pixi.js": "^8.14.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.0",
-    "vite": "^7.1.0",
-    "tsx": "^4.20.0",
-    "sharp": "^0.34.0",
+    "@playwright/test": "^1.55.0",
     "@types/node": "^24.0.0",
-    "@playwright/test": "^1.55.0"
+    "sharp": "^0.34.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0"
   }
 }

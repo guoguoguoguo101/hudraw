@@ -1,0 +1,117 @@
+{
+  "shots": [
+    {
+      "name": "drawing-390",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0
+      }
+    },
+    {
+      "name": "growing-390",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0.7
+      }
+    },
+    {
+      "name": "full-390",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 1.4499999999999988
+      }
+    },
+    {
+      "name": "fading-390",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 2.2499999999999956
+      }
+    },
+    {
+      "name": "drawing-375",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0
+      }
+    },
+    {
+      "name": "growing-375",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0.7
+      }
+    },
+    {
+      "name": "full-375",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 1.4499999999999988
+      }
+    },
+    {
+      "name": "fading-375",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 2.2499999999999956
+      }
+    },
+    {
+      "name": "drawing-430",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0
+      }
+    },
+    {
+      "name": "growing-430",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 0.7
+      }
+    },
+    {
+      "name": "full-430",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 1.4499999999999988
+      }
+    },
+    {
+      "name": "fading-430",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 2.2499999999999956
+      }
+    },
+    {
+      "name": "low-quality",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 1.2
+      }
+    },
+    {
+      "name": "short-stroke",
+      "state": {
+        "active": 1,
+        "gl": 0,
+        "age": 1.4
+      }
+    }
+  ],
+  "errors": []
+}

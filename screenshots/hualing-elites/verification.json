@@ -1,0 +1,13 @@
+{
+  "shots": [
+    "both-430",
+    "umbrella-warning",
+    "umbrella-broken",
+    "lantern-wisps",
+    "lantern-core",
+    "lantern-relic",
+    "both-375",
+    "both-390"
+  ],
+  "errors": []
+}

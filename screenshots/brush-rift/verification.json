@@ -1,0 +1,179 @@
+{
+  "results": [
+    {
+      "name": "straight-held",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 3,
+      "gl": 0,
+      "commands": 46
+    },
+    {
+      "name": "straight",
+      "geometry": {
+        "points": 43,
+        "length": 407.7462584011756
+      }
+    },
+    {
+      "name": "straight-closing",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 3,
+      "gl": 0,
+      "commands": 46
+    },
+    {
+      "name": "curve-held",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 3,
+      "gl": 0,
+      "commands": 51
+    },
+    {
+      "name": "curve",
+      "geometry": {
+        "points": 69,
+        "length": 587.7397780930979
+      }
+    },
+    {
+      "name": "curve-closing",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 3,
+      "gl": 0,
+      "commands": 43
+    },
+    {
+      "name": "circle-held",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 3,
+      "gl": 0,
+      "commands": 49
+    },
+    {
+      "name": "circle",
+      "geometry": {
+        "points": 89,
+        "length": 973.0664627251787
+      }
+    },
+    {
+      "name": "circle-closing",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 39
+    },
+    {
+      "name": "corner-held",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 34
+    },
+    {
+      "name": "corner",
+      "geometry": {
+        "points": 51,
+        "length": 579.999995304988
+      }
+    },
+    {
+      "name": "corner-closing",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 48
+    },
+    {
+      "name": "six-rifts",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 6,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 9,
+      "gl": 0,
+      "commands": 228
+    },
+    {
+      "name": "small-finisher",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 6,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 9,
+      "gl": 0,
+      "commands": 324
+    }
+  ],
+  "stress": {
+    "level": 4,
+    "ready": true,
+    "cooldown": 0,
+    "waves": 6,
+    "width": 49.6,
+    "contact": 38,
+    "cuts": 9,
+    "gl": 0,
+    "commands": 228
+  },
+  "perf": {
+    "note": "Desktop CPU timings, not phone FPS.",
+    "effectBuildMs": {
+      "median": 0.4000000059604645,
+      "p95": 0.7999999970197678
+    },
+    "renderSubmitMs": {
+      "median": 2.5,
+      "p95": 3.7999999970197678
+    }
+  },
+  "audio": {
+    "peak": 0.07501134276390076,
+    "rms": 0.006754112386616242
+  },
+  "errors": []
+}

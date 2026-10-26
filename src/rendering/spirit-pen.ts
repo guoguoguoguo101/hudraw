@@ -3,6 +3,7 @@ import type {InputController} from '../input/controller';
 import {FAILED_STROKE,type PenSnapshot} from '../input/brush-settings';
 import type {Point} from '../input/recognizer';
 import {brushStroke,type BrushSample} from './brush-stroke';
+import {HualingBrushFX} from './hualing-brush';
 
 /** A continuous ink silhouette, with subtle asymmetry from the brush hairs. */
 function inkRibbon(g:Graphics,pts:BrushSample[],color:number,alpha:number,scale=1){
@@ -77,11 +78,13 @@ export function drawBrushPortrait(parent:Container,pen:PenSnapshot,x:number,y:nu
 }
 
 export class SpiritPenRenderer{
+ liveFX=new HualingBrushFX();
  optimized=false;private ribbonCache:{points:Point[];count:number;last:Point;time:number;width:number;released:boolean;ribbon:BrushSample[]}|undefined;private traceKey='';
  root=new Container();trace=new Graphics();cursor=new Graphics();start=new Graphics();finish=new Graphics();debug=new Graphics();private angle=0;private flex=0;private gesture=-1;private label=new Text({text:'',style:{fontFamily:['KaiTi','serif'],fontSize:16,fill:0xfff3dc,lineHeight:22}});
- constructor(){this.label.position.set(48,912);this.label.visible=false;this.root.addChild(this.trace,this.start,this.finish,this.cursor,this.debug,this.label);}
- clear(){for(const g of [this.trace,this.cursor,this.start,this.finish,this.debug])g.clear();this.label.visible=false;this.ribbonCache=undefined;this.traceKey='';}
+ constructor(){this.label.position.set(48,912);this.label.visible=false;this.root.addChild(this.trace,this.start,this.finish,this.liveFX.root,this.cursor,this.debug,this.label);}
+ clear(){this.liveFX.clear();for(const g of [this.trace,this.cursor,this.start,this.finish,this.debug])g.clear();this.label.visible=false;this.ribbonCache=undefined;this.traceKey='';}
  update(input:InputController){
+  if(input.simpleBrush()){for(const g of [this.trace,this.cursor,this.start,this.finish,this.debug])g.clear();this.label.visible=false;return;}
   for(const g of [this.cursor,this.start,this.finish,this.debug])g.clear();this.label.visible=false;const pts=input.points;if(!pts.length){if(this.traceKey||this.ribbonCache||!this.optimized)this.trace.clear();this.ribbonCache=undefined;this.traceKey='';return;}const pen=input.penSnapshot,p=pen.params,age=input.drawing?0:input.traceAge;
   const retire=input.success?Math.max(.08,Math.min(.15,p.fadeTime)):FAILED_STROKE.fadeDuration;
   const gather=input.success?Math.min(.045,retire*.45):0,fade=input.drawing?1:age<gather?1:Math.max(0,1-(age-gather)/(retire-gather));

@@ -1,0 +1,48 @@
+{
+  "note": "Desktop browser CPU timings, not phone FPS or GPU time.",
+  "report": [
+    {
+      "style": "cinnabar",
+      "segments": 144,
+      "hits": 9,
+      "logicMs": {
+        "median": 0,
+        "p95": 0.10000000894069672
+      },
+      "effectBuildMs": {
+        "median": 0.10000000894069672,
+        "p95": 0.4000000059604645
+      },
+      "renderSubmitMs": {
+        "median": 0.7000000029802322,
+        "p95": 6.4000000059604645
+      },
+      "trailCommands": {
+        "median": 23,
+        "p95": 23
+      }
+    },
+    {
+      "style": "maple-thunder",
+      "segments": 144,
+      "hits": 9,
+      "logicMs": {
+        "median": 0,
+        "p95": 0.10000000894069672
+      },
+      "effectBuildMs": {
+        "median": 0.19999998807907104,
+        "p95": 0.4000000059604645
+      },
+      "renderSubmitMs": {
+        "median": 0.6000000089406967,
+        "p95": 6.5
+      },
+      "trailCommands": {
+        "median": 65,
+        "p95": 65
+      }
+    }
+  ],
+  "errors": []
+}

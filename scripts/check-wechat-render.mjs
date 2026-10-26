@@ -88,12 +88,21 @@ try{
  const tap=async(x,y,anchor='world')=>{y+=anchor==='header'?-edgeOffset:anchor==='footer'?edgeOffset:0;await touch('TouchStart',x,y);await touch('TouchEnd',x,y);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));};
  await tap(647,87,'header');await tap(360,880);await tap(360,1137);
  await fs.mkdir(path.resolve('screenshots/hualing'),{recursive:true});
- for(let i=0;i<5;i++){
-  await tap(436,1228,'footer');await tap(96+i*132,1090,'footer');
+ for(let i=0;i<3;i++){
+  await tap(436,1228,'footer');await tap(174+i*186,1090,'footer');
   await page.screenshot({path:path.resolve(`screenshots/hualing/wechat-guide-${i}.png`)});
   await tap(110,1228,'footer');await page.waitForTimeout(i===1?400:750);
   await page.screenshot({path:path.resolve(`screenshots/hualing/wechat-effect-${i}.png`)});
  }
+ // Approved chapter vectors must load through native package reads, without DOM SVG APIs.
+ await fs.mkdir(path.resolve('screenshots/hualing-chapters'),{recursive:true});
+ const seaLoaded=page.waitForResponse(r=>r.url().endsWith('/art/chapters/sea-landscape.json')&&r.ok());
+ await tap(278,165);await seaLoaded;await page.waitForTimeout(300);
+ await page.screenshot({path:path.resolve('screenshots/hualing-chapters/wechat-sea-v02.png')});
+ const palaceLoaded=page.waitForResponse(r=>r.url().endsWith('/art/chapters/palace-landscape.json')&&r.ok());
+ await tap(446,102,'header');await palaceLoaded;await tap(628,142,'header');await page.waitForTimeout(300);
+ await page.screenshot({path:path.resolve('screenshots/hualing-chapters/wechat-palace-v02.png')});
+ await tap(138,102,'header');assert.deepEqual(errors,[]);
  await tap(647,87,'header');await tap(360,880);await tap(246,1207);
  const beforePractice=await page.evaluate(()=>globalThis.__wxStorage.get('linghu-player-progress-v1'));
  // Exercise functional relics in the production interaction-practice scene via wx touches.

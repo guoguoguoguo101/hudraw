@@ -1,0 +1,171 @@
+{
+  "results": [
+    {
+      "name": "lv1-opening",
+      "level": 1,
+      "formations": 0,
+      "blocks": 0,
+      "slams": [],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv1-formed",
+      "level": 1,
+      "formations": 0,
+      "blocks": 0,
+      "slams": [],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv2-opening",
+      "level": 2,
+      "formations": 0,
+      "blocks": 0,
+      "slams": [],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv2-formed",
+      "level": 2,
+      "formations": 0,
+      "blocks": 0,
+      "slams": [],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv3-opening",
+      "level": 3,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv3-formed",
+      "level": 3,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv4-opening",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv4-formed",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv4-guardian-raised",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv4-first-slam",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        1
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv4-second-slam",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        2
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "lv2-real-projectile-block",
+      "level": 2,
+      "formations": 0,
+      "blocks": 1,
+      "slams": [],
+      "segments": 18,
+      "gl": 0
+    },
+    {
+      "name": "small-screen-guardian",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    },
+    {
+      "name": "upgrade-ui",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 56,
+      "gl": 0
+    }
+  ],
+  "perf": {
+    "desktopBuildAndSubmitMedianMs": 0.699999988079071,
+    "desktopBuildAndSubmitP95Ms": 0.9000000059604645
+  },
+  "audio": [
+    {
+      "kind": "inkSeal",
+      "peak": 0.06729868799448013
+    },
+    {
+      "kind": "inkSummon",
+      "peak": 0.08057290315628052
+    },
+    {
+      "kind": "inkSlam",
+      "peak": 0.11636673659086227
+    },
+    {
+      "kind": "inkBlock",
+      "peak": 0.022072361782193184
+    }
+  ],
+  "errors": []
+}

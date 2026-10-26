@@ -1,0 +1,259 @@
+{
+  "results": [
+    {
+      "name": "lv1-held",
+      "level": 1,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 26.4,
+      "contact": 13.2,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 1
+    },
+    {
+      "name": "lv1-sweep",
+      "level": 1,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 26.4,
+      "contact": 13.2,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 0
+    },
+    {
+      "name": "lv2-held",
+      "level": 2,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 34.4,
+      "contact": 17.2,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 1
+    },
+    {
+      "name": "lv2-sweep",
+      "level": 2,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 34.4,
+      "contact": 17.2,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 0
+    },
+    {
+      "name": "lv3-held",
+      "level": 3,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 42.4,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 7
+    },
+    {
+      "name": "lv3-sweep",
+      "level": 3,
+      "ready": false,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 42.4,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 0
+    },
+    {
+      "name": "lv4-evolution",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 0,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 0
+    },
+    {
+      "name": "lv4-held",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 38
+    },
+    {
+      "name": "lv4-sweep",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 30
+    },
+    {
+      "name": "lv4-rift",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 30
+    },
+    {
+      "name": "space-cut-01-flash",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 34
+    },
+    {
+      "name": "space-cut-02-rift",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 2,
+      "gl": 0,
+      "commands": 42
+    },
+    {
+      "name": "space-cut-03-echo",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 2,
+      "gl": 0,
+      "commands": 35
+    },
+    {
+      "name": "space-cut-04-fade",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 0,
+      "gl": 0,
+      "commands": 27
+    },
+    {
+      "name": "lv4-maple",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 37
+    },
+    {
+      "name": "lv4-thunder",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 38
+    },
+    {
+      "name": "lv4-maple-thunder",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 1,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 1,
+      "gl": 0,
+      "commands": 38
+    },
+    {
+      "name": "six-slash-burst",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 6,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 12,
+      "gl": 0,
+      "commands": 246
+    },
+    {
+      "name": "small-finisher",
+      "level": 4,
+      "ready": true,
+      "cooldown": 0,
+      "waves": 6,
+      "width": 49.6,
+      "contact": 38,
+      "cuts": 12,
+      "gl": 0,
+      "commands": 204
+    }
+  ],
+  "stress": {
+    "level": 4,
+    "ready": true,
+    "cooldown": 0,
+    "waves": 6,
+    "width": 49.6,
+    "contact": 38,
+    "cuts": 12,
+    "gl": 0,
+    "commands": 246
+  },
+  "perf": {
+    "note": "Desktop CPU timings, not phone FPS.",
+    "effectBuildMs": {
+      "median": 0.29999999701976776,
+      "p95": 0.5999999940395355
+    },
+    "renderSubmitMs": {
+      "median": 0.699999988079071,
+      "p95": 1.5
+    }
+  },
+  "audio": {
+    "peak": 0.07696615904569626,
+    "rms": 0.006939151271258662
+  },
+  "errors": []
+}

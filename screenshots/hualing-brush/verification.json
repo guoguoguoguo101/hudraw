@@ -1,0 +1,161 @@
+{
+  "shots": [
+    {
+      "name": "dock-390",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "dragon-guide",
+      "selected": "dragon",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "dragon-drawing",
+      "selected": "dragon",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "dragon-release",
+      "selected": null,
+      "effects": [
+        {
+          "kind": "dragon",
+          "age": 0.85
+        }
+      ],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "mountain-drawing",
+      "selected": "mountain",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "mountain-standing",
+      "selected": null,
+      "effects": [
+        {
+          "kind": "mountain",
+          "age": 0.49999999999999994
+        }
+      ],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "mountain-collapse",
+      "selected": null,
+      "effects": [
+        {
+          "kind": "mountain",
+          "age": 1.100000000000001
+        }
+      ],
+      "casts": 0,
+      "enemies": 3,
+      "gl": 0
+    },
+    {
+      "name": "rift-drawing",
+      "selected": "rift",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "rift-release",
+      "selected": null,
+      "effects": [
+        {
+          "kind": "rift",
+          "age": 0.9
+        }
+      ],
+      "casts": 0,
+      "enemies": 7,
+      "gl": 0
+    },
+    {
+      "name": "brush-live-hit",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 1,
+      "gl": 0
+    },
+    {
+      "name": "plain-brush",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "dock-375",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "rift-guide-375",
+      "selected": "rift",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "dock-430",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "rift-guide-430",
+      "selected": "rift",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "paused",
+      "selected": "rift",
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    },
+    {
+      "name": "direct-entry-reset",
+      "selected": null,
+      "effects": [],
+      "casts": 0,
+      "enemies": 8,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,287 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "level": 1,
+      "state": {
+        "level": 1,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 390,
+      "level": 2,
+      "state": {
+        "level": 2,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 390,
+      "level": 3,
+      "state": {
+        "level": 3,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          956.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 390,
+      "level": 4,
+      "state": {
+        "level": 4,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": 23
+          }
+        ],
+        "hp": [
+          1000,
+          983.5,
+          953.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 375,
+      "level": 1,
+      "state": {
+        "level": 1,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 375,
+      "level": 2,
+      "state": {
+        "level": 2,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 375,
+      "level": 3,
+      "state": {
+        "level": 3,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          956.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 375,
+      "level": 4,
+      "state": {
+        "level": 4,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": 39
+          }
+        ],
+        "hp": [
+          983.5,
+          983.5,
+          953.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 430,
+      "level": 1,
+      "state": {
+        "level": 1,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 430,
+      "level": 2,
+      "state": {
+        "level": 2,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          959.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 430,
+      "level": 3,
+      "state": {
+        "level": 3,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": null
+          }
+        ],
+        "hp": [
+          1000,
+          1000,
+          956.5
+        ],
+        "gl": 0
+      }
+    },
+    {
+      "width": 430,
+      "level": 4,
+      "state": {
+        "level": 4,
+        "panel": null,
+        "sides": [
+          {
+            "points": 61,
+            "lunge": null
+          },
+          {
+            "points": 61,
+            "lunge": 55
+          }
+        ],
+        "hp": [
+          1000,
+          983.5,
+          953.5
+        ],
+        "gl": 0
+      }
+    }
+  ],
+  "performanceProof": {
+    "scope": "desktop headless CPU: two companion models and native mesh skinning, excluding GPU",
+    "verticesPerDragon": 13727,
+    "medianMs": 2,
+    "p95Ms": 2.1000000089406967
+  },
+  "errors": []
+}

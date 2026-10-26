@@ -1,0 +1,145 @@
+{
+  "results": [
+    {
+      "kind": "umbrella",
+      "expected": "umbrella",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "lantern",
+      "expected": "lantern",
+      "count": 4,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "puppet",
+      "expected": "puppet",
+      "count": 4,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "stele",
+      "expected": "stele",
+      "count": 4,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "moth",
+      "expected": "moth",
+      "count": 6,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "reefCrab",
+      "expected": "reefCrab",
+      "count": 2,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "jelly",
+      "expected": "jelly",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "clam",
+      "expected": "clam",
+      "count": 4,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "hermit",
+      "expected": "hermit",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "rays",
+      "expected": "rays",
+      "count": 2,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "mirror",
+      "expected": "mirror",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "weaver",
+      "expected": "weaver",
+      "count": 5,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "bell",
+      "expected": "bell",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "official",
+      "expected": "official",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "blade",
+      "expected": "blade",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "frostApe",
+      "expected": "frostApe",
+      "count": 4,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "crone",
+      "expected": "crone",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "pineApe",
+      "expected": "pineApe",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "deer",
+      "expected": "deer",
+      "count": 7,
+      "gl": 0,
+      "reacted": true
+    },
+    {
+      "kind": "guardian",
+      "expected": "guardian",
+      "count": 3,
+      "gl": 0,
+      "reacted": true
+    }
+  ],
+  "errors": []
+}

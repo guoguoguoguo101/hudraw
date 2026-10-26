@@ -1,0 +1,673 @@
+{
+  "results": [
+    {
+      "name": "custom-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": "custom",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-flow-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-flow-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-flow-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-flow-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-four-choices-390",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "custom-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": "custom",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-flow-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-flow-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-flow-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-flow-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-four-choices-375",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "custom-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": "custom",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-flow-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-flow-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "thunder-flow-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.6279999999999994,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "maple-thunder-flow-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 1,
+        "styles": [
+          "maple-thunder"
+        ],
+        "time": 1.8779999999999986,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "growth-four-choices-430",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 0
+        },
+        "panel": "upgrade",
+        "segments": 0,
+        "waves": 0,
+        "styles": [],
+        "time": 0,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-lv1",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 1
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.0780000000000014,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-lv2",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 2
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.0780000000000014,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-lv3",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 3
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.0780000000000014,
+        "charge": 0,
+        "gl": 0
+      }
+    },
+    {
+      "name": "cinnabar-lv4",
+      "state": {
+        "levels": {
+          "spray": 0,
+          "wide": 0,
+          "splash": 0,
+          "trail": 4
+        },
+        "panel": null,
+        "segments": 52,
+        "waves": 0,
+        "styles": [
+          "cinnabar"
+        ],
+        "time": 1.0780000000000014,
+        "charge": 0,
+        "gl": 0
+      }
+    }
+  ],
+  "errors": []
+}

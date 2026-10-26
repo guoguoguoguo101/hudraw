@@ -10,3 +10,10 @@ dist/
 
 wechat-game/
 .idea/
+
+# Local tools, personal billing documents and Python caches.
+*.exe
+**/references/Invoice-*.pdf
+**/references/Receipt-*.pdf
+__pycache__/
+*.pyc

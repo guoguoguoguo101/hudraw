@@ -1,0 +1,21 @@
+{
+  "audio": [
+    {
+      "kind": "paperHit",
+      "afterBurst": 1,
+      "afterMute": 1,
+      "peak": 0.03934415057301521,
+      "energy": 0.3512285158070074,
+      "voices": 0
+    },
+    {
+      "kind": "paperBreak",
+      "afterBurst": 1,
+      "afterMute": 1,
+      "peak": 0.07027976214885712,
+      "energy": 1.3670176688989963,
+      "voices": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-24",
+  "generator": "built-in image_gen",
+  "purpose": "Concept exploration only; not integrated into runtime.",
+  "commonPrompt": "Portrait 9:16 Chinese paper-cut mobile drawing combat environment; layered cut paper, folded facets and negative-space ornament. Thematic scenery above and on edges, open battlefield in lower center, one tiny ivory/vermilion paper fox. No UI or text.",
+  "variants": [
+    {
+      "id": "whale-a",
+      "label": "鲸梦浮海 A · 青碧昼海",
+      "prompt": "Theme 鲸梦浮海, version A: luminous jade and turquoise daytime ocean, ivory foam and subtle warm gold. One enormous gentle paper whale swimming through the upper scene just beneath translucent stylized water, carrying tiny rocky islands and miniature Chinese pavilions on its back. Broad elegant whale silhouette unmistakable, small cut-paper fish streams and coral ornament along edges, scalloped layered waves, sunlit mint atmosphere. Foreground open pale aqua shallow-water sandbar battlefield with delicate ripple rings. Feeling fresh, airy, serene, strong graphic simplification."
+    },
+    {
+      "id": "whale-b",
+      "label": "鲸梦浮海 B · 靛海月鲸",
+      "prompt": "Theme 鲸梦浮海, version B: deep indigo and ultramarine moonlit dream ocean, milky ivory whale, small cyan bioluminescence and antique gold accents. A colossal whale arches diagonally across upper half, its body patterned with intricate cut-paper sea-flower windows, a tiny island garden on its back. Crescent moon high above, luminous jellyfish and drifting fish restricted to edges, ocean and sky blend at distant horizon. Lower center open dark teal reflective shallow circular shoal for fox battlefield, enough tonal separation. Quiet mysterious and majestic, no outer space starscape, must read as ocean."
+    },
+    {
+      "id": "whale-c",
+      "label": "鲸梦浮海 C · 珊瑚绯海",
+      "prompt": "Theme 鲸梦浮海, version C: coral vermilion, warm peach, cream and contrasting peacock teal, sunset dream sea. A massive teal paper whale drifts horizontally high in composition carrying a delicate ivory coral island with tiny roofs; warm circular sun behind whale, bold layered scalloped waves and red coral fans frame sides. Decorative Chinese folk paper cutting, rich but sophisticated warm/cool contrast, lively flowing fish ribbons along edges. Broad pale cream turquoise tidal flat remains open in lower center for gameplay. Festive fantastical ocean with strong flat cut-paper shapes."
+    },
+    {
+      "id": "palace-a",
+      "label": "星河天宫 A · 靛金星阙",
+      "prompt": "Theme 星河天宫, version A: majestic deep indigo and antique gold celestial palace. Grand Chinese temple roofs and floating layered cloud islands rise in upper half around one large fine golden armillary star ring; curved golden constellation paths, ivory clouds and sparse gold star pinholes. Palace silhouette ornate but coherent, stairs fading into clouds, no European castle. Large open midnight blue cloud-stone court in lower center, subtle circular orbit inlay, small paper fox. Solemn magnificent clear silhouettes, controlled gold ornament."
+    },
+    {
+      "id": "palace-b",
+      "label": "星河天宫 B · 月白云庭",
+      "prompt": "Theme 星河天宫, version B: ethereal moon-white, pale celadon, misty lavender, selective muted gold. Floating Chinese celestial palace pavilions and suspended bridges among immense scalloped ivory paper clouds in upper half, a pale jade orbital moon disc and fine constellation filigree. A winding milky river of stars glides between distant cloud layers. High-key airy restrained Chinese paper craft. Open pale lavender-white floating terrace across lower center with very subtle cut-paper mosaic and warm fox focal point. Spacious quiet dreamlike immortal realm, no heavy dark sky."
+    },
+    {
+      "id": "palace-c",
+      "label": "星河天宫 C · 朱金日宫",
+      "prompt": "Theme 星河天宫, version C: dramatic Chinese celestial sun palace, cinnabar vermilion, charcoal indigo, ivory and rich antique gold. Giant geometric gold solar astrolabe behind towering layered red Chinese palace roofs in upper half, bold sweeping ivory cloud ribbons, several floating red paper terraces connected by narrow celestial bridges. Stars as precisely cut small gold holes, powerful ceremonial symmetry with slightly asymmetrical clouds. Open dark blue cloud-stone circular arena in lower middle, pale gold orbit lines kept sparse. Striking theatrical folk-cut-paper graphic grandeur, avoid ordinary terrestrial sunset mountains."
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {PaperChapterSpirit} from './paper-chapter-spirit';
 import {Container,Graphics,Text} from 'pixi.js';
 import type {Enemy,EnemyLook} from '../core/types';
 import {PAPER_MONSTERS} from '../gameplay/paper-monsters';
@@ -14,10 +15,10 @@ const fold=(g:Graphics,p:number[],alpha=.5)=>g.poly(p,false).stroke({color:CREAM
 export class PaperMonsterRig{
  root=new Container();body=new Container();private face=new Graphics();private shadow=new Graphics();
  private parts:{g:Graphics;role:'wing'|'ear'|'leg'|'tassel';side:number;x:number;y:number}[]=[];
- private label:Text;
+ private label:Text;private cute?:PaperChapterSpirit;
  constructor(public look:EnemyLook){
   this.root.addChild(this.shadow,this.body);
-  if(look==='paper-moth')this.moth();else if(look==='paper-lantern')this.lantern();else if(look==='paper-umbrella')this.umbrella();else if(look==='paper-frog')this.frog();else if(look==='paper-spines')this.spines();else this.rabbit();
+  if(look.startsWith('sea-')||look.startsWith('star-')||look.startsWith('snow-'))this.chapterMonster();else if(look==='paper-moth')this.moth();else if(look==='paper-lantern')this.lantern();else if(look==='paper-umbrella')this.umbrella();else if(look==='paper-frog')this.frog();else if(look==='paper-spines')this.spines();else this.rabbit();
   this.body.addChild(this.face);
   this.shadow.ellipse(0,49,look==='paper-moth'?28:35,7).fill({color:INK,alpha:.2});
   this.label=new Text({text:PAPER_MONSTERS.find(m=>m.id===look)!.name,style:{fontFamily:'"Microsoft YaHei", sans-serif',fontSize:18,fill:CREAM,stroke:{color:INK,width:4},letterSpacing:1}});
@@ -28,9 +29,11 @@ export class PaperMonsterRig{
  }
  update(e:Enemy,showLabel=false){
   const t=e.age+e.id*.23,breathe=Math.sin(t*3),ready=e.ai==='Telegraph'?Math.min(1,e.stateAge/.6):0,attack=e.ai==='Attack'?1:0;
-  const hop=this.look==='paper-frog'||this.look==='paper-rabbit'?Math.max(0,Math.sin(t*(this.look==='paper-frog'?5:6)))*8:0;
-  this.body.y=-hop+(this.look==='paper-moth'?-9:0);this.body.rotation=Math.sin(t*2.1)*.045+(e.hit>0?Math.sin(e.hit*60)*.09:0);
-  this.body.scale.set(1+breathe*.025+ready*.07-attack*.05,1-breathe*.02-ready*.07+attack*.09);
+  const hop=this.look==='paper-frog'||this.look==='paper-rabbit'||this.look==='snow-marten'?Math.max(0,Math.sin(t*(this.look==='paper-frog'?5:6)))*8:0;
+  const hitAge=.23-e.hit,impact=e.hit>0?Math.exp(-hitAge*18)*Math.cos(hitAge*35):0;
+  this.body.y=-hop+(this.look==='paper-moth'?-9:0)+(this.look==='sea-jelly'||this.look==='star-ray'?Math.sin(t*2.5)*7:0)-impact*5;this.body.rotation=Math.sin(t*2.1)*.045+impact*(e.id%2?1:-1)*.18;
+  this.body.scale.set(1+breathe*.025+ready*.07-attack*.05+impact*.2,1-breathe*.02-ready*.07+attack*.09-impact*.18);
+  this.body.tint=e.hit>.17?0xfff5df:0xffffff;
   this.face.tint=e.hit>0?0xffd8af:0xffffff;
   for(const p of this.parts){
    if(p.role==='wing'){p.g.scale.set(p.side*(.83+Math.sin(t*14)*.14),1);p.g.rotation=p.side*(Math.sin(t*14)*.16+ready*.15);}
@@ -38,7 +41,11 @@ export class PaperMonsterRig{
    if(p.role==='leg'){p.g.rotation=p.side*(Math.sin(t*6)*.13+ready*.13);p.g.y=p.y+Math.sin(t*6+p.side)*2;}
    if(p.role==='tassel')p.g.rotation=Math.sin(t*4+p.side)*.17;
   }
+  this.cute?.update(t,ready,attack);
   this.shadow.scale.set(1-hop*.015,1-hop*.02);this.shadow.alpha=1-hop*.025;this.label.visible=showLabel;
+ }
+ private chapterMonster(){
+  this.cute=new PaperChapterSpirit(this.look);this.body.addChild(this.cute.root);
  }
  private moth(){
   for(const side of [-1,1]){

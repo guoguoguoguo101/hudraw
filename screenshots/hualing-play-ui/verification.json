@@ -1,0 +1,12 @@
+{
+  "shots": [
+    "test-390",
+    "formal-390",
+    "formal-upgrade",
+    "formal-combo",
+    "formal-375",
+    "formal-430"
+  ],
+  "comboWidth": 86.29122395833332,
+  "errors": []
+}

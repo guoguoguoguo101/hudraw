@@ -1,0 +1,219 @@
+{
+  "shots": [
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 0,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 0.19999999999999998,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 0.7000000000000005,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 1.2500000000000004,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-fish",
+          "hp": 1000
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.3499999999999965,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "青碧浅湾",
+      "chapter": "sea",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 2.3499999999999965,
+      "enemies": [
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-fish",
+          "hp": 944
+        },
+        {
+          "look": "sea-crab",
+          "hp": 1000
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 0,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "霁雪初眠",
+      "chapter": "snow",
+      "stage": "sunset",
+      "event": "seal",
+      "time": 0,
+      "enemies": [
+        {
+          "look": "snow-marten",
+          "hp": 40
+        },
+        {
+          "look": "snow-owl",
+          "hp": 30
+        },
+        {
+          "look": "snow-shell",
+          "hp": 40
+        },
+        {
+          "look": "snow-marten",
+          "hp": 40
+        }
+      ],
+      "gl": 0
+    }
+  ],
+  "errors": [],
+  "damage": [
+    944,
+    944,
+    944,
+    1000
+  ]
+}

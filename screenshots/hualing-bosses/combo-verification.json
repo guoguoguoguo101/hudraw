@@ -1,0 +1,65 @@
+{
+  "report": [
+    {
+      "id": "valley",
+      "round": 0,
+      "guard": 100
+    },
+    {
+      "id": "valley",
+      "round": 1,
+      "guard": 100
+    },
+    {
+      "id": "valley",
+      "round": 2,
+      "guard": 100
+    },
+    {
+      "id": "sea",
+      "round": 0,
+      "guard": 100
+    },
+    {
+      "id": "sea",
+      "round": 1,
+      "guard": 100
+    },
+    {
+      "id": "sea",
+      "round": 2,
+      "guard": 100
+    },
+    {
+      "id": "palace",
+      "round": 0,
+      "guard": 100
+    },
+    {
+      "id": "palace",
+      "round": 1,
+      "guard": 100
+    },
+    {
+      "id": "palace",
+      "round": 2,
+      "guard": 100
+    },
+    {
+      "id": "snow",
+      "round": 0,
+      "guard": 100
+    },
+    {
+      "id": "snow",
+      "round": 1,
+      "guard": 100
+    },
+    {
+      "id": "snow",
+      "round": 2,
+      "guard": 100
+    }
+  ],
+  "errors": []
+}

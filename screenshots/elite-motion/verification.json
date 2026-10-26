@@ -1,0 +1,145 @@
+{
+  "report": [
+    {
+      "kind": "umbrella",
+      "charge": 10.738410949707031,
+      "release": 18.211585998535156,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "lantern",
+      "charge": 5.435443878173828,
+      "release": 8.292251586914062,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "puppet",
+      "charge": 22.155899047851562,
+      "release": 29.626800537109375,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "stele",
+      "charge": 17.378185272216797,
+      "release": 26.2237606048584,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "moth",
+      "charge": 19.423362731933594,
+      "release": 26.599002838134766,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "reefCrab",
+      "charge": 22.81714630126953,
+      "release": 35.40922927856445,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "jelly",
+      "charge": 14.4288330078125,
+      "release": 19.717529296875,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "clam",
+      "charge": 28.15530014038086,
+      "release": 22.50811767578125,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "hermit",
+      "charge": 17.916501998901367,
+      "release": 28.187774658203125,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "rays",
+      "charge": 15.917282104492188,
+      "release": 24.729629516601562,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "mirror",
+      "charge": 11.144729614257812,
+      "release": 18.900672912597656,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "weaver",
+      "charge": 22.332015991210938,
+      "release": 31.4249267578125,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "bell",
+      "charge": 13.702186584472656,
+      "release": 22.188133239746094,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "official",
+      "charge": 24.681907653808594,
+      "release": 29.139442443847656,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "blade",
+      "charge": 31.030601501464844,
+      "release": 41.69220733642578,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "frostApe",
+      "charge": 10.912544250488281,
+      "release": 18.50690460205078,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "crone",
+      "charge": 10.337663650512695,
+      "release": 15.928361892700195,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "pineApe",
+      "charge": 16.28174591064453,
+      "release": 24.959238052368164,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "deer",
+      "charge": 11.633384704589844,
+      "release": 19.906082153320312,
+      "vertices": 625,
+      "stable": true
+    },
+    {
+      "kind": "guardian",
+      "charge": 11.247081756591797,
+      "release": 13.2508544921875,
+      "vertices": 625,
+      "stable": true
+    }
+  ],
+  "errors": []
+}

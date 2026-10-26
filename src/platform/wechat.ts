@@ -1,3 +1,4 @@
+import type {MusicScene} from '../audio/hualing-music';
 import {ImageSource,Spritesheet,Texture,type SpritesheetData} from 'pixi.js';
 import {Synth} from '../audio/synth';
 import {worldPoint} from '../input/coordinates';
@@ -6,6 +7,7 @@ import {wechat as wx,type TouchHandler} from './wechat-api';
 import {WechatDiagnostics} from './wechat-diagnostics';
 import type {FrameSample} from './frame-sample';
 import {gameViewport} from './viewport';
+import {parsePackageJson} from './package-json';
 
 export function readPackageText(filePath:string):Promise<string>{
  return new Promise((resolve,reject)=>{
@@ -35,7 +37,7 @@ export class WechatAdapter implements PlatformAdapter{
  }
  private async load(path:string):Promise<unknown>{
   if(path.endsWith('.json')){
-   const data=JSON.parse(await readPackageText(path));
+   const data=parsePackageJson(await readPackageText(path));
    if(data.frames&&data.meta?.image){
     const dir=path.slice(0,path.lastIndexOf('/')+1);
     const texture=await this.loadAsset<Texture>(dir+data.meta.image);
@@ -58,6 +60,7 @@ export class WechatAdapter implements PlatformAdapter{
    if(!touch)return;
    const rect=viewport(),point=worldPoint({x:touch.clientX,y:touch.clientY},rect);
    if(kind==='down'){
+    this.unlockAudio();
     if(point.x<0||point.y<rect.top||point.x>720||point.y>rect.bottom)return;
     active=touch.identifier;
    }
@@ -75,6 +78,7 @@ export class WechatAdapter implements PlatformAdapter{
  read(key:string){try{const value=wx.getStorageSync(key);return typeof value==='string'&&value!==''?value:null;}catch{return null;}}
  write(key:string,value:string){try{wx.setStorageSync(key,value);return true;}catch{return false;}}
  private sound(fn:(synth:Synth)=>void){if(!this.synth||this.audioFailed)return;try{fn(this.synth);}catch(error){this.audioFailed=true;console.warn('微信音频暂不可用，画面和玩法继续运行',error);}}
+ music(enabled:boolean,scene?:MusicScene){this.sound(synth=>synth.setMusic(enabled,scene));}
  audio(sound:Sound){this.sound(synth=>synth.play(sound));}
  unlockAudio(){this.sound(synth=>synth.unlock());}
  setMuted(muted:boolean){this.sound(synth=>synth.mute(muted));}

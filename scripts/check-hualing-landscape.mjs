@@ -1,7 +1,7 @@
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
-const base=new URL(process.env.LINGHU_PREVIEW_URL??'http://127.0.0.1:5176').origin,folder='screenshots/hualing-landscape';await mkdir(folder,{recursive:true});
+const base=new URL(process.env.LINGHU_PREVIEW_URL??'http://127.0.0.1:5176').origin,folder='screenshots/hualing-brush/landscape';await mkdir(folder,{recursive:true});
 const browser=await chromium.launch({channel:'msedge',headless:true}),page=await browser.newPage({viewport:{width:390,height:844}}),errors=[],shots=[];
 page.on('pageerror',e=>errors.push(e.message));
 async function frame(seconds=0){return page.evaluate(seconds=>{
@@ -23,12 +23,12 @@ try{
  await page.goto(`${base}/?qa=1&mode=hualing`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.__LINGHU__);await page.evaluate(()=>window.__LINGHU__.app.ticker.stop());await reset();
  await shot('01-sunset-390');const partial=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing,s=m.sceneSeal,c=s.center(m.bounds);m.traceScene({x:c.x-145,y:c.y-45},{x:c.x-55,y:c.y-45});return s.progress;});
  await phase(2);assert.equal((await frame()).stage,'wind');assert.equal((await frame()).event,'fire');await shot('02-wind-390');
- const c=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing;return m.sceneSeal.center(m.bounds);});await draw(Array.from({length:81},(_,i)=>({x:c.x+230*Math.cos(i/80*Math.PI*2),y:c.y+230*Math.sin(i/80*Math.PI*2)})));await frame(1);assert.equal((await frame()).cards.length,1);
- await phase(3);assert.equal((await frame()).stage,'night');assert.equal((await frame()).event,'beast');await shot('03-night-390');assert.equal((await frame()).cards[0].kind,'fire');
+ const flames=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing,s=m.sceneSeal,c=s.center(m.bounds);return s.flames.map(p=>({x:c.x+p.x,y:c.y+p.y}));});for(const p of flames)await draw([{x:p.x-30,y:p.y},{x:p.x+30,y:p.y}]);await frame(1);assert.equal((await frame()).cards.length,1);
+ await phase(3);assert.equal((await frame()).stage,'night');assert.equal((await frame()).event,'chain');await shot('03-night-390');assert.equal((await frame()).cards[0].kind,'fire');
  await phase(1);assert.equal((await frame()).progress,partial);await shot('04-progress-preserved');
  // Earned card is still visible and usable after switching back to a different landscape.
  const fire=await page.evaluate(()=>{const m=window.__LINGHU__.game.hualing,s=m.scenes.find(s=>s.mode==='fire');return {slot:s.slot(m.bounds),target:{x:360,y:550}};});await move(fire.slot);await page.mouse.down();await move(fire.target);await shot('05-archived-card-drag');await page.mouse.up();await frame(.3);assert.equal((await frame()).cards.length,0);
- await reset();await frame(25);await shot('06-transition-wind');await frame(9);assert.equal((await frame()).stage,'wind');assert.equal((await frame()).event,'fire');await shot('07-auto-wind');await frame(22);await shot('08-transition-night');await frame(12);assert.equal((await frame()).stage,'night');assert.equal((await frame()).event,'beast');await shot('09-auto-night');
+ await reset();await frame(25);await shot('06-transition-wind');await frame(9);assert.equal((await frame()).stage,'wind');assert.equal((await frame()).event,'fire');await shot('07-auto-wind');await frame(22);await shot('08-transition-night');await frame(12);assert.equal((await frame()).stage,'night');assert.equal((await frame()).event,'chain');await shot('09-auto-night');
  const before=(await frame()).time;await page.evaluate(()=>{window.__LINGHU__.action('pause');window.__LINGHU__.app.ticker.stop();});await frame(3);assert.equal((await frame()).time,before);await page.evaluate(()=>{window.__LINGHU__.action('resume');window.__LINGHU__.app.ticker.stop();});await frame();
  for(const [width,height] of [[375,667],[430,932]]){await page.setViewportSize({width,height});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await reset();for(const [index,name] of [[1,'sunset'],[2,'wind'],[3,'night']]){await phase(index);assert.equal((await frame()).stage,name);await shot(`10-${name}-${width}`);}}
  await page.setViewportSize({width:390,height:844});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await reset();await phase(3);

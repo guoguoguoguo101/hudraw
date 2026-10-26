@@ -1,0 +1,37 @@
+{
+  "report": [
+    {
+      "chapter": "valley",
+      "charge": 36.13456726074219,
+      "release": 41.117706298828125,
+      "recoil": 30.4013671875,
+      "vertices": 1369,
+      "stable": true
+    },
+    {
+      "chapter": "sea",
+      "charge": 27.218882620334625,
+      "release": 32.42928504943848,
+      "recoil": 20.789308547973633,
+      "vertices": 1369,
+      "stable": true
+    },
+    {
+      "chapter": "palace",
+      "charge": 86.17740631103516,
+      "release": 93.81446838378906,
+      "recoil": 26.211776733398438,
+      "vertices": 1369,
+      "stable": true
+    },
+    {
+      "chapter": "snow",
+      "charge": 27.716995239257812,
+      "release": 41.90498352050781,
+      "recoil": 36.33726501464844,
+      "vertices": 1369,
+      "stable": true
+    }
+  ],
+  "errors": []
+}

@@ -1,3 +1,6 @@
+import type {PaperVector} from './chapter-art/vector-art';
+import type {HualingChapter} from '../gameplay/hualing-chapters';
+import {ChapterLandscapeRenderer} from './chapter-landscape';
 import {Container,Graphics} from 'pixi.js';
 import type {Hualing} from '../gameplay/hualing';
 import type {GameViewport} from '../platform/viewport';
@@ -119,7 +122,7 @@ function frame(g:Graphics,p:Palette){
 /** All scenery is authored as vector geometry. Three cached paper palettes crossfade; moving accents stay vector. */
 export class ScrollLandscapeRenderer{
  back=new Container();front=new Container();private skies:Container[]=[];private lands:Container[]=[];private frames:Container[]=[];
- private skyFX=new Graphics();private air=new Graphics();private water=new Graphics();private edgeFX=new Graphics();
+ private chapters=new ChapterLandscapeRenderer();private skyFX=new Graphics();private air=new Graphics();private water=new Graphics();private edgeFX=new Graphics();
  constructor(){
   for(let stage=0;stage<3;stage++){
    const p=PALETTES[stage],sky=new Container(),sg=new Graphics();sky.addChild(sg);
@@ -130,20 +133,27 @@ export class ScrollLandscapeRenderer{
    for(const c of [sky,land,edge])c.cacheAsTexture({resolution:1,antialias:true});
    this.skies.push(sky);this.lands.push(land);this.frames.push(edge);
   }
-  this.back.addChild(...this.skies,this.skyFX,...this.lands,this.water,this.air);this.front.addChild(...this.frames,this.edgeFX);
+  this.back.addChild(...this.skies,this.skyFX,...this.lands,this.water,this.air);this.front.addChild(...this.frames,this.edgeFX);this.back.addChild(this.chapters.root);
  }
+ get chapterReady(){return this.chapters.ready;}
+ setChapterLoader(loader:(chapter:Exclude<HualingChapter,'valley'>)=>Promise<PaperVector>){this.chapters.loader=loader;}
  resize(rect:GameViewport){for(const layer of [this.back,this.front]){layer.y=rect.top;layer.scale.y=(rect.bottom-rect.top)/1280;}}
  update(model:Hualing,enabled:boolean,low=false){
   this.back.visible=this.front.visible=enabled;if(!enabled)return;
+  const other=model.journey.chapter!=='valley';this.chapters.root.visible=other;
+  if(other){for(const c of [...this.skies,...this.lands,...this.frames,this.skyFX,this.water,this.air,this.edgeFX])c.visible=false;this.chapters.update(model,low);return;}
+  for(const c of [this.skyFX,this.water,this.air,this.edgeFX])c.visible=true;
   const journey=model.journey,t=model.clock,night=journey.night,wind=journey.wind,weights=journey.weights;
   const opacity=[1,1-weights[0],night];
   for(let i=0;i<3;i++)for(const c of [this.skies[i],this.lands[i],this.frames[i]]){c.visible=opacity[i]>.001;c.alpha=opacity[i];}
   const g=this.skyFX;g.clear();
+  const bossForce=model.bosses.active?model.bosses.sceneForce:0,bossHit=model.bosses.active?model.bosses.sceneParry:0;
   const sunY=248+Math.min(1,journey.time/55)*92,sunAlpha=1-night;
   if(sunAlpha>.001){g.circle(355,sunY,145).fill({color:0xe25437,alpha:sunAlpha*(1-.3*wind)});
    for(let i=0;i<24;i++){const y=sunY-130+i*11,len=Math.sqrt(Math.max(0,145**2-(y-sunY)**2));g.moveTo(355-len+4,y).lineTo(355-len+12+(i*17%45),y).stroke({color:0x9e392c,width:.8,alpha:.16*sunAlpha});}
    for(let i=0;i<3;i++)g.circle(355,sunY,148+i*7).stroke({color:GOLD,width:1,alpha:.045*sunAlpha});
   }
+  if(bossForce>.01){g.circle(355+bossHit*9,sunY,135-bossForce*14).fill({color:0x2b272d,alpha:bossForce*.78});g.circle(355,sunY,147+bossForce*5).stroke({color:0xffcf7e,width:3+bossHit*4,alpha:bossForce*.8});}
   if(night>.001){
    for(let i=0;i<(low?22:42);i++){const x=80+random(i+31)*570,y=112+random(i+61)*160,a=night*(.25+.55*(.5+.5*Math.sin(t*.8+i)));g.circle(x,y,i%8===0?1.7:.85).fill({color:0xe8dfb8,alpha:a});if(i%11===0)g.moveTo(x-4,y).lineTo(x+4,y).moveTo(x,y-4).lineTo(x,y+4).stroke({color:0xe8dfb8,width:.7,alpha:a*.6});}
    for(let i=3;i>=0;i--)g.circle(445,239,85+i*7).fill({color:0xe8dfb5,alpha:night*(i===0?.97:.025)});
