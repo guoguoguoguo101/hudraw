@@ -15,6 +15,12 @@ export function readPackageText(filePath:string):Promise<string>{
   try{wx.getFileSystemManager().readFile({filePath,encoding:'utf8',success:r=>{clearTimeout(timeout);resolve(r.data);},fail:error=>{clearTimeout(timeout);reject(new Error('文件加载失败：'+filePath+' '+JSON.stringify(error)));}});}catch(error){clearTimeout(timeout);reject(error);}
  });
 }
+function readPackageJson(filePath:string):Promise<unknown>{
+ return new Promise((resolve,reject)=>{
+  const timeout=setTimeout(()=>reject(new Error('文件加载超时：'+filePath)),10000);
+  try{wx.getFileSystemManager().readFile({filePath,success:r=>{clearTimeout(timeout);try{resolve(parsePackageJson(r.data));}catch(error){reject(error);}},fail:error=>{clearTimeout(timeout);reject(new Error('文件加载失败：'+filePath+' '+JSON.stringify(error)));}});}catch(error){clearTimeout(timeout);reject(error);}
+ });
+}
 export function viewport(){
  const {windowWidth:w,windowHeight:h,safeArea}=wx.getWindowInfo();
  const capsule=wx.getMenuButtonBoundingClientRect?.();
@@ -37,7 +43,7 @@ export class WechatAdapter implements PlatformAdapter{
  }
  private async load(path:string):Promise<unknown>{
   if(path.endsWith('.json')){
-   const data=parsePackageJson(await readPackageText(path));
+   const data=await readPackageJson(path) as {frames?:SpritesheetData['frames'];meta?:{image?:string}};
    if(data.frames&&data.meta?.image){
     const dir=path.slice(0,path.lastIndexOf('/')+1);
     const texture=await this.loadAsset<Texture>(dir+data.meta.image);

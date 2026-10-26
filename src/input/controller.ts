@@ -8,7 +8,7 @@ export class InputController{
  minY=175;maxY=1180;
  liveInput?:{handle:(e:InputEvent)=>boolean;cancel:()=>void};
  onStrokeSegment?:(a:Point,b:Point)=>void;
- onSimpleStroke?:(phase:'begin'|'end'|'cancel')=>void;
+ onSimpleStroke?:(phase:'begin'|'end'|'cancel',origin?:Point)=>void;
  simpleBrush:()=>boolean=()=>false;
  private fallbackPoints:Point[]=[];private fallbackLength=0;
  points:Point[]=[];dryPoints:Point[]=[];drawing=false;last:Recognition|null=null;preview:Recognition|null=null;traceAge=0;success=false;debug=false;drawAge=0;previewAge=0;pointer:number|null=null;
@@ -21,7 +21,7 @@ export class InputController{
   if(e.kind==='down'){
    if(this.pointer!==null||this.waitingPointer!==null||!this.canDraw()||e.y<this.minY||e.y>this.maxY||this.simpleBrush()&&(e.x<26||e.x>694))return;
    const id=this.gestureId+1;if(this.ink&&!this.ink.begin(id))return;
-   this.pointer=e.id;this.gestureId=id;this.points=[{x:e.x,y:e.y}];this.fallbackPoints=this.allowFallback()?[{x:e.x,y:e.y}]:[];this.fallbackLength=0;this.dryPoints=[];this.pointTimes=[0];this.pointLengths=[0];this.lastSample=this.points[0];this.drawing=true;this.last=this.preview=null;this.success=false;this.timedOut=false;this.totalPathLength=0;this.penSnapshot=this.pen.snapshot();this.overflow=false;this.traceAge=this.drawAge=this.previewAge=0;this.startedAt=performance.now()/1000;if(this.simpleBrush())this.onSimpleStroke?.('begin');return;
+   this.pointer=e.id;this.gestureId=id;this.points=[{x:e.x,y:e.y}];this.fallbackPoints=this.allowFallback()?[{x:e.x,y:e.y}]:[];this.fallbackLength=0;this.dryPoints=[];this.pointTimes=[0];this.pointLengths=[0];this.lastSample=this.points[0];this.drawing=true;this.last=this.preview=null;this.success=false;this.timedOut=false;this.totalPathLength=0;this.penSnapshot=this.pen.snapshot();this.overflow=false;this.traceAge=this.drawAge=this.previewAge=0;this.startedAt=performance.now()/1000;if(this.simpleBrush())this.onSimpleStroke?.('begin',{x:e.x,y:e.y});return;
   }
   if(e.id!==this.pointer||!this.drawing)return;
   if(!this.canDraw()){this.cancel();return;}

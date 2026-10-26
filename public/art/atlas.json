@@ -659,6 +659,26 @@
         "w": 320,
         "h": 320
       }
+    },
+    "fox_ear_right": {
+      "frame": {
+        "x": 960,
+        "y": 1920,
+        "w": 320,
+        "h": 320
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 320,
+        "h": 320
+      },
+      "sourceSize": {
+        "w": 320,
+        "h": 320
+      }
     }
   },
   "meta": {

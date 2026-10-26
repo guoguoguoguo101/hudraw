@@ -1,15 +1,15 @@
 import {BufferImageSource,Container,Mesh,MeshGeometry,Texture} from 'pixi.js';
-import art from './dragon-art/talisman-dragon.json';
+import art from './dragon-art/ink-blob-dragon.json';
 import type {Point} from '../input/recognizer';
 import {PAPER_DRAGON_MOTION} from '../gameplay/dual-brush';
 
-/** The approved artwork is traced to native triangles offline. No PNG is loaded.
+/** The approved ink-blob artwork is traced to native triangles offline. No PNG is loaded.
  * The tiny palette is solid GPU color data, not a character image texture. */
 function palette(gold:boolean){
  const pixels=new Uint8Array(art.colors.length*4);
  for(const [i,color] of art.colors.entries()){
   let r=color>>16&255,g=color>>8&255,b=color&255;
-  if(gold&&r>g*1.28&&r>b*1.4){const light=Math.min(1,Math.max(0,(r-90)/150));if(r<110){r=77;g=52;b=31;}else{r=142+light*83;g=102+light*78;b=47+light*62;}}
+  if(gold&&r>100&&r>g*1.28&&r>b*1.4){const light=Math.min(1,Math.max(0,(r-90)/150));r=142+light*83;g=102+light*78;b=47+light*62;}
   else if(gold&&r>g*1.05&&g>b*1.2&&r>130){r=Math.min(255,r+13);g=Math.min(255,g+23);b=Math.min(255,b+28);}
   pixels.set([Math.round(r),Math.round(g),Math.round(b),255],i*4);
  }
@@ -42,12 +42,13 @@ export class PaperDragonActor{
   for(let i=0;i<art.vertices.length/3;i++){
    const x=art.vertices[i*3],y=art.vertices[i*3+1],u=x/art.width,offset=(y-art.height*.51)*scale*this.facing;
    let px:number,py:number,dx:number,dy:number;
-   if(u>.79){px=head.x+hx*(u-1)*length;py=head.y+hy*(u-1)*length;dx=hx;dy=hy;}
+   if(u>.70){px=head.x+hx*(u-1)*length;py=head.y+hy*(u-1)*length;dx=hx;dy=hy;}
    else{const f=u*48,j=Math.min(47,Math.floor(f)),t=f-j,k=j*4;px=this.frames[k]*(1-t)+this.frames[k+4]*t;py=this.frames[k+1]*(1-t)+this.frames[k+5]*t;dx=this.frames[k+2]*(1-t)+this.frames[k+6]*t;dy=this.frames[k+3]*(1-t)+this.frames[k+7]*t;const n=Math.hypot(dx,dy)||1;dx/=n;dy/=n;}
-   // Tiny secondary motion is confined to hanging legs and the tail paper,
-   // leaving all armor plates and facial features attached to the skeleton.
-   const toe=Math.max(0,y/art.height-.70)*Math.sin(clock*5.5+u*8+index*2)*4;
-   positions[i*2]=px-dy*(offset+toe);positions[i*2+1]=py+dx*(offset+toe);
+   // Paddle all four paws, including those under the rigid head. Facial pixels
+   // sit above this narrow underside mask and keep their original proportions.
+   const paw=u>.30?Math.max(0,Math.min(1,(y/art.height-.76)/.08)):0,phase=clock*PAPER_DRAGON_MOTION.frequency+u*5+index*2.4;
+   const toe=Math.sin(phase)*10*paw,reach=Math.cos(phase)*7*paw;
+   positions[i*2]=px+dx*reach-dy*(offset+toe);positions[i*2+1]=py+dy*reach+dx*(offset+toe);
   }
   this.geometry.getAttribute('aPosition').buffer.update();
  }

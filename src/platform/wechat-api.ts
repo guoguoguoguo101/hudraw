@@ -8,7 +8,10 @@ export interface WechatAPI{
  getWindowInfo():{windowWidth:number;windowHeight:number;pixelRatio:number;safeArea?:{top:number;bottom:number}};
  getMenuButtonBoundingClientRect?():{top:number;bottom:number};
  getDeviceInfo():{platform:string;system:string;model:string};
- getFileSystemManager():{readFile(options:{filePath:string;encoding:'utf8';success:(result:{data:string})=>void;fail:(error:unknown)=>void}):void};
+ getFileSystemManager():{
+  readFile(options:{filePath:string;encoding:'utf8';success:(result:{data:string})=>void;fail:(error:unknown)=>void}):void;
+  readFile(options:{filePath:string;encoding?:undefined;success:(result:{data:ArrayBuffer})=>void;fail:(error:unknown)=>void}):void;
+ };
  getStorageSync(key:string):unknown;
  setStorageSync(key:string,value:string):void;
  onTouchStart(fn:TouchHandler):void;offTouchStart(fn:TouchHandler):void;

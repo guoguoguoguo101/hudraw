@@ -428,7 +428,20 @@
     },
     {
       "name": "fox_preview",
-      "description": "狐灵守护者：三种原创尾形、金瞳、朱砂足尖、独立颈带和飘带",
+      "description": "亲和灵狐：参考比例坐姿、饱满脸颊、蓬松三尾、独立围巾和铜铃",
+      "config": {
+        "scale": 1
+      },
+      "width": 320,
+      "height": 320,
+      "pivot": [
+        160,
+        160
+      ]
+    },
+    {
+      "name": "fox_ear_right",
+      "description": "根据确认参考图独立描摹的右耳",
       "config": {
         "scale": 1
       },

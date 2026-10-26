@@ -26,12 +26,15 @@ for(const name of await fs.readdir(path.join(root,'public/art/elites'))){
 }
 for(const chapter of ['sea','palace','snow']){
  const name=chapter+'-landscape.json',source=await fs.readFile(path.join(root,'public/art/chapters',name));
- const packed=JSON.stringify({packageEncoding:'gzip-base64-v1',data:gzipSync(source,{level:9}).toString('base64')});
+ const packed=gzipSync(source,{level:9});
  await fs.writeFile(path.join(out,'art/chapters',name),packed);
- console.log(`场景无损压缩 ${chapter}：${Math.ceil(source.length/1024)} → ${Math.ceil(Buffer.byteLength(packed)/1024)} KB`);
+ console.log(`场景无损压缩 ${chapter}：${Math.ceil(source.length/1024)} → ${Math.ceil(packed.length/1024)} KB`);
 }
 await fs.copyFile(path.join(root,'scripts/wechat-entry.js'),path.join(out,'game.js'));
 const names=['sky','sun','far_mountains','valley','shrines','arena','foreground','branches'];
+// Native selection scenery needs only the giant guardian background atlas.
+await fs.mkdir(path.join(out,'art/maps'),{recursive:true});
+await fs.copyFile(path.join(root,'public/art/maps/giant-guardians-v1.jpg'),path.join(out,'art/maps/giant-guardians-v1.jpg'));
 await fs.mkdir(path.join(out,'art/environment'),{recursive:true});
 for(const name of ['atlas.json','atlas.png','ink-dragon-head-v2.png','ink-guardian-v1.png',...names.map(n=>'environment/'+n+'.png')])await fs.copyFile(path.join(root,'public/art',name),path.join(out,'art',name));
 // The original menu scenery uses a compact palette; chapter vector art is unchanged.

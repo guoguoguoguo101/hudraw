@@ -28,6 +28,7 @@ export class DualBrushRenderer{
     const head=path.at(-1)!,prev=path.at(-3)??path[0],angle=Math.atan2(head.y-prev.y,head.x-prev.x);
     this.details.save().transform(Math.cos(angle),Math.sin(angle),-Math.sin(angle),Math.cos(angle),head.x,head.y);
     if(m.level===3){
+     this.details.transform(1.3,0,0,1.3,0,0);
      this.details.poly([-7,-5,4,-6,12,-1,8,4,-6,5,-10,1]).fill({color,alpha});
      this.details.poly([1,-3,6,-2,3,0]).fill({color:PAPER,alpha});
      this.details.moveTo(-3,-5).lineTo(-5,-9).lineTo(2,-6).stroke({color:other,width:1,alpha});

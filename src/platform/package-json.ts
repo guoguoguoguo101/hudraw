@@ -1,7 +1,12 @@
 import {gunzipSync,strFromU8} from 'fflate';
 
-/** Compressed package assets remain UTF-8 JSON so native readFile needs no extra API. */
-export function parsePackageJson(text:string):any{
+/** Native packages support raw gzip as well as legacy UTF-8/base64 wrappers. */
+export function parsePackageJson(text:string|ArrayBuffer|Uint8Array):any{
+ if(typeof text!=='string'){
+  const bytes=text instanceof Uint8Array?text:new Uint8Array(text);
+  if(bytes[0]===0x1f&&bytes[1]===0x8b)return JSON.parse(strFromU8(gunzipSync(bytes)));
+  return parsePackageJson(strFromU8(bytes));
+ }
  const data=JSON.parse(text);
  if(data?.packageEncoding!=='gzip-base64-v1')return data;
  if(typeof data.data!=='string')throw new Error('Invalid compressed package asset');

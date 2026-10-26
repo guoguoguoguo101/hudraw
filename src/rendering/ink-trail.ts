@@ -1,4 +1,4 @@
-import {InkRitualRenderer} from './ink-formations';
+import {InkCompanionRenderer} from './ink-companions';
 import {Container,Graphics} from 'pixi.js';
 import {InkTrail,type TrailStyle,type TrailSegment} from '../gameplay/ink-trail';
 import type {Arena} from '../input/line-interaction-geometry';
@@ -6,9 +6,9 @@ import {mapleLeaf} from './petal-brush';
 
 /** Grounded translucent ink with cut-paper leaves or restrained silver channels. */
 export class InkTrailRenderer{
- rituals=new InkRitualRenderer();root=new Container();front=new Container();private frontClip=new Graphics();private stains=new Graphics();private veins=new Graphics();private ornaments=new Graphics();private walls=new Graphics();private clip=new Graphics();
+ companions=new InkCompanionRenderer();root=new Container();front=new Container();private frontClip=new Graphics();private stains=new Graphics();private veins=new Graphics();private ornaments=new Graphics();private clip=new Graphics();
  private model?:InkTrail;private revision=-1;private frame=-1;private low=false;private boundsKey='';private count=-1;
- constructor(){this.root.eventMode='none';this.root.addChild(this.stains,this.veins,this.ornaments,this.walls,this.rituals.back,this.clip);this.root.mask=this.clip;this.front.addChild(this.rituals.front,this.frontClip);this.front.mask=this.frontClip;}
+ constructor(){this.root.eventMode='none';this.root.addChild(this.stains,this.veins,this.ornaments,this.clip);this.root.mask=this.clip;this.front.addChild(this.companions.root,this.frontClip);this.front.mask=this.frontClip;}
  update(model:InkTrail,enabled:boolean,bounds:Arena,low=false){
   this.root.visible=this.front.visible=enabled;
   if(!enabled){this.frame=-1;return;}
@@ -21,11 +21,11 @@ export class InkTrailRenderer{
    this.model=model;this.revision=model.revision;this.frame=frame;this.low=low;this.count=model.segments.length;
    this.drawGround(model,low);
   }
-  this.rituals.update(model.rituals,low);
+  this.companions.update(model.companions,low);
  }
 
  private drawGround(model:InkTrail,low:boolean){
-  this.stains.clear();this.veins.clear();this.ornaments.clear();this.walls.clear();
+  this.stains.clear();this.veins.clear();this.ornaments.clear();
   const groups=new Map<string,{segments:TrailSegment[];fade:number}>();
   let branches=0,leaves=0,specks=0,motes=0;
   for(const s of model.segments){
@@ -35,10 +35,7 @@ export class InkTrailRenderer{
    const bucket=Math.ceil(fade*8),key=`${s.style}/${s.width}/${level}/${bucket}`;
    let group=groups.get(key);if(!group){group={segments:[],fade:bucket/8};groups.set(key,group);}group.segments.push(s);
    const electric=s.style==='thunder'||s.style==='maple-thunder',maple=s.style==='maple'||s.style==='maple-thunder';
-   if(model.rituals.wallActive(s,{x:(s.a.x+s.b.x)/2,y:(s.a.y+s.b.y)/2})){
-    this.walls.moveTo(s.a.x,s.a.y-5).lineTo(s.b.x,s.b.y-5);
-   }
-   const body=electric?0x576363:maple?0xc36337:0xac4b36;
+   const body=electric?0x576363:maple?0x73513e:0x263c40;
    const width=s.width,breathe=.5+.5*Math.sin(model.time*2.6+s.id*.23);
    const g=this.stains;
    // Sparse feathered sides leave room for the scenery to show through the ink.
@@ -64,11 +61,10 @@ export class InkTrailRenderer{
     this.veins.ellipse(x,y,1.4,.7).fill({color:electric?0xf0e5c3:0xe4b173,alpha:fade*(.3+.3*breathe)});
    }
   }
-  this.walls.stroke({color:0xddc290,width:1.5,alpha:.62,cap:'round'});
   // One path per matching style/fade replaces hundreds of separately stroked paths.
   for(const {segments,fade} of groups.values()){
    const s=segments[0],electric=s.style==='thunder'||s.style==='maple-thunder',maple=s.style==='maple'||s.style==='maple-thunder';
-   const ink=electric?0x273836:0x642d2b,body=electric?0x576363:maple?0xc36337:0xac4b36;
+   const ink=0x111e24,body=electric?0x576363:maple?0x73513e:0x263c40;
    for(const p of segments)this.stains.moveTo(p.a.x,p.a.y).lineTo(p.b.x,p.b.y);
    this.stains.stroke({color:ink,width:s.width,alpha:fade*(.36+s.level*.035),cap:'round'});
    for(const p of segments)this.stains.moveTo(p.a.x,p.a.y).lineTo(p.b.x,p.b.y);

@@ -1,6 +1,7 @@
 import {Container,Graphics} from 'pixi.js';
 import type {HualingChapter} from '../gameplay/hualing-chapters';
 import type {BrushSkill} from '../gameplay/brush-upgrades';
+import {drawInkBlob} from '../rendering/ink-companions';
 export const MOUNTAIN_THEMES={
  valley:{paper:0xf4dfb6,ink:0x492d25,accent:0xa43b27,line:0xb78544,muted:0x805d42,dark:0x392a25,title:0xffe7ba},
  sea:{paper:0xdceee3,ink:0x174f58,accent:0x247a86,line:0xc9b781,muted:0x4f8083,dark:0x123e49,title:0xffedce},
@@ -28,5 +29,5 @@ export function brushGlyph(parent:Container,ch:HualingChapter,id:BrushSkill,x:nu
  if(id==='spray'){g.moveTo(-35,22).bezierCurveTo(-29,-22,16,-30,30,-5).stroke({color:ink,width:12,cap:'round'});g.moveTo(-29,18).bezierCurveTo(-11,-5,6,-8,24,-5).stroke({color:accent,width:3});for(let i=0;i<16;i++){const a=i*2.4,r=17+i*2.2;g.circle(Math.cos(a)*r,Math.sin(a)*r,1+i%3).fill({color:i%3?ink:accent,alpha:.8});}g.moveTo(18,-21).quadraticCurveTo(39,-25,35,-5).quadraticCurveTo(17,-6,18,-21).fill(ink);g.poly([33,-17,46,-23,44,-8]).fill(ink);}
  if(id==='wide'){for(let i=0;i<10;i++)g.moveTo(-44+i*.8,27-i*2).bezierCurveTo(-5,20-i*3,20,-5-i,45-i,-30).stroke({color:i%4?ink:accent,width:2.5,alpha:1-i*.045});g.moveTo(-34,27).lineTo(42,-25).stroke({color:t.line,width:1});}
  if(id==='splash'){for(const side of[-1,1]){g.moveTo(-40,side*15+8).bezierCurveTo(-13,-35*side,10,35*side,40,side*-12).stroke({color:side===1?ink:accent,width:7,cap:'round'});g.circle(39,-side*12,5).fill(side===1?ink:accent);g.moveTo(38,-side*12).lineTo(45,-side*19).stroke({color:t.line,width:1.4});}}
- if(id==='trail'){for(let i=0;i<4;i++)g.moveTo(-18-i*3,23+i*2).bezierCurveTo(-67,-7,12,-55,36,-14).bezierCurveTo(61,25,-29,42,-19,2).bezierCurveTo(-15,-14,5,-16,14,-8).stroke({color:i%2?accent:ink,width:3.8,alpha:.9-i*.12});for(let i=0;i<9;i++)g.circle(-34+Math.sin(i*4)*12,18+Math.cos(i*2)*13,1+i%2).fill(ink);}
+ if(id==='trail'){drawInkBlob(g,1);}
 }

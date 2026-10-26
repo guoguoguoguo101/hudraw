@@ -26,7 +26,7 @@ Object.assign(globalThis,{wx:{
  onTouchStart:bind('down'),offTouchStart:unbind('down'),onTouchMove:bind('move'),offTouchMove:unbind('move'),
  onTouchEnd:bind('up'),offTouchEnd:unbind('up'),onTouchCancel:bind('cancel'),offTouchCancel:unbind('cancel'),
  onHide:(fn:()=>void)=>hides.push(fn),
- getFileSystemManager:()=>({readFile:({filePath,success,fail}:{filePath:string;success:(r:{data:string})=>void;fail:(e:unknown)=>void})=>void fs.readFile(filePath,'utf8').then(data=>success({data}),fail)}),
+ getFileSystemManager:()=>({readFile:({filePath,encoding,success,fail}:{filePath:string;encoding?:string;success:(r:{data:string|ArrayBuffer})=>void;fail:(e:unknown)=>void})=>void fs.readFile(filePath).then(data=>success({data:encoding==='utf8'?data.toString('utf8'):Uint8Array.from(data).buffer}),fail)}),
 }});
 const {WechatAdapter,viewport,readPackageText}=await import('../src/platform/wechat');
 const {gameViewport}=await import('../src/platform/viewport');

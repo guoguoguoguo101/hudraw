@@ -114,6 +114,39 @@
       "gl": 0
     },
     {
+      "name": "lv4-fast-circle",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 36,
+      "gl": 0
+    },
+    {
+      "name": "lv4-closing-gap",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 48,
+      "gl": 0
+    },
+    {
+      "name": "lv4-crossed-seam",
+      "level": 4,
+      "formations": 1,
+      "blocks": 0,
+      "slams": [
+        0
+      ],
+      "segments": 50,
+      "gl": 0
+    },
+    {
       "name": "lv2-real-projectile-block",
       "level": 2,
       "formations": 0,
@@ -146,8 +179,8 @@
     }
   ],
   "perf": {
-    "desktopBuildAndSubmitMedianMs": 0.699999988079071,
-    "desktopBuildAndSubmitP95Ms": 0.9000000059604645
+    "desktopBuildAndSubmitMedianMs": 1.3000000715255737,
+    "desktopBuildAndSubmitP95Ms": 1.9000000953674316
   },
   "audio": [
     {

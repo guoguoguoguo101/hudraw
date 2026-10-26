@@ -8,7 +8,7 @@
     "dev": "vite --host 127.0.0.1 --port 5173",
     "dev:lan": "vite --host 0.0.0.0 --port 5174 --strictPort",
     "build": "tsc --noEmit && vite build",
-    "test": "tsx tests/mountain-run.ts && tsx tests/ink-trail.ts && tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts && tsx tests/ink-carp.ts && tsx tests/brush-contact.ts && tsx tests/elite-roster.ts && tsx tests/elite-motion.ts && tsx tests/hualing.ts && tsx tests/hualing-combo.ts && tsx tests/hualing-chapters.ts && tsx tests/hualing-summons.ts && tsx tests/boss-motion.ts && tsx tests/boss-battlefield.ts && tsx tests/hualing-bosses.ts && tsx tests/snow-chapter.ts && tsx tests/chapter-vector-art.ts && tsx tests/talisman-barrage.ts && tsx tests/paper-tiger.ts && tsx tests/functional-relics.ts && tsx tests/shared-geometry.ts && tsx tests/triangle-refraction.ts && tsx tests/burning-sea.ts && tsx tests/fallback-slash.ts && tsx tests/line-interactions.ts && tsx tests/sancai.ts && tsx tests/thunder-gesture.ts && tsx tests/advanced-spells.ts && tsx tests/moon-tail.ts && tsx tests/run.ts && tsx tests/cinnabar-brush.ts && tsx tests/progress.ts && tsx tests/spirit-pen.ts && tsx tests/ink.ts",
+    "test": "tsx tests/fox-motion.ts && tsx tests/mountain-run.ts && tsx tests/ink-trail.ts && tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts && tsx tests/ink-carp.ts && tsx tests/brush-contact.ts && tsx tests/elite-roster.ts && tsx tests/elite-motion.ts && tsx tests/hualing.ts && tsx tests/hualing-combo.ts && tsx tests/hualing-chapters.ts && tsx tests/hualing-summons.ts && tsx tests/boss-motion.ts && tsx tests/boss-battlefield.ts && tsx tests/hualing-bosses.ts && tsx tests/snow-chapter.ts && tsx tests/chapter-vector-art.ts && tsx tests/talisman-barrage.ts && tsx tests/paper-tiger.ts && tsx tests/functional-relics.ts && tsx tests/shared-geometry.ts && tsx tests/triangle-refraction.ts && tsx tests/burning-sea.ts && tsx tests/fallback-slash.ts && tsx tests/line-interactions.ts && tsx tests/sancai.ts && tsx tests/thunder-gesture.ts && tsx tests/advanced-spells.ts && tsx tests/moon-tail.ts && tsx tests/run.ts && tsx tests/cinnabar-brush.ts && tsx tests/progress.ts && tsx tests/spirit-pen.ts && tsx tests/ink.ts",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "check:platform": "tsx scripts/check-platform.ts",
     "preview:lan": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
@@ -29,7 +29,7 @@
     "test:brush-continuity:preview": "node scripts/check-brush-continuity.mjs",
     "test:brush-upgrades:preview": "node scripts/check-brush-upgrades.mjs",
     "test:dual-brush": "tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts",
-    "test:dual-brush:preview": "node scripts/check-dual-brush-paper.mjs",
+    "test:dual-brush:preview": "node scripts/check-dual-brush-cute.mjs",
     "test:elite-roster": "tsx tests/elite-roster.ts && node scripts/check-elite-roster.mjs",
     "test:hualing": "tsx tests/elite-motion.ts && tsx tests/elite-roster.ts && tsx tests/dragon-motion.ts && tsx tests/ink-trail.ts && tsx tests/paper-dragon.ts && tsx tests/dual-brush.ts && tsx tests/brush-upgrades.ts && tsx tests/ink-carp.ts && tsx tests/hualing.ts && tsx tests/hualing-combo.ts && tsx tests/hualing-chapters.ts && tsx tests/hualing-summons.ts && tsx tests/boss-motion.ts && tsx tests/boss-battlefield.ts && tsx tests/hualing-bosses.ts && tsx tests/snow-chapter.ts && tsx tests/chapter-vector-art.ts",
     "test:paper-monsters:preview": "node scripts/check-paper-monsters.mjs",
@@ -50,7 +50,8 @@
     "test:line-interactions:preview": "node scripts/check-line-interactions.mjs",
     "test:paper-tiger": "tsx tests/paper-tiger.ts",
     "test:paper-tiger:preview": "node scripts/check-paper-tiger.mjs",
-    "test:mountain-run": "tsx tests/mountain-run.ts && node scripts/check-mountain-run.mjs && node scripts/check-mountain-themes.mjs"
+    "test:mountain-run": "tsx tests/mountain-run.ts && node scripts/check-mountain-run.mjs && node scripts/check-mountain-themes.mjs",
+    "test:fox": "tsx tests/fox-motion.ts"
   },
   "dependencies": {
     "fflate": "^0.8.2",

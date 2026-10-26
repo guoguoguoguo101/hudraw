@@ -1,3 +1,4 @@
+import {foxPreview} from './fox-preview.mjs';
 import {upgradedCharacters,environmentLayers} from './art-upgrade.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -40,9 +41,8 @@ for(const [name,content] of Object.entries(upgradedCharacters(P))){
  const old=definitions.findIndex(a=>a.name===name);if(old>=0)definitions.splice(old,1);
  asset(name,content,'美术升级：原创分层剪纸素材，中心局部锚点');
 }
-const part=(name,x,y,rotation=0,sx=1,sy=sx)=>`<g transform="translate(${x} ${y}) rotate(${rotation}) scale(${sx} ${sy})">${contents.get(name)}</g>`;
 const oldPreview=definitions.findIndex(a=>a.name==='fox_preview');definitions.splice(oldPreview,1);
-asset('fox_preview',`<g transform="translate(10 6) scale(.9)">${part('fox_tail_high',-43,30,-7,.88)}${part('fox_tail_mid',-43,30,3,.88)}${part('fox_tail_low',-43,30,5,.85)}${part('fox_leg',-43,49,10,.84)}${part('fox_leg',-17,45,-6,.78)}${part('fox_torso',0,24)}${part('fox_arm',44,48,-10,.82)}${part('fox_arm',25,56,-8,.88)}${part('fox_scarf',20,22,0,.86)}${part('fox_collar',28,24,0,.88)}<g transform="translate(38 -25)">${part('fox_ear',-30,-32,-14,.78)}${part('fox_ear',33,-34,18,.81)}${contents.get('fox_head')}${part('fox_eyes',0,3)}${part('fox_pupils',0,3)}</g>${part('fox_bell',40,40,0,.47)}</g>`,'狐灵守护者：三种原创尾形、金瞳、朱砂足尖、独立颈带和飘带');
+asset('fox_preview',foxPreview(Object.fromEntries(contents)),'亲和灵狐：参考比例坐姿、饱满脸颊、蓬松三尾、独立围巾和铜铃');
 const cols=5,size=320,rows=Math.ceil(definitions.length/cols),frames={},composite=[];
 for(let i=0;i<definitions.length;i++){const a=definitions[i];await fs.writeFile(path.join(dir,`${a.name}.svg`),a.svg);const buffer=await sharp(Buffer.from(a.svg)).png().toBuffer();await fs.writeFile(path.join(dir,`${a.name}.png`),buffer);const x=(i%cols)*size,y=Math.floor(i/cols)*size;composite.push({input:buffer,left:x,top:y});frames[a.name]={frame:{x,y,w:size,h:size},rotated:false,trimmed:false,spriteSourceSize:{x:0,y:0,w:size,h:size},sourceSize:{w:size,h:size}};}
 await sharp({create:{width:cols*size,height:rows*size,channels:4,background:{r:0,g:0,b:0,alpha:0}}}).composite(composite).png().toFile(path.join(dir,'atlas.png'));

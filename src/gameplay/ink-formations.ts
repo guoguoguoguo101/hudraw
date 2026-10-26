@@ -22,18 +22,24 @@ export class InkRituals{
   if(this.points.length>160)this.points=this.points.filter((_,i)=>i%2===0||i===this.points.length-1);
  }
  end(cancel=false,bounds?:Arena){
-  const points=this.points;this.points=[];if(cancel||this.level<3||points.length<10)return false;
+  const points=this.points;this.points=[];if(cancel||this.level<3||points.length<6)return false;
   const xs=points.map(p=>p.x),ys=points.map(p=>p.y),w=Math.max(...xs)-Math.min(...xs),h=Math.max(...ys)-Math.min(...ys),span=Math.max(w,h);
-  if(Math.min(w,h)<45||Math.max(w,h)/Math.min(w,h)>3.2||Math.hypot(points[0].x-points.at(-1)!.x,points[0].y-points.at(-1)!.y)>Math.max(30,Math.min(65,span*.2)))return false;
+  const closure=Math.max(40,Math.min(85,span*.3));
+  if(Math.min(w,h)<45||Math.max(w,h)/Math.min(w,h)>3.2||Math.hypot(points[0].x-points.at(-1)!.x,points[0].y-points.at(-1)!.y)>closure)return false;
   if(bounds&&points.some(p=>p.x<bounds.left||p.x>bounds.right||p.y<bounds.top||p.y>bounds.bottom))return false;
   let area=0,cx=0,cy=0,length=0;
   for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],cross=a.x*b.y-b.x*a.y;area+=cross;cx+=(a.x+b.x)*cross;cy+=(a.y+b.y)*cross;length+=Math.hypot(a.x-b.x,a.y-b.y);}
   if(Math.abs(area)/2<INK_RITUAL.minArea||4*Math.PI*Math.abs(area)/2/(length*length)<.24)return false;
-  // Crossed figure-eights are not a closed pool; do not fill their empty lobes.
+  // Permit a short crossed seam near the starting point when a hand-drawn
+  // circle closes. Interior crossings (including figure-eights) stay invalid.
+  const along=[0];for(let i=1;i<points.length;i++)along.push(along[i-1]+Math.hypot(points[i].x-points[i-1].x,points[i].y-points[i-1].y));
   for(let i=0;i<points.length-1;i++)for(let j=i+2;j<points.length-1;j++){
    if(i===0&&j===points.length-2)continue;
    const hit=segmentIntersection({a:points[i],b:points[i+1]},{a:points[j],b:points[j+1]},.08);
-   if(hit&&!hit.commonEndpoint)return false;
+   if(hit&&!hit.commonEndpoint){
+    const seam=along[i+1]<=length*.2&&along[j]>=length*.8&&Math.hypot(hit.point.x-points[0].x,hit.point.y-points[0].y)<=closure;
+    if(!seam)return false;
+   }
   }
   cx/=3*area;cy/=3*area;
   const max=Math.max(...points.map(p=>Math.hypot(p.x-cx,p.y-cy))),scale=Math.min(1,INK_RITUAL.maxRadius/max);

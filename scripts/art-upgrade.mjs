@@ -1,4 +1,4 @@
-import {foxArt} from './fox-art.mjs';
+import {foxArt} from './fox-friendly-art.mjs';
 // Original vector artwork. The reference images are never loaded or cropped.
 // All coordinates are local pivots; seeded ornament placement makes rebuilds repeatable.
 export function upgradedCharacters(P){

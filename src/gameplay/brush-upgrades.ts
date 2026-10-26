@@ -23,8 +23,8 @@ export const BRUSH_UPGRADE_CONFIG={
 export const BRUSH_DESCRIPTIONS:Record<BrushSkill,string[]>={
  spray:['关闭','游墨 · 小墨鲤 · 内置冷却0.85秒','双鲤 · 双鱼分流 · 内置冷却0.8秒','领游 · 大鲤带双小鲤 · 冷却0.95秒','跃浪 · 巨鲤穿敌拍浪 · 冷却1.4秒'],
  wide:['关闭','展锋 · 宽笔横扫 · 伤害36','横扫 · 更宽笔迹 · 伤害44','重锋 · 墨刃随笔 · 扫中轻推敌','破空 · 宽幅虚空 · 星流内爆 · 无冷却'],
- splash:['关闭','分毫 · 一道金锋 · 主笔35%伤害','并毫 · 金朱双锋 · 各35%伤害','灵毫初醒 · 双灵蛇随笔 · 各45%伤害','双龙伴笔 · 短距扑敌 · 各55%伤害'],
- trail:['关闭','留痕2秒 · 每半秒6伤害','墨障 · 留痕3秒 · 墨线拦截弹道','成阵 · 画圈展开镇妖阵 · 阵内持续攻击','唤墨魁 · 画圈成池 · 巨掌三叠镇压'],
+ splash:['关闭','分毫 · 一道金锋 · 主笔35%伤害','并毫 · 金朱双锋 · 各35%伤害','灵毫初醒 · 按住自然游动 · 各45%伤害','墨团双龙 · 按住自然游动 · 各55%伤害'],
+ trail:['关闭','墨团初醒 · 挥笔唤伙伴 · 最多2只','结伴蹦跳 · 最多3只 · 主动追妖扑撞','团团护卫 · 最多4只 · 每三次唤大墨团','墨团一家 · 最多5只 · 大尾守护兽参战'],
 };
 type Drop={x:number;y:number;vx:number;vy:number;age:number;life:number;damage:number;size:number;volley:boolean;spray?:boolean;high?:boolean;remaining?:number;hit?:Set<number>};
 type Splash={from:Point;center:Point;age:number;delay:number;radius:number;damage:number;hit:boolean;seed:number;secondary:boolean};
@@ -69,7 +69,7 @@ export class BrushUpgrades{
  kill(){if(this.runMode)return;if(!this.growth||this.picks+this.pending>=8)return;this.kills++;if(this.kills>=this.nextKills){this.kills-=this.nextKills;this.nextKills+=2;this.pending++;}}
  offer(safe:boolean){if(safe&&!this.panel&&this.growth&&this.pending>0&&this.choices.length){if(this.runMode){const pool=this.choices;const owned=pool.filter(id=>this.levels[id]>0).sort((a,b)=>this.levels[b]-this.levels[a]);const chosen=owned.slice(0,2),rest=pool.filter(id=>!chosen.includes(id));while(chosen.length<3&&rest.length){this.choiceSeed=(Math.imul(this.choiceSeed,1664525)+1013904223)>>>0;chosen.push(rest.splice(this.choiceSeed%rest.length,1)[0]);}this.runChoices=chosen;}this.panel='upgrade';}}
  choose(id:BrushSkill){if(this.panel!=='upgrade'||!this.choices.includes(id))return;this.setLevel(id,this.levels[id]+1);this.picks++;this.pending=Math.max(0,this.pending-1);this.panel=null;}
- begin(){this.dual.begin();this.carp.begin();this.trail.begin();this.stroke=true;this.tip=null;this.wideActive=null;this.wideStroke++;}
+ begin(origin?:Point){this.dual.level=this.levels.splash;this.dual.begin(origin,this.mainDamage,this.width);this.carp.begin();this.trail.begin();this.stroke=true;this.tip=null;this.wideActive=null;this.wideStroke++;}
  end(bounds:Arena,cancel=false){
   this.carp.end();
   this.dual.end(cancel);this.trail.end(cancel,bounds);
@@ -105,7 +105,7 @@ export class BrushUpgrades{
   if(this.blocked||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(.1,dt);
   this.carp.level=this.levels.spray;if(bounds)this.carp.bounds={...bounds};this.carp.advance(dt,enemies,damage);
   this.clock+=dt;this.dual.level=this.levels.splash;this.dual.advance(dt,enemies,damage,bounds??{left:0,right:720,top:0,bottom:1280});
-  this.trail.advance(dt,enemies,damage);
+  this.trail.advance(dt,enemies,damage,bounds);
   for(const cut of this.wideCuts)cut.age+=dt;this.wideCuts=this.wideCuts.filter(c=>c.age<.24);
   const visible=new Set(this.wideWaves);for(const w of this.wideWaves)w.age+=dt;
   // Two one-shot stages per real segment: opening cut, then an interior star collapse.

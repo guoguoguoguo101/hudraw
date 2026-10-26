@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">灵狐 · 圆脸矢量试稿</title>
+  <desc id="desc">奶白色小狐狸，墨色耳尖与尾尖，豆眼、朱红围巾和一枚小铜铃。独立角色概念，不用于游戏。</desc>
+  <g stroke="#34332e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- A single generous tail, kept behind the compact seated body. -->
+    <path d="M270 372C246 413 192 439 127 428C77 420 47 392 47 351C47 327 55 310 76 296L64 317C96 282 137 287 161 314C185 339 191 350 217 343C244 335 263 344 270 372Z" fill="#f3e7cc"/>
+    <path d="M47 351C47 327 55 310 76 296L64 317C81 302 101 296 119 299L105 311L123 308L108 321L130 318L115 334L134 330L122 343L143 338C119 362 83 367 50 372Z" fill="#393b35" stroke="none"/>
+    <path d="M70 384C108 419 178 425 227 386C194 400 155 399 127 390C103 383 87 378 70 384Z" fill="#fff8e9" stroke="none"/>
+    <path d="M142 316C165 330 170 349 190 357" fill="none" stroke="#d1bf9c" stroke-width="2.5"/>
+    <!-- Rear haunch, chest and short, stable paws. -->
+    <path d="M265 271C243 289 233 314 230 343C211 353 202 373 210 398C216 418 238 428 263 427L324 428C346 419 352 398 348 373L339 295Z" fill="#f4e8d1"/>
+    <path d="M237 349C245 365 245 389 236 407C253 408 267 402 276 386L280 326Z" fill="#ddcbaa" stroke="none"/>
+    <path d="M282 299C264 325 264 355 273 375L283 363L284 383L299 371L308 386L318 370L324 378C338 349 329 316 314 300Z" fill="#fff9eb" stroke="none"/>
+    <path d="M269 357C266 379 267 402 269 416C258 420 259 431 271 433L289 433C299 432 302 426 299 418L302 378" fill="#fff7e6"/>
+    <path d="M315 361C314 382 317 403 319 419C308 423 310 433 322 434L341 434C350 432 352 425 346 418L343 378" fill="#f6ecd8"/>
+    <path d="M268 416L275 412L279 419L285 414L290 420L297 417C301 425 299 431 289 433L271 433C259 431 258 421 268 416ZM318 419L324 414L330 420L334 416L339 422L346 418C352 425 350 432 341 434L322 434C310 433 308 423 318 419Z" fill="#424139" stroke="none"/>
+    <path d="M223 398C232 394 244 399 246 410C251 415 251 423 242 425L227 424" fill="#f3e7cc"/>
+    <!-- Scarf ends are simple flat cut shapes rather than magical ribbons. -->
+    <path d="M273 287C236 278 208 259 173 266C147 271 132 283 107 278L120 288L108 297C151 306 173 282 198 288C226 292 242 310 273 309Z" fill="#c84c36" stroke="none"/>
+    <path d="M269 301C231 307 211 298 185 310C163 320 143 319 123 312L132 325L119 328C149 346 177 332 199 324C222 316 246 327 274 315Z" fill="#a9382b" stroke="none"/>
+    <!-- Unified round head with only a few cheek tufts. -->
+    <path d="M217 174C204 145 201 103 207 66C232 77 255 96 270 109Q299 97 324 107C334 77 344 55 351 44C371 74 381 112 378 152L386 177Q397 196 399 217L412 228L399 237L410 244L390 252C378 280 349 294 311 293C269 293 240 278 223 261L201 255L214 244L196 235L213 224Q204 198 217 174Z" fill="#fff6e3"/>
+    <path d="M207 66C224 74 239 86 252 99L244 114L232 102L236 121L224 110L226 132L216 119L215 140C208 118 205 91 207 66ZM351 44C365 66 374 93 377 118L365 103L365 122L355 110L350 124L347 105L336 117L338 91C343 70 348 52 351 44Z" fill="#343831" stroke="none"/>
+    <path d="M218 100L249 140L228 160C221 140 217 118 218 100ZM351 89L365 151L342 143Z" fill="#d7b5a2" stroke="none"/>
+    <path d="M218 173Q228 156 239 151M332 146Q347 141 361 149" fill="none" stroke="#dccba9" stroke-width="2.2"/>
+    <path d="M224 246C241 260 260 268 283 270L275 258C311 273 348 273 380 256C362 281 338 290 310 290C272 290 241 273 224 246Z" fill="#ebddbf" stroke="none"/>
+    <path d="M234 225Q249 218 264 226M355 228Q367 222 379 226" fill="none" stroke="#e5c8ad" stroke-width="7" opacity=".55"/>
+    <ellipse cx="293" cy="211" rx="7.7" ry="11.3" fill="#292e29" stroke="none"/>
+    <ellipse cx="365" cy="204" rx="6.3" ry="10.1" fill="#292e29" stroke="none"/>
+    <ellipse cx="295" cy="207" rx="2" ry="2.8" fill="#fffdf5" stroke="none"/>
+    <ellipse cx="367" cy="200" rx="1.7" ry="2.5" fill="#fffdf5" stroke="none"/>
+    <path d="M389 222Q398 216 405 224Q401 232 395 231Z" fill="#292e29" stroke="none"/>
+    <path d="M397 232Q395 244 384 247" fill="none" stroke-width="2.3"/>
+    <path d="M328 153Q319 164 325 171Q332 175 335 166Z" fill="#c84c36" stroke="none"/>
+    <!-- Collar and bell: the only small ornamental detail. -->
+    <path d="M252 280Q297 303 346 277L350 294Q305 319 252 297Z" fill="#c84c36" stroke="#9c392c" stroke-width="2.5"/>
+    <path d="M259 287Q295 303 328 292" fill="none" stroke="#e87951" stroke-width="2.2"/>
+    <path d="M334 294L336 306" fill="none" stroke="#6e5634" stroke-width="2.5"/>
+    <circle cx="337" cy="314" r="10.5" fill="#d6ac59" stroke="#775c36" stroke-width="2"/>
+    <path d="M330 311Q334 306 339 307" fill="none" stroke="#fff1ba" stroke-width="2.5"/>
+    <circle cx="338" cy="316" r="2" fill="#655139" stroke="none"/>
+    <path d="M338 318L338 324" fill="none" stroke="#655139" stroke-width="1.5"/>
+  </g>
+</svg>

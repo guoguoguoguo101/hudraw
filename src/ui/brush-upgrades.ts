@@ -4,6 +4,7 @@ import type {Game} from '../gameplay/game';
 import type {InputEvent} from '../platform/adapter';
 import {BRUSH_SKILLS,BRUSH_NAMES,BRUSH_DESCRIPTIONS,type BrushSkill} from '../gameplay/brush-upgrades';
 import {HUALING_CHAPTERS} from '../gameplay/hualing-chapters';
+import {drawInkBlob} from '../rendering/ink-companions';
 import {text} from './interface';
 const GOLD=0xe1b675,PAPER=0xf4e5c6,INK=0x202b2d,RED=0x913d32;
 type Zone={x:number;y:number;w:number;h:number;run:()=>void};
@@ -30,9 +31,7 @@ export class BrushUpgradeUI{
   if(id==='wide')g.poly([-25,12,-16,-8,22,-17,30,4,-3,16]).fill(0xe86b46).stroke({color:GOLD,width:1});
   if(id==='splash'){for(const side of [-1,1])g.moveTo(-26,side*10).bezierCurveTo(-9,side*22,11,-side*3,28,side*10).stroke({color:side===1?GOLD:0xd56b48,width:4,cap:'round'});}
   if(id==='trail'){
-   g.ellipse(0,5,27,18).fill({color:0x111f24,alpha:.9}).stroke({color:GOLD,width:2});g.ellipse(0,5,20,12).stroke({color:GOLD,width:.8,alpha:.8});
-   for(let i=0;i<8;i++){const a=i*Math.PI/4;g.moveTo(Math.cos(a)*22,5+Math.sin(a)*14).lineTo(Math.cos(a)*26,5+Math.sin(a)*18).stroke({color:PAPER,width:1});}
-   g.moveTo(-10,-8).quadraticCurveTo(-14,-24,-5,-18).lineTo(0,-23).lineTo(6,-18).quadraticCurveTo(16,-23,10,-8).quadraticCurveTo(0,7,-10,-8).fill(PAPER);g.moveTo(-6,-12).lineTo(-2,-9).moveTo(6,-12).lineTo(2,-9).stroke({color:INK,width:2});
+   drawInkBlob(g,0);g.scale.set(1.3);
   }
  }
  update(header=this.header){
@@ -63,7 +62,7 @@ export class BrushUpgradeUI{
     text(this.root,BRUSH_DESCRIPTIONS[id][next],390,yy+53,18,INK,{letterSpacing:0});
     this.zones.push({x:64,y:yy,w:592,h:76,run:()=>m.choose(id)});
    }
-   text(this.root,`${m.runMode?'精修两门笔法 · 八次悟道可双满级':'有效击杀积累灵气 · 下次仍可升级同一项'}`,360,top+472,18,GOLD,{letterSpacing:0});
+   text(this.root,`${m.runMode?'击杀积累经验 · 后续升级逐步放缓':'有效击杀积累灵气 · 下次仍可升级同一项'}`,360,top+472,18,GOLD,{letterSpacing:0});
    if(!this.compactUI)this.button('切换自定义',245,top+497,230,34,()=>{m.panel='custom';});
   }else{
    for(const [i,id] of BRUSH_SKILLS.entries()){
@@ -83,7 +82,7 @@ export class BrushUpgradeUI{
   this.root.addChild(new Graphics().rect(0,-1000,720,3400).fill({color:t.dark,alpha:ch==='palace'?.66:.55}));this.zones=[];
   const mark=new Graphics();this.root.addChild(mark);chapterMark(mark,ch,360,header+142,26);
   text(this.root,'笔 法 悟 道',360,header+213,48,t.title,{letterSpacing:3});
-  text(this.root,`三选一 · 强化本局笔法     ${m.picks+1} / 8`,360,header+264,20,t.title,{letterSpacing:1});
+  text(this.root,`三选一 · 强化本局笔法     ${m.picks+1} / ${this.game.campaign.levelId!==null?5:8}`,360,header+264,20,t.title,{letterSpacing:1});
   for(const [i,id]of m.choices.entries()){
    const y=top+i*180,next=m.levels[id]+1;chapterPanel(this.root,ch,40,y,640,158);brushGlyph(this.root,ch,id,129,y+77,1.08);
    text(this.root,BRUSH_NAMES[id],277,y+34,31,t.ink,{fontWeight:'bold',letterSpacing:4});
@@ -93,7 +92,7 @@ export class BrushUpgradeUI{
    text(this.root,next===4?'圆满 · 笔法大成':m.levels[id]?'精进此法':'新入笔法',536,y+127,17,t.muted,{letterSpacing:1});
    this.zones.push({x:40,y,w:640,h:158,run:()=>m.choose(id)});
   }
-  text(this.root,'优先精进已有笔法，更容易修至 Lv4',360,top+576,20,t.title,{letterSpacing:1});
+  text(this.root,'击杀积累经验 · 后续悟道需要更多经验',360,top+576,20,t.title,{letterSpacing:1});
   text(this.root,`${HUALING_CHAPTERS[ch].name} · 选择后继续战斗`,360,top+615,17,t.title,{letterSpacing:0});
  }
  private summary(){const m=this.game.hualing.upgrades;return `喷${m.levels.spray} · 阔${m.levels.wide} · 双${m.levels.splash} · 留墨${m.levels.trail}${m.levels.spray?(m.carp.ready?'  鲤可喷':`  鲤${m.carp.remaining.toFixed(1)}秒`):''}${m.growth?`  ${m.kills}/${m.nextKills}`:''}`;}

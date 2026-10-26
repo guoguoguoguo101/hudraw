@@ -1,6 +1,6 @@
 import {earcut} from 'pixi.js';
 import {readFile,writeFile} from 'node:fs/promises';
-const source=JSON.parse(await readFile('assets/concepts/dual-dragon-companions-v02/authoring/polygons.json','utf8'));
+const source=JSON.parse(await readFile(process.argv[2]??'assets/concepts/dual-dragon-companions-v02/authoring/polygons.json','utf8'));
 const colors=[...new Set(source.paths.map(p=>p.color))],vertices=[],indices=[],lookup=new Map();
 // Native triangles retain the reference's ordered overlapping paper layers.
 function triangle(a,b,c,color,depth=0){
@@ -25,5 +25,5 @@ for(const path of source.paths){
  }
 }
 const out={width:source.width,height:source.height,colors,vertices,indices};
-await writeFile('src/rendering/dragon-art/talisman-dragon.json',JSON.stringify(out));
+await writeFile(process.argv[3]??'src/rendering/dragon-art/talisman-dragon.json',JSON.stringify(out));
 console.log('paper dragon',vertices.length/3,'vertices',indices.length/3,'triangles',colors.length,'colors');
