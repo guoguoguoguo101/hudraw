@@ -8,6 +8,7 @@ const ease=(n:number)=>1-(1-sat(n))**3;
 /** World-coordinate controls: adjust before replaying the skill. */
 export const FOX_THUNDER_PARAMS={foxScale:.96,tailLength:275,tailWidth:29,cloudCount:8,paperCount:16,cloudTrailLength:290,impactRadius:278,skyAt:.08,foxAt:.36,chargeAt:1.05,strikeAt:1.65,fadeAt:3.15,duration:4.5};
 export type FoxThunderPhase='openSky'|'summonFox'|'chargeLance'|'thunderImpact'|'disperse';
+export type FoxThunderVariant='full'|'clouds';
 export function foxThunderPhase(t:number):FoxThunderPhase{const p=FOX_THUNDER_PARAMS;return t<p.foxAt?'openSky':t<p.chargeAt?'summonFox':t<p.strikeAt?'chargeLance':t<p.fadeAt?'thunderImpact':'disperse';}
 function rune(g:Graphics,x:number,y:number,s:number){
  g.moveTo(x,y-13*s).lineTo(x-5*s,y-4*s).lineTo(x+5*s,y-4*s).lineTo(x-3*s,y+6*s).lineTo(x+4*s,y+10*s).moveTo(x-8*s,y).lineTo(x+8*s,y).stroke({color:C.red,width:1.8*s});
@@ -61,8 +62,10 @@ function drawFoxTail(g:Graphics,index:number,t:number,progress:number){
 }
 export class FoxThunderUltimate extends Container{
  phase:FoxThunderPhase='openSky';backdrop=new Graphics();runeCircleLayer=new Graphics();fox=new Container();foxBodyLayer=new Graphics();foxHeadLayer=new Graphics();foxTailLayers:Graphics[]=[];thunderLanceLayer=new Graphics();cloudLayers:Graphics[]=[];talismanLayers:Graphics[]=[];windLayer=new Graphics();impactLayer=new Graphics();scrolls:AscendantScroll[]=[];cranes:AscendantCrane[]=[];
- constructor(){
+ constructor(readonly variant:FoxThunderVariant='full'){
   super();this.addChild(this.backdrop,this.runeCircleLayer,this.fox);
+  // The collected-talisman composition supplies these four effects itself.
+  if(variant==='clouds')for(const layer of [this.runeCircleLayer,this.windLayer,this.thunderLanceLayer,this.impactLayer])layer.visible=false;
   for(let i=0;i<9;i++){const tail=new Graphics();this.fox.addChild(tail);this.foxTailLayers.push(tail);}
   drawFoxBody(this.foxBodyLayer);drawFoxHead(this.foxHeadLayer);this.fox.addChild(this.foxBodyLayer,this.foxHeadLayer);
   for(let i=0;i<2;i++){const scroll=new AscendantScroll(i+1,260,73);this.addChild(scroll);this.scrolls.push(scroll);}
@@ -80,6 +83,7 @@ export class FoxThunderUltimate extends Container{
   this.foxBodyLayer.scale.y=.8+reveal*.2;this.foxHeadLayer.rotation=-.07+Math.sin(t*1.6)*.025+dive*.07;this.foxHeadLayer.position.set(12,dive*8);
   this.foxTailLayers.forEach((g,i)=>{const open=ease((t-p.foxAt-i*.065)/.72);drawFoxTail(g,i,t,open);g.alpha=open;});
   this.scrolls.forEach((scroll,i)=>{scroll.update(t+.2);scroll.position.set(360+(i?1:-1)*(175+sky*65),275+Math.sin(t+i)*8);scroll.rotation=Math.PI/2+(i?.36:-.36);scroll.alpha*=sky*.8;});
+  if(this.variant==='full'){
   const ground=this.runeCircleLayer;ground.clear();for(let i=0;i<3;i++)ground.circle(360,690,64+i*18+sky*10).stroke({color:i===1?C.red:C.gold,width:i===1?3:1,alpha:sky*(.65-i*.12)});
   for(let i=0;i<12;i++){const a=i*Math.PI/6-t*.2;ground.moveTo(360+Math.cos(a)*99,690+Math.sin(a)*99).lineTo(360+Math.cos(a)*108,690+Math.sin(a)*108).stroke({color:C.gold,width:1.5,alpha:sky});}
   const wind=this.windLayer;wind.clear();for(let i=0;i<6;i++){const sign=i%2?-1:1,x=360+sign*(180+i%3*30),y=300+i*68;
@@ -118,6 +122,7 @@ export class FoxThunderUltimate extends Container{
    }
    // White paper-flame impact corona leaves the player's center readable.
    for(let i=0;i<12;i++){const a=i*Math.PI/6,rr=92+impact*40;const x=360+Math.cos(a)*rr,y=680+Math.sin(a)*rr;g.moveTo(x,y).quadraticCurveTo(x+Math.cos(a+.15)*26,y+Math.sin(a+.15)*26,x+Math.cos(a)*55,y+Math.sin(a)*55).quadraticCurveTo(x+Math.cos(a-.16)*25,y+Math.sin(a-.16)*25,x,y).fill({color:C.white,alpha:.7*(1-sat(after/.9))});}
+  }
   }
   this.cloudLayers.forEach((cloud,i)=>{curvedCloud(cloud,t,i,.45+(i%3)*.16);const side=i%2?-1:1;
    if(i<4){cloud.position.set(360+side*(205+Math.sin(t*1.2-i)*24),225+(i%2)*55+Math.floor(i/2)*80);}

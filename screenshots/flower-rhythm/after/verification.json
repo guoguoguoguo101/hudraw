@@ -1,0 +1,241 @@
+{
+  "stage": "after",
+  "states": [
+    {
+      "time": 0.12,
+      "clock": 0.116667,
+      "buds": 1,
+      "blooms": [],
+      "hp": [
+        1000,
+        1000,
+        1000
+      ],
+      "hits": [],
+      "stable": true,
+      "glowCount": 0,
+      "glowAlpha": 0,
+      "gl": 0
+    },
+    {
+      "time": 0.65,
+      "clock": 0.65,
+      "buds": 1,
+      "blooms": [],
+      "hp": [
+        1000,
+        1000,
+        1000
+      ],
+      "hits": [],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.0003692626953125043,
+      "gl": 0
+    },
+    {
+      "time": 0.9,
+      "clock": 0.9,
+      "buds": 1,
+      "blooms": [],
+      "hp": [
+        1000,
+        1000,
+        1000
+      ],
+      "hits": [],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.14238281249999934,
+      "gl": 0
+    },
+    {
+      "time": 1.02,
+      "clock": 1.016667,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.016667,
+          "fired": false
+        }
+      ],
+      "hp": [
+        1000,
+        1000,
+        1000
+      ],
+      "hits": [],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.12302915219907407,
+      "gl": 0
+    },
+    {
+      "time": 1.13,
+      "clock": 1.133333,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.133333,
+          "fired": false
+        }
+      ],
+      "hp": [
+        1000,
+        1000,
+        1000
+      ],
+      "hits": [],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.21259259259259258,
+      "gl": 0
+    },
+    {
+      "time": 1.17,
+      "clock": 1.166667,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.166667,
+          "fired": true
+        }
+      ],
+      "hp": [
+        952,
+        952,
+        1000
+      ],
+      "hits": [
+        {
+          "amount": 48,
+          "clock": 1.166667
+        },
+        {
+          "amount": 48,
+          "clock": 1.166667
+        }
+      ],
+      "stable": true,
+      "glowCount": 2,
+      "glowAlpha": 1.059261593344929,
+      "gl": 0
+    },
+    {
+      "time": 1.27,
+      "clock": 1.266667,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.266667,
+          "fired": true
+        }
+      ],
+      "hp": [
+        952,
+        952,
+        1000
+      ],
+      "hits": [
+        {
+          "amount": 48,
+          "clock": 1.166667
+        },
+        {
+          "amount": 48,
+          "clock": 1.166667
+        }
+      ],
+      "stable": true,
+      "glowCount": 2,
+      "glowAlpha": 0.29669010300832954,
+      "gl": 0
+    },
+    {
+      "time": 1.48,
+      "clock": 1.483333,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.483333,
+          "fired": true
+        }
+      ],
+      "hp": [
+        952,
+        952,
+        1000
+      ],
+      "hits": [
+        {
+          "amount": 48,
+          "clock": 1.166667
+        },
+        {
+          "amount": 48,
+          "clock": 1.166667
+        }
+      ],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.03650069312214896,
+      "gl": 0
+    },
+    {
+      "time": 1.8,
+      "clock": 1.8,
+      "buds": 0,
+      "blooms": [
+        {
+          "age": 0.8,
+          "fired": true
+        }
+      ],
+      "hp": [
+        952,
+        952,
+        1000
+      ],
+      "hits": [
+        {
+          "amount": 48,
+          "clock": 1.166667
+        },
+        {
+          "amount": 48,
+          "clock": 1.166667
+        }
+      ],
+      "stable": true,
+      "glowCount": 1,
+      "glowAlpha": 0.001778161664016992,
+      "gl": 0
+    },
+    {
+      "time": 2.02,
+      "clock": 2.016667,
+      "buds": 0,
+      "blooms": [],
+      "hp": [
+        952,
+        952,
+        1000
+      ],
+      "hits": [
+        {
+          "amount": 48,
+          "clock": 1.166667
+        },
+        {
+          "amount": 48,
+          "clock": 1.166667
+        }
+      ],
+      "stable": true,
+      "glowCount": 0,
+      "glowAlpha": 0,
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

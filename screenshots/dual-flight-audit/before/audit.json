@@ -1,0 +1,82 @@
+{
+  "videoFrames": 439,
+  "sheets": 11,
+  "offset": 3.325,
+  "stats": [
+    {
+      "side": 0,
+      "samples": 1020,
+      "clippedFrames": 102,
+      "clipPercent": 10,
+      "maxClippedFraction": 0.63,
+      "headNearTailFrames": 0,
+      "stalledFrames": 0,
+      "maxTurn": 5.78,
+      "worst": [
+        {
+          "t": 2.8095999999940395,
+          "kind": "clip",
+          "score": 0.6326530612244898
+        },
+        {
+          "t": 2.8422000000029803,
+          "kind": "clip",
+          "score": 0.6326530612244898
+        },
+        {
+          "t": 2.8587999999970197,
+          "kind": "clip",
+          "score": 0.6326530612244898
+        },
+        {
+          "t": 2.8757000000029804,
+          "kind": "clip",
+          "score": 0.6326530612244898
+        },
+        {
+          "t": 2.7605999999940396,
+          "kind": "clip",
+          "score": 0.6122448979591837
+        }
+      ]
+    },
+    {
+      "side": 1,
+      "samples": 1020,
+      "clippedFrames": 84,
+      "clipPercent": 8.2,
+      "maxClippedFraction": 0.67,
+      "headNearTailFrames": 0,
+      "stalledFrames": 0,
+      "maxTurn": 5.04,
+      "worst": [
+        {
+          "t": 13.52720000000298,
+          "kind": "clip",
+          "score": 0.673469387755102
+        },
+        {
+          "t": 13.546,
+          "kind": "clip",
+          "score": 0.673469387755102
+        },
+        {
+          "t": 13.56370000000298,
+          "kind": "clip",
+          "score": 0.673469387755102
+        },
+        {
+          "t": 13.57890000000596,
+          "kind": "clip",
+          "score": 0.6530612244897959
+        },
+        {
+          "t": 13.59259999999404,
+          "kind": "clip",
+          "score": 0.6326530612244898
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

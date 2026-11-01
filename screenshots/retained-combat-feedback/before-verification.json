@@ -1,0 +1,390 @@
+{
+  "allocation": {
+    "frames": 120,
+    "enemies": 35,
+    "clears": 120,
+    "shapes": 12600,
+    "stable": true
+  },
+  "cleanup": {
+    "health": 0,
+    "active": 0,
+    "spare": 0,
+    "children": 0,
+    "gl": 0
+  },
+  "shots": [
+    {
+      "name": "full",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        }
+      ],
+      "numbers": [],
+      "gl": 0
+    },
+    {
+      "name": "moved",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 1,
+          "last": 1,
+          "hold": 0
+        }
+      ],
+      "numbers": [],
+      "gl": 0
+    },
+    {
+      "name": "damage",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 1,
+          "last": 0.7,
+          "hold": 0.09999999999999999
+        },
+        {
+          "id": 6,
+          "ratio": 1,
+          "last": 0.35,
+          "hold": 0.09999999999999999
+        },
+        {
+          "id": 7,
+          "ratio": 1,
+          "last": 0.95,
+          "hold": 0.09999999999999999
+        },
+        {
+          "id": 8,
+          "ratio": 1,
+          "last": 0.6,
+          "hold": 0.09999999999999999
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.08
+        },
+        {
+          "text": "65",
+          "age": 0.08
+        },
+        {
+          "text": "5",
+          "age": 0.08
+        },
+        {
+          "text": "40",
+          "age": 0.08
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "hold",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 1,
+          "last": 0.7,
+          "hold": 0.04999999999999999
+        },
+        {
+          "id": 6,
+          "ratio": 1,
+          "last": 0.35,
+          "hold": 0.04999999999999999
+        },
+        {
+          "id": 7,
+          "ratio": 1,
+          "last": 0.95,
+          "hold": 0.04999999999999999
+        },
+        {
+          "id": 8,
+          "ratio": 1,
+          "last": 0.6,
+          "hold": 0.04999999999999999
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.13
+        },
+        {
+          "text": "65",
+          "age": 0.13
+        },
+        {
+          "text": "5",
+          "age": 0.13
+        },
+        {
+          "text": "40",
+          "age": 0.13
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "trail",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 0.7201616538219249,
+          "last": 0.7,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 0.3936835832808373,
+          "last": 0.35,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 0.9533602756369874,
+          "last": 0.95,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 0.6268822050958999,
+          "last": 0.6,
+          "hold": 0
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.43
+        },
+        {
+          "text": "65",
+          "age": 0.43
+        },
+        {
+          "text": "5",
+          "age": 0.43
+        },
+        {
+          "text": "40",
+          "age": 0.43
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "paused",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 0.7201616538219249,
+          "last": 0.7,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 0.3936835832808373,
+          "last": 0.35,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 0.9533602756369874,
+          "last": 0.95,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 0.6268822050958999,
+          "last": 0.6,
+          "hold": 0
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.43
+        },
+        {
+          "text": "65",
+          "age": 0.43
+        },
+        {
+          "text": "5",
+          "age": 0.43
+        },
+        {
+          "text": "40",
+          "age": 0.43
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "healed",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 0.9,
+          "last": 0.9,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 0.9,
+          "last": 0.9,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 0.9513661861223646,
+          "last": 0.95,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 0.610929488978917,
+          "last": 0.6,
+          "hold": 0
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.53
+        },
+        {
+          "text": "65",
+          "age": 0.53
+        },
+        {
+          "text": "5",
+          "age": 0.53
+        },
+        {
+          "text": "40",
+          "age": 0.53
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "rescaled",
+      "health": [
+        {
+          "id": 5,
+          "ratio": 0.9,
+          "last": 0.9,
+          "hold": 0
+        },
+        {
+          "id": 6,
+          "ratio": 0.9,
+          "last": 0.9,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 0.9505554498269121,
+          "last": 0.95,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 0.6044435986152968,
+          "last": 0.6,
+          "hold": 0
+        }
+      ],
+      "numbers": [
+        {
+          "text": "30",
+          "age": 0.63
+        },
+        {
+          "text": "5",
+          "age": 0.63
+        },
+        {
+          "text": "40",
+          "age": 0.63
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "name": "death-and-reorder",
+      "health": [
+        {
+          "id": 6,
+          "ratio": 0.9,
+          "last": 0.9,
+          "hold": 0
+        },
+        {
+          "id": 7,
+          "ratio": 0.9500000685479543,
+          "last": 0.95,
+          "hold": 0
+        },
+        {
+          "id": 8,
+          "ratio": 0.6000005483836345,
+          "last": 0.6,
+          "hold": 0
+        }
+      ],
+      "numbers": [],
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "x": 650.000018780048,
+      "y": 333.92309570312494,
+      "kills": 3,
+      "tier": 1,
+      "ink": 3,
+      "at": 0.6000000000000002,
+      "cancelled": false,
+      "visible": true,
+      "gl": 0
+    },
+    {
+      "x": 650.000018780048,
+      "y": 333.92309570312494,
+      "kills": 5,
+      "tier": 2,
+      "ink": 6,
+      "at": 0.35,
+      "cancelled": false,
+      "visible": true,
+      "gl": 0
+    },
+    {
+      "x": 650.000018780048,
+      "y": 333.92309570312494,
+      "kills": 8,
+      "tier": 3,
+      "ink": 10,
+      "at": 0.41666666666666663,
+      "cancelled": false,
+      "visible": true,
+      "gl": 0
+    }
+  ],
+  "errors": [],
+  "checks": "real pointer 3/5/8 sweep and highest-tier ink, smaller enemies, two-stroke armor, blocked frontal / successful side cut, array-eye stagger, ink flow, mobile layouts"
+}

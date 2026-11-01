@@ -174,21 +174,21 @@ test('plain strokes cut chains and collect fire without any spell recognition',(
  for(const p of fire.flames)g.strokeHualing({x:fc.x+p.x-30,y:fc.y+p.y},{x:fc.x+p.x+30,y:fc.y+p.y});
  assert.equal(fire.captured.size,5);assert.equal(fire.phase,'collecting');assert.equal(g.casts,0);
 });
-test('petal card lasts twelve active seconds, follows brush distance and adds no combat damage',()=>{
+test('flower card plants stationary buds, uses a timed fuse and freezes on pause',()=>{
  const g=game(),m=g.hualing,p=m.petals,e=g.spawn('oni',{x:300,y:600})!;e.speed=0;
- g.strokeHualing({x:100,y:600},{x:200,y:600});assert.equal(p.petals.length,0);
- p.activate();g.strokeHualing({x:200,y:600},{x:400,y:600});assert.ok(p.petals.length>=6);assert.equal(e.hp,210);
- const y=p.petals[0].y;step(g,.2);assert.ok(p.petals[0].y>y);const count=p.petals.length;
- g.strokeHualing({x:400,y:600},{x:400,y:600});assert.equal(p.petals.length,count);
+ g.strokeHualing({x:100,y:600},{x:200,y:600});assert.equal(p.buds.length,0);
+ p.activate();g.strokeHualing({x:200,y:600},{x:400,y:600});assert.ok(p.buds.length>=1);assert.equal(e.hp,210);
+ const y=p.buds[0].y;step(g,.1);assert.equal(p.buds[0].y,y);const count=p.buds.length;
+ g.strokeHualing({x:400,y:600},{x:400,y:600});assert.equal(p.buds.length,count);
  assert.equal(g.casts,0);assert.equal(g.skills.length,0);g.pause();const remaining=p.remaining;step(g,1);assert.equal(p.remaining,remaining);g.pause();
- step(g,12);assert.equal(p.active,false);const after=p.petals.length;g.strokeHualing({x:100,y:500},{x:500,y:500});assert.equal(p.petals.length,after);
+ step(g,12);assert.equal(p.active,false);const after=p.buds.length;g.strokeHualing({x:100,y:500},{x:500,y:500});assert.equal(p.buds.length,after);
 });
 test('petal effect is bounded, refreshes instead of stacking, resets on menu and ignores selected special cards',()=>{
- const g=game(),p=g.hualing.petals;p.activate();for(let i=0;i<500;i++)p.trace({x:50,y:500},{x:650,y:500});assert.ok(p.petals.length<=96);
- step(g,1);p.activate();assert.equal(p.remaining,12);g.hualing.select('dragon');const count=p.petals.length;g.strokeHualing({x:50,y:500},{x:650,y:500});assert.equal(p.petals.length,count);
- g.menu();assert.equal(p.petals.length,0);assert.equal(p.remaining,0);g.start(false,true);g.strokeHualing({x:50,y:500},{x:650,y:500});assert.equal(p.petals.length,0);
+ const g=game(),p=g.hualing.petals;p.activate();for(let i=0;i<500;i++)p.trace({x:50,y:500},{x:650,y:500});assert.ok(p.buds.length<=96);
+ step(g,1);p.activate();assert.equal(p.remaining,12);g.hualing.select('dragon');const count=p.buds.length;g.strokeHualing({x:50,y:500},{x:650,y:500});assert.equal(p.buds.length,count);
+ g.menu();assert.equal(p.buds.length,0);assert.equal(p.remaining,0);g.start(false,true);g.strokeHualing({x:50,y:500},{x:650,y:500});assert.equal(p.buds.length,0);
 });
-test('thunder talisman changes only the brush state, expires in real active time and freezes on pause',()=>{
+test('thunder talisman enchants the brush, expires in real active time and freezes on pause',()=>{
  const g=game(),m=g.hualing,t=m.thunder,e=g.spawn('oni',{x:300,y:600})!;e.speed=0;
  g.strokeHualing({x:100,y:500},{x:200,y:500});assert.equal(t.arcs.length,0);
  t.activate();g.strokeHualing({x:200,y:600},{x:400,y:600});assert.ok(t.arcs.length>0);assert.equal(t.contacts.length,1);assert.equal(e.hp,210);assert.equal(g.casts,0);
@@ -199,7 +199,7 @@ test('thunder talisman changes only the brush state, expires in real active time
 });
 test('thunder refreshes without stacking, caps geometry, coexists with leaves and clears on menu',()=>{
  const g=game(),m=g.hualing,t=m.thunder;t.activate();step(g,1);t.activate();assert.equal(t.remaining,12);
- m.petals.activate();for(let i=0;i<200;i++)g.strokeHualing({x:100,y:500},{x:600,y:500});assert.ok(t.arcs.length<=120);assert.ok(m.petals.petals.length>0);
+ m.petals.activate();for(let i=0;i<200;i++)g.strokeHualing({x:100,y:500},{x:600,y:500});assert.ok(t.arcs.length<=120);assert.ok(m.petals.buds.length>0);
  m.select('dragon');const count=t.arcs.length;g.strokeHualing({x:100,y:500},{x:600,y:500});assert.equal(t.arcs.length,count);
  g.menu();assert.equal(t.remaining,0);assert.equal(t.arcs.length,0);assert.equal(t.contacts.length,0);
 });

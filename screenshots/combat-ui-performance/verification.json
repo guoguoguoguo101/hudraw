@@ -1,0 +1,56 @@
+{
+  "result": {
+    "churn": {
+      "frames": 120,
+      "created": 0,
+      "destroyed": 0,
+      "clears": {
+        "health": 0,
+        "xpBase": 0,
+        "xpFill": 0
+      },
+      "ink": "灵墨 40 / 100",
+      "fill": 0.405,
+      "room": "击破119 · 将至 · 长队穿行 1s"
+    },
+    "damage": {
+      "value": "76 / 100",
+      "status": "受伤 −24",
+      "nearby": true
+    },
+    "critical": {
+      "value": "25 / 100",
+      "status": "生命危险",
+      "notice": "墨尽！抬笔点击墨水符"
+    },
+    "heal": {
+      "value": "80 / 100",
+      "status": "恢复 +55"
+    },
+    "xp": {
+      "value": "2 / 8",
+      "baseRebuilds": 0,
+      "settledRebuilds": 0
+    },
+    "upgradeHidden": true,
+    "support": {
+      "hidden": true,
+      "choices": 3,
+      "headerStable": true
+    },
+    "paused": {
+      "state": "paused",
+      "visible": false
+    },
+    "resumed": true,
+    "headerStable": true,
+    "gl": 0
+  },
+  "map": {
+    "headerHidden": true,
+    "healthHidden": true,
+    "zones": 17,
+    "toggled": true
+  },
+  "errors": []
+}

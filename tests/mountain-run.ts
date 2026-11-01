@@ -13,14 +13,14 @@ for(const l of MOUNTAIN_LEVELS){
   for(const e of [...g.enemies]){if(e.elite)sawElite=true;if(e.chapterBoss){sawBoss=true;assert.ok(l.boss);assert.equal(g.campaign.room,4);}g.damage(e,100000);}
  }
  assert.ok(sawElite);assert.equal(sawBoss,l.boss);assert.ok(cap<=l.modifier.cap+3);if(!l.boss){assert.equal(g.state,'win',`level ${l.id} did not clear`);assert.ok(g.campaign.completed.has(l.id));}
- assert.ok(g.hualing.upgrades.picks>=3&&g.hualing.upgrades.picks<=MOUNTAIN_BALANCE.picks);assert.ok(BRUSH_SKILLS.filter(k=>g.hualing.upgrades.levels[k]===4).length<=1,'no guaranteed two-max-level loadout');
+ assert.ok(g.hualing.upgrades.picks===MOUNTAIN_BALANCE.picks);assert.ok(BRUSH_SKILLS.filter(k=>g.hualing.upgrades.levels[k]===4).length<=1,'no guaranteed two-max-level loadout');
 }
 // Real kills, not room transitions, fund progression. Dead targets cannot award twice.
 const g=new Game();g.startMountainLevel(0);g.invulnerable=1e6;
 for(let i=0;i<7;i++){const e=g.spawn('ink',{x:300,y:550})!;g.damage(e,1e5);g.damage(e,1e5);}
 assert.equal(g.campaign.xp,7);g.advance(.1);assert.equal(g.hualing.upgrades.pending,0);assert.equal(g.hualing.upgrades.panel,null);
 g.damage(g.spawn('ink',{x:300,y:550})!,1e5);assert.equal(g.campaign.xp,8);for(let i=0;i<60;i++)g.advance(1/60);assert.equal(g.hualing.upgrades.panel,'upgrade');assert.equal(g.hualing.upgrades.pending,1);assert.equal(g.campaign.xp,0);
-g.hualing.upgrades.choose(g.hualing.upgrades.choices[0]);assert.equal(g.campaign.xpNeeded,18);assert.equal(g.hualing.upgrades.picks,1);
+g.hualing.upgrades.choose(g.hualing.upgrades.choices[0]);assert.equal(g.campaign.xpNeeded,14);assert.equal(g.hualing.upgrades.picks,1);
 // A continuous train uses one look and the same curved entry, with staggered bodies.
 const train=new Game();train.startMountainLevel(0);train.invulnerable=1e6;for(let i=0;i<120;i++)train.advance(1/60);
 assert.equal(train.enemies.length,4);assert.equal(new Set(train.enemies.map(e=>e.look)).size,1);assert.ok(train.enemies[0].y>train.enemies[1].y,'earlier member leads the train');assert.ok(Math.hypot(train.enemies[0].x-train.enemies[1].x,train.enemies[0].y-train.enemies[1].y)>15);
@@ -38,4 +38,4 @@ ink.ink.setAmount(0);assert.equal(ink.ink.begin(2),false);ink.advance(.1);assert
 ink.ink.setAmount(0);ink.campaign.dropInk(ink,330,550);ink.campaign.collectAlong(ink,{x:280,y:550},{x:390,y:550});assert.equal(ink.ink.currentInk,28);
 const drops=new Game();drops.startMountainLevel(0);for(let i=0;i<6;i++)drops.damage(drops.spawn('ink',{x:350,y:570})!,1e5);assert.equal(drops.campaign.pickups.length,1,'six small monsters guarantee ink');
 ink.campaign.supportPanel=true;const before=ink.time;ink.advance(1);assert.equal(ink.time,before);assert.equal(ink.lastResourceDt,0);ink.campaign.supportPanel=false;ink.start(false,true,false,false,true);assert.equal(ink.campaign.levelId,null);assert.equal(ink.ink.unlimited,true);assert.equal(ink.ink.costScale,1);
-console.log('PASS campaign: 40 level flows through normal clears / boss entry, no opening/room gifts, kill XP and rising costs, at most five picks/one Lv4, four alternating formations, quick empty-arena refill, pressure caps, guaranteed/emergency ink supplies, zero-ink tap/swipe collection and mode isolation');
+console.log('PASS campaign: 40 level flows through normal clears / boss entry, no opening/room gifts, kill XP and rising costs, seven picks with early evolution / one Lv4, four alternating formations, quick empty-arena refill, pressure caps, guaranteed/emergency ink supplies, zero-ink tap/swipe collection and mode isolation');

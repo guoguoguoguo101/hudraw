@@ -1,8 +1,8 @@
 import {MOUNTAIN_THEMES,chapterPanel,chapterMark} from './mountain-theme';
 import {mapStartButton,mapBackdrop} from './mountain-map-art';
-import {MountainMapLife} from './mountain-map-life';
+import {MountainMapLife,type MountainMapAssets} from './mountain-map-life';
 import {MountainCombatHUD} from './mountain-combat-hud';
-import {Container,Graphics,type Texture} from 'pixi.js';
+import {Container,Graphics,Text} from 'pixi.js';
 import type {Game} from '../gameplay/game';
 import type {InputEvent} from '../platform/adapter';
 import {MOUNTAIN_LEVELS,MOUNTAIN_CHAPTERS,SUPPORT_NAMES,SUPPORT_TEXT} from '../gameplay/mountain-run';
@@ -12,10 +12,12 @@ import {text} from './interface';
 const PAPER=0xf2e3c5,INK=0x20342f,GOLD=0xd4ad6b,RED=0x9d4736;
 type Zone={x:number;y:number;w:number;h:number;run:()=>void};
 export class MountainUI{
- set mascotLoader(loader:()=>Promise<Texture>){this.mapLife.loader=loader;}
+ set mascotLoader(loader:()=>Promise<MountainMapAssets>){this.mapLife.loader=loader;}
  get mapReady(){return this.opened&&this.mapLife.ready;}
- root=new Container();private mapBase=new Graphics();private mapLife=new MountainMapLife();private combatHUD=new MountainCombatHUD();private baseKey='';private surface=new Container();opened=false;chapter=0;selected=0;private zones:Zone[]=[];private key='';
- constructor(private game:Game,private cancel:()=>void,private start:(id:number)=>void,private home:()=>void,private pause:()=>void){this.root.addChild(this.mapBase,this.mapLife.root,this.surface,this.combatHUD.root);}
+ onMapMotion?:(enabled:boolean)=>void;
+ setMapMotion(enabled:boolean){this.mapLife.setMotion(enabled);this.key='';this.onMapMotion?.(enabled);}
+ root=new Container();private mapBase=new Graphics();private mapLife=new MountainMapLife();private combatHUD=new MountainCombatHUD();private combatHeader=new MountainRunHeader();private baseKey='';private surface=new Container();opened=false;chapter=0;selected=0;private zones:Zone[]=[];private key='';
+ constructor(private game:Game,private cancel:()=>void,private start:(id:number)=>void,private home:()=>void,private pause:()=>void){this.root.addChild(this.mapBase,this.mapLife.root,this.combatHeader.root,this.surface,this.combatHUD.root);}
  open(){this.cancel();const l=this.game.campaign.level;if(l){this.chapter=Math.floor(l.id/10);this.selected=l.id;}this.opened=true;this.key='';}
  handle(e:InputEvent){const c=this.game.campaign;if(!this.opened&&c.levelId===null)return false;if(this.game.state==='paused'&&!this.opened)return false;if(!this.opened&&this.game.hualing.upgrades.blocked)return false;if(e.kind==='down'){if(!this.opened&&!c.supportPanel&&this.game.active){const pickup=c.pickups.find(p=>Math.hypot(p.x-e.x,p.y-e.y)<=46);if(pickup){this.cancel();if(c.collectInk(this.game,pickup.id))return true;}}const z=this.zones.find(z=>e.x>=z.x&&e.x<=z.x+z.w&&e.y>=z.y&&e.y<=z.y+z.h);if(z){this.cancel();z.run();this.key='';return true;}}return this.opened||c.supportPanel||['win','lose'].includes(this.game.state);}
  private label(s:string,x:number,y:number,size=20,color:number=this.theme.ink){return text(this.surface,s,x,y,size,color,{letterSpacing:0});}
@@ -24,7 +26,9 @@ export class MountainUI{
  private box(x:number,y:number,w:number,h:number,color=INK){chapterPanel(this.surface,this.ch,x,y,w,h,false,.92);}
  private button(s:string,x:number,y:number,w:number,h:number,run:()=>void,active=false){chapterPanel(this.surface,this.ch,x,y,w,h,active);this.label(s,x+w/2,y+h/2,20,active?this.theme.accent:this.theme.ink);this.zones.push({x,y,w,h,run});}
  update(header=0,footer=0){const g=this.game,c=g.campaign;this.root.visible=this.opened||c.levelId!==null&&g.state!=='paused';if(!this.root.visible){this.key='';return;}
- this.combatHUD.update(g,header,footer);this.combatHUD.root.visible=this.combatHUD.root.visible&&!this.opened;
+ if(this.opened)this.combatHUD.root.visible=false;else this.combatHUD.update(g,header,footer);
+ this.combatHeader.root.visible=!this.opened;
+ if(!this.opened)this.combatHeader.update(g,header);
  this.mapBase.visible=this.opened;
  this.mapLife.root.visible=this.opened;
  if(this.opened){
@@ -32,16 +36,19 @@ export class MountainUI{
   const baseKey=[this.chapter,header,footer].join(':');
   if(baseKey!==this.baseKey){this.baseKey=baseKey;mapBackdrop(this.mapBase,this.ch,header,footer);}
  }
+ // The ordinary combat header owns persistent text/geometry. Resource changes must
+ // never destroy and recreate the entire UI while the player is drawing.
+ if(!this.opened&&!c.supportPanel&&g.state!=='win'&&g.state!=='lose'){
+  const key=`combat:${c.levelId}:${header}`;
+  if(key!==this.key){this.key=key;this.surface.removeChildren().forEach(v=>v.destroy({children:true}));this.zones=[{x:624,y:header+22,w:54,h:42,run:this.pause}];}
+  return;
+ }
  const key=JSON.stringify([this.opened,this.chapter,this.selected,header,footer,g.state,c.room,c.spawned,c.waveSerial,c.roomKills,c.supportPanel,c.supportChoices,c.support,Math.ceil(c.supportReady-c.age),Math.ceil(c.dragonReady-c.age),Math.floor(g.life),Math.floor(g.ink.currentInk),Math.ceil(c.spawn),g.hualing.upgrades.levels,c.completed.size]);if(key===this.key)return;this.key=key;this.surface.removeChildren().forEach(v=>v.destroy({children:true}));this.zones=[];
  if(this.opened){
   this.drawMap(header,footer);return;
  }
 
- this.box(20,header+10,680,132);const l=c.level!;this.label(`${HUALING_CHAPTERS[l.chapter].name}  ${l.number} / 10 · ${l.title}`,315,header+35,22);this.button('Ⅱ',624,header+22,54,42,this.pause);this.label(`${c.roomName}  ${c.room+1}/5`,165,header+70,19,this.theme.muted);this.label(c.room===2||c.room===4?'拆招破势 · 留意攻击预兆':`击破${c.roomKills} · ${c.nextFormation} ${Math.max(0,Math.ceil(c.spawn))}s`,478,header+70,17,this.theme.muted);
- const bar=(x:number,y:number,width:number,ratio:number,color:number)=>{this.surface.addChild(new Graphics().roundRect(x,y,width,9,4).fill(0x101f1c).roundRect(x,y,Math.max(1,width*Math.max(0,Math.min(1,ratio))),9,4).fill(color));};
- this.label(`生命 ${Math.ceil(g.life)}/${g.maxHp}`,105,header+100,15);bar(185,header+96,145,g.life/g.maxHp,0xc1684e);this.label(`墨 ${Math.floor(g.ink.currentInk)}`,385,header+100,15);bar(425,header+96,245,g.ink.currentInk/100,g.ink.currentInk<20?0xda7652:0x77bbbc);
- this.label(BRUSH_SKILLS.filter(id=>g.hualing.upgrades.levels[id]).map(id=>`${BRUSH_NAMES[id]} Lv${g.hualing.upgrades.levels[id]}`).join('   ·   ')||'基础笔法 · 击妖积累经验后悟道',360,header+128,16,this.theme.muted);
- const y=footer+1150;this.box(20,y-12,680,118);this.button(c.age<c.dragonReady?`游龙 ${Math.ceil(c.dragonReady-c.age)}s`:'游龙 · 18墨',34,y,186,48,()=>c.dragon(g));this.button(c.support?(SUPPORT_NAMES[c.support]+(c.age<c.supportReady?` ${Math.ceil(c.supportReady-c.age)}s`:'')):'破精英后择灵符',234,y,452,48,()=>c.useSupport(g));this.label(g.ink.currentInk<20?'墨量不足 · 抬笔点击场中墨水符':'击妖攒经验 · 每六只掉落墨水符 · 点击或划过获取',360,y+77,18,this.theme.muted);
+ const l=c.level!;
  if(c.supportPanel){this.shade();this.box(36,header+300,648,550);this.label('破阵得灵 · 择一相伴',360,header+345,32);this.label('灵符伴随本局，可反复使用',360,header+386,18,this.theme.muted);c.supportChoices.forEach((id,i)=>{this.button(SUPPORT_NAMES[id],60,header+420+i*126,600,110,()=>c.chooseSupport(g,id));this.label(SUPPORT_TEXT[id],360,header+496+i*126,17,this.theme.muted);});}
  if(g.state==='win'||g.state==='lose'){this.shade();this.box(60,header+340,600,520);this.label(g.state==='win'?'此境 · 已落印':'墨尽 · 再起笔',360,header+400,39);this.label(l.title,360,header+449,27,this.theme.muted);this.label(`击破 ${g.kills}  ·  用时 ${Math.floor(g.time)}秒`,360,header+495,21);this.label(BRUSH_SKILLS.filter(id=>g.hualing.upgrades.levels[id]).map(id=>`${BRUSH_NAMES[id]} Lv${g.hualing.upgrades.levels[id]}`).join(' · '),360,header+536,21,this.theme.muted);this.button('再战本关',100,header+590,520,58,()=>this.start(l.id));this.button(g.state==='win'&&l.id<39?'游历下一关':'返回选关',100,header+664,520,58,()=>{if(g.state==='win'&&l.id<39)this.start(l.id+1);else this.open();},true);this.button('选择其他关卡',100,header+738,520,58,()=>this.open());}
  }
@@ -100,7 +107,37 @@ export class MountainUI{
   const start=new Graphics();this.surface.addChild(start);mapStartButton(start,ch,206,by,478,65);label('落笔入画',435,by+32,25,ch==='palace'?t.dark:t.title);
   this.zones.push({x:36,y:by,w:150,h:65,run:()=>{this.opened=false;this.home();}});
   this.zones.push({x:206,y:by,w:478,h:65,run:()=>{this.opened=false;this.start(this.selected);}});
+  const motion=this.mapLife.motionEnabled,mx=294,my=header+14,mw=132,mh=40;
+  art.roundRect(mx,my,mw,mh,8).fill({color:t.title,alpha:motion?.13:.04}).stroke({color:t.line,width:1,alpha:motion?.7:.4});
+  label(`动态 ${motion?'开':'关'}`,mx+mw/2,my+mh/2,17,t.title);
+  this.zones.push({x:mx,y:my,w:mw,h:mh,run:()=>this.setMapMotion(!this.mapLife.motionEnabled)});
   label(l.boss?'本境镇守首领 · 破招后再落笔':'循山海入境 · 起笔择道，破阵得灵',360,footer+1238,16);
  }
  private shade(){this.surface.addChild(new Graphics().rect(0,-1000,720,3400).fill({color:0x0b1715,alpha:.85}));this.zones=[];}
+}
+
+/** Static chapter framing and reusable combat labels; the ink fill changes by transform. */
+class MountainRunHeader{
+ readonly root=new Container();private key='';private title?:Text;private room?:Text;private detail?:Text;private ink?:Text;private skills?:Text;private fill?:Graphics;
+ constructor(){this.root.eventMode='none';}
+ update(g:Game,header:number){
+  const c=g.campaign,l=c.level;if(!l)return;const t=MOUNTAIN_THEMES[l.chapter],key=`${l.id}:${header}`;
+  if(this.key!==key){
+   this.key=key;this.root.removeChildren().forEach(n=>n.destroy({children:true}));
+   chapterPanel(this.root,l.chapter,20,header+10,680,132,false,.92);
+   const label=(s:string,x:number,y:number,size:number,color:number=t.ink)=>text(this.root,s,x,y,size,color,{letterSpacing:0});
+   this.title=label('',315,header+35,22);
+   chapterPanel(this.root,l.chapter,624,header+22,54,42,false,.92);label('Ⅱ',651,header+43,20);
+   this.room=label('',165,header+70,19,t.muted);this.detail=label('',478,header+70,17,t.muted);
+   this.ink=label('',112,header+100,18);this.skills=label('',360,header+128,16,t.muted);
+   this.root.addChild(new Graphics().roundRect(214,header+96,456,9,4).fill(0x101f1c));
+   this.fill=new Graphics().roundRect(0,0,456,9,4).fill(0xffffff);this.fill.position.set(214,header+96);this.root.addChild(this.fill);
+  }
+  this.title!.text=`${HUALING_CHAPTERS[l.chapter].name}  ${l.number} / 10 · ${l.title}`;
+  this.room!.text=`${c.roomName}  ${c.room+1}/5`;
+  this.detail!.text=c.room===2||c.room===4?'拆招破势 · 留意攻击预兆':`击破${c.roomKills} · ${c.nextFormation} ${Math.max(0,Math.ceil(c.spawn))}s`;
+  this.ink!.text=`灵墨 ${Math.floor(g.ink.currentInk)} / ${g.ink.maxInk}`;
+  this.skills!.text=BRUSH_SKILLS.filter(id=>g.hualing.upgrades.levels[id]).map(id=>`${BRUSH_NAMES[id]} Lv${g.hualing.upgrades.levels[id]}`).join('   ·   ')||'基础笔法 · 击妖积累经验后悟道';
+  this.fill!.scale.x=Math.max(1/456,Math.max(0,Math.min(1,g.ink.currentInk/g.ink.maxInk)));this.fill!.tint=g.ink.currentInk<20?0xda7652:0x77bbbc;
+ }
 }

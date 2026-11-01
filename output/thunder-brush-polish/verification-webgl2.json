@@ -1,0 +1,233 @@
+{
+  "phases": [
+    {
+      "name": "draw",
+      "time": 0,
+      "gl": 0,
+      "hits": [],
+      "contacts": 0,
+      "activeLinks": 0,
+      "delayedLinks": 0,
+      "cached": 0,
+      "glows": 1
+    },
+    {
+      "name": "first-contact",
+      "time": 0.008333333333333333,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        }
+      ],
+      "contacts": 2,
+      "activeLinks": 2,
+      "delayedLinks": 2,
+      "cached": 2,
+      "glows": 5
+    },
+    {
+      "name": "chain-delay",
+      "time": 0.04,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        }
+      ],
+      "contacts": 2,
+      "activeLinks": 2,
+      "delayedLinks": 2,
+      "cached": 2,
+      "glows": 5
+    },
+    {
+      "name": "chain-arrival",
+      "time": 0.07,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 4,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        },
+        {
+          "id": 3,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        }
+      ],
+      "contacts": 4,
+      "activeLinks": 4,
+      "delayedLinks": 0,
+      "cached": 4,
+      "glows": 7
+    },
+    {
+      "name": "settle",
+      "time": 0.15,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 4,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        },
+        {
+          "id": 3,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        }
+      ],
+      "contacts": 4,
+      "activeLinks": 4,
+      "delayedLinks": 0,
+      "cached": 4,
+      "glows": 5
+    },
+    {
+      "name": "tail",
+      "time": 0.25,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 4,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        },
+        {
+          "id": 3,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        }
+      ],
+      "contacts": 2,
+      "activeLinks": 2,
+      "delayedLinks": 0,
+      "cached": 2,
+      "glows": 3
+    },
+    {
+      "name": "cleared",
+      "time": 0.4,
+      "gl": 0,
+      "hits": [
+        {
+          "id": 2,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 1,
+          "amount": 24,
+          "at": 0.008333333333333333
+        },
+        {
+          "id": 4,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        },
+        {
+          "id": 3,
+          "amount": 19.200000000000003,
+          "at": 0.056666666666666664
+        }
+      ],
+      "contacts": 0,
+      "activeLinks": 0,
+      "delayedLinks": 0,
+      "cached": 0,
+      "glows": 0
+    }
+  ],
+  "metrics": {
+    "results": {
+      "before": {
+        "frames": 120,
+        "clears": 480,
+        "strokes": 3840,
+        "cachedClears": 0,
+        "cachedStrokes": 0,
+        "medianMs": 0.19999998807907104,
+        "p95Ms": 0.5
+      },
+      "after": {
+        "frames": 120,
+        "clears": 480,
+        "strokes": 240,
+        "cachedClears": 0,
+        "cachedStrokes": 0,
+        "medianMs": 0,
+        "p95Ms": 0.19999998807907104
+      }
+    },
+    "cache": {
+      "active": 0,
+      "spare": 20,
+      "children": 20,
+      "glows": 7
+    },
+    "disabledClears": 0,
+    "full": [
+      0.7002055402316438,
+      0.7002055402316438,
+      0.9172564356289435,
+      0.9172564356289435
+    ],
+    "low": [
+      0.7002055402316438,
+      0.7002055402316438,
+      0.9172564356289435,
+      0.9172564356289435
+    ],
+    "clock": 0.07,
+    "pausedClock": 0.07,
+    "gl": 0,
+    "webgl": 2
+  },
+  "errors": []
+}

@@ -17,3 +17,17 @@ wechat-game/
 **/references/Receipt-*.pdf
 __pycache__/
 *.pyc
+
+# Local scratch work and throwaway WeChat upload checks.
+/tmp/
+/wechat-preview-check*/
+
+# Raw animation captures; retain selected screenshots, GIFs and exported videos.
+/screenshots/**/frames/
+/screenshots/**/frame-*.png
+/screenshots/**/page@*.webm
+/screenshots/**/raw.webm
+/screenshots/**/telemetry.json
+/screenshots/**/trace.zip
+/screenshots/map-vector-motion/*-[0-9][0-9].png
+!/screenshots/map-vector-motion/*-00.png

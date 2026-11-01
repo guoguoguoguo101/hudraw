@@ -1,0 +1,56 @@
+{
+  "petal": [
+    {
+      "clears": 180,
+      "drawsPerFrame": 950,
+      "instructions": 950,
+      "objects": 3,
+      "lowCounts": null,
+      "clearedPools": null,
+      "disabledHidden": true
+    },
+    {
+      "clears": 120,
+      "drawsPerFrame": 140,
+      "instructions": 950,
+      "objects": 134,
+      "lowCounts": {
+        "leaves": 36,
+        "shards": 20
+      },
+      "clearedPools": true,
+      "disabledHidden": true
+    }
+  ],
+  "dragon": [
+    {
+      "samples": 1605
+    },
+    {
+      "samples": 585
+    }
+  ],
+  "mask": [
+    {
+      "stableClears": 60,
+      "resizedClears": 1
+    },
+    {
+      "stableClears": 1,
+      "resizedClears": 1
+    }
+  ],
+  "gl": 0,
+  "petalPixels": {
+    "changedChannels": 0.0014431423611111112,
+    "meanAbsoluteError": 0.03822455512152778
+  },
+  "petalLowPixels": {
+    "changedChannels": 0.0010951063368055557,
+    "meanAbsoluteError": 0.0277978515625
+  },
+  "dragonPixels": {
+    "changedChannels": 0,
+    "meanAbsoluteError": 0.0000017769816899806664
+  }
+}

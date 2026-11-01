@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "mode": "campaign",
+      "width": 430,
+      "buds": 9,
+      "groupDamage": true,
+      "slow": true,
+      "farUntouched": true,
+      "pause": true,
+      "cleanup": true
+    },
+    {
+      "mode": "campaign",
+      "width": 375,
+      "buds": 9,
+      "groupDamage": true,
+      "slow": true,
+      "farUntouched": true,
+      "pause": true,
+      "cleanup": true
+    },
+    {
+      "mode": "campaign",
+      "width": 390,
+      "buds": 9,
+      "groupDamage": true,
+      "slow": true,
+      "farUntouched": true,
+      "pause": true,
+      "cleanup": true
+    },
+    {
+      "mode": "sandbox",
+      "width": 430,
+      "buds": 9,
+      "groupDamage": true,
+      "slow": true,
+      "farUntouched": true,
+      "pause": true,
+      "cleanup": true
+    }
+  ],
+  "errors": []
+}

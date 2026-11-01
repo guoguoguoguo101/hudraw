@@ -1,3 +1,4 @@
+import {BrushLine} from './brush-line';
 import {DualBrush,DUAL_BRUSH_TIERS} from './dual-brush';
 import type {Point} from '../input/recognizer';
 import type {Enemy} from '../core/types';
@@ -7,11 +8,11 @@ import {brushBodyRadius} from './brush-contact';
 import {InkCarp,INK_CARP_TIERS} from './ink-carp';
 
 /** splash is the legacy loadout key; its entire route now represents 双毫. */
-export type BrushSkill='spray'|'wide'|'splash'|'trail';
+export type BrushSkill='spray'|'wide'|'splash'|'trail'|'line';
 export type BrushLevels=Record<BrushSkill,number>;
 export type BrushGrowthSnapshot={levels:BrushLevels;growth:boolean;picks:number;kills:number;pending:number;nextKills:number};
-export const BRUSH_SKILLS:BrushSkill[]=['spray','wide','splash','trail'];
-export const BRUSH_NAMES:Record<BrushSkill,string>={spray:'喷墨',wide:'阔锋',splash:'双毫',trail:'留墨'};
+export const BRUSH_SKILLS:BrushSkill[]=['spray','wide','splash','trail','line'];
+export const BRUSH_NAMES:Record<BrushSkill,string>={spray:'喷墨',wide:'阔锋',splash:'双毫',trail:'留墨',line:'一字斩'};
 export const BRUSH_BASE_WIDTH=16;
 /** All balance values live here; level zero disables a skill. */
 export const BRUSH_UPGRADE_CONFIG={
@@ -19,11 +20,13 @@ export const BRUSH_UPGRADE_CONFIG={
  wide:[{scale:1,damage:30},{scale:1.65,damage:36},{scale:2.15,damage:44},{scale:2.65,damage:52},{scale:3.1,damage:60}],
  splash:DUAL_BRUSH_TIERS,
  trail:INK_TRAIL_CONFIG,
+ line:[0,1,2,3,4],
 };
 export const BRUSH_DESCRIPTIONS:Record<BrushSkill,string[]>={
  spray:['关闭','游墨 · 小墨鲤 · 内置冷却0.85秒','双鲤 · 双鱼分流 · 内置冷却0.8秒','领游 · 大鲤带双小鲤 · 冷却0.95秒','跃浪 · 巨鲤穿敌拍浪 · 冷却1.4秒'],
  wide:['关闭','展锋 · 宽笔横扫 · 伤害36','横扫 · 更宽笔迹 · 伤害44','重锋 · 墨刃随笔 · 扫中轻推敌','破空 · 宽幅虚空 · 星流内爆 · 无冷却'],
- splash:['关闭','分毫 · 一道金锋 · 主笔35%伤害','并毫 · 金朱双锋 · 各35%伤害','灵毫初醒 · 按住自然游动 · 各45%伤害','墨团双龙 · 按住自然游动 · 各55%伤害'],
+ splash:['关闭','分毫 · 一道金锋 · 主笔35%伤害','并毫 · 金朱双锋 · 各35%伤害','灵毫初醒 · 按住自然游动 · 各45%伤害','双龙巡天 · 落笔全场巡游追妖 · 各55%伤害'],
+ line:['关闭','收锋 · 近直线收笔追加斩击','交锋 · 留锋五秒 · 两线相交爆发','三才成阵 · 三线围合重斩 · 命中返墨8','卷轴借锋 · 穿阵展卷 · 三刃外放'],
  trail:['关闭','墨团初醒 · 挥笔唤伙伴 · 最多2只','结伴蹦跳 · 最多3只 · 主动追妖扑撞','团团护卫 · 最多4只 · 每三次唤大墨团','墨团一家 · 最多5只 · 大尾守护兽参战'],
 };
 type Drop={x:number;y:number;vx:number;vy:number;age:number;life:number;damage:number;size:number;volley:boolean;spray?:boolean;high?:boolean;remaining?:number;hit?:Set<number>};
@@ -34,8 +37,8 @@ export type RiftPoint=Point&{born:number;distance:number;break?:boolean};
 export type WideWave={x:number;y:number;dx:number;dy:number;length:number;age:number;life:number;radius:number;hit:Set<number>;burstHit:Set<number>;style:TrailStyle;id:number;stroke:number;resolved:boolean;path:RiftPoint[];pending:{a:Point;b:Point;born:number;opened?:boolean}[]};
 export type WideCut={x:number;y:number;dx:number;dy:number;age:number;void?:boolean};
 export class BrushUpgrades{
- carp=new InkCarp();dual=new DualBrush();
- levels:BrushLevels={spray:0,wide:0,splash:0,trail:0};trail=new InkTrail();
+ line=new BrushLine();carp=new InkCarp();dual=new DualBrush();
+ levels:BrushLevels={spray:0,wide:0,splash:0,trail:0,line:0};trail=new InkTrail();
  drops:Drop[]=[];splashes:Splash[]=[];
  wideWaves:WideWave[]=[];wideAnchor:Point={x:360,y:650};wideCastAt=-Infinity;
  wideCuts:WideCut[]=[];wideEvolvedAt=-Infinity;
@@ -56,10 +59,10 @@ export class BrushUpgrades{
  get mainDamage(){return BRUSH_UPGRADE_CONFIG.wide[this.levels.wide].damage;}
  takeWideTone(){const tone=this.wideTone;this.wideTone=null;return tone;}
  get chargeRatio(){return 0;}
- reset(){this.runMode=false;this.runChoices=[];this.choiceSeed=37;this.levels={spray:0,wide:0,splash:0,trail:0};this.wideEvolved=false;this.clearEffects();this.clock=0;this.panel=null;this.growth=false;this.picks=0;this.kills=0;this.pending=0;this.nextKills=4;}
+ reset(){this.runMode=false;this.runChoices=[];this.choiceSeed=37;this.levels={spray:0,wide:0,splash:0,trail:0,line:0};this.wideEvolved=false;this.clearEffects();this.clock=0;this.panel=null;this.growth=false;this.picks=0;this.kills=0;this.pending=0;this.nextKills=4;}
  snapshot():BrushGrowthSnapshot{return {levels:{...this.levels},growth:this.growth,picks:this.picks,kills:this.kills,pending:this.pending,nextKills:this.nextKills};}
- restore(saved:BrushGrowthSnapshot){this.reset();this.levels={...saved.levels};this.wideEvolved=this.levels.wide===4;this.growth=saved.growth;this.picks=saved.picks;this.kills=saved.kills;this.pending=saved.pending;this.nextKills=saved.nextKills;}
- clearEffects(){this.dual.reset();this.dual.level=this.levels.splash;this.carp.reset();this.carp.level=this.levels.spray;this.trail.reset();this.drops=[];this.splashes=[];this.wideWaves=[];this.widePending=[];this.wideCuts=[];this.wideActive=null;this.wideStroke=0;this.wideTone=null;this.wideCastAt=this.wideEvolvedAt=-Infinity;this.wideAnchor={x:360,y:650};this.charge=0;this.stroke=false;this.tip=null;this.direction={x:0,y:-1};}
+ restore(saved:BrushGrowthSnapshot){this.reset();this.levels={...this.levels,...saved.levels};this.wideEvolved=this.levels.wide===4;this.growth=saved.growth;this.picks=saved.picks;this.kills=saved.kills;this.pending=saved.pending;this.nextKills=saved.nextKills;}
+ clearEffects(){this.line.reset();this.line.level=this.levels.line;this.dual.reset();this.dual.level=this.levels.splash;this.carp.reset();this.carp.level=this.levels.spray;this.trail.reset();this.drops=[];this.splashes=[];this.wideWaves=[];this.widePending=[];this.wideCuts=[];this.wideActive=null;this.wideStroke=0;this.wideTone=null;this.wideCastAt=this.wideEvolvedAt=-Infinity;this.wideAnchor={x:360,y:650};this.charge=0;this.stroke=false;this.tip=null;this.direction={x:0,y:-1};}
  setLevel(id:BrushSkill,level:number){
   if(!BRUSH_SKILLS.includes(id)||!Number.isFinite(level))return;
   this.levels[id]=Math.max(0,Math.min(4,Math.floor(level)));this.clearEffects();
@@ -69,9 +72,9 @@ export class BrushUpgrades{
  kill(){if(this.runMode)return;if(!this.growth||this.picks+this.pending>=8)return;this.kills++;if(this.kills>=this.nextKills){this.kills-=this.nextKills;this.nextKills+=2;this.pending++;}}
  offer(safe:boolean){if(safe&&!this.panel&&this.growth&&this.pending>0&&this.choices.length){if(this.runMode){const pool=this.choices;const owned=pool.filter(id=>this.levels[id]>0).sort((a,b)=>this.levels[b]-this.levels[a]);const chosen=owned.slice(0,2),rest=pool.filter(id=>!chosen.includes(id));while(chosen.length<3&&rest.length){this.choiceSeed=(Math.imul(this.choiceSeed,1664525)+1013904223)>>>0;chosen.push(rest.splice(this.choiceSeed%rest.length,1)[0]);}this.runChoices=chosen;}this.panel='upgrade';}}
  choose(id:BrushSkill){if(this.panel!=='upgrade'||!this.choices.includes(id))return;this.setLevel(id,this.levels[id]+1);this.picks++;this.pending=Math.max(0,this.pending-1);this.panel=null;}
- begin(origin?:Point){this.dual.level=this.levels.splash;this.dual.begin(origin,this.mainDamage,this.width);this.carp.begin();this.trail.begin();this.stroke=true;this.tip=null;this.wideActive=null;this.wideStroke++;}
+ begin(origin?:Point){this.line.level=this.levels.line;this.line.begin();this.dual.level=this.levels.splash;this.dual.begin(origin,this.mainDamage,this.width);this.carp.begin();this.trail.begin();this.stroke=true;this.tip=null;this.wideActive=null;this.wideStroke++;}
  end(bounds:Arena,cancel=false){
-  this.carp.end();
+  this.line.end(bounds,cancel);this.carp.end();
   this.dual.end(cancel);this.trail.end(cancel,bounds);
   this.stroke=false;this.tip=null;this.wideActive=null;
  }
@@ -80,7 +83,7 @@ export class BrushUpgrades{
   const d=Math.hypot(b.x-a.x,b.y-a.y);if(!Number.isFinite(d)||d<.01||this.blocked)return;
   const moving=this.sprayActive,dx=(b.x-a.x)/d,dy=(b.y-a.y)/d;
   const blend=moving?.62:1,nx=this.direction.x*(1-blend)+dx*blend,ny=this.direction.y*(1-blend)+dy*blend,n=Math.hypot(nx,ny)||1;
-  this.tip={...b};this.direction={x:nx/n,y:ny/n};
+  if(this.stroke)this.line.trace(a,b);this.tip={...b};this.direction={x:nx/n,y:ny/n};
   this.dual.level=this.levels.splash;this.dual.trace(a,b,this.mainDamage,this.width);
   this.wideAnchor={...b};this.carp.level=this.levels.spray;this.carp.trace(a,b);
   if(this.stroke&&this.wideReady){
@@ -105,7 +108,7 @@ export class BrushUpgrades{
   if(this.blocked||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(.1,dt);
   this.carp.level=this.levels.spray;if(bounds)this.carp.bounds={...bounds};this.carp.advance(dt,enemies,damage);
   this.clock+=dt;this.dual.level=this.levels.splash;this.dual.advance(dt,enemies,damage,bounds??{left:0,right:720,top:0,bottom:1280});
-  this.trail.advance(dt,enemies,damage,bounds);
+  this.trail.advance(dt,enemies,damage,bounds);this.line.advance(dt,enemies,damage);
   for(const cut of this.wideCuts)cut.age+=dt;this.wideCuts=this.wideCuts.filter(c=>c.age<.24);
   const visible=new Set(this.wideWaves);for(const w of this.wideWaves)w.age+=dt;
   // Two one-shot stages per real segment: opening cut, then an interior star collapse.

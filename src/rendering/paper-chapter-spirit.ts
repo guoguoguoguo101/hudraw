@@ -3,6 +3,12 @@ import type {EnemyLook} from '../core/types';
 
 const PAPER=0xffebc7,INK=0x243b46,JADE=0x397c7f,TEAL=0x245968,RED=0xbb5240,VERMILION=0xda7050,GOLD=0xd8b16b,BLUE=0x334e72;
 type Part={g:Graphics;y:number;kind:'fin'|'tail'|'ribbon'|'claw'|'foot';side:number};
+/** A narrow ink cut and one offset paper edge stay readable on snow and cloud.
+ * Built into the static vector once, so atlas baking needs no live filters. */
+function cutPaper(g:Graphics,contour:(g:Graphics)=>Graphics,color:number,width=2.7){
+ g.save().transform(1,0,0,1,1.6,3);contour(g).fill({color:INK,alpha:.3});g.restore();
+ contour(g).fill(color).stroke({color:INK,width,join:'bevel'});
+}
 function fold(g:Graphics,points:number[],alpha=.65){g.poly(points,false).stroke({color:GOLD,width:1,alpha});}
 function cloudCut(g:Graphics,x:number,y:number,s=1,color=PAPER){
  g.save().transform(s,0,0,s,x,y).moveTo(-18,5).bezierCurveTo(-28,-2,-19,-16,-8,-10).bezierCurveTo(-5,-25,17,-21,17,-8).bezierCurveTo(33,-9,31,11,16,9).lineTo(-18,9).closePath().fill(color);
@@ -74,12 +80,12 @@ export class PaperChapterSpirit{
   tail.poly([-3,0,4,0,15,23,0,35,13,48,28,42,19,55,0,48,-7,35,7,22]).fill(BLUE).stroke({color:GOLD,width:.8});
   for(const side of [-1,1]){
    const w=this.part('fin',side,side*6,-3);w.scale.x=side;
-   w.poly([0,-12,55,-42,43,-9,62,19,22,16,0,27]).fill(BLUE).stroke({color:GOLD,width:1.1});
+   cutPaper(w,g=>g.poly([0,-12,55,-42,43,-9,62,19,22,16,0,27]),BLUE);
    w.poly([9,-10,45,-33,30,-5,49,12,17,8]).fill(PAPER);w.poly([15,-12,34,-25,22,-4]).fill(0x66879b);
    fold(w,[0,-11,30,-5,53,15]);
   }
   const g=this.shape;this.root.addChild(g);
-  g.poly([0,-34,16,-13,14,19,0,31,-15,18,-16,-13]).fill(TEAL).stroke({color:GOLD,width:1});
+  cutPaper(g,p=>p.poly([0,-34,16,-13,14,19,0,31,-15,18,-16,-13]),TEAL);
   g.poly([0,-34,0,31,-15,18,-16,-13]).fill(BLUE);
   g.poly([0,-26,5,-16,0,-7,-5,-16]).fill(PAPER);this.face(0,4,7);
   g.moveTo(-34,-5).lineTo(-23,2).lineTo(-32,10).stroke({color:GOLD,width:1});g.circle(-34,-5,2).fill(GOLD).circle(-23,2,2).fill(GOLD).circle(-32,10,2).fill(GOLD);
@@ -89,7 +95,7 @@ export class PaperChapterSpirit{
   tassel.poly([0,0,5,8,0,15,-5,8]).fill(GOLD);tassel.poly([-4,14,4,14,14,40,1,33,-10,40,-7,23]).fill(RED);fold(tassel,[0,15,1,33]);
   const g=this.shape;this.root.addChild(g);
   g.poly([0,-58,9,-49,0,-39,-9,-49]).stroke({color:GOLD,width:2});
-  g.poly([-18,-34,18,-34,25,-14,38,22,24,30,-24,30,-38,22,-25,-14]).fill(BLUE).stroke({color:GOLD,width:2});
+  cutPaper(g,p=>p.poly([-18,-34,18,-34,25,-14,38,22,24,30,-24,30,-38,22,-25,-14]),BLUE,2.9);
   g.poly([-18,-34,0,-39,0,24,-34,19,-24,-14]).fill(TEAL);
   cloudCut(g,-17,-5,.48);cloudCut(g,17,-5,.48);
   g.poly([-20,-32,20,-32,24,-24,-24,-24]).fill(GOLD);g.poly([-38,21,0,13,38,21,25,29,-25,29]).fill(GOLD);
@@ -100,22 +106,22 @@ export class PaperChapterSpirit{
    const r=this.part('ribbon',side,side*7,17);
    r.poly([-3,0,4,0,side*24,23,side*10,46,side*27,38,side*18,57,side*0,46,side*12,23]).fill(side===1?RED:BLUE).stroke({color:GOLD,width:.7});
    const w=this.part('fin',side,side*8,-5);w.scale.x=side;
-   w.poly([0,0,54,-43,43,-10,64,1,25,21]).fill(side===1?RED:BLUE).stroke({color:GOLD,width:1});
+   cutPaper(w,g=>g.poly([0,0,54,-43,43,-10,64,1,25,21]),side===1?RED:BLUE);
    w.poly([4,1,44,-33,28,-5,50,1,23,12]).fill(PAPER);w.poly([4,1,28,-5,23,12]).fill(TEAL);fold(w,[0,0,28,-5,54,-38]);
   }
   const g=this.shape;this.root.addChild(g);
-  g.poly([0,-40,20,-19,14,6,0,30,-15,5,-18,-20]).fill(RED).stroke({color:GOLD,width:1});
+  cutPaper(g,p=>p.poly([0,-40,20,-19,14,6,0,30,-15,5,-18,-20]),RED);
   g.poly([0,-40,0,30,-15,5,-18,-20]).fill(PAPER);
   g.poly([-14,-18,0,-29,14,-18,9,-4,-9,-4]).fill(TEAL);g.poly([-4,6,0,20,4,6]).fill(GOLD);this.face(0,-12,8);
  }
  private marten(){
-  const white=0xf1efe2,shade=0x9daeb5;
+  const white=0xf1efe2,shade=0x849ca8;
   const tail=this.part('tail',1,24,9);
-  tail.moveTo(-3,10).bezierCurveTo(50,27,68,-20,42,-47).quadraticCurveTo(48,-12,22,-7).quadraticCurveTo(10,-4,-3,10).fill(white).stroke({color:INK,width:1.5});
+  cutPaper(tail,g=>g.moveTo(-3,10).bezierCurveTo(50,27,68,-20,42,-47).quadraticCurveTo(48,-12,22,-7).quadraticCurveTo(10,-4,-3,10).closePath(),white);
   tail.moveTo(23,-7).quadraticCurveTo(47,-17,42,-34).stroke({color:GOLD,width:1.2});
   for(const side of [-1,1])this.part('foot',side,side*18,26).ellipse(0,0,12,7).fill(shade).stroke({color:INK,width:1});
   const g=this.shape;this.root.addChild(g);
-  g.moveTo(-33,16).quadraticCurveTo(-44,-2,-28,-29).lineTo(-24,-48).lineTo(-9,-35).quadraticCurveTo(0,-40,10,-34).lineTo(27,-48).lineTo(29,-28).quadraticCurveTo(47,9,29,24).quadraticCurveTo(0,43,-33,16).fill(white).stroke({color:INK,width:1.7});
+  cutPaper(g,p=>p.moveTo(-33,16).quadraticCurveTo(-44,-2,-28,-29).lineTo(-24,-48).lineTo(-9,-35).quadraticCurveTo(0,-40,10,-34).lineTo(27,-48).lineTo(29,-28).quadraticCurveTo(47,9,29,24).quadraticCurveTo(0,43,-33,16).closePath(),white,3);
   g.poly([-24,-42,-11,-30,-25,-22]).fill(shade);g.poly([24,-42,12,-29,27,-23]).fill(shade);
   g.moveTo(-28,-17).quadraticCurveTo(0,-28,29,-17).lineTo(20,2).quadraticCurveTo(0,13,-21,2).closePath().fill(0x4d6572);
   g.poly([-28,14,-8,22,0,35,-24,25]).fill(0xc6d2d0);g.poly([5,20,29,9,29,24,11,32]).fill(shade);
@@ -128,13 +134,13 @@ export class PaperChapterSpirit{
   const white=0xeeeede,shade=0x708b9a;
   for(const side of [-1,1]){
    const w=this.part('fin',side,side*14,-2);w.scale.x=side;
-   w.poly([0,-10,31,-35,62,-45,53,-21,68,-22,54,-4,61,1,39,19,12,24,0,9]).fill(shade).stroke({color:INK,width:1.5});
+   cutPaper(w,g=>g.poly([0,-10,31,-35,62,-45,53,-21,68,-22,54,-4,61,1,39,19,12,24,0,9]),shade);
    w.poly([8,-8,32,-28,53,-35,35,-12,50,-16,37,-2,48,0,28,13,10,15]).fill(white);
    w.moveTo(8,5).lineTo(35,-12).moveTo(17,11).lineTo(40,0).stroke({color:GOLD,width:1});
    this.part('foot',side,side*10,32).poly([-5,0,6,0,7,8,2,6,0,9,-2,6,-7,8]).fill(GOLD);
   }
   const g=this.shape;this.root.addChild(g);
-  g.poly([-24,-17,-29,-39,-9,-29,0,-32,10,-29,29,-39,24,-16,26,13,14,36,0,44,-16,33,-28,11]).fill(white).stroke({color:INK,width:1.5});
+  cutPaper(g,p=>p.poly([-24,-17,-29,-39,-9,-29,0,-32,10,-29,29,-39,24,-16,26,13,14,36,0,44,-16,33,-28,11]),white,3);
   g.poly([-24,9,0,20,25,8,14,36,0,44,-16,33]).fill(0xb9c7c7);
   g.moveTo(0,-22).quadraticCurveTo(-32,-36,-23,-7).quadraticCurveTo(-20,8,0,4).quadraticCurveTo(23,9,24,-9).quadraticCurveTo(28,-35,0,-22).fill(0x465b6b);
   for(const side of [-1,1]){g.circle(side*11,-9,9).fill(GOLD);g.ellipse(side*11,-9,3.4,6).fill(INK).circle(side*11+1,-12,1.5).fill(white);}
@@ -145,7 +151,7 @@ export class PaperChapterSpirit{
   const white=0xf0efe3,stone=0x576d78,shade=0x9aafb5;
   for(const side of [-1,1])for(let i=0;i<2;i++)this.part('foot',side,side*(26+i*7),15+i*9).poly([0,0,side*15,-4,side*21,8,side*5,10]).fill(stone).stroke({color:GOLD,width:.8});
   const g=this.shape;this.root.addChild(g);
-  g.poly([0,-43,25,-34,43,-13,40,13,24,31,0,36,-29,28,-43,5,-40,-18,-23,-35]).fill(stone).stroke({color:INK,width:1.7});
+  cutPaper(g,p=>p.poly([0,-43,25,-34,43,-13,40,13,24,31,0,36,-29,28,-43,5,-40,-18,-23,-35]),stone,3);
   g.poly([0,-43,25,-34,43,-13,12,-5]).fill(shade);g.poly([0,-43,12,-5,-13,9,-40,-18,-23,-35]).fill(white);
   g.poly([12,-5,43,-13,40,13,24,31,-1,14]).fill(0x849da6);g.poly([-40,-18,-13,9,-29,28,-43,5]).fill(shade);
   g.poly([-26,-30,-16,-45,-6,-37,0,-48,9,-39,26,-40,33,-26,20,-22,9,-29,-5,-24,-17,-29]).fill(white);

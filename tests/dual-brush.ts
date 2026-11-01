@@ -1,15 +1,16 @@
 import type {Enemy} from '../src/core/types';
 import assert from 'node:assert/strict';
-import {DualBrush,DUAL_BRUSH_TIERS,DUAL_SWIM,PAPER_DRAGON_MOTION} from '../src/gameplay/dual-brush';
+import {DualBrush,DUAL_BRUSH_TIERS,DUAL_SWIM,DUAL_ROAM,PAPER_DRAGON_MOTION} from '../src/gameplay/dual-brush';
 import {InputController} from '../src/input/controller';
 import type {PlatformAdapter} from '../src/platform/adapter';
 import {Game} from '../src/gameplay/game';
+import {verifyContactRegression} from './dual-contact-regression';
 const bounds={left:26,right:694,top:280,bottom:962};
 const g=new Game();g.start(false,true,false,false,true);g.director.disabled=true;g.hualing.frozen=true;
 const template=g.spawn('ink',{x:0,y:0})!;let id=100;const enemy=(x:number,y:number,kind:'ink'|'boss'='ink'):Enemy=>({...template,kind,x,y,id:++id,hp:1000});
 let suites=0;function test(name:string,fn:()=>void){fn();suites++;console.log('PASS dual brush: '+name);}
-test('four tiers keep 1/2/2/2 paths, ratio damage and shared cross-stroke hit limits',()=>{
- for(let level=1;level<=4;level++){
+test('first three tiers retain companion paths, ratio damage and shared cross-stroke hit limits',()=>{
+ for(let level=1;level<=3;level++){
   const m=new DualBrush();m.level=level;m.begin();m.trace({x:100,y:500},{x:300,y:500},30,16);
   assert.equal(m.sides.length,level===1?1:2);
   const targets=[enemy(200,550),enemy(200,450)],damage=(e:typeof targets[number],n:number)=>{e.hp-=n;};
@@ -33,7 +34,7 @@ test('Lv3 and Lv4 swim while held still, including a pointer down with no moveme
   const before=m.geometry(m.sides[0],bounds);for(let i=0;i<90;i++)m.advance(1/60,[],()=>{},bounds);
   const after=m.geometry(m.sides[0],bounds);assert.equal(m.opacity,1);assert.equal(after.length,PAPER_DRAGON_MOTION.samples);
   assert.ok(after.some((p,i)=>Math.hypot(p.x-before[i].x,p.y-before[i].y)>3),'held-still body and tail continue swimming');
-  const arc=after.slice(1).reduce((n,p,i)=>n+Math.hypot(p.x-after[i].x,p.y-after[i].y),0);assert.ok(Math.abs(arc-(level===4?316:170))<.01,'swimming bends the complete body instead of shrinking it');
+  const arc=after.slice(1).reduce((n,p,i)=>n+Math.hypot(p.x-after[i].x,p.y-after[i].y),0);assert.ok(Math.abs(arc-(level===4?PAPER_DRAGON_MOTION.length:170))<.01,'swimming bends the complete body instead of shrinking it');
   m.end();for(let i=0;i<30;i++)m.advance(1/60,[],()=>{},bounds);assert.equal(m.opacity,0);assert.ok(m.sides.every(s=>!s.path.length));
  }
 });
@@ -58,7 +59,7 @@ test('fast drags and reversals steer gently without teleporting the swimming cen
   m.trace({x:650,y:650},{x:100,y:650},30,16);m.advance(1/60,[],()=>{},bounds);
   const next=m.geometry(m.sides[0],bounds),c=next.at(-1)!,d=next.at(-2)!;
   const turn=Math.abs(Math.atan2((a.x-b.x)*(c.y-d.y)-(a.y-b.y)*(c.x-d.x),(a.x-b.x)*(c.x-d.x)+(a.y-b.y)*(c.y-d.y)));
-  assert.ok(turn<=(DUAL_SWIM.turn+DUAL_SWIM.yaw*PAPER_DRAGON_MOTION.frequency)/60+1e-6,'steering and the natural head stroke remain smooth on a reversal');
+  assert.ok(turn<=(level===4?DUAL_ROAM.turn:DUAL_SWIM.turn+DUAL_SWIM.yaw*PAPER_DRAGON_MOTION.frequency)/60+1e-6,'steering and the natural head stroke remain smooth on a reversal');
  }
 });
 test('stationary companions visibly cruise and send large bends through the middle and tail',()=>{
@@ -84,30 +85,30 @@ test('real pointer down passes its origin to both swimming tiers; pause freezes 
   input.event({kind:'up',id:1,x:350,y:650});assert.equal(m.drawing,false);
  }
 });
-test('Lv3 and Lv4 never lock onto nearby enemies or bosses',()=>{
- for(const level of [3,4]){
+test('Lv3 retains non-seeking brush swimming',()=>{
+ for(const level of [3]){
   const m=new DualBrush();m.level=level;m.begin();m.trace({x:200,y:600},{x:240,y:600},30,16);
   const targets=[enemy(255,680),enemy(255,520),enemy(500,600)];m.advance(1/60,targets,()=>{},bounds);
   assert.equal(m.sides.filter(s=>s.lunge).length,0);
  }
  const m=new DualBrush();m.level=4;m.begin();m.trace({x:200,y:600},{x:240,y:600},30,16);const boss=enemy(280,600,'boss');m.advance(.016,[boss],()=>{},bounds);assert.ok(m.sides.every(s=>!s.lunge));
 });
-test('brush contact still damages once at 30/60/120 fps without a lunge or post-release attacks',()=>{
+test('Lv4 flies actual full-field paths, deals ratio damage while held and stops on release',()=>{
  for(const fps of [30,60,120]){
-  const m=new DualBrush();m.level=4;m.begin();m.trace({x:200,y:600},{x:240,y:600},30,16);
-  const targets=[enemy(250,680),enemy(250,520)],counts=new Map<number,number>();const damage=(e:typeof targets[number],n:number)=>{e.hp-=n;counts.set(e.id,(counts.get(e.id)??0)+1);};
-  m.advance(1/fps,targets,damage,bounds);assert.ok(m.sides.every(s=>!s.lunge));m.end();
-  for(let i=0;i<fps;i++)m.advance(1/fps,targets,damage,bounds);
-  assert.deepEqual(targets.map(e=>counts.get(e.id)),[1,1]);assert.ok(m.sides.every(s=>!s.lunge&&s.path.length===0));
+  const m=new DualBrush();m.level=4;m.begin({x:60,y:850});const p={...m.sides[0].head},e=enemy(p.x,p.y),amounts:number[]=[];
+  m.advance(1/fps,[e],(_,n)=>amounts.push(n),bounds);assert.deepEqual(amounts,[16.5]);
+  for(let i=0;i<fps*.15;i++)m.advance(1/fps,[e],(_,n)=>amounts.push(n),bounds);assert.equal(amounts.length,1,'per-side contact cooldown is preserved');
+  m.end();const count=amounts.length;for(let i=0;i<fps;i++)m.advance(1/fps,[e],(_,n)=>amounts.push(n),bounds);
+  assert.equal(amounts.length,count);assert.ok(m.sides.every(s=>!s.path.length));
  }
 });
-test('nearby enemies never trigger attacks while held still or during renewed movement',()=>{
+test('Lv4 roaming never creates legacy pointer-anchored lunges',()=>{
  const m=new DualBrush();m.level=4;m.begin();m.trace({x:200,y:600},{x:240,y:600},30,16);const targets=[enemy(250,680),enemy(250,520)];m.advance(.016,targets,()=>{},bounds);
  for(let i=0;i<80;i++)m.advance(.016,targets,()=>{},bounds);assert.ok(m.sides.every(s=>!s.lunge));
  m.trace({x:240,y:600},{x:250,y:600},30,16);m.advance(.016,targets,()=>{},bounds);assert.ok(m.sides.every(s=>!s.lunge));m.end(true);assert.ok(m.sides.every(s=>!s.lunge));
 });
-test('enemies cannot change the swimming pose or cause idle damage',()=>{
- for(const level of [3,4]){
+test('Lv3 enemies cannot change the swimming pose or cause idle damage',()=>{
+ for(const level of [3]){
   const withEnemies=new DualBrush(),empty=new DualBrush();for(const m of [withEnemies,empty]){m.level=level;m.begin({x:350,y:650});}
   const targets=[enemy(370,650),enemy(330,650),enemy(350,670,'boss')];
   for(let i=0;i<120;i++){withEnemies.advance(1/60,targets,(e,n)=>e.hp-=n,bounds);empty.advance(1/60,[],()=>{},bounds);}
@@ -120,6 +121,37 @@ test('clipped paths cannot hit outside arena, large jumps cannot produce cross-s
  m.trace({x:240,y:600},{x:600,y:600},30,16);m.advance(.016,targets,()=>{},bounds);assert.ok(m.sides.every(s=>!s.lunge));
  const outside=enemy(300,100);m.begin();m.trace({x:200,y:74},{x:400,y:74},30,16);m.advance(.016,[outside],()=>{throw new Error('outside damage');},bounds);
 });
+test('Lv4 ignores pointer steering, roams broadly, separates targets and resumes without teleporting',()=>{
+ const a=new DualBrush(),b=new DualBrush();for(const m of [a,b]){m.level=4;m.begin({x:300,y:650});}
+ const points:{x:number;y:number}[]=[];
+ for(let i=0;i<720;i++){
+  a.trace({x:i%2?50:650,y:400},{x:i%2?650:50,y:850},30,16);
+  for(const m of [a,b])m.advance(1/60,[],()=>{},bounds);
+  if(i%10===0)points.push({...a.sides[0].head});
+ }
+ for(let side=0;side<2;side++)assert.deepEqual(a.geometry(a.sides[side],bounds),b.geometry(b.sides[side],bounds),'the pointer cannot drag or teleport either dragon');
+ assert.ok(Math.max(...points.map(p=>p.x))-Math.min(...points.map(p=>p.x))>300);assert.ok(Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))>280);
+ assert.ok(points.every(p=>p.x>=bounds.left&&p.x<=bounds.right&&p.y>=bounds.top&&p.y<=bounds.bottom));
+ const heads=a.sides.map(s=>({...s.head}));a.end();a.begin({x:10,y:10});assert.deepEqual(a.sides.map(s=>s.head),heads,'quick new strokes preserve flight positions');
+ const hunt=new DualBrush();hunt.level=4;hunt.begin();const targets=[enemy(260,460),enemy(490,780)];for(let i=0;i<70;i++)hunt.advance(1/60,targets,()=>{},bounds);
+ assert.ok(hunt.sides.some(s=>s.roam&&(s.roam.targetId!==null||s.roam.visited.size>0)));if(hunt.sides.every(s=>s.roam?.targetId!=null))assert.notEqual(hunt.sides[0].roam!.targetId,hunt.sides[1].roam!.targetId);
+});
+test('Lv4 alternates flight moods and transmits a head turn down a fixed-length spine',()=>{
+ const m=new DualBrush();m.level=4;m.begin();const moods=new Set<string>(),speeds:number[]=[];let lag=0;
+ for(let i=0;i<1200;i++){
+  const before=m.geometry(m.sides[0],bounds),head=before.at(-1)!,d={...m.sides[0].direction};
+  m.advance(1/120,[],()=>{},bounds);const s=m.sides[0],path=m.geometry(s,bounds);moods.add(s.roam!.flight);speeds.push(s.roam!.speed);
+  const turn=Math.atan2(d.x*s.direction.y-d.y*s.direction.x,d.x*s.direction.x+d.y*s.direction.y),x=before[0].x-head.x,y=before[0].y-head.y;
+  const rigid={x:s.head.x+x*Math.cos(turn)-y*Math.sin(turn),y:s.head.y+x*Math.sin(turn)+y*Math.cos(turn)};
+  lag=Math.max(lag,Math.hypot(path[0].x-rigid.x,path[0].y-rigid.y));
+  const length=path.slice(1).reduce((sum,p,j)=>sum+Math.hypot(p.x-path[j].x,p.y-path[j].y),0);assert.ok(Math.abs(length-PAPER_DRAGON_MOTION.length)<.001);
+  assert.equal(s.roam!.spine.length,49);assert.ok(s.path.length<=80);assert.ok(path.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)));
+ }
+ assert.deepEqual([...moods].sort(),['coil','cross','glide','swoop']);assert.ok(Math.max(...speeds)/Math.min(...speeds)>1.8,'swoops visibly accelerate compared with a slow bank');assert.ok(lag>1,'tail does not rigidly rotate with the skull');
+});
+test('finite-ink exhaustion ends roaming attacks until a new paid stroke',()=>{
+ const game=new Game();game.startMountainLevel(0);game.hualing.upgrades.setLevel('splash',4);game.ink.begin(10);game.beginHualingStroke({x:360,y:600});assert.equal(game.hualing.upgrades.dual.drawing,true);game.ink.extend(100000);game.advance(1/60,true);assert.equal(game.hualing.upgrades.dual.drawing,false);
+});
 test('real battle secondary hit neither paints nor earns direct-brush kill credit',()=>{
  const game=new Game();game.start(false,true,false,false,true);game.director.disabled=true;game.hualing.frozen=true;
  let paintCalls=0;const paint=game.hualing.traceScene.bind(game.hualing);game.hualing.traceScene=(a,b)=>{paintCalls++;paint(a,b);};
@@ -127,4 +159,5 @@ test('real battle secondary hit neither paints nor earns direct-brush kill credi
  game.beginHualingStroke();game.strokeHualing({x:100,y:500},{x:380,y:500});assert.equal(e.hp,1);game.advance(1/60,true);
  assert.equal(paintCalls,1);assert.ok(e.hp<=0);assert.equal(game.hualing.combo.strokeKills,0);assert.equal(game.hualing.combo.count,1);assert.equal(game.hualing.upgrades.carp.fishes.length,0);assert.equal(game.hualing.upgrades.trail.segments.length,0);
 });
+test('Lv4 optimized contacts match original dense, lethal, boundary and cooldown hit sequences at 30/60/120fps',verifyContactRegression);
 console.log(`PASS ${suites} dual brush suites`);

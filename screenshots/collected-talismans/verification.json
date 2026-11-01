@@ -1,0 +1,271 @@
+{
+  "results": [
+    {
+      "mode": "sandbox",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 1,
+          "dragon": 1,
+          "flower": 1,
+          "thunder": 0,
+          "beast": 1,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 1
+        },
+        "total": 5,
+        "casts": [
+          {
+            "kind": "ward",
+            "age": 0.3,
+            "stage": 1
+          }
+        ],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "mode": "campaign",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 1,
+          "dragon": 1,
+          "flower": 1,
+          "thunder": 0,
+          "beast": 1,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 1
+        },
+        "total": 5,
+        "casts": [
+          {
+            "kind": "ward",
+            "age": 0.3,
+            "stage": 1
+          }
+        ],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "pulse",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "dragon",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "flower",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "thunder",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "beast",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "crab",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "heal",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "ward",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [
+          {
+            "kind": "ward",
+            "age": 0.32,
+            "stage": 1
+          }
+        ],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "state": {
+        "gl": 0,
+        "counts": {
+          "pulse": 0,
+          "dragon": 0,
+          "flower": 0,
+          "thunder": 0,
+          "beast": 0,
+          "crab": 0,
+          "heal": 0,
+          "ward": 0,
+          "storm": 0
+        },
+        "total": 0,
+        "casts": [
+          {
+            "kind": "storm",
+            "age": 0.32,
+            "stage": 0
+          }
+        ],
+        "selected": null,
+        "drawing": false,
+        "ink": 0
+      }
+    }
+  ],
+  "errors": []
+}

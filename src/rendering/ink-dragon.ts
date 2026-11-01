@@ -76,10 +76,15 @@ class DragonRig{
   for(let i=0;i<=count;i++){const p=frames[i],w=widths[i];left.push(p.x-p.nx*w,p.y-p.ny*w);right.unshift(p.x+p.nx*w,p.y+p.ny*w);belly.push(p.x+p.nx*w*.25,p.y+p.ny*w*.25);}
   this.ribbons.poly([...left,...right]).fill({color:IVORY,alpha:.9});
   this.ribbons.poly([...belly,...right]).fill({color:SHADE,alpha:.24});
-  for(const side of [-1,1])for(let k=0;k<(low?1:2);k++)for(const [from,to] of [[0,.29],[.7,.98]]){
+  // Both sides and both dry-brush locks follow the same material samples.
+  // Reuse their exact positions instead of repeating the route searches per lock.
+  const edges=[[0,.29],[.7,.98]].map(([from,to])=>Array.from({length:count+1},(_,i)=>{
+   const t=from+(to-from)*(i/count);return{t,p:body(t),w:dragonWidth(t)};
+  }));
+  for(const side of [-1,1])for(let k=0;k<(low?1:2);k++)for(const samples of edges){
    const a:number[]=[],b:number[]=[];
    for(let i=0;i<=count;i++){
-    const u=i/count,t=from+(to-from)*u,p=body(t),w=dragonWidth(t),flow=Math.sin(t*11-age*3+k)*Math.sin(Math.PI*t)*2;
+    const u=i/count,{t,p,w}=samples[i],flow=Math.sin(t*11-age*3+k)*Math.sin(Math.PI*t)*2;
     const distance=side*(w*(1.1+k*.18)+flow),thickness=(1.4-k*.4)*Math.sin(Math.PI*u)**.6;
     a.push(p.x+p.nx*(distance-thickness),p.y+p.ny*(distance-thickness));b.unshift(p.x+p.nx*(distance+thickness),p.y+p.ny*(distance+thickness));
    }

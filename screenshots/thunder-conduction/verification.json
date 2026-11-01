@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "mode": "sandbox",
+      "width": 430,
+      "targets": 5,
+      "farTargetUntouched": true,
+      "stationary": true,
+      "release": true,
+      "pause": true,
+      "expiry": true
+    },
+    {
+      "mode": "campaign",
+      "width": 430,
+      "targets": 5,
+      "farTargetUntouched": true,
+      "stationary": true,
+      "release": true,
+      "pause": true,
+      "expiry": true
+    },
+    {
+      "mode": "campaign",
+      "width": 375,
+      "targets": 5,
+      "farTargetUntouched": true,
+      "stationary": true,
+      "release": true,
+      "pause": true,
+      "expiry": true
+    },
+    {
+      "mode": "campaign",
+      "width": 390,
+      "targets": 5,
+      "farTargetUntouched": true,
+      "stationary": true,
+      "release": true,
+      "pause": true,
+      "expiry": true
+    }
+  ],
+  "errors": []
+}

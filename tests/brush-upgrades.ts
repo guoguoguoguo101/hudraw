@@ -9,8 +9,8 @@ const game=()=>{const g=new Game();g.start(false,true,false,false,true);g.direct
 const step=(g:Game,n:number)=>{for(let t=0;t<n-1e-8;t+=1/60)g.advance(Math.min(1/60,n-t));};
 let suites=0;function test(name:string,fn:()=>void){fn();suites++;console.log('PASS brush upgrades: '+name);}
 test('manual levels clamp safely, reset clears runtime state, each skill remains independent',()=>{
- const m=new BrushUpgrades();m.setLevel('spray',9);m.setLevel('wide',2);m.setLevel('splash',-2);assert.deepEqual(m.levels,{spray:4,wide:2,splash:0,trail:0});m.setLevel('spray',NaN);assert.equal(m.levels.spray,4);
- m.begin();m.trace({x:100,y:500},{x:240,y:500});assert.ok(m.carp.fishes.length);m.setLevel('spray',0);assert.equal(m.drops.length,0);assert.equal(m.levels.wide,2);m.reset();assert.deepEqual(m.levels,{spray:0,wide:0,splash:0,trail:0});
+ const m=new BrushUpgrades();m.setLevel('spray',9);m.setLevel('wide',2);m.setLevel('splash',-2);assert.deepEqual(m.levels,{spray:4,wide:2,splash:0,trail:0,line:0});m.setLevel('spray',NaN);assert.equal(m.levels.spray,4);
+ m.begin();m.trace({x:100,y:500},{x:240,y:500});assert.ok(m.carp.fishes.length);m.setLevel('spray',0);assert.equal(m.drops.length,0);assert.equal(m.levels.wide,2);m.reset();assert.deepEqual(m.levels,{spray:0,wide:0,splash:0,trail:0,line:0});
 });
 test('four spray tiers cast immediately off the brush path and obey an internal cooldown',()=>{
  for(let level=1;level<=4;level++){

@@ -2,6 +2,7 @@ import {Container,Graphics,GraphicsPath,Rectangle,Text} from 'pixi.js';
 import type {Hualing} from '../gameplay/hualing';
 import type {HualingChapter} from '../gameplay/hualing-chapters';
 import {paperArt,sceneColor,type PaperVector} from './chapter-art/vector-art';
+import {landscapePaper} from './chapter-art/landscape-paper';
 
 const GOLD=0xe5c486,IVORY=0xffedcf;
 // The whale is a separately cached cut-paper layer, lifted from the approved composition.
@@ -57,9 +58,9 @@ export class ChapterLandscapeRenderer{
  private whales:Container[]=[];private beasts:Container[]=[];
  private ensure(stage:number){
   if(this.layers.has(stage))return;
-  const data=this.assets.get(this.chapter)!;
+  const data=landscapePaper(this.chapter as Exclude<HualingChapter,'valley'>,this.assets.get(this.chapter)!);
   const palette=this.chapter==='sea'?'sea':this.chapter==='snow'?'snow':'palace';
-  const g=paperArt(`${this.chapter}-reference-v02-${stage}`,data,c=>sceneColor(palette,stage,c));
+  const g=paperArt(`${this.chapter}-paper-v03-${stage}`,data,c=>sceneColor(palette,stage,c));
   const layer=new Container(),still=new Container();g.scale.set(720/data.width,1280/data.height);still.addChild(g);
   const details=new Graphics();inlay(details,this.chapter,stage);still.addChild(details);
   if(this.chapter==='sea'){
@@ -68,7 +69,7 @@ export class ChapterLandscapeRenderer{
    for(let i=0;i<3;i++)patch.moveTo(0,150+i*65).bezierCurveTo(200,95+i*70,470,180+i*55,720,120+i*70).lineTo(720,420).lineTo(0,420).fill({color:sceneColor('sea',stage,0x79afaa),alpha:.18+i*.08});
    layer.addChild(patch);
    const inverse=new Graphics().rect(0,0,720,1280).fill(0xffffff).path(new GraphicsPath(WHALE_CUT)).cut();still.addChild(inverse);still.mask=inverse;
-   const whale=new Container(),body=paperArt(`${this.chapter}-reference-v02-${stage}`,data,c=>sceneColor('sea',stage,c));body.scale.set(720/data.width,1280/data.height);
+   const whale=new Container(),body=paperArt(`${this.chapter}-paper-v03-${stage}`,data,c=>sceneColor('sea',stage,c));body.scale.set(720/data.width,1280/data.height);
    const rim=new Graphics().path(new GraphicsPath(WHALE_CUT)).fill(0xffffff),lines=new Graphics();inlay(lines,this.chapter,stage);
    whale.addChild(body,lines,rim);whale.mask=rim;whale.boundsArea=new Rectangle(45,-2,675,360);
    whale.pivot.set(360,170);whale.position.set(360,170);whale.cacheAsTexture({resolution:1,antialias:true});this.whales.push(whale);
@@ -77,7 +78,7 @@ export class ChapterLandscapeRenderer{
    const patch=new Graphics().rect(185,0,535,355).fill(sceneColor('snow',stage,0xd9e0e0));
    layer.addChild(patch);
    const inverse=new Graphics().rect(0,0,720,1280).fill(0xffffff).path(new GraphicsPath(SNOW_BEAST_CUT)).cut();still.addChild(inverse);still.mask=inverse;
-   const beast=new Container(),body=paperArt(`${this.chapter}-reference-v02-${stage}`,data,c=>sceneColor('snow',stage,c));body.scale.set(720/data.width,1280/data.height);
+   const beast=new Container(),body=paperArt(`${this.chapter}-paper-v03-${stage}`,data,c=>sceneColor('snow',stage,c));body.scale.set(720/data.width,1280/data.height);
    const rim=new Graphics().path(new GraphicsPath(SNOW_BEAST_CUT)).fill(0xffffff);beast.addChild(body,rim);beast.mask=rim;
    beast.boundsArea=new Rectangle(190,0,530,350);beast.pivot.set(SNOW_PIVOT.x,SNOW_PIVOT.y);beast.position.copyFrom(SNOW_PIVOT);beast.cacheAsTexture({resolution:1,antialias:true});this.beasts.push(beast);
    layer.addChild(still,beast);

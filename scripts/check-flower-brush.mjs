@@ -1,0 +1,30 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+const folder='screenshots/ink-butterfly';await mkdir(folder,{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage(),errors=[],results=[];page.on('pageerror',e=>errors.push(e.message));
+async function point(x,y){return page.evaluate(async({x,y})=>{const a=window.__LINGHU__,r=a.app.canvas.getBoundingClientRect(),{gameViewport}=await import('/src/platform/viewport.ts'),v=gameViewport(r.width,r.height);return{x:r.left+v.x+x*v.scale,y:r.top+v.y+y*v.scale};},{x,y});}
+async function click(x,y){const p=await point(x,y);await page.mouse.click(p.x,p.y);}
+async function frame(seconds=0){return page.evaluate(seconds=>{const a=window.__LINGHU__,g=a.game;for(let n=0;n<seconds-1e-8;n+=1/60){const dt=Math.min(1/60,seconds-n);g.advance(dt,a.input.drawing);a.input.update(dt);a.view.update(g,a.input,dt,60,dt);}for(const e of g.drain())a.view.event(e);a.view.update(g,a.input,0,60,0);a.playUI.update(a.view.ui.footer.y,a.view.ui.hud.y);a.brushUpgradeUI.update(a.view.ui.hud.y);a.mountainUI.update(a.view.ui.hud.y,a.view.ui.footer.y);a.collectedUI.update(a.view.ui.hud.y,a.view.ui.footer.y,a.mountainUI.opened);a.hualingUI.root.visible=false;a.view.ui.hud.visible=false;a.view.ui.counter.visible=false;a.view.hualing.compactUI=true;a.app.render();const m=g.hualing.petals;return{remaining:m.remaining,buds:m.buds.map(b=>({x:b.x,y:b.y})),blooms:m.blooms.length,hp:g.enemies.map(e=>e.hp),slow:g.enemies.map(e=>m.isSlowed(e.id)),gl:a.app.renderer.gl.getError()};},seconds);}
+async function setup(mode){await page.evaluate(mode=>{const a=window.__LINGHU__,g=a.game;a.input.cancel();if(mode==='campaign'){a.beginMountain(0);a.mountainUI.opened=false;g.campaign.lastRoom=g.campaign.room;g.campaign.spawn=999;}else g.start(false,true,false,false,true);g.director.disabled=true;g.hualing.frozen=true;g.hualing.journey.autoEvents=false;g.enemies=[];g.ink.setAmount(100);a.playUI.formal=true;a.brushUpgradeUI.compactUI=true;a.view.begin();for(const [i,p]of [{x:180,y:380},{x:360,y:330},{x:500,y:400},{x:650,y:350}].entries()){const e=g.spawn('ink',p,['paper-lantern','paper-moth','paper-frog'][i%3]);e.hp=e.maxHp=1000;e.speed=0;e.ai='Approach';}g.collected.grant('flower');},mode);await frame();const zone=await page.evaluate(()=>window.__LINGHU__.collectedUI.zones.find(z=>z.kind==='flower'));assert.ok(zone);await click(zone.x+zone.w/2,zone.y+zone.h/2);const used=await frame();assert.equal(used.remaining,12);}
+try{
+ await page.setViewportSize({width:430,height:932});await page.goto((process.env.LINGHU_PREVIEW_URL??'http://127.0.0.1:5280')+'/?mode=hualing&qa=1',{waitUntil:'networkidle'});await page.waitForFunction(()=>window.__LINGHU__?.collectedUI);await page.evaluate(()=>window.__LINGHU__.app.ticker.stop());
+ for(const [mode,width,height]of [['campaign',430,932],['campaign',375,667],['campaign',390,844],['sandbox',430,932]]){
+  await page.setViewportSize({width,height});await setup(mode);await frame(.2);assert.equal((await frame()).buds.length,0,'stationary pen does not plant');
+  const path=Array.from({length:41},(_,i)=>({x:100+i*13,y:790+Math.sin(i/40*Math.PI*2)*65}));
+  const start=await point(path[0].x,path[0].y);await page.mouse.move(start.x,start.y);await page.mouse.down();for(const p of path.slice(1)){const q=await point(p.x,p.y);await page.mouse.move(q.x,q.y);}await page.mouse.up();let s=await frame(.2);
+  assert.ok(s.buds.length>=3&&s.buds.length<=6,'real input places sparse folded butterflies');assert.ok(await page.evaluate(()=>window.__LINGHU__.game.hualing.petals.leaves.length>0),'maple leaves still fall from the brush');assert.equal(s.blooms,0);assert.ok(s.hp.every(h=>h===1000));assert.equal(s.gl,0);
+  if(width===430&&mode==='campaign')await page.screenshot({path:`${folder}/01-buds-430.png`});const positions=s.buds;await frame(.1);assert.deepEqual((await frame()).buds,positions,'buds do not drift');
+  await frame(.5);if(width===430&&mode==='campaign')await page.screenshot({path:folder+'/02-charged-430.png'});
+  await page.evaluate(()=>{const g=window.__LINGHU__.game,b=g.hualing.petals.buds[Math.floor(g.hualing.petals.buds.length/2)];for(const [i,e]of g.enemies.slice(0,3).entries()){e.x=b.x+[-35,38,0][i];e.y=b.y+[-20,20,-65][i];e.prevX=e.x;e.prevY=e.y;}g.enemies[3].x=650;g.enemies[3].y=350;});
+  s=await frame(.22);assert.ok(s.blooms>0);assert.ok(s.hp.every(h=>h===1000),'flowers open before dealing damage');
+  if(width===430&&mode==='campaign')await page.screenshot({path:`${folder}/03-opening-430.png`});
+  s=await frame(.26);assert.ok(s.hp.slice(0,3).every(h=>h<1000));assert.equal(s.hp[3],1000);assert.ok(s.slow.slice(0,3).every(Boolean));assert.equal(s.gl,0);
+  await page.screenshot({path:`${folder}/${mode}-bloom-${width}.png`});const damaged=s.hp;await frame(.3);assert.deepEqual((await frame()).hp,damaged,'no repeated damage');
+  const clock=await page.evaluate(()=>window.__LINGHU__.game.hualing.petals.clock);await page.evaluate(()=>window.__LINGHU__.game.pause());await frame(.5);assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.petals.clock),clock);await page.evaluate(()=>window.__LINGHU__.game.pause());
+  await frame(3.1);s=await frame();assert.equal(s.buds.length,0);assert.equal(s.blooms,0);assert.ok(s.slow.every(v=>!v));await page.evaluate(()=>window.__LINGHU__.game.menu());assert.equal(await page.evaluate(()=>window.__LINGHU__.game.hualing.petals.remaining),0);
+  results.push({mode,width,buds:positions.length,groupDamage:true,slow:true,farUntouched:true,pause:true,cleanup:true});
+ }
+ assert.deepEqual(errors,[]);await writeFile(`${folder}/verification.json`,JSON.stringify({results,errors},null,2));console.log('PASS flower brush visuals: real inventory click and pointer path, campaign/sandbox, 375/390/430, fixed buds, fixed fuse/windup/group damage, slow, pause, cleanup, no WebGL errors');
+}finally{await browser.close();}

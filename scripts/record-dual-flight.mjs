@@ -1,0 +1,18 @@
+import {chromium} from '@playwright/test';
+import {mkdir,writeFile} from 'node:fs/promises';
+const folder=process.env.DUAL_RECORD_DIR??'screenshots/dual-flight-audit/before';await mkdir(folder,{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const context=await browser.newContext({viewport:{width:430,height:932},recordVideo:{dir:folder,size:{width:430,height:932}}});
+const start=Date.now(),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:5177/?mode=hualing&qa=1',{waitUntil:'networkidle'});await page.waitForFunction(()=>window.__LINGHU__?.game);
+await page.evaluate(()=>{const a=window.__LINGHU__;a.input.cancel();a.action('restart');a.playUI.formal=true;a.game.director.disabled=true;a.game.hualing.frozen=true;a.game.enemies=[];a.game.hualing.upgrades.setLevel('splash',4);});
+await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+const p=await page.evaluate(async()=>{const a=window.__LINGHU__,r=a.app.canvas.getBoundingClientRect(),{gameViewport}=await import('/src/platform/viewport.ts'),v=gameViewport(r.width,r.height);return{x:r.left+v.x+360*v.scale,y:r.top+v.y+(a.game.hualing.bounds.bottom-120)*v.scale};});
+await page.mouse.move(p.x,p.y);const offset=(Date.now()-start)/1000;await page.mouse.down();
+await page.evaluate(()=>{window.__FLIGHT_AUDIT__={active:true,start:performance.now(),frames:[]};const sample=()=>{const a=window.__FLIGHT_AUDIT__,g=window.__LINGHU__.game,m=g.hualing.upgrades.dual;if(!a.active)return;a.frames.push({t:(performance.now()-a.start)/1000,clock:m.clock,bounds:{...g.hualing.bounds},sides:m.sides.map(s=>({head:{...s.head},direction:{...s.direction},mode:s.roam?.flight,speed:s.roam?.speed,body:m.geometry(s,g.hualing.bounds)}))});requestAnimationFrame(sample);};requestAnimationFrame(sample);});
+await page.waitForTimeout(8500);
+await page.evaluate(()=>{const g=window.__LINGHU__.game,b=g.hualing.bounds;for(const [u,v] of [[.15,.2],[.82,.28],[.2,.77],[.8,.75]]){const e=g.spawn('ink',{x:b.left+(b.right-b.left)*u,y:b.top+(b.bottom-b.top)*v},'paper-rabbit');e.hp=e.maxHp=10000;e.ai='Hit';e.stateAge=-100;e.speed=0;}});
+await page.waitForTimeout(8500);await page.mouse.up();await page.waitForTimeout(600);
+const audit=await page.evaluate(()=>{window.__FLIGHT_AUDIT__.active=false;return window.__FLIGHT_AUDIT__;});
+await writeFile(`${folder}/telemetry.json`,JSON.stringify({offset,errors,frames:audit.frames}));
+const video=page.video();await context.close();await video.saveAs(`${folder}/raw.webm`);await browser.close();console.log(JSON.stringify({folder,offset,frames:audit.frames.length,errors}));

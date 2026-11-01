@@ -1,19 +1,8 @@
-import {BufferImageSource,Container,Graphics,Sprite,Text,Texture} from 'pixi.js';
+import {Container,Graphics,Sprite,Text} from 'pixi.js';
+import {skillLightTexture as softLight} from './skill-glow';
 import {WIDE_FINISHER,type BrushUpgrades} from '../gameplay/brush-upgrades';
 import type {WideWave,RiftPoint} from '../gameplay/brush-upgrades';
 import type {Arena} from '../input/line-interaction-geometry';
-
-let lightTexture:Texture|undefined;
-function softLight(){
- if(lightTexture)return lightTexture;
- const size=64,pixels=new Uint8Array(size*size*4);
- for(let y=0;y<size;y++)for(let x=0;x<size;x++){
-  const r=((x+0.5-size/2)/(size/2))**2+((y+0.5-size/2)/(size/2))**2;
-  const a=Math.round(255*Math.max(0,(Math.exp(-r*5)-Math.exp(-5))/(1-Math.exp(-5)))),i=(y*size+x)*4;
-  pixels[i]=pixels[i+1]=pixels[i+2]=pixels[i+3]=a;
- }
- lightTexture=new Texture({source:new BufferImageSource({resource:pixels,width:size,height:size,format:'rgba8unorm',alphaMode:'premultiplied-alpha',scaleMode:'linear'})});return lightTexture;
-}
 
 /** Brush-following void seams; every vertex comes from the real input path. */
 export class WideBrushRenderer{

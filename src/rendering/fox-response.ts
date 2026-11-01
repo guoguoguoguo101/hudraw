@@ -10,10 +10,10 @@ import type {SceneSeal} from '../gameplay/scene-seal';
 export class FoxResponse{
  root=new Container();private glow=new Graphics();private accent=new Graphics();action='idle';
  private facing=1;private aim=0;private wasDrawing=false;private effect=0;private clock=-1;
- private flower=0;private thunder=0;private selected=false;private companion=0;
+ private flower=0;private thunder=0;private crescent=0;private selected=false;private companion=0;
  private bursts=new WeakSet<object>();private phases=new WeakMap<SceneSeal,string>();
  constructor(){this.root.addChild(this.glow,this.accent);}
- clear(){this.action='idle';this.facing=1;this.aim=0;this.wasDrawing=this.selected=false;this.effect=this.flower=this.thunder=this.companion=0;this.clock=-1;this.bursts=new WeakSet();this.phases=new WeakMap();this.glow.clear();this.accent.clear();}
+ clear(){this.action='idle';this.facing=1;this.aim=0;this.wasDrawing=this.selected=false;this.effect=this.flower=this.thunder=this.crescent=this.companion=0;this.clock=-1;this.bursts=new WeakSet();this.phases=new WeakMap();this.glow.clear();this.accent.clear();}
  event(e:Event,fox:FoxRig){
   if(e.type==='hurt'){fox.act(e.amount>0?'hit':'cast',0,'guard');return;}
   if(e.type==='lose'){fox.act('death');return;}if(e.type==='win'){fox.act('victory');return;}
@@ -39,7 +39,7 @@ export class FoxResponse{
    if(latest&&latest.id!==this.effect){this.effect=latest.id;if(latest.age<.3)fox.act('cast',0,'dragon');}
    if(m.petals.remaining>this.flower+.1)fox.act('enchant',0,'petal');
    if(m.thunder.remaining>this.thunder+.1)fox.act('enchant',0,'thunder');
-   this.flower=m.petals.remaining;this.thunder=m.thunder.remaining;
+   if(game.collected.crescent.serial!==this.crescent&&game.collected.crescent.active)fox.act('summon',0,'guard');this.crescent=game.collected.crescent.serial;this.flower=m.petals.remaining;this.thunder=m.thunder.remaining;
    for(const scene of m.scenes){
     const previous=this.phases.get(scene);
     if(scene.phase==='collecting'&&previous!=='collecting')fox.act('collect',0,'seal');
@@ -74,7 +74,14 @@ export class FoxResponse{
   const color=spell==='thunder'?0xa8ddf2:spell==='petal'?0xeaa98b:0xe7ba68;
   const x=fox.root.x,y=fox.root.y+27,side=Math.sign(fox.root.scale.x)||1;
   const casting=['cast','summon','enchant'].includes(fox.mode);
-  if(invulnerable>0&&fox.mode!=='death')for(let i=0;i<3;i++){const angle=time*.9+i*Math.PI*2/3;g.ellipse(x,y+8,28,7).stroke({color:0xffebc3,width:1,alpha:.16});g.arc(x,y+8,29,angle,angle+.55).stroke({color:0xffebc3,width:1.4,alpha:.5});}
+  if(invulnerable>0&&fox.mode!=='death'){
+   g.ellipse(x,y+8,28,7).stroke({color:0xffebc3,width:1,alpha:.16});
+   for(let i=0;i<3;i++){
+    const angle=time*.9+i*Math.PI*2/3;
+    // Each arc is an independent path, never a continuation from the canvas origin.
+    g.moveTo(x+Math.cos(angle)*29,y+8+Math.sin(angle)*29).arc(x,y+8,29,angle,angle+.55).stroke({color:0xffebc3,width:1.4,alpha:.5});
+   }
+  }
   if(casting||energy>.05){
    const strength=casting?Math.max(prepare*.4,power):energy*.55;
    g.ellipse(x,y+8,24+power*14,6+power*3).stroke({color,width:1.5,alpha:strength*.7});
@@ -83,7 +90,7 @@ export class FoxResponse{
    else if((spell==='guard'||spell==='seal')&&casting){g.circle(hx,hy-5,9+power*8).stroke({color,width:1.7,alpha:strength});g.poly([hx,hy-18,hx+10,hy-5,hx,hy+8,hx-10,hy-5]).stroke({color,width:1.3,alpha:strength});}
    else for(let i=0;i<3;i++){const angle=time*2+i*Math.PI*2/3,r=9+power*14;g.ellipse(hx+Math.cos(angle)*r,hy+Math.sin(angle)*r*.6,spell==='petal'?3.4:2,1.8).fill({color,alpha:strength});}
   }
-  if(fox.mode==='attack'&&power>.1){const hx=x+side*20;g.arc(hx,y-13,15+power*13,side>0?-1.4:1.7,side>0?1.1:4.3).stroke({color:0xffe4a0,width:2.5,alpha:power*.85});}
+  if(fox.mode==='attack'&&power>.1){const hx=x+side*20,r=15+power*13,start=side>0?-1.4:1.7;g.moveTo(hx+Math.cos(start)*r,y-13+Math.sin(start)*r).arc(hx,y-13,r,start,side>0?1.1:4.3).stroke({color:0xffe4a0,width:2.5,alpha:power*.85});}
   if(fox.mode==='hit'&&hit>.05){
    const hx=x+side*12,hy=y-30;
    a.poly([hx,hy-13,hx+4,hy-4,hx+13,hy,hx+4,hy+4,hx,hy+13,hx-4,hy+4,hx-13,hy,hx-4,hy-4]).fill({color:0xd96049,alpha:hit*.8});

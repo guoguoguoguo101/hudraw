@@ -1,3 +1,4 @@
+import {MOUNTAIN_BALANCE} from '../gameplay/mountain-run';
 import {MOUNTAIN_THEMES,chapterPanel,chapterMark,brushGlyph} from './mountain-theme';
 import {Container,Graphics,Text} from 'pixi.js';
 import type {Game} from '../gameplay/game';
@@ -30,6 +31,7 @@ export class BrushUpgradeUI{
   if(id==='spray')for(let i=0;i<3;i++){const px=(i-1)*13,py=i===1?-12:2;g.moveTo(px-7,py+12).quadraticCurveTo(px+12,py-12,px+7,py+8).quadraticCurveTo(px+3,py+17,px-7,py+12).fill(0xe86b46);}
   if(id==='wide')g.poly([-25,12,-16,-8,22,-17,30,4,-3,16]).fill(0xe86b46).stroke({color:GOLD,width:1});
   if(id==='splash'){for(const side of [-1,1])g.moveTo(-26,side*10).bezierCurveTo(-9,side*22,11,-side*3,28,side*10).stroke({color:side===1?GOLD:0xd56b48,width:4,cap:'round'});}
+  if(id==='line'){g.poly([-24,18,0,-22,24,18]).stroke({color:GOLD,width:2});g.moveTo(-30,22).lineTo(29,-22).stroke({color:0xe86b46,width:5});}
   if(id==='trail'){
    drawInkBlob(g,0);g.scale.set(1.3);
   }
@@ -51,7 +53,7 @@ export class BrushUpgradeUI{
   if(m.runMode&&m.panel==='upgrade'){this.runPanel(header);return;}
   this.root.addChild(new Graphics().rect(0,-500,720,2400).fill({color:0x10201f,alpha:.76}));
   this.zones=[];
-  this.root.addChild(new Graphics().roundRect(38,top,644,545,18).fill(INK).stroke({color:GOLD,width:2}));
+  this.root.addChild(new Graphics().roundRect(38,top,644,627,18).fill(INK).stroke({color:GOLD,width:2}));
   text(this.root,m.panel==='upgrade'?'画笔悟道 · 选择一项':'画笔试演 · 自定义等级',360,top+40,30,PAPER,{fontWeight:'bold',letterSpacing:1});
   text(this.root,m.panel==='upgrade'?`${HUALING_CHAPTERS[chapter].name} · 本轮成长 ${m.picks+1} / 8`:`${HUALING_CHAPTERS[chapter].name} · 本场景独立设置`,360,top+77,18,GOLD,{letterSpacing:0});
   if(m.panel==='upgrade'){
@@ -62,19 +64,19 @@ export class BrushUpgradeUI{
     text(this.root,BRUSH_DESCRIPTIONS[id][next],390,yy+53,18,INK,{letterSpacing:0});
     this.zones.push({x:64,y:yy,w:592,h:76,run:()=>m.choose(id)});
    }
-   text(this.root,`${m.runMode?'击杀积累经验 · 后续升级逐步放缓':'有效击杀积累灵气 · 下次仍可升级同一项'}`,360,top+472,18,GOLD,{letterSpacing:0});
-   if(!this.compactUI)this.button('切换自定义',245,top+497,230,34,()=>{m.panel='custom';});
+   text(this.root,`${m.runMode?'击杀积累经验 · 后续升级逐步放缓':'有效击杀积累灵气 · 下次仍可升级同一项'}`,360,top+554,18,GOLD,{letterSpacing:0});
+   if(!this.compactUI)this.button('切换自定义',245,top+579,230,34,()=>{m.panel='custom';});
   }else{
    for(const [i,id] of BRUSH_SKILLS.entries()){
     const yy=top+107+i*82;this.icon(id,94,yy+17);text(this.root,BRUSH_NAMES[id],160,yy+17,25,PAPER,{letterSpacing:1});
     for(let l=0;l<=4;l++)this.button(l?`Lv${l}`:'关闭',232+l*82,yy-2,73,38,()=>m.setLevel(id,l),m.levels[id]===l);
     text(this.root,BRUSH_DESCRIPTIONS[id][m.levels[id]],367,yy+52,18,GOLD,{letterSpacing:0});
    }
-   this.button('全部满级',64,top+440,174,38,()=>{for(const id of BRUSH_SKILLS)m.setLevel(id,4);});
-   this.button('全部关闭',270,top+440,174,38,()=>{for(const id of BRUSH_SKILLS)m.setLevel(id,0);});
-   this.button('继续试画',476,top+440,174,38,()=>{m.panel=null;},true);
-   this.button('墨鲤试喷',64,top+493,174,36,()=>{m.setLevel('spray',4);m.carp.prime();m.panel=null;g.hualing.say('挥笔即出墨鲤 · 持续画，每1.4秒再喷一条');},true);
-   this.button('从零开始成长 · 击杀再升级',250,top+493,400,36,()=>m.startGrowth());
+   this.button('全部满级',64,top+522,174,38,()=>{for(const id of BRUSH_SKILLS)m.setLevel(id,4);});
+   this.button('全部关闭',270,top+522,174,38,()=>{for(const id of BRUSH_SKILLS)m.setLevel(id,0);});
+   this.button('继续试画',476,top+522,174,38,()=>{m.panel=null;},true);
+   this.button('墨鲤试喷',64,top+575,174,36,()=>{m.setLevel('spray',4);m.carp.prime();m.panel=null;g.hualing.say('挥笔即出墨鲤 · 持续画，每1.4秒再喷一条');},true);
+   this.button('从零开始成长 · 击杀再升级',250,top+575,400,36,()=>m.startGrowth());
   }
  }
  private runPanel(header:number){
@@ -82,7 +84,7 @@ export class BrushUpgradeUI{
   this.root.addChild(new Graphics().rect(0,-1000,720,3400).fill({color:t.dark,alpha:ch==='palace'?.66:.55}));this.zones=[];
   const mark=new Graphics();this.root.addChild(mark);chapterMark(mark,ch,360,header+142,26);
   text(this.root,'笔 法 悟 道',360,header+213,48,t.title,{letterSpacing:3});
-  text(this.root,`三选一 · 强化本局笔法     ${m.picks+1} / ${this.game.campaign.levelId!==null?5:8}`,360,header+264,20,t.title,{letterSpacing:1});
+  text(this.root,`三选一 · 强化本局笔法     ${m.picks+1} / ${this.game.campaign.levelId!==null?MOUNTAIN_BALANCE.picks:8}`,360,header+264,20,t.title,{letterSpacing:1});
   for(const [i,id]of m.choices.entries()){
    const y=top+i*180,next=m.levels[id]+1;chapterPanel(this.root,ch,40,y,640,158);brushGlyph(this.root,ch,id,129,y+77,1.08);
    text(this.root,BRUSH_NAMES[id],277,y+34,31,t.ink,{fontWeight:'bold',letterSpacing:4});
@@ -95,5 +97,5 @@ export class BrushUpgradeUI{
   text(this.root,'击杀积累经验 · 后续悟道需要更多经验',360,top+576,20,t.title,{letterSpacing:1});
   text(this.root,`${HUALING_CHAPTERS[ch].name} · 选择后继续战斗`,360,top+615,17,t.title,{letterSpacing:0});
  }
- private summary(){const m=this.game.hualing.upgrades;return `喷${m.levels.spray} · 阔${m.levels.wide} · 双${m.levels.splash} · 留墨${m.levels.trail}${m.levels.spray?(m.carp.ready?'  鲤可喷':`  鲤${m.carp.remaining.toFixed(1)}秒`):''}${m.growth?`  ${m.kills}/${m.nextKills}`:''}`;}
+ private summary(){const m=this.game.hualing.upgrades;return `喷${m.levels.spray} · 阔${m.levels.wide} · 双${m.levels.splash} · 留${m.levels.trail} · 斩${m.levels.line}${m.levels.spray?(m.carp.ready?'  鲤可喷':`  鲤${m.carp.remaining.toFixed(1)}秒`):''}${m.growth?`  ${m.kills}/${m.nextKills}`:''}`;}
 }

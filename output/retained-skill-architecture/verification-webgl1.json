@@ -1,0 +1,205 @@
+{
+  "dragon": {
+    "maxVertexError": 0,
+    "compared": 477100,
+    "samples": [
+      {
+        "sinCalls": 4771,
+        "cosCalls": 4771,
+        "hypotCalls": 3356,
+        "medianMs": 0.8999999761581421,
+        "p95Ms": 1.100000023841858,
+        "vertices": 4771,
+        "triangles": 6096
+      },
+      {
+        "sinCalls": 108,
+        "cosCalls": 108,
+        "hypotCalls": 1992,
+        "medianMs": 0.20000001788139343,
+        "p95Ms": 0.4000000059604645,
+        "vertices": 4771,
+        "triangles": 6096
+      }
+    ],
+    "gl": 0,
+    "webgl": 1,
+    "pixels": {
+      "changedChannels": 0,
+      "meanAbsoluteError": 0
+    }
+  },
+  "collected": {
+    "results": [
+      {
+        "name": "pickups",
+        "runs": [
+          {
+            "clearsPerFrame": 2,
+            "paintsPerFrame": 94,
+            "medianMs": 0.19999998807907104,
+            "p95Ms": 0.4000000059604645,
+            "drawCalls": 4,
+            "uploadedBytes": 65994,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 1,
+            "paintsPerFrame": 0,
+            "medianMs": 0,
+            "p95Ms": 0.09999999403953552,
+            "drawCalls": 4,
+            "uploadedBytes": 65994,
+            "maxIconVertices": 250
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      },
+      {
+        "name": "other-pickups",
+        "runs": [
+          {
+            "clearsPerFrame": 2,
+            "paintsPerFrame": 97,
+            "medianMs": 0.20000001788139343,
+            "p95Ms": 0.4000000059604645,
+            "drawCalls": 4,
+            "uploadedBytes": 71190,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 1,
+            "paintsPerFrame": 0,
+            "medianMs": 0,
+            "p95Ms": 0.09999999403953552,
+            "drawCalls": 4,
+            "uploadedBytes": 71190,
+            "maxIconVertices": 514
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      },
+      {
+        "name": "storm-0",
+        "runs": [
+          {
+            "clearsPerFrame": 31,
+            "paintsPerFrame": 511,
+            "medianMs": 1.2000000178813934,
+            "p95Ms": 3.2999999821186066,
+            "drawCalls": 39,
+            "uploadedBytes": 533057.6,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 48,
+            "paintsPerFrame": 304,
+            "medianMs": 0.7999999821186066,
+            "p95Ms": 1.2999999821186066,
+            "drawCalls": 38,
+            "uploadedBytes": 534791.6,
+            "maxIconVertices": 250
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      },
+      {
+        "name": "storm-1",
+        "runs": [
+          {
+            "clearsPerFrame": 31,
+            "paintsPerFrame": 576,
+            "medianMs": 1.100000023841858,
+            "p95Ms": 2.199999988079071,
+            "drawCalls": 39,
+            "uploadedBytes": 533101.2,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 48,
+            "paintsPerFrame": 304,
+            "medianMs": 0.7999999821186066,
+            "p95Ms": 1.2999999821186066,
+            "drawCalls": 38,
+            "uploadedBytes": 534861.6,
+            "maxIconVertices": 250
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      },
+      {
+        "name": "storm-2",
+        "runs": [
+          {
+            "clearsPerFrame": 31,
+            "paintsPerFrame": 578,
+            "medianMs": 1.199999988079071,
+            "p95Ms": 2.199999988079071,
+            "drawCalls": 39,
+            "uploadedBytes": 533738.8,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 48,
+            "paintsPerFrame": 306,
+            "medianMs": 1.100000023841858,
+            "p95Ms": 1.5999999940395355,
+            "drawCalls": 38,
+            "uploadedBytes": 535500,
+            "maxIconVertices": 250
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      },
+      {
+        "name": "combined",
+        "runs": [
+          {
+            "clearsPerFrame": 58,
+            "paintsPerFrame": 742,
+            "medianMs": 2.5999999940395355,
+            "p95Ms": 4.600000023841858,
+            "drawCalls": 108,
+            "uploadedBytes": 1029534.8,
+            "maxIconVertices": 0
+          },
+          {
+            "clearsPerFrame": 76,
+            "paintsPerFrame": 472,
+            "medianMs": 1.4000000059604645,
+            "p95Ms": 2.5999999940395355,
+            "drawCalls": 109,
+            "uploadedBytes": 1029553.6,
+            "maxIconVertices": 250
+          }
+        ],
+        "pixels": {
+          "changedChannels": 0,
+          "meanAbsoluteError": 0
+        }
+      }
+    ],
+    "lifecycle": {
+      "resizedContextReleased": true,
+      "destroyedContextReleased": true,
+      "pickupContextReused": true
+    },
+    "gl": 0
+  },
+  "errors": []
+}

@@ -1,0 +1,30 @@
+{
+  "videoFrames": 440,
+  "sheets": 11,
+  "offset": 4.151,
+  "stats": [
+    {
+      "side": 0,
+      "samples": 1020,
+      "clippedFrames": 0,
+      "clipPercent": 0,
+      "maxClippedFraction": 0,
+      "headNearTailFrames": 0,
+      "stalledFrames": 0,
+      "maxTurn": 5.34,
+      "worst": []
+    },
+    {
+      "side": 1,
+      "samples": 1020,
+      "clippedFrames": 0,
+      "clipPercent": 0,
+      "maxClippedFraction": 0,
+      "headNearTailFrames": 0,
+      "stalledFrames": 0,
+      "maxTurn": 4.75,
+      "worst": []
+    }
+  ],
+  "errors": []
+}

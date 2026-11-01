@@ -1,0 +1,33 @@
+{
+  "results": [
+    {
+      "width": 375,
+      "stationaryOrbit": true,
+      "frontBack": true,
+      "refresh": true,
+      "pause": true,
+      "expiry": true
+    },
+    {
+      "width": 390,
+      "stationaryOrbit": true,
+      "frontBack": true,
+      "refresh": true,
+      "pause": true,
+      "expiry": true
+    },
+    {
+      "width": 430,
+      "stationaryOrbit": true,
+      "frontBack": true,
+      "refresh": true,
+      "pause": true,
+      "expiry": true
+    }
+  ],
+  "campaignDropPickConsume": true,
+  "secondaryKill": true,
+  "innerOuterExclusion": true,
+  "recordedFrames": 84,
+  "errors": []
+}

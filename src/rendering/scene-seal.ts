@@ -96,7 +96,6 @@ export class SceneSealRenderer{
   const powerName=m.chapter==='snow'?'灵息':m.chapter==='sea'?'海珠':m.chapter==='palace'?'星芒':'火之力';
   this.state.text=repairing?m.mode==='fire'?m.info.hint:`完成${m.mode==='beast'?'补灵':m.info.tab}，获得${reward}`:collecting?`${reward} · 正在入匣`:m.phase==='stored'?`${reward}${m.mode==='fire'?` · ${m.power} ${powerName}`:''} · 拖出使用`:'已释放 · 点右侧重现按钮再试';
   if(quiet){this.state.visible=!this.compact&&inventory.some(s=>!!s.dragPoint);this.state.text='召唤符可照常拖出 · 挥笔破解 Boss 招式';}
-  for(let i=0;i<3;i++){const p=m.slot(bounds,i),filled=inventory.some(s=>s.phase==='stored'&&s.slotIndex===i);g.roundRect(p.x-36,p.y-44,72,88,7).fill({color:INK,alpha:.72}).stroke({color:GOLD,width:1,alpha:filled?.8:.25});if(!filled)g.circle(p.x,p.y,2).fill({color:GOLD,alpha:.35});}
   for(const stored of inventory){
    const origin=stored.center(bounds),destination=stored.slot(bounds);
    if(stored.phase==='collecting'){const t=Math.max(0,Math.min(1,(stored.age-.2)/.7)),u=t*t*(3-2*t);card(g,origin.x+(destination.x-origin.x)*u,origin.y+(destination.y-origin.y)*u,1,.85+.15*u,stored.mode,stored.chapter);}

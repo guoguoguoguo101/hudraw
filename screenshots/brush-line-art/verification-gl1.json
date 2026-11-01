@@ -1,0 +1,63 @@
+{
+  "poses": [
+    {
+      "name": "slash",
+      "time": 0.08
+    },
+    {
+      "name": "cross",
+      "time": 0.09
+    },
+    {
+      "name": "seal",
+      "time": 0.26
+    },
+    {
+      "name": "seal",
+      "time": 0.6
+    },
+    {
+      "name": "seal",
+      "time": 0.72
+    },
+    {
+      "name": "seal",
+      "time": 1.6
+    },
+    {
+      "name": "borrow",
+      "time": 0.6
+    }
+  ],
+  "samples": [
+    {
+      "effects": 16,
+      "clearsPerFrame": 2,
+      "paintsPerFrame": 140,
+      "medianUpdateMs": 0.5999999940395355,
+      "p95UpdateMs": 1.9000000059604645,
+      "medianSubmitMs": 0.9000000059604645,
+      "drawCalls": 4,
+      "uploadBytes": 29004
+    },
+    {
+      "effects": 16,
+      "clearsPerFrame": 1,
+      "paintsPerFrame": 0,
+      "medianUpdateMs": 0.09999999403953552,
+      "p95UpdateMs": 0.10000002384185791,
+      "medianSubmitMs": 0.29999998211860657,
+      "drawCalls": 5,
+      "uploadBytes": 42516
+    }
+  ],
+  "maxAnchorError": 0,
+  "anchorChecks": 19,
+  "lifecycle": {
+    "emptyTraces": 0,
+    "emptyEffects": 0
+  },
+  "webgl": 1,
+  "gl": 0,
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "sizes": [
+    375,
+    390,
+    430
+  ],
+  "styles": [
+    "test",
+    "formal"
+  ],
+  "realEffects": [
+    "pulse",
+    "dragon",
+    "flower",
+    "thunder",
+    "beast",
+    "crab",
+    "heal",
+    "ward",
+    "storm",
+    "crescent"
+  ],
+  "campaignPickupOnly": true,
+  "errors": []
+}

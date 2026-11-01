@@ -1,0 +1,30 @@
+{
+  "shots": [
+    "menu-unchanged",
+    "valley-opening",
+    "valley-night",
+    "valley-boss",
+    "sea-opening",
+    "sea-night",
+    "sea-boss",
+    "palace-opening",
+    "palace-night",
+    "palace-boss",
+    "snow-opening",
+    "snow-night",
+    "snow-boss",
+    "snow-critical",
+    "hualing-snow-formal",
+    "hualing-snow-test",
+    "snow-375",
+    "snow-430"
+  ],
+  "barState": {
+    "hit": true,
+    "injured": true,
+    "healed": false,
+    "health": "24 / 100",
+    "warning": "受伤 −76"
+  },
+  "errors": []
+}

@@ -1,0 +1,162 @@
+{
+  "shots": [
+    {
+      "name": "emerge",
+      "t": 0.55,
+      "states": [
+        {
+          "phase": "summonFox",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "summonFox",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "charge",
+      "t": 1.25,
+      "states": [
+        {
+          "phase": "chargeLance",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "chargeLance",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "first-impact",
+      "t": 1.75,
+      "states": [
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "chains",
+      "t": 2,
+      "states": [
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "sustain",
+      "t": 2.75,
+      "states": [
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "thunderImpact",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "fade",
+      "t": 3.6,
+      "states": [
+        {
+          "phase": "disperse",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "disperse",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    },
+    {
+      "name": "end",
+      "t": 4.3,
+      "states": [
+        {
+          "phase": "disperse",
+          "gl": 0,
+          "tails": 9
+        },
+        {
+          "phase": "disperse",
+          "gl": 0,
+          "tails": 9
+        }
+      ],
+      "changed": 0
+    }
+  ],
+  "work": {
+    "full": {
+      "frames": 60,
+      "clears": 240,
+      "paths": 14213,
+      "visible": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "instructions": [
+        29,
+        91,
+        15,
+        6
+      ],
+      "gl": 0
+    },
+    "clouds": {
+      "frames": 60,
+      "clears": 0,
+      "paths": 0,
+      "visible": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "instructions": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "gl": 0
+    }
+  },
+  "errors": []
+}

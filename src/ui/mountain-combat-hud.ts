@@ -2,14 +2,17 @@ import {Container,Graphics,Text} from 'pixi.js';
 import type {Game} from '../gameplay/game';
 import {FORMATION_NAMES} from '../gameplay/mountain-run';
 import {text} from './interface';
+import {PlayerHealthHUD} from './player-health-hud';
+import {MOUNTAIN_THEMES} from './mountain-theme';
 
 /** Persistent combat feedback: XP fills visibly and ink pickups remain readable in battle. */
 export class MountainCombatHUD{
- readonly root=new Container();private meter=new Graphics();private effects=new Graphics();private supplies=new Container();
+ readonly root=new Container();private meterBase=new Graphics();private meter=new Graphics();private effects=new Graphics();private supplies=new Container();private meterHeader=NaN;private meterTheme='';private meterKey='';
  private title:Text;private count:Text;private gain:Text;private notice:Text;private inkGain:Text;private wave:Text;
  private icons=new Map<number,Container>();private shown=0;private lastGranted=-1;private lastReset=-1;
+ private health=new PlayerHealthHUD();
  constructor(){
-  this.root.eventMode='none';this.root.addChild(this.supplies,this.meter,this.effects);
+  this.root.eventMode='none';this.root.addChild(this.supplies,this.meterBase,this.meter,this.effects,this.health.root);
   this.title=text(this.root,'',91,0,18,0xffe6b1,{letterSpacing:0});this.count=text(this.root,'',604,0,17,0xffe6b1,{letterSpacing:0});
   this.gain=text(this.root,'',360,0,19,0xe5c371,{letterSpacing:0});
   this.notice=text(this.root,'',360,0,23,0xffe7b3,{letterSpacing:0,fontWeight:'bold'});
@@ -20,20 +23,32 @@ export class MountainCombatHUD{
   const c=g.campaign,u=g.hualing.upgrades;
   this.root.visible=c.levelId!==null&&g.active&&!u.blocked&&!c.supportPanel;
   if(!this.root.visible)return;
+  this.health.update(g,footer);
   if(this.lastReset!==g.ink.resetSerial||this.lastGranted!==c.granted){this.shown=0;this.lastReset=g.ink.resetSerial;this.lastGranted=c.granted;}
   const full=c.growthComplete||u.pending>0,ratio=full?1:Math.min(1,c.xp/c.xpNeeded);
   // The value is authoritative; only the bar catches up over several frames.
   this.shown+=(ratio-this.shown)*.22;
+  if(Math.abs(ratio-this.shown)<.001)this.shown=ratio;
+  const chapter=c.level?.chapter??g.hualing.journey.chapter,t=MOUNTAIN_THEMES[chapter],dark=chapter==='palace';
   const y=header+154,x=157,w=367,fill=w*this.shown,flash=Math.max(0,1-(c.age-c.lastXpAt)/.7);
-  this.meter.clear().roundRect(20,y,680,44,10).fill({color:0x172d30,alpha:.96}).stroke({color:0xd7b378,width:1,alpha:.6});
-  this.meter.roundRect(x,y+14,w,15,6).fill(0x0a1a20);
-  if(fill>.5)this.meter.roundRect(x,y+14,fill,15,Math.min(6,fill/2)).fill(0xd5b363);
-  if(flash>0)this.meter.circle(x+fill,y+21,3+flash*3).fill({color:0xffebba,alpha:flash});
+  if(this.meterHeader!==header||this.meterTheme!==chapter){
+   this.meterHeader=header;this.meterTheme=chapter;const p=this.meterBase;p.clear();
+   p.poly([29,y+7,690,y+7,697,y+14,694,y+37,26,y+37,23,y+29,25,y+13]).fill({color:t.paper,alpha:.94}).stroke({color:t.line,width:.8,alpha:.65});
+   p.moveTo(35,y+10).lineTo(684,y+10).stroke({color:t.line,width:.6,alpha:.28});
+   p.moveTo(140,y+14).lineTo(140,y+29).moveTo(544,y+14).lineTo(544,y+29).stroke({color:t.line,width:.7,alpha:.45});
+   p.rect(x,y+17,w,8).fill({color:t.ink,alpha:dark?.13:.12});
+   this.title.style.fill=this.count.style.fill=t.ink;
+  }
+  const meterKey=[chapter,header,fill,flash].join(':');
+  if(this.meterKey!==meterKey){this.meterKey=meterKey;this.meter.clear();
+   if(fill>.5)this.meter.rect(x,y+17,fill,8).fill(dark?0xd9bd7c:0x9b773c);
+   if(flash>0)this.meter.poly([x+fill,y+15,x+fill+4,y+21,x+fill,y+27,x+fill-4,y+21]).fill({color:dark?0xffebba:t.accent,alpha:flash*.8});
+  }
   this.title.text=`修行 Lv${u.picks+1}`;this.title.y=y+21;
   this.count.text=c.growthComplete?'本局圆满':u.pending?'悟道就绪':`${c.xp} / ${c.xpNeeded}`;this.count.y=y+21;
   this.gain.text=flash>0?`经验 +${c.lastXp}`:'';this.gain.y=y+62-(1-flash)*12;this.gain.alpha=flash;
   const exhausted=g.ink.currentInk<8,low=g.ink.currentInk<20,clock=performance.now()/1000;
-  this.effects.clear();
+  if(this.effects.context.instructions.length)this.effects.clear();
   const waveAge=c.age-c.waveAt;
   this.wave.text=waveAge<1.5?FORMATION_NAMES[c.formation]:'';this.wave.y=header+248;
   this.wave.alpha=Math.max(0,Math.min(1,(1.5-waveAge)*2));
@@ -43,9 +58,9 @@ export class MountainCombatHUD{
    this.effects.poly([p.x-9,p.y-12,p.x,p.y-3,p.x+9,p.y-12]).stroke({color:0xffd59a,width:3,alpha:pulse});
   }
   if(low){
-   const alpha=.5+Math.sin(clock*5)*.13,ny=footer+1072;
-   this.effects.roundRect(60,ny-25,600,50,12).fill({color:exhausted?0x7c352b:0x253b40,alpha:.94}).stroke({color:exhausted?0xe19b60:0x82cfc7,width:2,alpha});
-   this.notice.text=exhausted?'墨尽！抬笔点击墨水符':'灵墨将尽 · 点击或划过墨水符';this.notice.y=ny;this.notice.alpha=1;
+   const alpha=.5+Math.sin(clock*5)*.13,ny=footer+1098;
+   this.effects.roundRect(60,ny-21,600,42,10).fill({color:exhausted?0x7c352b:0x253b40,alpha:.94}).stroke({color:exhausted?0xe19b60:0x82cfc7,width:2,alpha});
+   this.notice.text=g.collected.counts.pulse>0?(exhausted?'墨尽！震墨可用 · 命中三妖回墨10':'灵墨将尽 · 震墨可清群回墨'):exhausted?'墨尽！抬笔点击墨水符':'灵墨将尽 · 点击或划过墨水符';this.notice.y=ny;this.notice.alpha=1;
    this.effects.roundRect(23,header+210,674,footer+909-header,16).stroke({color:0xd87851,width:2,alpha:exhausted?alpha*.6:0});
   }else{this.notice.text='';this.notice.alpha=0;}
   const inkAge=c.age-c.lastInkAt;this.inkGain.text=inkAge<1.3?`墨水符 +${c.lastInkAmount}`:'';this.inkGain.y=header+117-inkAge*14;this.inkGain.alpha=Math.max(0,1-inkAge/1.3);

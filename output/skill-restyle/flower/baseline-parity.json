@@ -1,0 +1,62 @@
+[
+  {
+    "time": 0.12,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 0.65,
+    "changed": 7,
+    "max": 1,
+    "mean": 0.00007237984944991314
+  },
+  {
+    "time": 0.9,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.02,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.13,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.17,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.27,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.48,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 1.8,
+    "changed": 0,
+    "max": 0,
+    "mean": 0
+  },
+  {
+    "time": 2.02,
+    "changed": 8,
+    "max": 1,
+    "mean": 0.00008271982794275788
+  }
+]

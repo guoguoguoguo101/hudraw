@@ -1,0 +1,77 @@
+{
+  "high": {
+    "fps": 30,
+    "frames": 250,
+    "before": {
+      "resolution": 1.5,
+      "scale": 0.5416666666666666,
+      "time": 0.09999999999999999,
+      "hp": 100,
+      "bounds": {
+        "left": 26,
+        "right": 694,
+        "top": 93.92307692307685,
+        "bottom": 1231.076923076923
+      },
+      "low": false,
+      "particles": "high",
+      "saved": null,
+      "targetFPS": 60
+    },
+    "after": {
+      "resolution": 1.5,
+      "scale": 0.5416666666666666,
+      "time": 8.466666666666667,
+      "hp": 100,
+      "bounds": {
+        "left": 26,
+        "right": 694,
+        "top": 93.92307692307685,
+        "bottom": 1231.076923076923
+      },
+      "low": false,
+      "particles": "high",
+      "saved": null,
+      "targetFPS": 60
+    },
+    "gl": 0
+  },
+  "low": {
+    "fps": 15,
+    "frames": 150,
+    "before": {
+      "resolution": 1,
+      "scale": 0.5416666666666666,
+      "time": 0.05,
+      "hp": 100,
+      "bounds": {
+        "left": 26,
+        "right": 694,
+        "top": 93.92307692307685,
+        "bottom": 1231.076923076923
+      },
+      "low": true,
+      "particles": "low",
+      "saved": "low",
+      "targetFPS": 60
+    },
+    "after": {
+      "resolution": 1,
+      "scale": 0.5416666666666666,
+      "time": 10.050000000000079,
+      "hp": 100,
+      "bounds": {
+        "left": 26,
+        "right": 694,
+        "top": 93.92307692307685,
+        "bottom": 1231.076923076923
+      },
+      "low": true,
+      "particles": "low",
+      "saved": "low",
+      "targetFPS": 60
+    },
+    "gl": 0
+  },
+  "errors": []
+}

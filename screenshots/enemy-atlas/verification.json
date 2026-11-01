@@ -1,0 +1,164 @@
+{
+  "visual": [
+    {
+      "resolution": 1.5,
+      "state": "Approach",
+      "mean": 0.18720328512982543,
+      "changedRatio": 0.0012369870782193058
+    },
+    {
+      "resolution": 1.5,
+      "state": "Telegraph",
+      "mean": 0.18779848705796573,
+      "changedRatio": 0.0012506582411795683
+    },
+    {
+      "resolution": 1.5,
+      "state": "Hit",
+      "mean": 0.17953249686069592,
+      "changedRatio": 0.0010855916069186212
+    },
+    {
+      "resolution": 1,
+      "state": "Approach",
+      "mean": 0.3483166747680966,
+      "changedRatio": 0.0032939907643699112
+    },
+    {
+      "resolution": 1,
+      "state": "Telegraph",
+      "mean": 0.3532190525377729,
+      "changedRatio": 0.0033296876898772634
+    },
+    {
+      "resolution": 1,
+      "state": "Hit",
+      "mean": 0.33434854376797507,
+      "changedRatio": 0.0029939846882974844
+    }
+  ],
+  "scaling": {
+    "results": [
+      {
+        "count": 35,
+        "cached": false,
+        "updateMs": {
+          "median": 0.29999998211860657,
+          "p95": 0.4000000059604645
+        },
+        "renderSubmitMs": {
+          "median": 1.2000000178813934,
+          "p95": 1.800000011920929
+        },
+        "drawCalls": {
+          "median": 29,
+          "p95": 29
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      },
+      {
+        "count": 35,
+        "cached": true,
+        "updateMs": {
+          "median": 0.19999998807907104,
+          "p95": 0.4000000059604645
+        },
+        "renderSubmitMs": {
+          "median": 0.5,
+          "p95": 1.300000011920929
+        },
+        "drawCalls": {
+          "median": 3,
+          "p95": 3
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      },
+      {
+        "count": 350,
+        "cached": false,
+        "updateMs": {
+          "median": 1.4000000059604645,
+          "p95": 2.2999999821186066
+        },
+        "renderSubmitMs": {
+          "median": 5.9000000059604645,
+          "p95": 9.199999988079071
+        },
+        "drawCalls": {
+          "median": 281,
+          "p95": 281
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      },
+      {
+        "count": 350,
+        "cached": true,
+        "updateMs": {
+          "median": 0.699999988079071,
+          "p95": 1.899999976158142
+        },
+        "renderSubmitMs": {
+          "median": 1.800000011920929,
+          "p95": 3.399999976158142
+        },
+        "drawCalls": {
+          "median": 24,
+          "p95": 24
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      },
+      {
+        "count": 1000,
+        "cached": false,
+        "updateMs": {
+          "median": 3.5999999940395355,
+          "p95": 5.899999976158142
+        },
+        "renderSubmitMs": {
+          "median": 14,
+          "p95": 21.69999998807907
+        },
+        "drawCalls": {
+          "median": 799,
+          "p95": 799
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      },
+      {
+        "count": 1000,
+        "cached": true,
+        "updateMs": {
+          "median": 6.200000017881393,
+          "p95": 8.5
+        },
+        "renderSubmitMs": {
+          "median": 21.900000005960464,
+          "p95": 28.100000023841858
+        },
+        "drawCalls": {
+          "median": 67,
+          "p95": 67
+        },
+        "unreleasedContexts": 0,
+        "gl": 0
+      }
+    ],
+    "pages": 1,
+    "releasedPages": 0,
+    "lifecycle": {
+      "active": 0,
+      "pooled": 128,
+      "maxPerLook": 9,
+      "pages": 1,
+      "actors": 129,
+      "gl": 0
+    },
+    "note": "Isolated articulated monster renderer; diagnostic counts bypass normal gameplay cap. Same full artwork, animation and resolution. Does not include AI, skills or real-device GPU/FPS."
+  },
+  "errors": []
+}

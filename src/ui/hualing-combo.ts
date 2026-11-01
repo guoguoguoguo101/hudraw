@@ -32,7 +32,7 @@ export class HualingComboUI{
   if(tier>=3)g.poly([20,65,64,39,48,60,166,15,130,36,8,82]).fill({color:RED,alpha:.5});
  }
  update(){
-  const g=this.game,c=g.hualing.combo;this.root.visible=g.hualingPractice&&g.active;if(!this.root.visible)return;
+  const g=this.game,c=g.hualing.combo;this.root.visible=g.campaign.levelId===null&&g.hualingPractice&&g.active;if(!this.root.visible)return;
   this.root.position.set(g.hualing.bounds.right-168,g.hualing.bounds.top+6);
   const result=c.chainResult,chainCount=c.count>=2?c.count:result?.kills??0,tier=comboTier(chainCount),age=c.time-c.lastKill;
   this.chain.visible=chainCount>=2;

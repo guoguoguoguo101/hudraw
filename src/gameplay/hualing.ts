@@ -32,7 +32,7 @@ export class Hualing{
  thunder=new ThunderBrush();petals=new PetalBrush();
  selected:SpiritCard|null=null;lastCard:SpiritCard='dragon';path:Point[]=[];effects:SpiritEffect[]=[];
  bounds:Arena={left:20,right:700,top:260,bottom:990};pointer:number|null=null;length=0;age=0;clock=0;serial=0;
- notice='挥笔划过纸妖 · 或选纸符绘物成灵';noticeTime=0;
+ runeShelf=false;notice='挥笔划过纸妖 · 或选纸符绘物成灵';noticeTime=0;
  sceneSeal=new SceneSeal();frozen=false;private tail:Point|null=null;
  journey=new ScrollJourney();private sceneMemory=new Map<SceneMode,SceneSeal>();private journeyEvent:SceneMode='seal';private pendingScene:SceneMode|null=null;
  constructor(){this.sceneMemory.set('seal',this.sceneSeal);}
@@ -46,7 +46,9 @@ export class Hualing{
   if(!s){s=new SceneSeal();s.chapter=this.journey.chapter;s.setMode(kind);this.sceneMemory.set(kind,s);}
   s.phase='stored';s.age=0;s.slotIndex=slot;s.cancelDrag();this.say(`${s.info.reward}已入匣 · 拖进画境召唤`);return true;
  }
+ openRuneShelf(){this.runeShelf=true;this.cancel();this.journey.autoEvents=false;this.pendingScene=null;for(const scene of this.scenes){scene.reset();scene.phase='spent';}this.notice='';this.noticeTime=0;}
  showScene(mode:SceneMode,reset=false){
+  if(this.runeShelf)return;
   this.sceneMemory.set(this.sceneSeal.mode,this.sceneSeal);
   let next=this.sceneMemory.get(mode);
   if(!next){next=new SceneSeal();next.chapter=this.journey.chapter;next.setMode(mode);this.sceneMemory.set(mode,next);}
@@ -54,17 +56,17 @@ export class Hualing{
   this.sceneSeal=next;this.cancelInput();
  }
  chooseScene(mode:SceneMode){if(mode==='beast'||mode==='crab'){this.claimSummon(mode);return;}this.journey.autoEvents=false;this.pendingScene=null;this.selected=null;this.showScene(mode,true);}
- previewLandscape(stage:LandscapeStage){this.journey.preview(stage);this.journeyEvent=this.journey.event;this.pendingScene=null;this.selected=null;this.cancelInput();this.showScene(this.journey.event);this.say(`${this.journey.sceneName} · 进度与成品符保留`);}
- changeChapter(chapter:HualingChapter){this.growthByChapter.set(this.journey.chapter,this.upgrades.snapshot());this.reset(false);this.journey.chapter=chapter;const saved=this.growthByChapter.get(chapter);if(saved)this.upgrades.restore(saved);this.sceneSeal.chapter=chapter;this.sceneSeal.reset();this.say(this.journey.info.description);}
+ previewLandscape(stage:LandscapeStage){this.journey.preview(stage);this.journeyEvent=this.journey.event;this.pendingScene=null;this.selected=null;this.cancelInput();this.showScene(this.journey.event);this.say(this.runeShelf?this.journey.sceneName:`${this.journey.sceneName} · 进度与成品符保留`);}
+ changeChapter(chapter:HualingChapter){const shelf=this.runeShelf;this.growthByChapter.set(this.journey.chapter,this.upgrades.snapshot());this.reset(false);this.journey.chapter=chapter;const saved=this.growthByChapter.get(chapter);if(saved)this.upgrades.restore(saved);this.sceneSeal.chapter=chapter;this.sceneSeal.reset();if(shelf)this.openRuneShelf();this.say(this.journey.info.description);}
  get drawing(){return this.pointer!==null;}
  say(message:string){this.notice=message;this.noticeTime=3;}
  select(card:SpiritCard){if(card!=='dragon')return false;this.cancelInput();this.selected=card;this.lastCard=card;this.path=[];this.length=0;this.say(SPIRIT_CARDS[card].hint);}
  cancelInput(){for(const s of this.scenes)s.cancelDrag();this.pointer=null;this.tail=null;this.age=0;this.path=[];this.length=0;}
  cancel(){this.cancelInput();this.selected=null;this.say('已收笔 · 挥笔划过纸妖');}
- reset(clearGrowth=true){this.bosses.reset();if(clearGrowth)this.growthByChapter.clear();this.elites.reset();this.upgrades.reset();this.combo.reset();this.cancel();this.thunder.reset();this.petals.reset();this.effects=[];for(const s of this.scenes)s.reset();this.sceneMemory.clear();this.sceneSeal.chapter=this.journey.chapter;this.sceneSeal.setMode('seal');this.sceneSeal.slotIndex=1;this.sceneMemory.set('seal',this.sceneSeal);this.journey.reset();this.journeyEvent='seal';this.pendingScene=null;this.frozen=false;this.clock=0;this.serial=0;this.noticeTime=0;this.notice='落日山谷 · 画卷将随时间起风、入夜';}
- traceScene(a:Point,b:Point){if(!this.selected&&!this.bosses.active){const seal=this.sceneSeal;if(seal.trace(a,b,this.bounds)&&seal.phase==='collecting')this.say(`${seal.info.title}完成 · ${seal.info.reward}收入符匣`);}}
+ reset(clearGrowth=true){this.runeShelf=false;this.bosses.reset();if(clearGrowth)this.growthByChapter.clear();this.elites.reset();this.upgrades.reset();this.combo.reset();this.cancel();this.thunder.reset();this.petals.reset();this.effects=[];for(const s of this.scenes)s.reset();this.sceneMemory.clear();this.sceneSeal.chapter=this.journey.chapter;this.sceneSeal.setMode('seal');this.sceneSeal.slotIndex=1;this.sceneMemory.set('seal',this.sceneSeal);this.journey.reset();this.journeyEvent='seal';this.pendingScene=null;this.frozen=false;this.clock=0;this.serial=0;this.noticeTime=0;this.notice='落日山谷 · 画卷将随时间起风、入夜';}
+ traceScene(a:Point,b:Point){if(!this.runeShelf&&!this.selected&&!this.bosses.active){const seal=this.sceneSeal;if(seal.trace(a,b,this.bounds)&&seal.phase==='collecting')this.say(`${seal.info.title}完成 · ${seal.info.reward}收入符匣`);}}
  handle(e:InputEvent){
-  if(!this.selected){const captured=this.scenes.find(s=>s.dragPointer!==null);if(captured)return captured.handle(e,this.bounds);for(const s of this.scenes)if(s.handle(e,this.bounds))return true;}
+  if(!this.selected&&!this.runeShelf){const captured=this.scenes.find(s=>s.dragPointer!==null);if(captured)return captured.handle(e,this.bounds);for(const s of this.scenes)if(s.handle(e,this.bounds))return true;}
   if(!this.selected)return false;
   if(e.kind==='cancel'){if(e.id===this.pointer)this.cancelInput();return true;}
   if(!Number.isFinite(e.x)||!Number.isFinite(e.y))return true;
@@ -95,17 +97,27 @@ export class Hualing{
   this.effects.push({id:++this.serial,kind,path,age:0,duration:3.3,hit:new Set()});
   if(this.effects.length>8)this.effects.shift();this.selected=null;this.cancelInput();this.say('纸龙得形 · 沿笔迹冲阵');
  }
+ releaseCollectedDragon(target:Point){
+  const b=this.bounds,from={x:360,y:b.bottom-80},dx=target.x-from.x,dy=target.y-from.y,n=Math.hypot(dx,dy)||1;
+  const path=Array.from({length:40},(_,i)=>{const u=i/39,w=Math.sin(u*Math.PI*2)*Math.min(90,n*.2);return {x:Math.max(b.left+15,Math.min(b.right-15,n<65?target.x+(u-.5)*190:from.x+dx*u-dy/n*w)),y:Math.max(b.top+15,Math.min(b.bottom-15,n<65?target.y+Math.sin(u*Math.PI)*70:from.y+dy*u+dx/n*w))};});
+  this.effects.push({id:++this.serial,kind:'dragon',path,age:0,duration:3.3,hit:new Set()});if(this.effects.length>8)this.effects.shift();
+ }
+ releaseCollectedSummon(kind:'beast'|'crab',p:Point){
+  let s=this.sceneMemory.get(kind);if(!s){s=new SceneSeal();s.chapter=this.journey.chapter;s.setMode(kind);s.phase='spent';this.sceneMemory.set(kind,s);}
+  if(!s.validTarget(p,this.bounds)||s.bursts.some(b=>!b.hit)||kind==='beast'&&s.beast.busy||kind==='crab'&&s.crab.state)return false;
+  s.phase='spent';s.bursts.push({center:{x:p.x,y:p.y},age:0,hit:false,kind,power:1});return true;
+ }
  demo(){const card=this.selected??this.lastCard;this.select(card);
   
   const points=
    Array.from({length:90},(_,i)=>({x:360+Math.sin(i/89*Math.PI*2)*180,y:this.bounds.bottom-90-(i/89)*(this.bounds.bottom-this.bounds.top-170)}));
   this.handle({kind:'down',id:90,...points[0]});for(const p of points.slice(1))this.handle({kind:'move',id:90,...p});this.handle({kind:'up',id:90,...points[points.length-1]});
  }
- advance(dt:number,enemies:Enemy[],damage:(e:Enemy,n:number)=>void,brushDown=false){
-  if(!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.1);this.clock+=dt;this.combo.advance(dt);this.petals.advance(dt);this.thunder.advance(dt);this.noticeTime=Math.max(0,this.noticeTime-dt);
+ advance(dt:number,enemies:Enemy[],damage:(e:Enemy,n:number)=>void,brushDown=false,brushPowered=brushDown){
+  if(!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.1);this.clock+=dt;this.combo.advance(dt);this.petals.advance(dt,enemies,damage,this.bounds);this.thunder.advance(dt,enemies,damage,brushPowered&&!this.selected,this.bounds);this.noticeTime=Math.max(0,this.noticeTime-dt);
   this.upgrades.advance(dt,enemies,damage,this.bounds);
   this.journey.advance(dt);
-  if(this.journey.autoEvents&&this.journey.event!==this.journeyEvent){this.journeyEvent=this.journey.event;this.pendingScene=this.journey.event;}
+  if(!this.runeShelf&&this.journey.autoEvents&&this.journey.event!==this.journeyEvent){this.journeyEvent=this.journey.event;this.pendingScene=this.journey.event;}
   if(this.pendingScene&&!brushDown&&!this.drawing&&!this.selected&&!this.scenes.some(s=>s.dragPointer!==null)){this.showScene(this.pendingScene);this.pendingScene=null;}
   for(const scene of this.scenes){
   // Keep earned cards visible across scenery changes; each card claims one of three slots.

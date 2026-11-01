@@ -1,0 +1,107 @@
+{
+  "results": [
+    {
+      "name": "entry",
+      "mode": "before",
+      "fishes": 1,
+      "age": 0.07,
+      "burst": false,
+      "gl": 0
+    },
+    {
+      "name": "entry",
+      "mode": "after",
+      "fishes": 1,
+      "age": 0.07,
+      "burst": false,
+      "gl": 0
+    },
+    {
+      "name": "flight",
+      "mode": "before",
+      "fishes": 1,
+      "age": 0.24,
+      "burst": false,
+      "gl": 0
+    },
+    {
+      "name": "flight",
+      "mode": "after",
+      "fishes": 1,
+      "age": 0.24,
+      "burst": false,
+      "gl": 0
+    },
+    {
+      "name": "landing",
+      "mode": "before",
+      "fishes": 1,
+      "age": 0.57,
+      "burst": true,
+      "gl": 0
+    },
+    {
+      "name": "landing",
+      "mode": "after",
+      "fishes": 1,
+      "age": 0.57,
+      "burst": true,
+      "gl": 0
+    },
+    {
+      "name": "crest",
+      "mode": "before",
+      "fishes": 1,
+      "age": 0.68,
+      "burst": true,
+      "gl": 0
+    },
+    {
+      "name": "crest",
+      "mode": "after",
+      "fishes": 1,
+      "age": 0.68,
+      "burst": true,
+      "gl": 0
+    },
+    {
+      "name": "fade",
+      "mode": "before",
+      "fishes": 1,
+      "age": 0.87,
+      "burst": true,
+      "gl": 0
+    },
+    {
+      "name": "fade",
+      "mode": "after",
+      "fishes": 1,
+      "age": 0.87,
+      "burst": true,
+      "gl": 0
+    }
+  ],
+  "checks": {
+    "report": [
+      {
+        "mode": "before",
+        "clears": 720,
+        "medianMs": 0.09999999403953552,
+        "hidden": true,
+        "gl": 0
+      },
+      {
+        "mode": "after",
+        "clears": 720,
+        "medianMs": 0.09999999403953552,
+        "hidden": true,
+        "gl": 0
+      }
+    ],
+    "actors": 3,
+    "visible": 0,
+    "sprites": 4,
+    "gl": 0
+  },
+  "errors": []
+}

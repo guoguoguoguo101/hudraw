@@ -1,0 +1,327 @@
+{
+  "environment": {
+    "resolution": 1.5,
+    "canvas": [
+      585,
+      1266
+    ],
+    "maxFPS": 30,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0"
+  },
+  "results": [
+    {
+      "name": "monsters14",
+      "count": 14,
+      "effects": false,
+      "actualEnemies": 14,
+      "logicMs": {
+        "median": 0.2,
+        "p95": 0.4
+      },
+      "viewMs": {
+        "median": 0.9,
+        "p95": 1.6
+      },
+      "uiMs": {
+        "median": 0,
+        "p95": 0.2
+      },
+      "renderSubmitMs": {
+        "median": 2.7,
+        "p95": 5.9
+      },
+      "drawCalls": {
+        "median": 43,
+        "p95": 43
+      },
+      "bufferUploadBytes": {
+        "median": 939468,
+        "p95": 1003968
+      },
+      "bufferTransferBytes": {
+        "median": 468342,
+        "p95": 473118
+      },
+      "graphicsClears": {
+        "median": 78,
+        "p95": 81
+      },
+      "nodes": {
+        "median": 1329,
+        "p95": 1329
+      },
+      "renderers": {
+        "brushUpgrades": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "inkTrail": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "hualing": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "petals": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "thunderBrush": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "collected": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "crescentGuard": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "elites": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "chapterBosses": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "scrollLandscape": {
+          "median": 0.4,
+          "p95": 0.7
+        }
+      },
+      "gl": 0
+    },
+    {
+      "name": "mixed14",
+      "count": 14,
+      "effects": true,
+      "actualEnemies": 14,
+      "logicMs": {
+        "median": 0.6,
+        "p95": 1.5
+      },
+      "viewMs": {
+        "median": 3.7,
+        "p95": 6.9
+      },
+      "uiMs": {
+        "median": 0.1,
+        "p95": 0.1
+      },
+      "renderSubmitMs": {
+        "median": 17.6,
+        "p95": 24.7
+      },
+      "drawCalls": {
+        "median": 118,
+        "p95": 125
+      },
+      "bufferUploadBytes": {
+        "median": 36882332,
+        "p95": 55640088
+      },
+      "bufferTransferBytes": {
+        "median": 5104732,
+        "p95": 7307508
+      },
+      "graphicsClears": {
+        "median": 131,
+        "p95": 137
+      },
+      "nodes": {
+        "median": 2214,
+        "p95": 2224
+      },
+      "renderers": {
+        "brushUpgrades": {
+          "median": 0.5,
+          "p95": 1
+        },
+        "inkTrail": {
+          "median": 0.3,
+          "p95": 0.7
+        },
+        "hualing": {
+          "median": 0.6,
+          "p95": 1.5
+        },
+        "petals": {
+          "median": 0.4,
+          "p95": 0.8
+        },
+        "thunderBrush": {
+          "median": 0.1,
+          "p95": 0.3
+        },
+        "collected": {
+          "median": 0.5,
+          "p95": 1.2
+        },
+        "crescentGuard": {
+          "median": 0.1,
+          "p95": 0.3
+        },
+        "elites": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "chapterBosses": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "scrollLandscape": {
+          "median": 0.4,
+          "p95": 0.8
+        }
+      },
+      "gl": 0
+    },
+    {
+      "name": "mixed35",
+      "count": 35,
+      "effects": true,
+      "actualEnemies": 35,
+      "logicMs": {
+        "median": 0.6,
+        "p95": 1.2
+      },
+      "viewMs": {
+        "median": 3.4,
+        "p95": 6.1
+      },
+      "uiMs": {
+        "median": 0.1,
+        "p95": 0.1
+      },
+      "renderSubmitMs": {
+        "median": 17.3,
+        "p95": 24.1
+      },
+      "drawCalls": {
+        "median": 120,
+        "p95": 126
+      },
+      "bufferUploadBytes": {
+        "median": 87899180,
+        "p95": 94228756
+      },
+      "bufferTransferBytes": {
+        "median": 5446648,
+        "p95": 7926838
+      },
+      "graphicsClears": {
+        "median": 140,
+        "p95": 157
+      },
+      "nodes": {
+        "median": 2604,
+        "p95": 2607
+      },
+      "renderers": {
+        "brushUpgrades": {
+          "median": 0.4,
+          "p95": 1
+        },
+        "inkTrail": {
+          "median": 0.2,
+          "p95": 0.6
+        },
+        "hualing": {
+          "median": 0.6,
+          "p95": 1
+        },
+        "petals": {
+          "median": 0.4,
+          "p95": 0.8
+        },
+        "thunderBrush": {
+          "median": 0.1,
+          "p95": 0.2
+        },
+        "collected": {
+          "median": 0.5,
+          "p95": 1
+        },
+        "crescentGuard": {
+          "median": 0.1,
+          "p95": 0.2
+        },
+        "elites": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "chapterBosses": {
+          "median": 0,
+          "p95": 0.1
+        },
+        "scrollLandscape": {
+          "median": 0.3,
+          "p95": 0.5
+        }
+      },
+      "gl": 0
+    }
+  ],
+  "note": "Same desktop browser and deterministic campaign workload. CPU timings and render submission only; these are not phone FPS, GPU timings or temperature measurements. bufferUploadBytes counts submitted buffer capacity (including reserved space); bufferTransferBytes respects WebGL2 source offsets/lengths.",
+  "components": [
+    {
+      "hidden": "full",
+      "median": 9,
+      "p95": 12.099999994039536
+    },
+    {
+      "hidden": "brush",
+      "median": 7.800000011920929,
+      "p95": 10.400000005960464
+    },
+    {
+      "hidden": "dragon",
+      "median": 7.699999988079071,
+      "p95": 13.099999994039536
+    },
+    {
+      "hidden": "groundInk",
+      "median": 8.099999994039536,
+      "p95": 11.400000005960464
+    },
+    {
+      "hidden": "collected",
+      "median": 5.800000011920929,
+      "p95": 8.900000005960464
+    },
+    {
+      "hidden": "petals",
+      "median": 9.200000017881393,
+      "p95": 13.199999988079071
+    },
+    {
+      "hidden": "thunder",
+      "median": 8.599999994039536,
+      "p95": 12.5
+    },
+    {
+      "hidden": "crescent",
+      "median": 8.799999982118607,
+      "p95": 12.700000017881393
+    },
+    {
+      "hidden": "landscape",
+      "median": 8,
+      "p95": 10.200000017881393
+    },
+    {
+      "hidden": "actors",
+      "median": 9,
+      "p95": 13.200000017881393
+    },
+    {
+      "hidden": "feedback",
+      "median": 8.699999988079071,
+      "p95": 11.699999988079071
+    }
+  ],
+  "errors": []
+}

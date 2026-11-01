@@ -72,7 +72,7 @@ test('pause, tuning, freeze, death, chapter switch, reset and old modes cannot l
 });
 test('natural chapter rotation still selects all five, rewards remain traceable once',()=>{
  for(const chapter of ['valley','sea','palace','snow'] as const){const g=new Game();g.start(false,true,false,false,true);g.changeHualingChapter(chapter);g.director.disabled=false;g.hualing.journey.automatic=false;for(const kind of chapterElites(chapter)){g.time+=60;g.advance(1/60);assert.equal(g.enemies.find(e=>e.elite)?.elite?.kind,kind);g.clearHualingElites();}}
- const {g,e,m}=make('umbrella');g.damage(e,10000);const r=m.relics[0],points=eliteRelicPoints(r);for(let i=0;i<points.length;i++)g.strokeHualing(points[i],points[(i+1)%points.length]);assert.equal(r.collected,true);assert.equal(g.hualing.petals.remaining,12);
+ const {g,e,m}=make('umbrella');g.damage(e,10000);const r=m.relics[0],points=eliteRelicPoints(r);for(let i=0;i<points.length;i++)g.strokeHualing(points[i],points[(i+1)%points.length]);assert.equal(r.collected,true);assert.equal(g.hualing.petals.remaining,0);const drop=g.collected.pickups.find(p=>p.kind==='flower');if(drop)g.collected.collect(drop.id);assert.ok(g.collected.counts.flower>0);assert.ok(g.collected.use(g,'flower',{x:360,y:600}));assert.equal(g.hualing.petals.remaining,12);
 });
 console.log(`PASS ${suites} arena elite suites`);
 

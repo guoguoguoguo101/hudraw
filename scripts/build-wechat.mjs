@@ -32,11 +32,14 @@ for(const chapter of ['sea','palace','snow']){
 }
 await fs.copyFile(path.join(root,'scripts/wechat-entry.js'),path.join(out,'game.js'));
 const names=['sky','sun','far_mountains','valley','shrines','arena','foreground','branches'];
-// Native selection scenery needs only the giant guardian background atlas.
+// Selection scenery uses a clean landscape and independently hinged native vectors.
 await fs.mkdir(path.join(out,'art/maps'),{recursive:true});
-await fs.copyFile(path.join(root,'public/art/maps/giant-guardians-v1.jpg'),path.join(out,'art/maps/giant-guardians-v1.jpg'));
+await fs.rm(path.join(out,'art/maps/giant-guardians-v1.jpg'),{force:true});
+await sharp(path.join(root,'public/art/maps/guardian-background-v2.jpg')).resize({width:720}).jpeg({quality:58,mozjpeg:true}).toFile(path.join(out,'art/maps/guardian-background-v2.jpg'));
+await fs.rm(path.join(out,'art/maps/guardian-vectors-v1.json'),{force:true});
+await fs.writeFile(path.join(out,'art/maps/guardian-clean-v2.json'),gzipSync(await fs.readFile(path.join(root,'public/art/maps/guardian-clean-v2.json')),{level:9}));
 await fs.mkdir(path.join(out,'art/environment'),{recursive:true});
-for(const name of ['atlas.json','atlas.png','ink-dragon-head-v2.png','ink-guardian-v1.png',...names.map(n=>'environment/'+n+'.png')])await fs.copyFile(path.join(root,'public/art',name),path.join(out,'art',name));
+for(const name of ['atlas.json','atlas.png','ink-dragon-head-v2.png','crescent-fox-v2.png','ink-guardian-v1.png',...names.map(n=>'environment/'+n+'.png')])await fs.copyFile(path.join(root,'public/art',name),path.join(out,'art',name));
 // The original menu scenery uses a compact palette; chapter vector art is unchanged.
 for(const name of names)await sharp(path.join(root,'public/art/environment/'+name+'.png')).png({palette:true,colours:128,effort:10,dither:0}).toFile(path.join(out,'art/environment/'+name+'.png'));
 await sharp(path.join(root,'public/art/atlas.png')).png({palette:true,colours:256,effort:10,dither:0}).toFile(path.join(out,'art/atlas.png'));
@@ -47,7 +50,7 @@ const projectPath=path.join(out,'project.config.json');
 let existing={};
 try{existing=JSON.parse(await fs.readFile(projectPath,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
 await fs.writeFile(projectPath,JSON.stringify({description:'灵狐绘符 · 微信兼容性测试版',projectname:'linghu-draw',compileType:'game',appid:'touristappid',setting:{es6:false,minified:false,urlCheck:true},...existing},null,2)+'\n');
-const files=[...['valley','sea','palace','snow'].map(n=>'art/bosses/'+n+'-boss.json'),'art/chapters/snow-landscape.json','art/chapters/sea-landscape.json','art/chapters/palace-landscape.json','game.js','runtime.js','game.json','project.config.json','art/atlas.json','art/atlas.png','art/ink-dragon-head-v2.png','art/ink-guardian-v1.png',...names.map(n=>'art/environment/'+n+'.png')];
+const files=[...['valley','sea','palace','snow'].map(n=>'art/bosses/'+n+'-boss.json'),'art/chapters/snow-landscape.json','art/chapters/sea-landscape.json','art/chapters/palace-landscape.json','game.js','runtime.js','game.json','project.config.json','art/atlas.json','art/atlas.png','art/ink-dragon-head-v2.png','art/crescent-fox-v2.png','art/ink-guardian-v1.png',...names.map(n=>'art/environment/'+n+'.png')];
 for(const name of files)await fs.access(path.join(out,name));
 async function packageFiles(dir){const entries=await fs.readdir(dir,{withFileTypes:true});const result=[];for(const entry of entries){const full=path.join(dir,entry.name);if(entry.isDirectory())result.push(...await packageFiles(full));else if(entry.isFile())result.push({name:path.relative(out,full),bytes:(await fs.stat(full)).size});}return result;}
 const packaged=await packageFiles(out),bytes=packaged.reduce((sum,file)=>sum+file.bytes,0),limit=4*1024*1024;

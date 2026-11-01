@@ -56,18 +56,24 @@ export class HualingBossRenderer{
   if(m.integrity<30)g.rect(0,0,720,1280).fill({color:0x9d2425,alpha:.02+.02*Math.sin(time*2)**2});
   this.puppet?.update(s,e.hit);this.body.visible=ready;this.rig.position.set(e.x,e.y);this.rig.alpha=arrival;
   this.rig.scale.set(weak?1:.9);this.rig.rotation=0;this.body.scale.set(1);
-  this.battlefieldFront.roundRect(90,b.bottom-165,540,69,10).fill({color:INK,alpha:.72}).stroke({color:GOLD,width:1,alpha:.26});this.command.position.set(360,b.bottom-130);this.command.style.fontSize=20;const incoming=s.field.attacks.filter(a=>!a.resolved&&a.age>=0).sort((a,c)=>(a.charge+a.duration-a.age)-(c.charge+c.duration-c.age))[0];
+  const commandTop=b.bottom-155;
+  this.battlefieldFront.poly([99,commandTop,621,commandTop,632,commandTop+10,627,commandTop+50,93,commandTop+50,88,commandTop+39]).fill({color:INK,alpha:.88}).stroke({color:GOLD,width:1,alpha:.45});
+  this.battlefieldFront.moveTo(104,commandTop+5).lineTo(615,commandTop+5).stroke({color:GOLD,width:.6,alpha:.25});
+  this.command.position.set(360,commandTop+26);this.command.style.fontSize=20;const incoming=s.field.attacks.filter(a=>!a.resolved&&a.age>=0).sort((a,c)=>(a.charge+a.duration-a.age)-(c.charge+c.duration-c.age))[0];
   let instruction:string=CHAPTER_BOSSES[s.chapter].hint;
   if(incoming){const a=incoming,part=BOSS_PARTS[s.chapter][a.part].name;instruction=part+' · '+({sun:'金火亮环内，横截弹道！',lash:'尾鞭伸展，横断亮结！',tide:'对准亮色潮缝，横笔划穿！',pearl:eyeOpen(s.field)?'潮眼已开！按住海珠送回眼中':'抓住海珠别松手，等潮眼张开',beam:'连接同色双星，把星束折回！',thread:a.part%2===0?'竖丝亮起，横笔斩断！':'横丝亮起，竖笔斩断！',frost:'吐息将至，一笔围住下方暖火！',hoof:'裂结亮起，沿箭头横断蹄震！'} as const)[a.kind];}
   if(s.chapter==='sea'&&s.field.carry!==null)instruction=eyeOpen(s.field)?'潮眼张开！把笔下海珠送回眼中':'海珠已抓住 · 按住等潮眼张开';
-  this.command.text=weak?'拆招成功 · '+Math.ceil(Math.max(0,3.1-s.age))+' 秒追心！':instruction+'\n'+comboProgress(s.chapter,s.field)+(s.field.combo>=3?' · '+s.field.combo+' 连破':'');this.command.style.fill=weak?GOLD:PAPER;
-  this.hud.roundRect(90,b.top-17,540,111,13).fill({color:INK,alpha:.78}).stroke({color:def.color,width:1,alpha:.4});
+  // Progress already lives beside the guard meter. The action tag carries only
+  // the current instruction, leaving the lower battlefield free of a second row.
+  this.command.text=weak?'拆招成功 · '+Math.ceil(Math.max(0,3.1-s.age))+' 秒追心！':instruction;this.command.style.fill=weak?GOLD:PAPER;
+  this.command.scale.set(Math.min(1,500/Math.max(1,this.command.width/this.command.scale.x)));
+  this.hud.poly([99,b.top-17,620,b.top-17,631,b.top-6,627,b.top+86,93,b.top+86,89,b.top+75]).fill({color:INK,alpha:.86}).stroke({color:def.color,width:1,alpha:.5});
   this.title.position.set(360,b.top+2);this.title.text=`${def.name} · ${s.enraged?'狂攻':'连招'}${weak?' · 妖心暴露':''}`;
   this.hud.roundRect(135,b.top+22,450,8,4).fill({color:0x111b25,alpha:.9}).roundRect(135,b.top+22,Math.max(1,450*e.hp/e.maxHp),8,4).fill(weak?GOLD:def.color);
-  this.hud.roundRect(230,b.top+43,270,5,2).fill(0x17232d).roundRect(230,b.top+43,Math.max(1,270*m.integrity/100),5,2).fill(m.integrity<30?0xd86b55:0xb4d3bc);
+  this.hud.rect(140,b.top+36,440,3).fill(0x17232d).rect(140,b.top+36,Math.max(1,440*m.integrity/100),3).fill(m.integrity<30?0xd86b55:0xb4d3bc);
   const progress=comboProgress(s.chapter,s.field);
-  this.guard.position.set(360,b.top+61);this.guard.text=`护卷 ${Math.ceil(m.integrity)} · ${weak?`追心 ${Math.max(0,Math.ceil(3.1-s.age))}秒`:progress}`;
-  this.hint.position.set(360,b.top+82);this.hint.text=!ready?'Boss 画卷加载中…':weak?'追击移动妖心 · 三秒收势后继续拆招':COMBO_NAMES[s.chapter]+` · ${Math.max(0,Math.ceil(bossTimeLimit(s)-s.age))}秒`;this.hint.style.fontSize=17;
+  this.guard.position.set(360,b.top+49);this.guard.text=`护卷 ${Math.ceil(m.integrity)} · ${weak?`追心 ${Math.max(0,Math.ceil(3.1-s.age))}秒`:progress}`;
+  this.hint.position.set(360,b.top+73);this.hint.text=!ready?'画卷加载中…':weak?'追击移动妖心 · 三秒后继续拆招':COMBO_NAMES[s.chapter]+` · ${Math.max(0,Math.ceil(bossTimeLimit(s)-s.age))}秒`;this.hint.style.fontSize=16;
   if(s.phase==='arrive'){this.banner.visible=true;this.banner.position.set(360,b.bottom-160);this.banner.text=def.name+'\n画卷将倾 · 护住卷心';this.banner.alpha=Math.sin(arrival*Math.PI);}
   if(s.field.combo>=3&&s.field.clock-s.field.lastCounter<.55&&!weak){this.banner.visible=true;this.banner.text=`${s.field.combo} 连破`;this.banner.position.set(360,b.top+280);this.banner.alpha=1-(s.field.clock-s.field.lastCounter)/.65;}
   if(s.chapter==='palace')for(let i=0;i<1;i++){

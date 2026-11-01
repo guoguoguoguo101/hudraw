@@ -1,0 +1,70 @@
+{
+  "shots": [
+    {
+      "name": "valley-opening",
+      "level": 0,
+      "stage": "sunset",
+      "enemies": 4,
+      "chapter": "valley"
+    },
+    {
+      "name": "valley-night",
+      "level": 7,
+      "stage": "night",
+      "enemies": 5,
+      "chapter": "valley"
+    },
+    {
+      "name": "sea-opening",
+      "level": 10,
+      "stage": "sunset",
+      "enemies": 4,
+      "chapter": "sea"
+    },
+    {
+      "name": "sea-night",
+      "level": 17,
+      "stage": "night",
+      "enemies": 5,
+      "chapter": "sea"
+    },
+    {
+      "name": "palace-opening",
+      "level": 20,
+      "stage": "sunset",
+      "enemies": 4,
+      "chapter": "palace"
+    },
+    {
+      "name": "palace-night",
+      "level": 27,
+      "stage": "night",
+      "enemies": 5,
+      "chapter": "palace"
+    },
+    {
+      "name": "snow-opening",
+      "level": 30,
+      "stage": "sunset",
+      "enemies": 4,
+      "chapter": "snow"
+    },
+    {
+      "name": "snow-night",
+      "level": 37,
+      "stage": "night",
+      "enemies": 5,
+      "chapter": "snow"
+    },
+    {
+      "name": "valley-boss",
+      "boss": true,
+      "enemies": 1
+    },
+    {
+      "name": "valley-brush",
+      "note": "QA setup: seven earned skill points, live pointer stroke in campaign"
+    }
+  ],
+  "errors": []
+}
