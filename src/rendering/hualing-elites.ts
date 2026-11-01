@@ -22,6 +22,7 @@ function lantern(g:Graphics,x:number,y:number,size:number,open=false){
 }
 type Rig={puppet?:ElitePaperPuppet;enemy?:Enemy;lastClock:number;deathAt?:number;root:Container;body:Container;kind?:EliteKind;art:Graphics;marks:Graphics;name:Text;hint:Text};
 export class HualingEliteRenderer{
+ paperStyle=false;
  root=new Container();loader?:(kind:EliteKind)=>Promise<Texture>;private assets=new Map<EliteKind,Texture>();private pending=new Set<EliteKind>();private retry=new Map<EliteKind,number>();private arena=new EliteFieldRenderer();private ground=new Graphics();private world=new Container();private fx=new Graphics();private rigs=new Map<number,Rig>();
  constructor(){this.root.addChild(this.ground,this.arena.ground,this.world,this.arena.root,this.fx);}
  private rig(id:number){
@@ -33,7 +34,7 @@ export class HualingEliteRenderer{
  private ensure(r:Rig,kind:EliteKind){
   const data=this.assets.get(kind);
   if(!data){if(this.loader&&!this.pending.has(kind)&&Date.now()>=(this.retry.get(kind)??0)){this.pending.add(kind);this.loader(kind).then(d=>{this.assets.set(kind,d);this.pending.delete(kind);}).catch(()=>{this.pending.delete(kind);this.retry.set(kind,Date.now()+3000);});}return false;}
-  if(r.kind!==kind){r.puppet?.destroy();r.body.removeChildren().forEach(c=>c.destroy({children:true}));r.puppet=new ElitePaperPuppet(kind,data);r.body.addChild(r.puppet.root);r.kind=kind;}
+  if(r.kind!==kind||r.puppet?.paperMode!==this.paperStyle){r.puppet?.destroy();r.body.removeChildren().forEach(c=>c.destroy({children:true}));r.puppet=new ElitePaperPuppet(kind,data,this.paperStyle);r.body.addChild(r.puppet.root);r.kind=kind;}
   return true;
  }
  update(model:HualingElites,enemies:Enemy[],enabled:boolean,clock:number,low=false){
@@ -49,6 +50,7 @@ export class HualingEliteRenderer{
    this.ground.ellipse(e.x,e.y+83,s.kind==='umbrella'?62:55,12).fill({color:INK,alpha:.24});
    const pose=elitePose(s,e.hit),ready=this.ensure(r,s.kind);r.body.visible=ready;r.body.rotation=0;r.body.scale.set(1);r.puppet?.update(e);
    if(!ready){g.save().transform(1,0,0,1,-pose.recoil*5,pose.charge*5-pose.cast*9+pose.weak*7);drawEliteArt(g,e);g.restore();}
+   if(this.paperStyle){g.poly([-54,-26,-72,45,-42,29,-26,58,-15,-25]).fill({color:0xb84d38,alpha:.75});g.poly([44,-29,70,31,44,24,29,55,16,-22]).fill({color:0xc8a16c,alpha:.68});m.poly([0,-126,10,-111,0,-96,-10,-111]).fill(0xdfb777).stroke({color:INK,width:2});m.poly([0,-120,4,-111,0,-103,-4,-111]).fill(PAPER);}
    if(s.phase==='stagger'){m.ellipse(0,0,15,24).fill({color:GOLD,alpha:.6});m.poly([0,-12,8,0,0,12,-8,0]).fill(PAPER);}
    if(e.hit>.16){m.ellipse(0,-4,24,37).stroke({color:PAPER,width:2,alpha:.65});}
    m.roundRect(-145,103,290,48,7).fill({color:INK,alpha:.9}).stroke({color:GOLD,width:.7,alpha:.38});

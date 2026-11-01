@@ -39,7 +39,7 @@ export class BrushUpgradeUI{
  update(header=this.header){
   this.header=header;
   const g=this.game,m=g.hualing.upgrades;this.root.visible=g.hualingPractice&&g.active&&(!this.compactUI||m.panel!==null);if(!this.root.visible){this.key='';return;}
-  const chapter=g.hualing.journey.chapter,compact=chapter!=='valley'||g.hualing.bosses.active,y=compact?header+168:g.hualing.bounds.top-18,top=g.hualing.bounds.top+35;
+  const chapter=g.hualing.journey.chapter,compact=chapter!=='valley'||g.hualing.bosses.active,y=compact?header+168:g.hualing.bounds.top-18,top=g.frontlineTest?header+280:g.hualing.bounds.top+35;
   const key=JSON.stringify([m.levels,m.panel,m.growth,m.picks,m.pending,y,chapter,this.compactUI]);
   if(key===this.key){if(this.status)this.status.text=this.summary();return;}
   this.key=key;this.root.removeChildren().forEach(c=>c.destroy({children:true}));this.zones=[];this.status=undefined;

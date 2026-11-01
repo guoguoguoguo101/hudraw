@@ -11,8 +11,8 @@ export class SpawnDirector{
   const b=game.hualing.bounds,side=this.entrySide++%4;let best={x:b.left+55,y:b.top+55},score=-Infinity;
   for(let i=0;i<8;i++){
    const t=.15+game.random()*.7,x=b.left+55+t*Math.max(0,b.right-b.left-110),y=b.top+55+t*Math.max(0,b.bottom-b.top-120);
-   const p=side===0?{x,y:b.top+55}:side===1?{x:b.right-55,y}:side===2?{x,y:b.bottom-65}:{x:b.left+55,y};
-   const clearance=Math.min(Math.hypot(p.x-360,p.y-665),...game.enemies.map(e=>Math.hypot(p.x-e.x,p.y-e.y)));
+   const p=game.frontlineTest?{x,y:b.top+35+(this.entrySide%3)*24}:side===0?{x,y:b.top+55}:side===1?{x:b.right-55,y}:side===2?{x,y:b.bottom-65}:{x:b.left+55,y};
+   const clearance=Math.min(Math.hypot(p.x-game.playerPosition.x,p.y-game.playerPosition.y),...game.enemies.map(e=>Math.hypot(p.x-e.x,p.y-e.y)));
    if(clearance>score){best=p;score=clearance;}
   }
   return best;
@@ -23,7 +23,7 @@ export class SpawnDirector{
    // Continuous replacements, with a bounded crowd so long sessions stay usable on phones.
    this.budget=Math.min(game.hualingPractice?1:3,this.budget+dt*(game.hualingPractice?1/1.5:2));
    const count=game.enemies.filter(e=>e.kind==='ink'||e.kind==='crow').length;
-   if(count<(game.hualingPractice?6:12)&&this.budget>=1){game.spawn(game.random()<.35?'crow':'ink',game.hualingPractice?this.hualingEntry(game):undefined);this.budget-=1;}
+   if(count<(game.frontlineTest?9:game.hualingPractice?6:12)&&this.budget>=1){game.spawn(game.random()<.35?'crow':'ink',game.hualingPractice?this.hualingEntry(game):undefined);this.budget-=1;}
    return;
   }
   const at=game.endless?this.nextBoss:game.training?this.config.trainingBossAt:this.config.bossAt;

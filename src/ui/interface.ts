@@ -8,7 +8,7 @@ import type {Game} from '../gameplay/game';
 import type {Point} from '../input/recognizer';
 import type {ProgressTracker} from '../progress/tracker';
 import type {GameViewport} from '../platform/viewport';
-export type Action='hualingPractice'|'diagnostics'|'interactionPractice'|'practice'|'start'|'endless'|'settings'|'profile'|'closePanel'|'teach'|'pause'|'resume'|'restart'|'menu'|'sound'|'quality'|'debug'|'choose0'|'choose1'|'choose2'|'cultivate'|'archive'|'achievements'|'cultivationArchive'|'journal';
+export type Action='frontlinePractice'|'hualingPractice'|'diagnostics'|'interactionPractice'|'practice'|'start'|'endless'|'settings'|'profile'|'closePanel'|'teach'|'pause'|'resume'|'restart'|'menu'|'sound'|'quality'|'debug'|'choose0'|'choose1'|'choose2'|'cultivate'|'archive'|'achievements'|'cultivationArchive'|'journal';
 const COLORS={gold:0xe7ba68,ink:0x192027,white:0xfff7e8,red:0xd84332,wine:0x562a34,paper:0xf3e7cb,jade:0x72b5a4};
 export function text(parent:Container,str:string,x:number,y:number,size:number,color=COLORS.gold,opts:Partial<TextStyleOptions>={}){const t=new Text({text:str,style:{fontFamily:['KaiTi','STKaiti','serif'],fontSize:size,fill:color,align:'center',letterSpacing:2,...opts}});t.anchor.set(.5);t.position.set(x,y);parent.addChild(t);return t;}
 type Zone={x:number;y:number;w:number;h:number;action:Action};
@@ -52,7 +52,8 @@ export class Interface{
   this.button('无尽妖潮',360,953,440,90,'endless');
   text(this.overlay,'无限闯关 · 一笔续守山海',360,977,16,COLORS.gold,{letterSpacing:1});
   this.button('灵狐志',360,1060,440,68,'profile');
-  this.button('画灵 · 绘物试验',360,1137,440,60,'hualingPractice');
+  this.button('画灵试验',246,1137,212,60,'hualingPractice');
+  this.button('前线画境 · 测试服',474,1137,212,60,'frontlinePractice');
   this.button('演武画境 · 自由试符',246,1207,212,52,'practice');
   this.button('符术交互 · 试验画境',474,1207,212,52,'interactionPractice');
   if(this.menuPanel)this.showMenuPanel();return;

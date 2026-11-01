@@ -16,8 +16,9 @@ export class CrescentGuard{
  private cooldowns=new Map<number,number>();private hitSerial=0;
  get active(){return this.remaining>0;}
  reset(){this.remaining=this.age=this.clock=this.serial=this.hitSerial=0;this.angle=-Math.PI/2;this.center={x:WORLD.foxX,y:WORLD.foxY+18};this.units=[];this.contacts=[];this.cooldowns.clear();}
- activate(){
-  if(!this.active){this.age=0;this.angle=-Math.PI/2;this.cooldowns.clear();this.units=Array.from({length:CRESCENT_GUARD.count},(_,index)=>{const angle=this.angle+index*Math.PI*2/CRESCENT_GUARD.count,p=crescentPosition(angle,this.center);return{...p,index,angle,previous:{...p}};});}
+ activate(center?:Point){
+  if(center)this.center={...center};
+  if(!this.active||center){this.age=0;this.angle=-Math.PI/2;this.cooldowns.clear();this.units=Array.from({length:CRESCENT_GUARD.count},(_,index)=>{const angle=this.angle+index*Math.PI*2/CRESCENT_GUARD.count,p=crescentPosition(angle,this.center);return{...p,index,angle,previous:{...p}};});}
   this.remaining=CRESCENT_GUARD.duration;this.serial++;
  }
  advance(g:Game,dt:number){

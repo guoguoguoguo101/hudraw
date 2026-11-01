@@ -32,10 +32,10 @@ export class CollectedTalismans{
   if(!g.active||!g.hualingPractice||g.campaign.supportPanel||g.hualing.upgrades.blocked||!inArena(p,g.hualing.bounds)||(!preview&&this.counts[kind]<1)||this.casts.some(c=>c.kind===kind))return false;
   let accepted=true;
   if(kind==='pulse')accepted=g.pulse.release(g,p);
-  else if(kind==='dragon')g.hualing.releaseCollectedDragon(p);
+  else if(kind==='dragon')g.hualing.releaseCollectedDragon(p,g.frontlineTest?g.playerPosition:undefined);
   else if(kind==='flower')g.hualing.petals.activate();
   else if(kind==='thunder')g.hualing.thunder.activate();
-  else if(kind==='crescent')this.crescent.activate();
+  else if(kind==='crescent')this.crescent.activate(g.frontlineTest?p:undefined);
   else if(kind==='heal'){if(g.life>=g.maxHp)return false;g.life=Math.min(g.maxHp,g.life+35);}
   else if(kind==='beast'||kind==='crab')accepted=g.hualing.releaseCollectedSummon(kind,p);
   else{const c:RuneCast={...p,id:++this.serial,kind,age:0,stage:0,hit:new Map(),marks:[[],[],[]]};this.casts.push(c);}

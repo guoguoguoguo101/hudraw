@@ -6,6 +6,7 @@ const orbitRate=Math.PI*2/CRESCENT_GUARD.period;
 const floatY=(age:number,index:number)=>Math.sin(age*orbitRate+index*1.7)*3.2;
 
 export class CrescentGuardRenderer{
+ paperStyle=false;
  back=new Container();front=new Container();private shadows=new Graphics();private backTrail=new Graphics();private frontTrail=new Graphics();private impacts=new Graphics();
  private bodies=Array.from({length:CRESCENT_GUARD.count},()=>new CrescentSpirit());
  constructor(){
@@ -23,7 +24,7 @@ export class CrescentGuardRenderer{
    node.visible=true;node.position.set(unit.x,unit.y+bob);node.zIndex=unit.y;
    node.scale.set(size*(unit.index===2?-1:1),size);
    node.rotation=Math.sin(unit.angle-.45)*.13+Math.sin(m.age*orbitRate+unit.index*1.7)*.035;
-   node.alpha=fade*(.94+depth*.06);node.animate(m.age,unit.index,depth);
+   node.alpha=fade*(.94+depth*.06);node.paperStyle=this.paperStyle;node.animate(m.age,unit.index,depth);
    // Shadows stay on the floor while the rounded body floats above them.
    const sx=unit.x+4,sy=unit.y+40*size,shadowWidth=(28+depth*8)*size;
    for(let j=3;j>=1;j--)this.shadows.ellipse(sx,sy,shadowWidth*(.7+j*.18),(4+depth*1.3)*(.7+j*.18)).fill({color:0x101e1e,alpha:fade*opening*(.035+depth*.015)});

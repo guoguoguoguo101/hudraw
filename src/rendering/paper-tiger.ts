@@ -1,3 +1,5 @@
+import {PaperVectorRelief} from './paper-material';
+import type {Renderer} from 'pixi.js';
 import {Container,Graphics} from 'pixi.js';
 import type {PaperTiger,TigerState} from '../gameplay/paper-tiger';
 import {PAPER_TIGER} from '../gameplay/paper-tiger';
@@ -67,6 +69,7 @@ export function drawPaperTiger(g:Graphics,includeTail=true,clear=true){
  g.save().transform(1,0,0,1,34,-47);head(g);g.restore();
 }
 export class PaperTigerRenderer{
+ paperStyle=false;renderer?:Renderer;private relief?:PaperVectorRelief;
  root=new Container();private ground=new Graphics();private rig=new Container();private shape=new Container();private tail=new Graphics();private body=new Graphics();private head=new Graphics();private back=new Graphics();private rear=new Graphics();private front=new Graphics();private farFront=new Graphics();private effects=new Graphics();private ghost=new Graphics();
  constructor(){
   tail(this.tail);body(this.body);head(this.head);leg(this.back,true);leg(this.farFront,true);leg(this.rear);leg(this.front);drawPaperTiger(this.ghost);
@@ -74,7 +77,7 @@ export class PaperTigerRenderer{
  }
  update(model:PaperTiger,b:Arena){
   const t=model.state;this.root.visible=!!t||model.dragging;this.ground.clear();this.effects.clear();this.rig.visible=!!t;this.ghost.visible=false;
-  if(t)this.animate(t);
+  if(this.paperStyle&&this.renderer&&!this.relief)this.relief=new PaperVectorRelief([this.tail,this.body,this.head,this.back,this.rear,this.front,this.farFront],this.renderer);if(t)this.animate(t);this.relief?.update(this.paperStyle);
   if(model.dragging&&model.preview){const p=model.preview,valid=model.valid(p,b),g=this.effects;
    this.ghost.visible=!model.alive;this.ghost.position.set(p.x,p.y);this.ghost.scale.set(.68);this.ghost.alpha=valid?.65:.25;
    g.poly([p.x-25,p.y,p.x,p.y-12,p.x+25,p.y,p.x,p.y+12]).stroke({color:valid?GOLD:0xc74d46,width:1.6,alpha:.85});

@@ -1,3 +1,4 @@
+import {frontlineDragonHead} from './frontline-rune-art';
 import {Container,Graphics,Sprite,type Texture} from 'pixi.js';
 import {DragonRoute,dragonFrame,dragonWidth} from './dragon-motion';
 import type {Hualing,SpiritEffect} from '../gameplay/hualing';
@@ -49,8 +50,8 @@ type Sample=ReturnType<DragonRoute['sample']>;
 class DragonRig{
  root=new Container();private limbs=new Graphics();private ribbons=new Graphics();private bones=new Graphics();private head:Sprite|Graphics;private motes=new Graphics();
  private route?:DragonRoute;private path?:Point[];private pathCount=0;
- constructor(texture:Texture|null){
-  if(texture){const sprite=new Sprite(texture);sprite.anchor.set(.55,.64);this.head=sprite;}else{this.head=new Graphics();inkDragonHead(this.head);}
+ constructor(texture:Texture|null,private readonly paper=false){
+  if(texture){const sprite=new Sprite(texture);sprite.anchor.set(.55,.64);this.head=sprite;}else{this.head=new Graphics();if(paper)frontlineDragonHead(this.head);else inkDragonHead(this.head);}
   this.root.addChild(this.limbs,this.ribbons,this.bones,this.head,this.motes);
  }
  draw(f:SpiritEffect,low:boolean,preview=false){
@@ -74,14 +75,14 @@ class DragonRig{
   // Continuous warm ivory anatomy first; dry brush is confined to the outer edges.
   const left:number[]=[],right:number[]=[],belly:number[]=[];
   for(let i=0;i<=count;i++){const p=frames[i],w=widths[i];left.push(p.x-p.nx*w,p.y-p.ny*w);right.unshift(p.x+p.nx*w,p.y+p.ny*w);belly.push(p.x+p.nx*w*.25,p.y+p.ny*w*.25);}
-  this.ribbons.poly([...left,...right]).fill({color:IVORY,alpha:.9});
-  this.ribbons.poly([...belly,...right]).fill({color:SHADE,alpha:.24});
+  if(this.paper)this.ribbons.poly([...left,...right]).fill({color:IVORY,alpha:.98}).stroke({color:INK,width:2.4});else this.ribbons.poly([...left,...right]).fill({color:IVORY,alpha:.9});
+  this.ribbons.poly([...belly,...right]).fill({color:SHADE,alpha:this.paper?.42:.24});
   // Both sides and both dry-brush locks follow the same material samples.
   // Reuse their exact positions instead of repeating the route searches per lock.
   const edges=[[0,.29],[.7,.98]].map(([from,to])=>Array.from({length:count+1},(_,i)=>{
    const t=from+(to-from)*(i/count);return{t,p:body(t),w:dragonWidth(t)};
   }));
-  for(const side of [-1,1])for(let k=0;k<(low?1:2);k++)for(const samples of edges){
+  if(!this.paper)for(const side of [-1,1])for(let k=0;k<(low?1:2);k++)for(const samples of edges){
    const a:number[]=[],b:number[]=[];
    for(let i=0;i<=count;i++){
     const u=i/count,{t,p,w}=samples[i],flow=Math.sin(t*11-age*3+k)*Math.sin(Math.PI*t)*2;
@@ -96,8 +97,8 @@ class DragonRig{
    const u=i/boneCount,p=body(u),w=widths[Math.round(u*count)];
    if(u<.29)continue;
    place(this.bones,{x:p.x-p.nx*w*.55,y:p.y-p.ny*w*.55},p.angle,.55+.4*u);
-   this.bones.poly([-7,0,-2,-4,6,-2,7,1,0,4]).fill({color:GOLD,alpha:.8});this.bones.moveTo(-3,-1).lineTo(4,-2).stroke({color:LIGHT,width:.8,alpha:.9});this.bones.restore();
-   if(i%3===0&&u>.55)for(const side of [-1,1]){
+   this.bones.poly([-7,0,-2,-4,6,-2,7,1,0,4]).fill({color:this.paper&&i%3===0?RED:GOLD,alpha:.8});this.bones.moveTo(-3,-1).lineTo(4,-2).stroke({color:LIGHT,width:.8,alpha:.9});this.bones.restore();
+   if(!this.paper&&i%3===0&&u>.55)for(const side of [-1,1]){
     place(this.ribbons,p,p.angle,1,side);
     this.ribbons.moveTo(-13,w*.6).quadraticCurveTo(-27,w+7,-36,w+6).quadraticCurveTo(-23,w-1,-7,w*.8).fill({color:IVORY,alpha:.8});this.ribbons.restore();
    }
@@ -112,7 +113,7 @@ class DragonRig{
   }
   const tip=body(1),look=body(.92);
   this.head.position.set(tip.x,tip.y);this.head.rotation=Math.atan2(tip.y-look.y,tip.x-look.x);
-  this.head.scale.set(this.head instanceof Sprite?132/this.head.texture.width:.78);this.head.alpha=1;
+  this.head.scale.set(this.head instanceof Sprite?132/this.head.texture.width:this.paper?.55:.78);this.head.alpha=1;
   for(let i=0;i<(low?5:9);i++){
    const u=(age*.17+i*.113)%1,p=body(u),d=Math.sin(i*2.4+age*2)*(24+u*6),x=p.x+p.nx*d,y=p.y+p.ny*d;
    this.motes.poly([x-2,y,x,y-3,x+2,y,x,y+1]).fill({color:i%3?GOLD:IVORY,alpha:.32});
@@ -120,13 +121,14 @@ class DragonRig{
  }
 }
 export class InkDragonRenderer{
- root=new Container();texture:Texture|null=null;private active=new Map<number,DragonRig>();private spare:DragonRig[]=[];
+ paperStyle=false;private previousPaper=false;root=new Container();texture:Texture|null=null;private active=new Map<number,DragonRig>();private spare:DragonRig[]=[];
  get activeCount(){return this.active.size;}
  update(model:Hualing,low:boolean){
+  if(this.previousPaper!==this.paperStyle){for(const rig of [...this.active.values(),...this.spare])rig.root.destroy({children:true});this.active.clear();this.spare=[];this.previousPaper=this.paperStyle;}
   const effects=model.effects.filter(f=>f.kind==='dragon');
   if(model.selected==='dragon'&&model.path.length>1)effects.push({id:0,kind:'dragon',path:model.path,age:.44,duration:4,hit:new Set()});
   const ids=new Set(effects.map(f=>f.id));
   for(const [id,rig] of this.active)if(!ids.has(id)){rig.root.visible=false;this.spare.push(rig);this.active.delete(id);}
-  for(const f of effects){let rig=this.active.get(f.id);if(!rig){rig=this.spare.pop()??new DragonRig(this.texture);if(!rig.root.parent)this.root.addChild(rig.root);this.active.set(f.id,rig);}rig.draw(f,low,f.id===0);}
+  for(const f of effects){let rig=this.active.get(f.id);if(!rig){rig=this.spare.pop()??new DragonRig(this.paperStyle?null:this.texture,this.paperStyle);if(!rig.root.parent)this.root.addChild(rig.root);this.active.set(f.id,rig);}rig.draw(f,low,f.id===0);}
  }
 }

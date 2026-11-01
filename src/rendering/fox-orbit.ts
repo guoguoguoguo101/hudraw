@@ -1,8 +1,7 @@
 import {Container,Graphics} from 'pixi.js';
 const GOLD=0xffca69,WHITE=0xfff2d0,RED=0xeb4129;
 const clamp=(n:number)=>Math.max(0,Math.min(1,n));
-function silhouette(color:number){
- const g=new Graphics();
+export function drawOrbitFox(g:Graphics,color=WHITE){
  // Three hooked tails, a flying body, pointed ears and a long fox muzzle.
  for(let i=0;i<3;i++)g.moveTo(-20,8).bezierCurveTo(-55,-7-i*9,-85,5-i*22,-81,-33-i*6).bezierCurveTo(-101,-6-i*7,-76,28-i*5,-20,8).fill({color,alpha:.75});
  g.moveTo(-26,1).quadraticCurveTo(-9,-20,17,-8).lineTo(27,-15).lineTo(28,-43).lineTo(39,-24).lineTo(47,-44).lineTo(48,-17).lineTo(65,-8).lineTo(57,2).lineTo(39,5).lineTo(27,13).lineTo(24,5).quadraticCurveTo(-3,23,-26,1).fill({color});
@@ -10,6 +9,8 @@ function silhouette(color:number){
  g.moveTo(16,-3).bezierCurveTo(-9,-22,-18,-8,-48,-20).bezierCurveTo(-27,0,-4,-7,18,2).fill({color:RED,alpha:.7});
  g.moveTo(38,-16).lineTo(47,-12).stroke({color:RED,width:2});return g;
 }
+export function createOrbitFox(color=WHITE){return drawOrbitFox(new Graphics(),color);}
+const silhouette=createOrbitFox;
 /** Nine separate fox shadows circle the player; old positions trail behind each. */
 export class FoxOrbit{
  back=new Container();front=new Container();shadows:Container[]=[];trails:Container[][]=[];burst=new Graphics();

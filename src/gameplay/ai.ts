@@ -23,12 +23,12 @@ export class EnemyAI{
  static status(g:Game,e:Enemy,dt:number){e.hit=Math.max(0,e.hit-dt);e.armorTime=Math.max(0,e.armorTime-dt);if(!e.armorTime)e.armor=0;if(e.shock>0){const old=e.shock;e.shock=Math.max(0,e.shock-dt);if(Math.ceil(old)!==Math.ceil(e.shock))g.damage(e,12,0);}}
  static update(g:Game,e:Enemy,dt:number){if(e.hp<=0||e.ai==='Death')return;e.bindingImmunity=Math.max(0,(e.bindingImmunity??0)-dt);e.age+=dt;e.stateAge+=dt;this.status(g,e,dt);if(e.hp<=0)return;
   if(e.kind==='boss'){BossController.update(g,e,dt);return;}
-  const flowerScale=g.hualingPractice&&g.hualing.petals.isSlowed(e.id)?FLOWER_BRUSH.moveScale:1,target=g.functionalRelics.target(e),moveScale=g.functionalRelics.moveScale(e)*flowerScale,stats=ENEMIES[e.kind],dx=target.x-e.x,dy=target.y-e.y,d=Math.hypot(dx,dy)||1;
+  const flowerScale=g.hualingPractice&&g.hualing.petals.isSlowed(e.id)?FLOWER_BRUSH.moveScale:1,target=g.functionalRelics.target(e,g.playerPosition),moveScale=g.functionalRelics.moveScale(e)*flowerScale,stats=ENEMIES[e.kind],dx=target.x-e.x,dy=target.y-e.y,d=Math.hypot(dx,dy)||1;
   e.x+=e.vx*dt;e.y+=e.vy*dt;e.vx*=Math.exp(-dt*6);e.vy*=Math.exp(-dt*6);
   // Keep bodies readable around the fox; only a telegraphed attack may enter this space.
   if(g.hualingPractice&&!e.lureId&&e.ai!=='Attack'&&e.ai!=='Recovery'){
-   const fx=e.x-WORLD.foxX,fy=e.y-WORLD.foxY,fd=Math.hypot(fx,fy),clearance=e.kind==='crow'?190:150;
-   if(fd<clearance){e.x=WORLD.foxX+(fd?fx/fd:0)*clearance;e.y=WORLD.foxY+(fd?fy/fd:-1)*clearance;return;}
+   const fx=e.x-g.playerPosition.x,fy=e.y-g.playerPosition.y,fd=Math.hypot(fx,fy),clearance=e.kind==='crow'?190:150;
+   if(fd<clearance){e.x=g.playerPosition.x+(fd?fx/fd:0)*clearance;e.y=g.playerPosition.y+(fd?fy/fd:-1)*clearance;return;}
   }
   if(e.ai==='Spawn'){if(e.stateAge>.3)state(e,'Approach');return;}
   if(e.ai==='Hit'){if(e.stateAge>.18)state(e,'Approach');return;}

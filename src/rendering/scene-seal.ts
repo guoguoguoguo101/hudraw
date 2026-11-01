@@ -1,4 +1,4 @@
-import {Container,Graphics,Text} from 'pixi.js';
+import {Container,Graphics,Text,type Renderer} from 'pixi.js';
 import type {SceneSeal,SceneMode} from '../gameplay/scene-seal';
 import type {Arena} from '../input/line-interaction-geometry';
 import type {HualingChapter} from '../gameplay/hualing-chapters';
@@ -41,11 +41,12 @@ function flame(g:Graphics,x:number,y:number,size:number,alpha=1){
 }
 
 export class SceneSealRenderer{
- compact=false;
+ compact=false;paperStyle=false;renderer?:Renderer;
  companions=new Container();private crab=new PaperCrabRenderer();
  root=new Container();private art=new Graphics();private beast=new PaperTigerRenderer();private title=label(this.root,'残缺封印',23);private hint=label(this.root,'笔迹经过就点亮 · 随时停笔',17);private tray=label(this.root,'符 匣',17);private state=label(this.root,'补全封印，获得破印符',17);
  constructor(){this.root.addChildAt(this.art,0);this.companions.addChild(this.beast.root,this.crab.root);}
  update(m:SceneSeal,bounds:Arena,time:number,enabled:boolean,inventory:SceneSeal[]=[m],quiet=false){
+  this.beast.paperStyle=this.crab.paperStyle=this.paperStyle;this.beast.renderer=this.crab.renderer=this.renderer;
   this.beast.update(inventory.find(s=>s.mode==='beast')?.beast??m.beast,bounds);
   this.crab.update(inventory.find(s=>s.mode==='crab')?.crab??m.crab);
   this.root.visible=enabled;if(!enabled)return;const g=this.art;g.clear();

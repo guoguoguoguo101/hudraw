@@ -1,3 +1,4 @@
+import {PaperMeshRelief,paperStock} from './paper-material';
 import {Container,MeshPlane,Rectangle,type Renderer,type Texture} from 'pixi.js';
 import type {HualingChapter} from '../gameplay/hualing-chapters';
 import type {ChapterBossState} from '../gameplay/hualing-bosses';
@@ -6,14 +7,14 @@ import {bossPose,BOSS_BONES,boneInfluence,bonePose,type BossPose} from './boss-m
 
 /** Source is still the native vector art. One local render texture is skinned by moving joints. */
 export class BossPaperPuppet{
- root=new Container();readonly mesh:MeshPlane;private texture:Texture;private rest:Float32Array;private weights:Float32Array;private totals:Float32Array;private pose:BossPose={time:0,charge:0,strike:0,recoil:0,weak:0,arrive:1,recover:0,rage:0,death:0};
- constructor(readonly chapter:HualingChapter,readonly data:PaperVector,renderer:Renderer){
-  const art=paperArt('chapter-boss-v03-'+chapter,data);
+ private relief?:PaperMeshRelief;root=new Container();readonly mesh:MeshPlane;private texture:Texture;private rest:Float32Array;private weights:Float32Array;private totals:Float32Array;private pose:BossPose={time:0,charge:0,strike:0,recoil:0,weak:0,arrive:1,recover:0,rage:0,death:0};
+ constructor(readonly chapter:HualingChapter,readonly data:PaperVector,renderer:Renderer,readonly paperMode=false){
+  const art=paperArt('chapter-boss-v03-'+chapter+(paperMode?'-paper-v2':''),data,paperMode?c=>paperStock(c,chapter):undefined);
   this.texture=renderer.generateTexture({target:art,frame:new Rectangle(0,0,data.width,data.height),resolution:2,antialias:true});art.destroy();
   this.mesh=new MeshPlane({texture:this.texture,verticesX:37,verticesY:37});this.mesh.autoResize=false;
   this.rest=new Float32Array(this.mesh.geometry.positions);const bones=BOSS_BONES[chapter];this.weights=new Float32Array(this.rest.length/2*bones.length);this.totals=new Float32Array(this.rest.length/2);
   for(let i=0;i<this.rest.length;i+=2){let total=0;for(let j=0;j<bones.length;j++){const weight=boneInfluence(bones[j],this.rest[i]/data.width,this.rest[i+1]/data.height);this.weights[i/2*bones.length+j]=weight;total+=weight;}this.totals[i/2]=Math.max(1,total);}this.root.addChild(this.mesh);
-  const scale=Math.min((chapter==='sea'?380:350)/data.width,(chapter==='palace'?315:295)/data.height);this.root.scale.set(scale);this.mesh.position.set(-data.width/2,-data.height/2);
+  const scale=Math.min((chapter==='sea'?380:350)/data.width,(chapter==='palace'?315:295)/data.height);this.root.scale.set(scale);this.mesh.position.set(-data.width/2,-data.height/2);if(paperMode)this.relief=new PaperMeshRelief(this.mesh);
  }
  update(state:ChapterBossState,hit:number){this.pose=bossPose(state,hit);this.skin(this.pose);}
  defeat(age:number,retreat=false){const u=Math.max(0,Math.min(1,age/1.2));this.skin({...this.pose,charge:0,strike:0,recoil:0,weak:1,death:u,time:this.pose.time+age});this.root.alpha=1-u*u;this.root.y=retreat?-u*85:u*u*45;this.root.rotation=(retreat?-.1:.17)*u;}
@@ -24,7 +25,7 @@ export class BossPaperPuppet{
    for(let j=0;j<bones.length;j++){const weight=this.weights[i/2*bones.length+j];if(weight<.0001)continue;const b=bones[j],q=poses[j],px=(u-b.pivot[0])*q.sx,py=(v-b.pivot[1])*q.sy;dx+=(b.pivot[0]+px*q.c-py*q.s+q.x-u)*weight;dy+=(b.pivot[1]+px*q.s+py*q.c+q.y-v)*weight;}
    vertices[i]=(u+dx/this.totals[i/2])*w;vertices[i+1]=(v+dy/this.totals[i/2])*h;
   }
-  this.mesh.geometry.getAttribute('aPosition').buffer.update();
+  this.mesh.geometry.getAttribute('aPosition').buffer.update();this.relief?.update(this.paperMode);
  }
  destroy(){const geometry=this.mesh.geometry;this.root.destroy({children:true});geometry.destroy();this.texture.destroy(true);}
 }

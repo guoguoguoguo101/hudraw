@@ -69,7 +69,7 @@ function ridge(g:Graphics,points:number[],bottom:number,color:number,facet:numbe
   g.moveTo(x,y).lineTo(x+1,y+length*.5).lineTo(x-2,y+length).stroke({color:i%4?line:facet,width:i%7===0?1.5:.65,alpha:i%4?.13:.55});
  }
 }
-function terrain(g:Graphics,p:Palette){
+function terrain(g:Graphics,p:Palette,flat=false){
  ridge(g,[-40,340,25,259,76,321,122,240,179,343,238,307,293,379,348,355,403,392,459,305,505,338,557,245,613,288,666,218,760,337],647,p.far,p.middle,p.paper,1);
  ridge(g,[-35,467,30,365,82,407,133,315,195,438,245,398,302,499,349,445,401,487,458,397,511,428,570,315,638,356,695,300,752,442],657,p.middle,p.near,p.paper,2);
  ridge(g,[-50,603,8,389,61,436,111,343,177,480,228,436,288,577,330,602],685,p.near,p.facet,p.line,3);
@@ -90,6 +90,10 @@ function terrain(g:Graphics,p:Palette){
  pagoda(g,578,449,.74,p);pagoda(g,191,468,.28,p);gate(g,86,577,.68,p);
  // Tiny valley roofs reward looking into the layers without cluttering the arena.
  for(let i=0;i<9;i++){const x=275+random(i+201)*180,y=548+random(i+220)*54;g.poly([x-8,y,x,y-7,x+9,y,x+6,y+1,x-6,y+1]).fill(p.ink).rect(x-5,y+1,10,5).fill(p.facet);}
+ // The frontline uses the same scenery with a straight, unprojected floor.
+ if(flat){g.rect(0,655,720,625).fill(p.floor);g.moveTo(0,655).lineTo(720,655).stroke({color:p.line,width:1,alpha:.18});
+  for(let i=0;i<42;i++){const x=i%2?620+random(i)*65:35+random(i)*65,y=685+random(i+60)*560;g.moveTo(x,y).lineTo(x+5+random(i)*12,y).stroke({color:p.paper,width:.6,alpha:.07});}return;
+ }
  g.moveTo(0,655).bezierCurveTo(144,615,577,615,720,655).lineTo(720,1280).lineTo(0,1280).closePath().fill(p.floor);
  g.moveTo(-20,665).bezierCurveTo(150,620,570,620,740,665).stroke({color:p.ink,width:22});
  g.moveTo(0,657).bezierCurveTo(160,618,560,618,720,657).stroke({color:p.line,width:2,alpha:.65});
@@ -121,6 +125,7 @@ function frame(g:Graphics,p:Palette){
 
 /** All scenery is authored as vector geometry. Three cached paper palettes crossfade; moving accents stay vector. */
 export class ScrollLandscapeRenderer{
+ flatTerrain=false;private flatLands:Container[]=[];
  back=new Container();front=new Container();private skies:Container[]=[];private lands:Container[]=[];private frames:Container[]=[];
  private chapters=new ChapterLandscapeRenderer();private skyFX=new Graphics();private air=new Graphics();private water=new Graphics();private edgeFX=new Graphics();
  constructor(){
@@ -133,19 +138,21 @@ export class ScrollLandscapeRenderer{
    for(const c of [sky,land,edge])c.cacheAsTexture({resolution:1,antialias:true});
    this.skies.push(sky);this.lands.push(land);this.frames.push(edge);
   }
-  this.back.addChild(...this.skies,this.skyFX,...this.lands,this.water,this.air);this.front.addChild(...this.frames,this.edgeFX);this.back.addChild(this.chapters.root);
+  this.back.addChild(...this.skies,this.skyFX,...this.lands,...this.flatLands,this.water,this.air);this.front.addChild(...this.frames,this.edgeFX);this.back.addChild(this.chapters.root);
  }
  get chapterReady(){return this.chapters.ready;}
  setChapterLoader(loader:(chapter:Exclude<HualingChapter,'valley'>)=>Promise<PaperVector>){this.chapters.loader=loader;}
  resize(rect:GameViewport){for(const layer of [this.back,this.front]){layer.y=rect.top;layer.scale.y=(rect.bottom-rect.top)/1280;}}
  update(model:Hualing,enabled:boolean,low=false){
   this.back.visible=this.front.visible=enabled;if(!enabled)return;
+  if(this.flatTerrain&&!this.flatLands.length)for(const p of PALETTES){const land=new Container(),art=new Graphics();terrain(art,p,true);land.addChild(art);land.cacheAsTexture({resolution:1,antialias:true});this.flatLands.push(land);this.back.addChildAt(land,this.back.getChildIndex(this.water));}
   const other=model.journey.chapter!=='valley';this.chapters.root.visible=other;
-  if(other){for(const c of [...this.skies,...this.lands,...this.frames,this.skyFX,this.water,this.air,this.edgeFX])c.visible=false;this.chapters.update(model,low);return;}
+  if(other){for(const c of [...this.skies,...this.lands,...this.flatLands,...this.frames,this.skyFX,this.water,this.air,this.edgeFX])c.visible=false;this.chapters.update(model,low);return;}
   for(const c of [this.skyFX,this.water,this.air,this.edgeFX])c.visible=true;
   const journey=model.journey,t=model.clock,night=journey.night,wind=journey.wind,weights=journey.weights;
   const opacity=[1,1-weights[0],night];
   for(let i=0;i<3;i++)for(const c of [this.skies[i],this.lands[i],this.frames[i]]){c.visible=opacity[i]>.001;c.alpha=opacity[i];}
+  for(let i=0;i<3;i++){this.lands[i].visible=!this.flatTerrain&&opacity[i]>.001;const flat=this.flatLands[i];if(flat){flat.visible=this.flatTerrain&&opacity[i]>.001;flat.alpha=opacity[i];}}
   const g=this.skyFX;g.clear();
   const bossForce=model.bosses.active?model.bosses.sceneForce:0,bossHit=model.bosses.active?model.bosses.sceneParry:0;
   const sunY=248+Math.min(1,journey.time/55)*92,sunAlpha=1-night;

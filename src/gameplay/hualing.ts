@@ -57,7 +57,7 @@ export class Hualing{
  }
  chooseScene(mode:SceneMode){if(mode==='beast'||mode==='crab'){this.claimSummon(mode);return;}this.journey.autoEvents=false;this.pendingScene=null;this.selected=null;this.showScene(mode,true);}
  previewLandscape(stage:LandscapeStage){this.journey.preview(stage);this.journeyEvent=this.journey.event;this.pendingScene=null;this.selected=null;this.cancelInput();this.showScene(this.journey.event);this.say(this.runeShelf?this.journey.sceneName:`${this.journey.sceneName} · 进度与成品符保留`);}
- changeChapter(chapter:HualingChapter){const shelf=this.runeShelf;this.growthByChapter.set(this.journey.chapter,this.upgrades.snapshot());this.reset(false);this.journey.chapter=chapter;const saved=this.growthByChapter.get(chapter);if(saved)this.upgrades.restore(saved);this.sceneSeal.chapter=chapter;this.sceneSeal.reset();if(shelf)this.openRuneShelf();this.say(this.journey.info.description);}
+ changeChapter(chapter:HualingChapter,grow=false){const shelf=this.runeShelf;this.growthByChapter.set(this.journey.chapter,this.upgrades.snapshot());this.reset(false);this.journey.chapter=chapter;const saved=this.growthByChapter.get(chapter);if(saved)this.upgrades.restore(saved);else if(grow)this.upgrades.startGrowth();this.sceneSeal.chapter=chapter;this.sceneSeal.reset();if(shelf)this.openRuneShelf();this.say(this.journey.info.description);}
  get drawing(){return this.pointer!==null;}
  say(message:string){this.notice=message;this.noticeTime=3;}
  select(card:SpiritCard){if(card!=='dragon')return false;this.cancelInput();this.selected=card;this.lastCard=card;this.path=[];this.length=0;this.say(SPIRIT_CARDS[card].hint);}
@@ -97,8 +97,8 @@ export class Hualing{
   this.effects.push({id:++this.serial,kind,path,age:0,duration:3.3,hit:new Set()});
   if(this.effects.length>8)this.effects.shift();this.selected=null;this.cancelInput();this.say('纸龙得形 · 沿笔迹冲阵');
  }
- releaseCollectedDragon(target:Point){
-  const b=this.bounds,from={x:360,y:b.bottom-80},dx=target.x-from.x,dy=target.y-from.y,n=Math.hypot(dx,dy)||1;
+ releaseCollectedDragon(target:Point,origin?:Point){
+  const b=this.bounds,from=origin??{x:360,y:b.bottom-80},dx=target.x-from.x,dy=target.y-from.y,n=Math.hypot(dx,dy)||1;
   const path=Array.from({length:40},(_,i)=>{const u=i/39,w=Math.sin(u*Math.PI*2)*Math.min(90,n*.2);return {x:Math.max(b.left+15,Math.min(b.right-15,n<65?target.x+(u-.5)*190:from.x+dx*u-dy/n*w)),y:Math.max(b.top+15,Math.min(b.bottom-15,n<65?target.y+Math.sin(u*Math.PI)*70:from.y+dy*u+dx/n*w))};});
   this.effects.push({id:++this.serial,kind:'dragon',path,age:0,duration:3.3,hit:new Set()});if(this.effects.length>8)this.effects.shift();
  }
@@ -108,7 +108,7 @@ export class Hualing{
   s.phase='spent';s.bursts.push({center:{x:p.x,y:p.y},age:0,hit:false,kind,power:1});return true;
  }
  demo(){const card=this.selected??this.lastCard;this.select(card);
-  
+
   const points=
    Array.from({length:90},(_,i)=>({x:360+Math.sin(i/89*Math.PI*2)*180,y:this.bounds.bottom-90-(i/89)*(this.bounds.bottom-this.bounds.top-170)}));
   this.handle({kind:'down',id:90,...points[0]});for(const p of points.slice(1))this.handle({kind:'move',id:90,...p});this.handle({kind:'up',id:90,...points[points.length-1]});

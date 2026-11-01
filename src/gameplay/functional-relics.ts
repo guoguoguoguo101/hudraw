@@ -43,10 +43,10 @@ export class FunctionalRelics{
  }
  hitLantern(id:number){if(this.stopped||!this.lantern||this.lantern.id!==id)return;this.lantern.hits--;if(this.lantern.hits<=0)this.extinguish();}
  private extinguish(){if(!this.lantern)return;this.lanternEcho={...this.lantern,fade:1};this.lantern=null;this.notice='灯已熄灭 · 妖怪重新追向狐狸';}
- target(e:Enemy):Point{
+ target(e:Enemy,player:Point={x:WORLD.foxX,y:WORLD.foxY}):Point{
   if(this.enabled&&e.ai==='Approach')e.lureId=(e.kind==='ink'||e.kind==='crow')&&this.lantern&&Math.hypot(e.x-this.lantern.x,e.y-this.lantern.y)<=this.lantern.radius?this.lantern.id:undefined;
   if(e.lureId)return this.lantern?.id===e.lureId?this.lantern:{x:e.x+e.aim.x*200,y:e.y+e.aim.y*200};
-  return {x:WORLD.foxX,y:WORLD.foxY};
+  return player;
  }
  moveScale(e:Enemy){if(e.kind==='boss'||e.kind==='oni')return 1;return (this.stopSlow>0||this.levels.lantern>=3&&this.lanternEcho&&Math.hypot(e.x-this.lanternEcho.x,e.y-this.lanternEcho.y)<this.lanternEcho.radius)? .7:1;}
  beginRevive(){if(!this.ready('soul')||this.reviving)return false;this.uses.soul--;this.reviving=true;this.reviveRemaining=3;this.reviveReady=.3;this.reviveStroke=this.reviveProgress=0;this.reviveResult=null;this.cancelInput();this.notice='描完两笔 · 引魂归来';return true;}

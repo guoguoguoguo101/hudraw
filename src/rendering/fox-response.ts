@@ -10,10 +10,10 @@ import type {SceneSeal} from '../gameplay/scene-seal';
 export class FoxResponse{
  root=new Container();private glow=new Graphics();private accent=new Graphics();action='idle';
  private facing=1;private aim=0;private wasDrawing=false;private effect=0;private clock=-1;
- private flower=0;private thunder=0;private crescent=0;private selected=false;private companion=0;
+ private rushSerial=0;private flower=0;private thunder=0;private crescent=0;private selected=false;private companion=0;
  private bursts=new WeakSet<object>();private phases=new WeakMap<SceneSeal,string>();
  constructor(){this.root.addChild(this.glow,this.accent);}
- clear(){this.action='idle';this.facing=1;this.aim=0;this.wasDrawing=this.selected=false;this.effect=this.flower=this.thunder=this.crescent=this.companion=0;this.clock=-1;this.bursts=new WeakSet();this.phases=new WeakMap();this.glow.clear();this.accent.clear();}
+ clear(){this.action='idle';this.facing=1;this.aim=0;this.wasDrawing=this.selected=false;this.effect=this.flower=this.thunder=this.crescent=this.companion=0;this.clock=-1;this.rushSerial=0;this.bursts=new WeakSet();this.phases=new WeakMap();this.glow.clear();this.accent.clear();}
  event(e:Event,fox:FoxRig){
   if(e.type==='hurt'){fox.act(e.amount>0?'hit':'cast',0,'guard');return;}
   if(e.type==='lose'){fox.act('death');return;}if(e.type==='win'){fox.act('victory');return;}
@@ -35,6 +35,7 @@ export class FoxResponse{
   const drawing=active&&(input.drawing||m.drawing||!!drag);
   const p=drag?.dragPoint??(m.selected?m.path.at(-1):input.points.at(-1));
   if(active){
+   if(game.foxRush.serial!==this.rushSerial){this.rushSerial=game.foxRush.serial;if(game.frontlineTest&&game.foxRush.active)fox.act('summon',-Math.PI/2,'summon');}
    const latest=m.effects.at(-1);
    if(latest&&latest.id!==this.effect){this.effect=latest.id;if(latest.age<.3)fox.act('cast',0,'dragon');}
    if(m.petals.remaining>this.flower+.1)fox.act('enchant',0,'petal');

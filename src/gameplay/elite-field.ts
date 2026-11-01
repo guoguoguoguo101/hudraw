@@ -8,13 +8,14 @@ export type FieldObject=Point&{id:number;owner:number;kind:EliteKind;shape:Field
 export type FieldEffect=Point&{owner:number;kind:EliteKind;style:'burst'|'cut'|'beam'|'recoil'|'fog'|'ice'|'stamp'|'wave';age:number;life:number;radius:number;nodes:Point[];text:string};
 type Round={owner:number;kind:EliteKind;age:number;cycle:number;goal:number;made:number};
 export type FieldHit={enemy:Enemy;amount:number};
-const FOX={x:WORLD.foxX,y:WORLD.foxY};
+
 const norm=(x:number,y:number)=>{const n=Math.hypot(x,y)||1;return {x:x/n,y:y/n};};
 const dist=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 const mid=(a:Point,b:Point)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
 export const FIELD_GOALS:Record<EliteKind,number>={umbrella:3,lantern:3,puppet:3,stele:2,moth:4,reefCrab:2,jelly:3,clam:3,hermit:2,rays:2,mirror:2,weaver:3,bell:3,official:2,blade:3,frostApe:2,crone:3,pineApe:2,deer:2,guardian:2};
 /** All enemy attacks live in arena coordinates, independently of the small owner sprite. */
 export class EliteField{
+ player:Point={x:WORLD.foxX,y:WORLD.foxY};
  blockProjectile?: (a:Point,b:Point,radius:number)=>boolean;
  objects:FieldObject[]=[];effects:FieldEffect[]=[];rounds=new Map<number,Round>();reinforcements:{owner:number;x:number;y:number}[]=[];
  notices:string[]=[];hits=0;private tone:'parry'|'impact'|'break'|null=null;private serial=0;private queued:FieldHit[]=[];private lure:Point|null=null;private lureAge=0;
@@ -42,17 +43,17 @@ export class EliteField{
   this.notices.push(ELITE_CATALOG[kind].name+' · '+ELITE_CATALOG[kind].hint);
   const spawn=(shape:FieldShape,n:number,r=23)=>Array.from({length:n},(_,i)=>this.add(e,shape,this.anchor(i,n,cycle),i,r));
   switch(kind){
-   case 'umbrella':for(const o of spawn('parasol',3,31)){o.life=8;this.velocity(o,FOX,65);}break;
-   case 'lantern':for(const o of spawn('lantern',4,23)){o.life=9;this.velocity(o,FOX,48);}break;
+   case 'umbrella':for(const o of spawn('parasol',3,31)){o.life=8;this.velocity(o,this.player,65);}break;
+   case 'lantern':for(const o of spawn('lantern',4,23)){o.life=9;this.velocity(o,this.player,48);}break;
    case 'puppet':for(const o of spawn('thread',4,15)){o.nodes=[{x:e.x,y:e.y+10},{x:o.x,y:o.y}];o.life=7;}break;
    case 'stele':for(const o of spawn('stele',4,31)){this.velocity(o,this.anchor((o.index+2)%4,4,cycle),83);o.life=8;}break;
-   case 'moth':for(const o of spawn('moth',6,18)){o.life=9;this.velocity(o,FOX,38);}break;
-   case 'reefCrab':for(const side of [-1,1]){const o=this.add(e,'claw',{x:side<0?b.left+42:b.right-42,y:FOX.y-100},side<0?0:1,42);this.velocity(o,{x:FOX.x,y:FOX.y-100},65);o.life=8;}break;
-   case 'jelly':for(const o of spawn('tentacle',3,18)){const tip={x:FOX.x+(o.index-1)*90,y:FOX.y+70};o.nodes=[{x:o.x,y:o.y},{x:o.x+(tip.x-o.x)*.4+70*Math.sin(o.index*2),y:o.y+(tip.y-o.y)*.5},{...tip}];o.life=7;}break;
+   case 'moth':for(const o of spawn('moth',6,18)){o.life=9;this.velocity(o,this.player,38);}break;
+   case 'reefCrab':for(const side of [-1,1]){const o=this.add(e,'claw',{x:side<0?b.left+42:b.right-42,y:this.player.y-100},side<0?0:1,42);this.velocity(o,{x:this.player.x,y:this.player.y-100},65);o.life=8;}break;
+   case 'jelly':for(const o of spawn('tentacle',3,18)){const tip={x:this.player.x+(o.index-1)*90,y:this.player.y+70};o.nodes=[{x:o.x,y:o.y},{x:o.x+(tip.x-o.x)*.4+70*Math.sin(o.index*2),y:o.y+(tip.y-o.y)*.5},{...tip}];o.life=7;}break;
    case 'clam':for(const o of spawn('pearl',4,22)){o.warn=1.7;o.life=9;this.velocity(o,e,95);}break;
    case 'hermit':for(const o of spawn('boat',3,30)){this.velocity(o,this.anchor((o.index+1)%3,3,cycle),67);o.life=9;}break;
    case 'rays':for(const o of spawn('ray',2,36)){this.velocity(o,this.anchor((o.index+1)%2,2,cycle),95);o.life=9;}break;
-   case 'mirror':for(const o of spawn('mirror',3,29)){o.life=8;o.angle=Math.atan2(FOX.y-o.y,FOX.x-o.x);o.warn=1.4;}break;
+   case 'mirror':for(const o of spawn('mirror',3,29)){o.life=8;o.angle=Math.atan2(this.player.y-o.y,this.player.x-o.x);o.warn=1.4;}break;
    case 'weaver':{
     const sh=spawn('shuttle',2,23);for(const o of sh){o.life=8;this.velocity(o,this.anchor(o.index+1,2,cycle),65);}
     for(let i=0;i<3;i++){const o=this.add(e,'thread',this.anchor(i,3,cycle),i,13);o.nodes=[this.anchor(i,3,cycle),this.anchor((i+1)%3,3,cycle)];o.life=7;}break;
@@ -64,7 +65,7 @@ export class EliteField{
    case 'crone':for(const o of spawn('snowLamp',3,22)){o.life=9;this.velocity(o,this.anchor(o.index+1,3,cycle),65);}break;
    case 'pineApe':for(const o of spawn('snowball',3,22)){o.life=9;this.velocity(o,this.anchor(o.index+1,3,cycle),83);}break;
    case 'deer':{
-    const front=this.add(e,'deer',{x:b.left+65,y:FOX.y},0,34),rear=this.add(e,'deer',{x:b.right-65,y:b.top+115},1,25);front.life=rear.life=9;this.velocity(front,{x:b.right-65,y:FOX.y},110);this.velocity(rear,{x:b.left+65,y:b.top+115},55);
+    const front=this.add(e,'deer',{x:b.left+65,y:this.player.y},0,34),rear=this.add(e,'deer',{x:b.right-65,y:b.top+115},1,25);front.life=rear.life=9;this.velocity(front,{x:b.right-65,y:this.player.y},110);this.velocity(rear,{x:b.left+65,y:b.top+115},55);
     for(const o of spawn('flower',5,17)){o.warn=1;o.life=9;this.velocity(o,front,65);}break;
    }
    case 'guardian':{
@@ -147,20 +148,20 @@ export class EliteField{
    if(active&&!o.friendly&&!o.hit.has(-2)){o.hit.add(-2);this.animate(owner,'cast',['claw','stele','stamp'].includes(o.shape)?1.2:1,o.x<owner.x?-1:1);}
    if(o.shape==='crack'||o.shape==='thread'||o.shape==='tentacle'){
     if(o.shape==='thread'&&o.kind==='puppet'){o.nodes[0]={x:owner.x,y:owner.y+15};const p=this.anchor(o.index,4,owner.elite!.cycle);o.nodes[1]={x:p.x+Math.sin(o.age+o.index)*18,y:p.y+Math.cos(o.age+o.index)*18};o.x=o.nodes[1].x;o.y=o.nodes[1].y;}
-    if(o.shape==='tentacle'){const end=o.nodes[2],d=norm(FOX.x-end.x,FOX.y-end.y);if(active){end.x+=d.x*13*dt;end.y+=d.y*13*dt;}}
-    if(active&&o.age>=5.8&&o.stage===0){o.stage=1;const touched=o.nodes.slice(1).some((p,i)=>distanceToSegment(FOX,{a:o.nodes[i],b:p})<28);if(touched){this.hits++;hurt(12);}}
+    if(o.shape==='tentacle'){const end=o.nodes[2],d=norm(this.player.x-end.x,this.player.y-end.y);if(active){end.x+=d.x*13*dt;end.y+=d.y*13*dt;}}
+    if(active&&o.age>=5.8&&o.stage===0){o.stage=1;const touched=o.nodes.slice(1).some((p,i)=>distanceToSegment(this.player,{a:o.nodes[i],b:p})<28);if(touched){this.hits++;hurt(12);}}
    }else if(o.shape==='ring'){
-    if(active){const previous=o.radius;o.radius+=62*dt;if(previous<dist(o,FOX)+16&&o.radius>=dist(o,FOX)-16&&o.stage===0){const a=Math.atan2(FOX.y-o.y,FOX.x-o.x),sector=Math.floor((a+Math.PI)/(.5*Math.PI))%4;o.stage=1;if(!o.marks.has(sector)){this.hits++;hurt(12);}}}
+    if(active){const previous=o.radius;o.radius+=62*dt;if(previous<dist(o,this.player)+16&&o.radius>=dist(o,this.player)-16&&o.stage===0){const a=Math.atan2(this.player.y-o.y,this.player.x-o.x),sector=Math.floor((a+Math.PI)/(.5*Math.PI))%4;o.stage=1;if(!o.marks.has(sector)){this.hits++;hurt(12);}}}
    }else if(o.shape==='mirror'){
-    if(active&&o.age>2.7+o.index*.6&&o.stage===0){o.stage=1;const end=rayEnd(o,{x:Math.cos(o.angle),y:Math.sin(o.angle)},this.bounds);this.fx(o,'beam',17,'',[o,end],.5);if(distanceToSegment(FOX,{a:o,b:end})<32){this.hits++;hurt(14);}}
+    if(active&&o.age>2.7+o.index*.6&&o.stage===0){o.stage=1;const end=rayEnd(o,{x:Math.cos(o.angle),y:Math.sin(o.angle)},this.bounds);this.fx(o,'beam',17,'',[o,end],.5);if(distanceToSegment(this.player,{a:o,b:end})<32){this.hits++;hurt(14);}}
    }else if(o.shape==='stamp'){
     if(o.friendly){o.x+=o.vx*dt;o.y+=o.vy*dt;o.vx*=Math.exp(-dt*1.8);o.vy*=Math.exp(-dt*1.8);}
-    if(active&&o.stage===0){this.animate(owner,'impact',1.2);o.stage=1;o.dead=true;if(o.friendly){this.blast(o,enemies,100,70);this.fx(o,'stamp',100,'落印！');}else{this.fx(o,'stamp',70,'落印');if(dist(o,FOX)<85){this.hits++;hurt(18);}if(this.reinforcements.filter(r=>r.owner===o.owner).length<2)this.reinforcements.push({owner:o.owner,x:o.x,y:o.y});}}
+    if(active&&o.stage===0){this.animate(owner,'impact',1.2);o.stage=1;o.dead=true;if(o.friendly){this.blast(o,enemies,100,70);this.fx(o,'stamp',100,'落印！');}else{this.fx(o,'stamp',70,'落印');if(dist(o,this.player)<85){this.hits++;hurt(18);}if(this.reinforcements.filter(r=>r.owner===o.owner).length<2)this.reinforcements.push({owner:o.owner,x:o.x,y:o.y});}}
    }else{
     if(active){
      if(o.shape==='parasol'&&!o.friendly){const t=norm(owner.x-o.x,owner.y-o.y);o.vx+=(t.x*40+Math.sin(o.age*2+o.index)*25)*dt;o.vy+=t.y*40*dt;}
-     if(o.shape==='lantern'&&!o.friendly){const d=norm(FOX.x-o.x,FOX.y-o.y);o.vx=d.x*38-d.y*28;o.vy=d.y*38+d.x*28;}
-     if(o.shape==='moth'){const target=this.lure&&this.lureAge<1.6?this.lure:FOX;this.velocity(o,target,this.lure&&this.lureAge<1.6?125:36);}
+     if(o.shape==='lantern'&&!o.friendly){const d=norm(this.player.x-o.x,this.player.y-o.y);o.vx=d.x*38-d.y*28;o.vy=d.y*38+d.x*28;}
+     if(o.shape==='moth'){const target=this.lure&&this.lureAge<1.6?this.lure:this.player;this.velocity(o,target,this.lure&&this.lureAge<1.6?125:36);}
      if(o.shape==='snowball')o.radius=Math.min(43,22+(o.age-o.warn)*3.5);
      if(o.shape==='flower'){const front=this.objects.find(q=>q.owner===o.owner&&q.shape==='deer'&&q.index===0&&!q.dead);if(front)this.velocity(o,front,75);}
      if(o.shape==='blade'&&!o.friendly&&o.age>3.2&&o.stage===0){o.stage=1;this.velocity(o,o.origin,150);}
@@ -172,7 +173,7 @@ export class EliteField{
      if(o.shape==='pearl'&&!o.friendly&&dist(o,owner)<45){owner.hp=Math.min(owner.maxHp,owner.hp+24);o.dead=true;this.fx(o,'wave',30,'回珠 +24');}
      if(o.friendly&&o.shape!=='deer'){
       for(const e of enemies){if(e.hp<=0||o.hit.has(e.id))continue;if(distanceToSegment(e,{a:o.prev,b:o})<=o.radius+32){o.hit.add(e.id);this.hit(e,e.id===o.owner?(o.shape==='snowball'?50+o.radius*2:85):65);this.fx(o,'burst',o.radius+20,'命中');if(e.id===o.owner){this.score(o,enemies);o.dead=true;break;}}}
-     }else if(!['shuttle','snowLamp','pearl'].includes(o.shape)&&distanceToSegment(FOX,{a:o.prev,b:o})<o.radius+18&&!o.hit.has(-1)){o.hit.add(-1);this.hits++;hurt(o.shape==='claw'?20:12);this.fx(o,'burst',38,'');if(o.shape!=='deer')o.dead=true;}
+     }else if(!['shuttle','snowLamp','pearl'].includes(o.shape)&&distanceToSegment(this.player,{a:o.prev,b:o})<o.radius+18&&!o.hit.has(-1)){o.hit.add(-1);this.hits++;hurt(o.shape==='claw'?20:12);this.fx(o,'burst',38,'');if(o.shape!=='deer')o.dead=true;}
      const b=this.bounds;if(o.x<b.left+o.radius||o.x>b.right-o.radius){o.x=Math.max(b.left+o.radius,Math.min(b.right-o.radius,o.x));o.vx*=-1;}if(o.y<b.top+o.radius||o.y>b.bottom-o.radius){o.y=Math.max(b.top+o.radius,Math.min(b.bottom-o.radius,o.y));o.vy*=-1;}
     }
    }

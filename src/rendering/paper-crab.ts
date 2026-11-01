@@ -1,3 +1,5 @@
+import {PaperVectorRelief} from './paper-material';
+import type {Renderer} from 'pixi.js';
 import {Container,Graphics} from 'pixi.js';
 import {PAPER_CRAB,type PaperCrab} from '../gameplay/paper-crab';
 const TEAL=0x267f8b,DEEP=0x174c61,INK=0x203d48,PAPER=0xf2e4be,GOLD=0xd8b367,CORAL=0xc66b4e,LIGHT=0x70afb0;
@@ -40,6 +42,7 @@ export function drawPaperCrab(g:Graphics){
  for(const side of [-1,1]){g.save().transform(1,0,0,1,side*42,-24);banner(g,side);g.restore();for(let i=0;i<3;i++){g.save().transform(1,0,0,1,side*(43+i*7),i*10-1);foot(g,side,i);g.restore();}const s=side===-1?1.25:1;g.save().transform(s,0,0,s,side*47,-22);claw(g,side);g.restore();}shell(g);
 }
 export class PaperCrabRenderer{
+ paperStyle=false;renderer?:Renderer;private relief?:PaperVectorRelief;
  root=new Container();private fx=new Graphics();private rig=new Container();private body=new Graphics();private legs:{g:Graphics;side:number;i:number;y:number}[]=[];private claws:{g:Graphics;side:number}[]=[];private banners:{g:Graphics;side:number}[]=[];
  constructor(){
   this.root.addChild(this.fx,this.rig);
@@ -51,6 +54,7 @@ export class PaperCrabRenderer{
   shell(this.body);this.rig.addChild(this.body);
  }
  update(model:PaperCrab){
+  if(this.paperStyle&&this.renderer&&!this.relief)this.relief=new PaperVectorRelief([this.body,...this.legs.map(p=>p.g),...this.claws.map(p=>p.g),...this.banners.map(p=>p.g)],this.renderer);
   const t=model.state;this.root.visible=!!t;if(!t)return;const g=this.fx;g.clear();
   const charge=t.phase==='dash',ready=t.phase==='windup',fold=t.phase==='fold',u=ready?Math.min(1,t.phaseAge/PAPER_CRAB.windup):0;
   const emerge=t.phase==='unfold'?Math.min(1,t.phaseAge/PAPER_CRAB.unfold):1,fade=fold?Math.max(0,1-t.phaseAge/PAPER_CRAB.fold):1;
@@ -60,6 +64,7 @@ export class PaperCrabRenderer{
   for(const p of this.legs){p.g.rotation=Math.sin(t.age*(charge?40:5)+p.i*1.7+p.side)* (charge?.3:.08);p.g.y=p.y+Math.sin(t.age*(charge?40:5)+p.i*1.7+p.side)*(charge?4:1.4);}
   for(const p of this.claws)p.g.rotation=p.side*(ready?-.2*u:charge?-.16:Math.sin(t.age*2)*.045);
   for(const p of this.banners)p.g.skew.x=Math.sin(t.age*(charge?16:3)+p.side)*.13+(charge?-Math.cos(t.heading)*.3:0);
+  this.relief?.update(this.paperStyle);
   if(ready){
    g.moveTo(t.x,t.y).lineTo(t.to.x,t.to.y).stroke({color:TEAL,width:86,alpha:.07+u*.08}).moveTo(t.x,t.y).lineTo(t.to.x,t.to.y).stroke({color:GOLD,width:1.5,alpha:.35+u*.45});
    const dx=Math.cos(t.heading),dy=Math.sin(t.heading);for(let i=1;i<=4;i++){const x=t.x+(t.to.x-t.x)*i/5,y=t.y+(t.to.y-t.y)*i/5;g.moveTo(x-dx*9-dy*7,y-dy*9+dx*7).lineTo(x,y).lineTo(x-dx*9+dy*7,y-dy*9-dx*7).stroke({color:PAPER,width:2,alpha:.25+u*.5});}

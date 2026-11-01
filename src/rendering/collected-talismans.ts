@@ -34,10 +34,10 @@ export class CollectedTalismanRenderer{
    let fox=this.clouds.get(c.id);if(!fox){fox=new FoxThunderUltimate('clouds');this.clouds.set(c.id,fox);this.root.addChildAt(fox,2);}
    const s=visualSkill('z',c.id,c);s.age=c.age*1.5;s.thunder={level:4,targets:[],selected:true,path:[],length:0,travel:0,lineHits:new Set(),nodeHits:new Set(),finalHits:new Set(),finalDone:false,notified:false,chains:[]};fox.update(s);
    // Keep the approved fox/clouds/scrolls, replace its spear and radial web with falling sky thunder.
-   fox.thunderLanceLayer.visible=false;fox.impactLayer.visible=false;fox.runeCircleLayer.visible=false;fox.windLayer.visible=false;fox.scale.set((b.right-b.left)/670,(b.bottom-b.top)/830);fox.position.set(b.left-25*fox.scale.x,b.top-200*fox.scale.y);fox.alpha*=.85;
+   fox.visible=true;fox.thunderLanceLayer.visible=false;fox.impactLayer.visible=false;fox.runeCircleLayer.visible=false;fox.windLayer.visible=false;fox.scale.set((b.right-b.left)/670,(b.bottom-b.top)/830);fox.position.set(b.left-25*fox.scale.x,b.top-200*fox.scale.y);fox.alpha*=.85;
    (fx.effect as RetainedSkyThunder).update(c,b,low);
   }
-  const pulse=g.pulse.effect;if(pulse){const t=pulse.age,u=Math.max(0,Math.min(1,t/.2)),fade=Math.max(0,1-(t-.12)/.58),r=INK_PULSE.radius*(.18+.82*(1-(1-u)**3)),x=pulse.x,y=pulse.y;
+  const pulse=g.pulse.effect;if(pulse&&!g.frontlineTest){const t=pulse.age,u=Math.max(0,Math.min(1,t/.2)),fade=Math.max(0,1-(t-.12)/.58),r=INK_PULSE.radius*(.18+.82*(1-(1-u)**3)),x=pulse.x,y=pulse.y;
    art.circle(x,y,r*.94).fill({color:0x112f32,alpha:fade*.34}).circle(x,y,r).stroke({color:0x192d2b,width:16*fade,alpha:fade*.55}).circle(x,y,r*.98).stroke({color:GOLD,width:5*fade+1,alpha:fade}).circle(x,y,r*.91).stroke({color:WHITE,width:2,alpha:fade*.8});
    for(let i=0;i<6;i++){const a=i*Math.PI/3+t*.5;art.arc(x,y,r*(.98+i%2*.04),a,a+.48).stroke({color:RED,width:8*fade,alpha:fade*.85});}
    for(let i=0;i<(low?10:20);i++){const a=i*2.399,d=r*(.5+(i%5)*.13),xx=x+Math.cos(a)*d,yy=y+Math.sin(a)*d,w=(3+i%3)*fade;art.poly([xx,yy-w*2,xx+w,yy,xx,yy+w*2,xx-w,yy]).fill({color:i%3?GOLD:RED,alpha:fade});}

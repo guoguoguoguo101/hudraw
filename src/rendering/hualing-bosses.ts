@@ -13,6 +13,7 @@ const ICE_COLOR=0xc6edf4;
 const GOLD=0xe6c17b,PAPER=0xf3e9ce,INK=0x1e2b34;
 const words=(size:number)=>{const t=new Text({text:'',style:{fontFamily:'KaiTi,STKaiti,serif',fontSize:size,fill:PAPER,stroke:{color:INK,width:3},align:'center'}});t.anchor.set(.5);return t;};
 export class HualingBossRenderer{
+ paperStyle=false;private artPaper=false;
  root=new Container();renderer?:Renderer;private puppet?:BossPaperPuppet;loader?:(chapter:HualingChapter)=>Promise<PaperVector>;
  private assets=new Map<HualingChapter,PaperVector>();private pending=new Set<HualingChapter>();private retry=new Map<HualingChapter,number>();
  private battlefieldBack=new Graphics();private battlefieldFront=new Graphics();private command=words(21);private veil=new Graphics();private shards=new Graphics();private cues:(BossCue&{at:number})[]=[];private lanes=new Graphics();private rig=new Container();private body=new Container();private ornament=new Graphics();private marks=new Graphics();private hud=new Graphics();private title=words(23);private hint=words(18);private result=words(26);private guard=words(17);private banner=words(30);
@@ -25,11 +26,11 @@ export class HualingBossRenderer{
     this.pending.add(chapter);this.loader(chapter).then(data=>{this.assets.set(chapter,data);this.pending.delete(chapter);}).catch(()=>{this.pending.delete(chapter);this.retry.set(chapter,Date.now()+3000);});
    }return false;
   }
-  if(this.artChapter!==chapter){
+  if(this.artChapter!==chapter||this.artPaper!==this.paperStyle){
    this.puppet?.destroy();this.puppet=undefined;this.body.removeChildren().forEach(c=>c.destroy({children:true}));const data=this.assets.get(chapter)!;
-   if(this.renderer){this.puppet=new BossPaperPuppet(chapter,data,this.renderer);this.body.addChild(this.puppet.root);}
+   if(this.renderer){this.puppet=new BossPaperPuppet(chapter,data,this.renderer,this.paperStyle);this.body.addChild(this.puppet.root);}
    else{const g=paperArt('chapter-boss-v03-'+chapter,data),scale=Math.min(350/data.width,295/data.height);g.scale.set(scale);g.position.set(-data.width*scale/2,-data.height*scale/2);this.body.addChild(g);}
-   this.artChapter=chapter;
+   this.artChapter=chapter;this.artPaper=this.paperStyle;
   }
   return true;
  }
@@ -56,6 +57,8 @@ export class HualingBossRenderer{
   if(m.integrity<30)g.rect(0,0,720,1280).fill({color:0x9d2425,alpha:.02+.02*Math.sin(time*2)**2});
   this.puppet?.update(s,e.hit);this.body.visible=ready;this.rig.position.set(e.x,e.y);this.rig.alpha=arrival;
   this.rig.scale.set(weak?1:.9);this.rig.rotation=0;this.body.scale.set(1);
+  if(this.paperStyle){const pose=bossPose(s);for(const [i]of BOSS_PARTS[s.chapter].entries()){const p=partWorld(s.chapter,i,e,(u,v)=>deformBossVertex(s.chapter,u,v,pose));this.ornament.poly([p.x,p.y-6,p.x+4,p.y,p.x,p.y+6,p.x-4,p.y]).fill({color:GOLD,alpha:.65}).stroke({color:INK,width:1});}this.ornament.poly([e.x,e.y-167,e.x+16,e.y-149,e.x,e.y-131,e.x-16,e.y-149]).fill(GOLD).stroke({color:INK,width:2});this.ornament.poly([e.x,e.y-160,e.x+8,e.y-149,e.x,e.y-138,e.x-8,e.y-149]).fill(PAPER);}
+  this.command.visible=s.phase!=='arrive';
   const commandTop=b.bottom-155;
   this.battlefieldFront.poly([99,commandTop,621,commandTop,632,commandTop+10,627,commandTop+50,93,commandTop+50,88,commandTop+39]).fill({color:INK,alpha:.88}).stroke({color:GOLD,width:1,alpha:.45});
   this.battlefieldFront.moveTo(104,commandTop+5).lineTo(615,commandTop+5).stroke({color:GOLD,width:.6,alpha:.25});
